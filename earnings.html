@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earnings & Payouts — ZenPartner</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+<style>
+.jakarta{font-family:'Plus Jakarta Sans',sans-serif}
+.earn-donut{background: conic-gradient(#4f46e5 0 44%, #60a5fa 44% 72%, #10b981 72% 89%, #f97316 89% 97%, #f59e0b 97% 100%)}
+</style>
+</head>
+<body class="bg-[#f6f7fb] text-slate-800 antialiased">
+<div class="min-h-screen flex">
+  <div id="app-sidebar"></div>
+  <div class="flex-1 min-w-0 flex flex-col">
+    <div id="app-topbar"></div>
+
+    <main class="p-4 lg:p-5 max-w-[1450px] mx-auto w-full space-y-4">
+      <!-- Period Tabs -->
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="bg-white border border-slate-200 rounded-xl p-1 flex gap-1 text-[11px] font-semibold">
+          <button class="bg-[#4f46e5] text-white px-3.5 py-1.5 rounded-lg">This Year</button>
+          <button class="px-3.5 py-1.5 rounded-lg text-slate-600 hover:bg-slate-50">This Quarter</button>
+          <button class="px-3.5 py-1.5 rounded-lg text-slate-600 hover:bg-slate-50">This Month</button>
+          <button class="px-3.5 py-1.5 rounded-lg text-slate-600 hover:bg-slate-50">Custom Range</button>
+          <button class="w-7 h-7 rounded-lg bg-white border border-slate-200 grid place-items-center text-slate-500"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-3">
+        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+          <div class="text-[11px] font-semibold text-slate-500">Total Earnings (This Year)</div>
+          <div class="text-[18px] font-extrabold mt-1">$24,750</div>
+          <div class="text-[11px] mt-1"><span class="text-emerald-600 font-bold">↑ 15%</span> <span class="text-slate-500">vs last year</span></div>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+          <div class="text-[11px] font-semibold text-slate-500">Commission Earned</div>
+          <div class="text-[18px] font-extrabold mt-1">$18,500</div>
+          <div class="text-[11px] mt-1"><span class="text-emerald-600 font-bold">↑ 18%</span> <span class="text-slate-500">vs last year</span></div>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+          <div class="text-[11px] font-semibold text-slate-500">Paid to Date</div>
+          <div class="text-[18px] font-extrabold mt-1">$12,750</div>
+          <div class="text-[11px] mt-1"><span class="text-emerald-600 font-bold">↑ 20%</span> <span class="text-slate-500">vs last year</span></div>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+          <div class="text-[11px] font-semibold text-slate-500">Pending Payout</div>
+          <div class="text-[18px] font-extrabold mt-1">$5,750</div>
+          <div class="text-[11px] mt-1"><span class="text-red-500 font-bold">↓ 5%</span> <span class="text-slate-500">vs last month</span></div>
+        </div>
+        <div class="bg-[#f0fdf4] rounded-2xl border border-emerald-200 p-4 shadow-sm col-span-2 lg:col-span-1">
+          <div class="text-[11px] font-semibold text-slate-500">Available Balance</div>
+          <div class="text-[18px] font-extrabold mt-1 text-emerald-700">$5,750</div>
+          <div class="text-[11px] mt-1 text-slate-500">Available for Payout</div>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="grid grid-cols-1 xl:grid-cols-[1.6fr_0.9fr] gap-4">
+        <!-- Earnings Overview -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+          <div class="flex items-center justify-between">
+            <h3 class="text-[13px] font-bold">Earnings Overview</h3>
+            <div class="flex items-center gap-3 text-[10px] font-semibold">
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#4f46e5]"></span> Commission Earned</span>
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Paid Amount</span>
+            </div>
+          </div>
+          <div class="mt-4 h-[200px] relative">
+            <svg viewBox="0 0 700 200" class="w-full h-full">
+              <line x1="40" y1="20" x2="700" y2="20" stroke="#f1f5f9" stroke-width="1"/>
+              <line x1="40" y1="65" x2="700" y2="65" stroke="#f1f5f9" stroke-width="1"/>
+              <line x1="40" y1="110" x2="700" y2="110" stroke="#f1f5f9" stroke-width="1"/>
+              <line x1="40" y1="155" x2="700" y2="155" stroke="#f1f5f9" stroke-width="1"/>
+              <!-- Commission line -->
+              <polyline fill="none" stroke="#4f46e5" stroke-width="2" points="40,120 80,100 120,70 160,85 200,45 240,60 280,55 320,70 360,40 400,55 440,35 480,45 520,30 560,50 600,25 640,35 700,30"/>
+              <polygon fill="#4f46e5" opacity="0.06" points="40,120 80,100 120,70 160,85 200,45 240,60 280,55 320,70 360,40 400,55 440,35 480,45 520,30 560,50 600,25 640,35 700,30 700,155 40,155"/>
+              <!-- Paid line -->
+              <polyline fill="none" stroke="#10b981" stroke-width="1.6" points="40,135 80,120 120,110 160,100 200,115 240,110 280,105 320,115 360,100 400,110 440,95 480,105 520,90 560,95 600,80 640,85 700,75"/>
+              <circle cx="400" cy="55" r="3" fill="white" stroke="#4f46e5" stroke-width="1.8"/>
+              <!-- dots -->
+              <circle cx="200" cy="45" r="3" fill="white" stroke="#4f46e5" stroke-width="1.6"/>
+              <circle cx="600" cy="25" r="3" fill="white" stroke="#4f46e5" stroke-width="1.6"/>
+            </svg>
+            <!-- tooltip -->
+            <div class="absolute left-[44%] top-[26%] bg-slate-900 text-white text-[10px] rounded-lg px-2.5 py-2 shadow-lg">
+              <div class="font-semibold">May</div>
+              <div>Commission Earned <span class="font-bold">$3,250</span></div>
+              <div>Paid Amount <span class="font-bold">$2,700</span></div>
+            </div>
+            <div class="absolute left-0 top-0 bottom-6 flex flex-col justify-between text-[10px] text-slate-400 py-1">
+              <span>$10K</span><span>$8K</span><span>$6K</span><span>$4K</span><span>$2K</span><span>$0</span>
+            </div>
+            <div class="absolute left-10 right-0 bottom-0 flex justify-between text-[10px] text-slate-500">
+              <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Earnings by Source -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+          <h3 class="text-[13px] font-bold">Earnings by Source</h3>
+          <div class="flex gap-4 mt-4 items-center">
+            <div class="relative w-[130px] h-[130px] shrink-0">
+              <div class="absolute inset-0 rounded-full earn-donut"></div>
+              <div class="absolute inset-[22px] bg-white rounded-full grid place-items-center border border-slate-100 shadow-inner">
+                <div class="text-center"><div class="text-[13px] font-extrabold leading-none">$18,500</div><div class="text-[10px] text-slate-500">Total</div></div>
+              </div>
+            </div>
+            <div class="space-y-2 text-[11px] flex-1">
+              <div class="flex justify-between"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#4f46e5]"></span> Website Development</span><span class="text-slate-500">$8,200 (44%)</span></div>
+              <div class="flex justify-between"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-sky-500"></span> Mobile App Development</span><span class="text-slate-500">$5,100 (28%)</span></div>
+              <div class="flex justify-between"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Cloud Solutions</span><span class="text-slate-500">$3,200 (17%)</span></div>
+              <div class="flex justify-between"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-orange-400"></span> Digital Marketing</span><span class="text-slate-500">$1,400 (8%)</span></div>
+              <div class="flex justify-between"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-amber-400"></span> Others</span><span class="text-slate-500">$600 (3%)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transactions + Payout Summary -->
+      <div class="grid grid-cols-1 xl:grid-cols-[1.65fr_0.95fr] gap-4">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+          <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
+            <button class="text-[11px] font-bold text-[#4f46e5] border-b-2 border-[#4f46e5] pb-2 -mb-3 px-2">Transactions</button>
+            <button class="text-[11px] font-medium text-slate-500 px-2">Payouts</button>
+            <button class="text-[11px] font-medium text-slate-500 px-2">Adjustments</button>
+          </div>
+          <div class="overflow-x-auto mt-4">
+            <div class="min-w-[700px]">
+              <div class="grid grid-cols-[90px_1.6fr_1fr_90px_90px_90px] text-[10px] font-bold text-slate-500 uppercase tracking-wide px-2 py-2">
+                <span>Date</span><span>Description</span><span>Source</span><span>Amount</span><span>Type</span><span>Status</span>
+              </div>
+              <div class="divide-y divide-slate-100">
+                <div class="grid grid-cols-[90px_1.6fr_1fr_90px_90px_90px] items-center px-2 py-3 text-[11px]">
+                  <span class="text-slate-500">May 01, 2024</span><span>Payment Received from Beta Solutions – Phase 1</span><span class="text-slate-600">Beta Solutions</span><span class="font-bold text-emerald-600">+$9,000</span><span>Payment</span><span><span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full text-[10px] font-bold">Paid</span></span>
+                </div>
+                <div class="grid grid-cols-[90px_1.6fr_1fr_90px_90px_90px] items-center px-2 py-3 text-[11px] bg-slate-50/40">
+                  <span class="text-slate-500">Apr 28, 2024</span><span>Commission Earned – Phase 2 Beta Solutions</span><span class="text-slate-600">Beta Solutions</span><span class="font-bold text-emerald-600">+$2,500</span><span>Commission</span><span><span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full text-[10px] font-bold">Paid</span></span>
+                </div>
+                <div class="grid grid-cols-[90px_1.6fr_1fr_90px_90px_90px] items-center px-2 py-3 text-[11px]">
+                  <span class="text-slate-500">Apr 15, 2024</span><span>Payment Received from BrightWave Industries</span><span class="text-slate-600">BrightWave Industries</span><span class="font-bold text-emerald-600">+$3,000</span><span>Payment</span><span><span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full text-[10px] font-bold">Paid</span></span>
+                </div>
+                <div class="grid grid-cols-[90px_1.6fr_1fr_90px_90px_90px] items-center px-2 py-3 text-[11px] bg-slate-50/40">
+                  <span class="text-slate-500">Apr 10, 2024</span><span>Commission Earned – CloudCore Systems</span><span class="text-slate-600">CloudCore Systems</span><span class="font-bold text-emerald-600">+$1,750</span><span>Commission</span><span><span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full text-[10px] font-bold">Paid</span></span>
+                </div>
+                <div class="grid grid-cols-[90px_1.6fr_1fr_90px_90px_90px] items-center px-2 py-3 text-[11px]">
+                  <span class="text-slate-500">Apr 05, 2024</span><span>Adjustment – Overpayment Correction –</span><span class="text-slate-400">-</span><span class="font-bold text-red-600">-$250</span><span>Adjustment</span><span><span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full text-[10px] font-bold">Paid</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+          <h3 class="text-[13px] font-bold">Payout Summary</h3>
+          <div class="mt-4 space-y-3 text-[11px]">
+            <div class="flex justify-between"><span class="text-slate-500 font-medium">Total Payouts</span><span class="font-bold">6</span></div>
+            <div class="flex justify-between"><span class="text-slate-500 font-medium">Paid to Date</span><span class="font-bold">$12,750</span></div>
+            <div class="flex justify-between"><span class="text-slate-500 font-medium">Pending Payout</span><span class="font-bold">$5,750</span></div>
+            <div class="flex justify-between"><span class="text-slate-500 font-medium">Next Payout</span><span class="font-medium">May 31, 2024</span></div>
+            <div class="h-1 bg-slate-100 rounded-full overflow-hidden flex mt-2">
+              <div class="h-full bg-emerald-500" style="width:68%"></div>
+              <div class="h-full bg-amber-400" style="width:32%"></div>
+            </div>
+            <a href="#" class="mt-3 w-full inline-flex justify-center bg-[#4f46e5] hover:bg-[#4338ca] text-white text-[12px] font-bold py-2.5 rounded-xl">Request Payout</a>
+            <p class="text-[10px] text-slate-500 text-center">Minimum payout $500 • Processed within 5 business days</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<div id="app-mobile-nav"></div>
+<script src="layout.js"></script>
+<script>injectLayout({active:'earnings', title:'Earnings & Payouts', breadcrumb:'Earnings & Payouts', searchPlaceholder:'Search anything...'});</script>
+</body>
+</html>

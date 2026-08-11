@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead Details — Beta Solutions | ZenPartner</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+<style>
+.jakarta{font-family:'Plus Jakarta Sans',sans-serif}
+.line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+</style>
+</head>
+<body class="bg-[#f6f7fb] text-slate-800 antialiased">
+<div class="min-h-screen flex">
+  <div id="app-sidebar"></div>
+  <div class="flex-1 min-w-0 flex flex-col">
+    <div id="app-topbar"></div>
+
+    <main class="p-4 lg:p-5 max-w-[1450px] mx-auto w-full space-y-4">
+      <!-- LEAD HEADER -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-5 lg:p-6">
+          <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
+            <div class="flex gap-3">
+              <a href="index.html" class="w-8 h-8 rounded-lg bg-white border border-slate-200 grid place-items-center text-slate-600 hover:bg-slate-50 shrink-0 mt-1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg></a>
+              <div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <h1 class="text-[16px] lg:text-[17px] font-extrabold jakarta text-slate-900">Beta Solutions – Website Redesign</h1>
+                  <span class="inline-flex items-center gap-1 bg-indigo-50 border border-indigo-200 text-indigo-700 text-[11px] font-bold px-2.5 py-1 rounded-full">Active Lead</span>
+                </div>
+                <div class="flex flex-wrap gap-x-5 gap-y-1 mt-1.5 text-[11px] text-slate-500">
+                  <span>Lead ID: <span class="font-semibold text-slate-700">L-2024-0098</span></span>
+                  <span>Referred on: <span class="font-semibold text-slate-700">May 03, 2024</span></span>
+                  <span>Referred By: <span class="font-semibold text-slate-700">You</span></span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 self-start lg:self-auto shrink-0">
+              <button class="inline-flex items-center gap-1.5 bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-[12px] font-semibold text-slate-700 hover:bg-slate-50">Actions <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></button>
+              <a href="#" class="inline-flex items-center gap-1.5 bg-[#4f46e5] hover:bg-[#4338ca] text-white text-[12px] font-bold px-4 py-2 rounded-xl shadow-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg> Add Activity</a>
+            </div>
+          </div>
+
+          <!-- PIPELINE -->
+          <div class="mt-6 relative">
+            <div class="hidden lg:block absolute top-4 left-[6%] right-[6%] h-0.5 bg-slate-200"></div>
+            <div class="hidden lg:block absolute top-4 left-[6%] right-[38%] h-0.5 bg-[#c7d2fe]"></div>
+            <div class="grid grid-cols-3 lg:grid-cols-6 gap-3 lg:gap-2 text-center">
+              <!-- New Lead -->
+              <div class="flex flex-col items-center relative">
+                <div class="w-8 h-8 rounded-full bg-emerald-50 border-2 border-emerald-500 text-emerald-600 grid place-items-center relative shadow-sm">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  <span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full"></span>
+                </div>
+                <div class="text-[11px] font-bold mt-2">New Lead</div>
+                <div class="text-[10px] text-slate-500">May 03, 2024</div>
+              </div>
+              <!-- Qualified -->
+              <div class="flex flex-col items-center relative">
+                <div class="w-8 h-8 rounded-full bg-emerald-50 border-2 border-emerald-500 text-emerald-600 grid place-items-center relative shadow-sm">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  <span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full"></span>
+                </div>
+                <div class="text-[11px] font-bold mt-2">Qualified</div>
+                <div class="text-[10px] text-slate-500">May 06, 2024</div>
+              </div>
+              <!-- Proposal Sent -->
+              <div class="flex flex-col items-center relative">
+                <div class="w-8 h-8 rounded-full bg-emerald-50 border-2 border-emerald-500 text-emerald-600 grid place-items-center relative shadow-sm">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  <span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full"></span>
+                </div>
+                <div class="text-[11px] font-bold mt-2">Proposal Sent</div>
+                <div class="text-[10px] text-slate-500">May 10, 2024</div>
+              </div>
+              <!-- Negotiation active -->
+              <div class="flex flex-col items-center relative">
+                <div class="w-8 h-8 rounded-full bg-[#4f46e5] border-2 border-[#4f46e5] text-white grid place-items-center relative shadow-md ring-4 ring-indigo-50">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+                </div>
+                <div class="text-[11px] font-bold mt-2">Negotiation</div>
+                <div class="text-[10px] text-slate-500">May 15, 2024</div>
+              </div>
+              <!-- Won -->
+              <div class="flex flex-col items-center relative opacity-60">
+                <div class="w-8 h-8 rounded-full bg-white border-2 border-slate-200 text-slate-400 grid place-items-center">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div class="text-[11px] font-bold mt-2 text-slate-600">Won</div>
+                <div class="text-[10px] text-slate-400">–</div>
+              </div>
+              <!-- Completed -->
+              <div class="flex flex-col items-center relative opacity-60">
+                <div class="w-8 h-8 rounded-full bg-white border-2 border-slate-200 text-slate-400 grid place-items-center">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                </div>
+                <div class="text-[11px] font-bold mt-2 text-slate-600">Completed</div>
+                <div class="text-[10px] text-slate-400">–</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Tabs -->
+        <div class="border-t border-slate-100 bg-[#fcfcff] px-2 lg:px-6 flex gap-1 overflow-x-auto scrollbar-none">
+          <a href="#" class="whitespace-nowrap px-4 py-3 text-[12px] font-bold text-[#4f46e5] border-b-2 border-[#4f46e5] bg-white">Overview</a>
+          <a href="#" class="whitespace-nowrap px-4 py-3 text-[12px] font-medium text-slate-500 hover:text-slate-700">Lead Details</a>
+          <a href="#" class="whitespace-nowrap px-4 py-3 text-[12px] font-medium text-slate-500 hover:text-slate-700">Projects & Phases</a>
+          <a href="#" class="whitespace-nowrap px-4 py-3 text-[12px] font-medium text-slate-500 hover:text-slate-700 flex items-center gap-1.5">Quotations <span class="bg-[#4f46e5] text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold">2</span></a>
+          <a href="#" class="whitespace-nowrap px-4 py-3 text-[12px] font-medium text-slate-500 hover:text-slate-700">Payments & Commission</a>
+          <a href="#" class="whitespace-nowrap px-4 py-3 text-[12px] font-medium text-slate-500 hover:text-slate-700">Documents</a>
+          <a href="#" class="whitespace-nowrap px-4 py-3 text-[12px] font-medium text-slate-500 hover:text-slate-700">Activities & Notes</a>
+          <a href="#" class="whitespace-nowrap px-4 py-3 text-[12px] font-medium text-slate-500 hover:text-slate-700">Communications</a>
+        </div>
+      </div>
+
+      <!-- MAIN GRID -->
+      <div class="grid grid-cols-1 xl:grid-cols-[1.9fr_0.95fr] gap-4">
+        <!-- LEFT COLUMN -->
+        <div class="space-y-4">
+          <!-- Lead Overview -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+            <h3 class="text-[13px] font-bold">Lead Overview</h3>
+            <div class="mt-3 grid grid-cols-1 sm:grid-cols-5 divide-y sm:divide-y-0 sm:divide-x divide-slate-100 border border-slate-100 rounded-xl overflow-hidden bg-[#f8fafc]/40">
+              <div class="p-3">
+                <div class="text-[10px] font-semibold text-slate-500 uppercase tracking-wide">Company</div>
+                <div class="text-[11px] font-bold text-[#4f46e5] mt-1">Beta Solutions Inc.</div>
+              </div>
+              <div class="p-3">
+                <div class="text-[10px] font-semibold text-slate-500 uppercase tracking-wide">Contact Person</div>
+                <div class="text-[11px] font-medium text-slate-800 mt-1">Sarah Mitchell</div>
+              </div>
+              <div class="p-3">
+                <div class="text-[10px] font-semibold text-slate-500 uppercase tracking-wide">Email</div>
+                <div class="text-[11px] font-medium text-slate-800 mt-1 truncate">sarah.mitchell@betasolutions.com</div>
+              </div>
+              <div class="p-3">
+                <div class="text-[10px] font-semibold text-slate-500 uppercase tracking-wide">Phone</div>
+                <div class="text-[11px] font-medium text-slate-800 mt-1">+1 (555) 123-4567</div>
+              </div>
+              <div class="p-3">
+                <div class="text-[10px] font-semibold text-slate-500 uppercase tracking-wide">Location</div>
+                <div class="text-[11px] font-medium text-slate-800 mt-1">New York, USA</div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-4 mt-4">
+              <!-- Lead Summary -->
+              <div>
+                <h4 class="text-[12px] font-bold">Lead Summary</h4>
+                <p class="text-[11px] text-slate-500 leading-4 mt-1">Looking to redesign their corporate website with a modern UI/UX, improved performance and CMS integration.</p>
+                <div class="grid grid-cols-2 gap-2.5 mt-3">
+                  <div class="border border-slate-100 rounded-xl p-3 bg-[#f8fafc]/50">
+                    <div class="text-[10px] font-semibold text-slate-500">Lead Value (Total)</div>
+                    <div class="text-[13px] font-extrabold mt-1">$25,000</div>
+                  </div>
+                  <div class="border border-slate-100 rounded-xl p-3 bg-[#f8fafc]/50">
+                    <div class="text-[10px] font-semibold text-slate-500">Potential Close Date</div>
+                    <div class="text-[13px] font-bold mt-1 text-[#0ea5e9]">Jun 30, 2024</div>
+                  </div>
+                  <div class="border border-slate-100 rounded-xl p-3 bg-white">
+                    <div class="text-[10px] font-semibold text-slate-500">Probability</div>
+                    <div class="text-[13px] font-extrabold mt-1 text-emerald-600">75%</div>
+                  </div>
+                  <div class="border border-slate-100 rounded-xl p-3 bg-white">
+                    <div class="text-[10px] font-semibold text-slate-500">Source</div>
+                    <div class="text-[12px] font-semibold mt-1">Website Inquiry</div>
+                  </div>
+                  <div class="border border-slate-100 rounded-xl p-3 bg-white">
+                    <div class="text-[10px] font-semibold text-slate-500">Industry</div>
+                    <div class="text-[12px] font-semibold mt-1">Technology</div>
+                  </div>
+                  <div class="border border-slate-100 rounded-xl p-3 bg-white">
+                    <div class="text-[10px] font-semibold text-slate-500">No. of Employees</div>
+                    <div class="text-[12px] font-semibold mt-1">50 – 100</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Projects & Phases -->
+              <div>
+                <h4 class="text-[12px] font-bold">Lead Projects & Phases</h4>
+                <div class="mt-2 space-y-2.5">
+                  <div class="border border-slate-200 rounded-xl p-3 bg-white">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-2"><span class="text-[10px] font-bold bg-violet-600 text-white px-2 py-0.5 rounded-full">Phase 1</span><span class="text-[11px] font-bold">Website Redesign</span></div>
+                      <span class="text-[10px] font-bold bg-sky-50 text-sky-700 border border-sky-200 px-2 py-0.5 rounded-full">In Progress</span>
+                    </div>
+                    <div class="grid grid-cols-[70px_1fr] gap-2 mt-2 text-[11px]">
+                      <span class="text-slate-500 font-medium">Scope</span><span class="text-slate-700">UX/UI Design, Frontend Development, CMS Integration</span>
+                      <span class="text-slate-500 font-medium">Timeline</span><span class="text-slate-700">May 20, 2024 – Jun 30, 2024</span>
+                      <span class="text-slate-500 font-medium">Value</span><span class="font-bold">$15,000</span>
+                      <span class="text-slate-500 font-medium">Progress</span><span class="flex items-center gap-2"><span class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden"><span class="h-full bg-emerald-500 rounded-full block" style="width:60%"></span></span><span class="text-[10px] font-bold">60%</span></span>
+                    </div>
+                  </div>
+                  <div class="border border-slate-200 rounded-xl p-3 bg-slate-50/50">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-2"><span class="text-[10px] font-bold bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full">Phase 2</span><span class="text-[11px] font-bold">Website Development</span></div>
+                      <span class="text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded-full">Pending</span>
+                    </div>
+                    <div class="grid grid-cols-[70px_1fr] gap-2 mt-2 text-[11px]">
+                      <span class="text-slate-500 font-medium">Scope</span><span class="text-slate-600">Backend Development, API Integration, Testing</span>
+                      <span class="text-slate-500 font-medium">Timeline</span><span class="text-slate-600">Jul 01, 2024 – Aug 15, 2024</span>
+                      <span class="text-slate-500 font-medium">Value</span><span class="font-bold">$10,000</span>
+                      <span class="text-slate-500 font-medium">Progress</span><span class="flex items-center gap-2"><span class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden"><span class="h-full bg-slate-300 rounded-full block" style="width:0%"></span></span><span class="text-[10px] font-bold">0%</span></span>
+                    </div>
+                  </div>
+                  <div class="flex justify-center"><a href="#" class="text-[11px] font-semibold text-[#4f46e5] border border-indigo-200 bg-white rounded-lg px-4 py-1.5 hover:bg-indigo-50">View All Projects & Phases</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quotation Review -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+            <div class="flex items-center justify-between">
+              <h3 class="text-[13px] font-bold">Quotation Review</h3>
+              <a href="#" class="text-[11px] font-bold text-[#4f46e5] hover:underline">View All Quotations</a>
+            </div>
+            <div class="mt-3 border border-slate-100 rounded-xl overflow-hidden">
+              <div class="grid grid-cols-[1.2fr_1.4fr_0.7fr_0.9fr_0.9fr_0.8fr] bg-[#f8fafc] text-[10px] font-bold text-slate-500 uppercase tracking-wide px-3 py-2.5">
+                <span>Quotation ID</span><span>For Phase</span><span>Amount</span><span>Sent On</span><span>Status</span><span class="text-right">Action</span>
+              </div>
+              <div class="divide-y divide-slate-100">
+                <div class="grid grid-cols-[1.2fr_1.4fr_0.7fr_0.9fr_0.9fr_0.8fr] items-center px-3 py-2.5 text-[11px]">
+                  <span class="font-bold text-[#4f46e5]">Q-2024-0056</span><span class="text-slate-700">Phase 1 – Website Redesign</span><span class="font-semibold">$15,000</span><span class="text-slate-500">May 10, 2024</span><span><span class="bg-emerald-50 text-emerald-700 border border-emerald-100 px-2 py-0.5 rounded-full text-[10px] font-bold">Reviewed</span></span><span class="text-right"><a href="#" class="text-[11px] font-semibold text-[#4f46e5] border border-indigo-200 rounded-lg px-2.5 py-1 hover:bg-indigo-50">View & Review</a></span>
+                </div>
+                <div class="grid grid-cols-[1.2fr_1.4fr_0.7fr_0.9fr_0.9fr_0.8fr] items-center px-3 py-2.5 text-[11px]">
+                  <span class="font-bold text-[#4f46e5]">Q-2024-0063</span><span class="text-slate-700">Phase 2 – Website Development</span><span class="font-semibold">$10,000</span><span class="text-slate-500">May 20, 2024</span><span><span class="bg-amber-50 text-amber-700 border border-amber-100 px-2 py-0.5 rounded-full text-[10px] font-bold">Pending Review</span></span><span class="text-right"><a href="#" class="text-[11px] font-semibold text-[#4f46e5] border border-indigo-200 rounded-lg px-2.5 py-1 hover:bg-indigo-50">View & Review</a></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activities -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+            <div class="flex items-center justify-between">
+              <h3 class="text-[13px] font-bold">Recent Activities</h3>
+              <a href="#" class="text-[11px] font-bold text-[#4f46e5] hover:underline">View All Activities</a>
+            </div>
+            <div class="mt-3 space-y-3">
+              <div class="flex gap-3 p-2.5 rounded-xl border border-slate-100 bg-white">
+                <span class="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-100 text-emerald-600 grid place-items-center shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span>
+                <div class="leading-tight flex-1"><div class="text-[11px] font-medium"><span class="font-bold">Sarah Mitchell</span> reviewed Quotation Q-2024-0056</div><div class="text-[10px] text-slate-500 mt-0.5">May 15, 2024 at 02:30 PM</div></div>
+              </div>
+              <div class="flex gap-3 p-2.5 rounded-xl border border-slate-100 bg-white">
+                <span class="w-8 h-8 rounded-lg bg-amber-50 border border-amber-100 text-amber-600 grid place-items-center shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+                <div class="leading-tight flex-1"><div class="text-[11px] font-medium">You added a note: “Followed up with Sarah regarding website content and timeline.”</div><div class="text-[10px] text-slate-500 mt-0.5">May 14, 2024 at 11:15 AM</div></div>
+              </div>
+              <div class="flex gap-3 p-2.5 rounded-xl border border-slate-100 bg-white">
+                <span class="w-8 h-8 rounded-lg bg-violet-50 border border-violet-100 text-violet-600 grid place-items-center shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>
+                <div class="leading-tight flex-1"><div class="text-[11px] font-medium">Quotation Q-2024-0056 sent to Sarah Mitchell</div><div class="text-[10px] text-slate-500 mt-0.5">May 10, 2024 at 04:20 PM</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="space-y-4">
+          <!-- Quotation Overview -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+            <div class="flex items-center justify-between">
+              <h3 class="text-[13px] font-bold">Quotation Overview</h3>
+              <a href="#" class="text-[11px] font-bold text-[#4f46e5] hover:underline">View All</a>
+            </div>
+            <div class="mt-3 space-y-3">
+              <div class="border border-slate-100 rounded-xl p-3.5">
+                <div class="flex items-start justify-between">
+                  <div class="flex gap-2.5">
+                    <span class="w-8 h-8 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-600 grid place-items-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+                    <div class="leading-tight"><div class="text-[11px] font-bold">Q-2024-0056</div><div class="text-[10px] text-slate-500">Phase 1 – Website Redesign</div></div>
+                  </div>
+                  <div class="text-[13px] font-extrabold">$15,000</div>
+                </div>
+                <div class="flex items-center justify-between mt-2.5">
+                  <span class="text-[10px] text-slate-500">Sent on: May 10, 2024</span><span class="text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-100 px-2 py-0.5 rounded-full">Reviewed</span>
+                </div>
+                <div class="flex justify-end mt-2"><a href="#" class="text-[11px] font-semibold text-[#4f46e5] border border-indigo-200 rounded-lg px-3 py-1 hover:bg-indigo-50">View Quotation</a></div>
+              </div>
+              <div class="border border-slate-100 rounded-xl p-3.5">
+                <div class="flex items-start justify-between">
+                  <div class="flex gap-2.5">
+                    <span class="w-8 h-8 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-600 grid place-items-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+                    <div class="leading-tight"><div class="text-[11px] font-bold">Q-2024-0063</div><div class="text-[10px] text-slate-500">Phase 2 – Website Development</div></div>
+                  </div>
+                  <div class="text-[13px] font-extrabold">$10,000</div>
+                </div>
+                <div class="flex items-center justify-between mt-2.5">
+                  <span class="text-[10px] text-slate-500">Sent on: May 20, 2024</span><span class="text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-100 px-2 py-0.5 rounded-full">Pending Review</span>
+                </div>
+                <div class="flex justify-end mt-2"><a href="#" class="text-[11px] font-semibold text-[#4f46e5] border border-indigo-200 rounded-lg px-3 py-1 hover:bg-indigo-50">View Quotation</a></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payments & Commission -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+            <div class="flex items-center justify-between">
+              <h3 class="text-[13px] font-bold">Payments & Commission</h3>
+              <a href="#" class="text-[11px] font-bold text-[#4f46e5] hover:underline">View Details</a>
+            </div>
+            <div class="mt-3 border border-slate-100 rounded-xl overflow-hidden divide-y divide-slate-100">
+              <div class="grid grid-cols-3 divide-x divide-slate-100">
+                <div class="p-3 text-center"><div class="text-[10px] font-semibold text-slate-500">Total Invoiced</div><div class="text-[12px] font-extrabold mt-1">$10,000</div></div>
+                <div class="p-3 text-center"><div class="text-[10px] font-semibold text-slate-500">Paid Amount</div><div class="text-[12px] font-bold mt-1">$5,000</div></div>
+                <div class="p-3 text-center"><div class="text-[10px] font-semibold text-slate-500">Outstanding</div><div class="text-[12px] font-extrabold mt-1 text-red-600">$5,000</div></div>
+              </div>
+              <div class="grid grid-cols-3 divide-x divide-slate-100 bg-[#f8fafc]/40">
+                <div class="p-3 text-center"><div class="text-[10px] font-semibold text-slate-500">Your Commission</div><div class="text-[12px] font-extrabold mt-1 text-emerald-600">$1,500</div></div>
+                <div class="p-3 text-center"><div class="text-[10px] font-semibold text-slate-500">Commission Paid</div><div class="text-[12px] font-bold mt-1">$750</div></div>
+                <div class="p-3 text-center"><div class="text-[10px] font-semibold text-slate-500">Pending Commission</div><div class="text-[12px] font-bold mt-1 text-amber-600">$750</div></div>
+              </div>
+            </div>
+            <div class="mt-3 h-1.5 bg-slate-100 rounded-full overflow-hidden flex">
+              <div class="h-full bg-emerald-600" style="width:50%"></div>
+              <div class="h-full bg-amber-400" style="width:17%"></div>
+              <div class="h-full bg-slate-200" style="width:33%"></div>
+            </div>
+            <div class="flex justify-between text-[10px] text-slate-500 mt-1"><span>Paid</span><span>Pending</span></div>
+          </div>
+
+          <!-- Lead Timeline -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+            <div class="flex items-center justify-between">
+              <h3 class="text-[13px] font-bold">Lead Timeline</h3>
+              <a href="#" class="text-[11px] font-bold text-[#4f46e5] hover:underline">View Full Timeline</a>
+            </div>
+            <div class="mt-4 grid grid-cols-[1fr_1.1fr] gap-4">
+              <div class="relative pl-6 space-y-4">
+                <div class="absolute left-[7px] top-1 bottom-6 w-0.5 bg-slate-100"></div>
+                <div class="relative"><span class="absolute -left-6 top-0.5 w-2.5 h-2.5 bg-[#4f46e5] rounded-full border-2 border-white shadow ring-2 ring-indigo-100"></span><div class="text-[11px] font-bold">New Lead Added</div><div class="text-[10px] text-slate-500">May 03, 2024</div></div>
+                <div class="relative"><span class="absolute -left-6 top-0.5 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-white shadow ring-2 ring-emerald-100"></span><div class="text-[11px] font-bold">Lead Qualified</div><div class="text-[10px] text-slate-500">May 06, 2024</div></div>
+                <div class="relative"><span class="absolute -left-6 top-0.5 w-2.5 h-2.5 bg-sky-500 rounded-full border-2 border-white shadow ring-2 ring-sky-100"></span><div class="text-[11px] font-bold leading-tight">Quotation Q-2024-0056 Sent</div><div class="text-[10px] text-slate-500">May 10, 2024</div></div>
+                <div class="relative"><span class="absolute -left-6 top-0.5 w-2.5 h-2.5 bg-emerald-600 rounded-full border-2 border-white shadow ring-2 ring-emerald-100"></span><div class="text-[11px] font-bold leading-tight">Quotation Reviewed by Client</div><div class="text-[10px] text-slate-500">May 15, 2024</div></div>
+                <div class="relative opacity-60"><span class="absolute -left-6 top-0.5 w-2.5 h-2.5 bg-white border-2 border-slate-300 rounded-full"></span><div class="text-[11px] font-medium">Expected to Close (Won)</div><div class="text-[10px] text-slate-500">Jun 30, 2024</div></div>
+                <div class="relative opacity-60"><span class="absolute -left-6 top-0.5 w-2.5 h-2.5 bg-white border-2 border-slate-300 rounded-full"></span><div class="text-[11px] font-medium leading-tight">Project Completion (All Phases)</div><div class="text-[10px] text-slate-500">Aug 15, 2024</div></div>
+              </div>
+              <div class="space-y-3">
+                <div class="bg-[#f5f5ff] border border-indigo-100 rounded-xl p-3">
+                  <div class="text-[10px] font-semibold text-slate-500">Expected Close Date</div>
+                  <div class="flex items-center gap-2 mt-1"><span class="w-6 h-6 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-600 grid place-items-center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></span><span class="text-[13px] font-extrabold">Jun 30, 2024</span></div>
+                  <span class="inline-flex mt-2 text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-100 px-2 py-0.5 rounded-full">In 46 days</span>
+                </div>
+                <div class="bg-white border border-slate-100 rounded-xl p-3">
+                  <div class="text-[11px] font-bold">Lead Owner</div>
+                  <div class="flex items-center gap-2 mt-2">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" class="w-8 h-8 rounded-full object-cover">
+                    <div class="leading-tight"><div class="text-[11px] font-bold">James Anderson</div><div class="text-[10px] text-slate-500">You</div></div>
+                  </div>
+                  <div class="flex gap-1.5 mt-3">
+                    <a href="#" class="w-7 h-7 rounded-lg bg-white border border-slate-200 grid place-items-center text-indigo-600 hover:bg-indigo-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v12H4z"/><path d="M4 4l8 7 8-7"/></svg></a>
+                    <a href="#" class="w-7 h-7 rounded-lg bg-white border border-slate-200 grid place-items-center text-indigo-600 hover:bg-indigo-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 5 12.5 19.79 19.79 0 0 1 1.93 3.87 2 2 0 0 1 3.91 1.7h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+                    <a href="#" class="w-7 h-7 rounded-lg bg-white border border-slate-200 grid place-items-center text-indigo-600 hover:bg-indigo-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<div id="app-mobile-nav"></div>
+<script src="layout.js"></script>
+<script>
+  injectLayout({active:'leads', title:'Leads & Projects', breadcrumb:'Lead Details', searchPlaceholder:'Search anything...'});
+  // adjust sidebar label if layout.js still says Leads & Projects -> keep Leads active; also ensure mobile highlights
+</script>
+</body>
+</html>

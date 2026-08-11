@@ -1,0 +1,336 @@
+/* ZenPartner — Shared Stylesheet (Professional Single Source)
+   Single source of truth for ALL pages.
+   Tailwind CDN is loaded per page; this file holds design tokens,
+   responsive system, components and interactive states. */
+
+/* ── Design Tokens ── */
+:root{
+  --zp-indigo:#4f46e5;
+  --zp-indigo-dark:#4338ca;
+  --zp-navy:#0a1033;
+  --zp-navy-2:#111b4a;
+  --zp-slate:#f5f7fb;
+  --zp-surface:#fff;
+  --zp-border:#e7eaf1;
+  --zp-muted:#64748b;
+  --radius-xl:16px;
+  --radius-2xl:20px;
+  --shadow-card:0 1px 2px rgba(16,24,40,.025),0 8px 28px rgba(15,23,42,.035);
+  --shadow-hover:0 16px 38px rgba(15,23,42,.09),0 4px 12px rgba(15,23,42,.04);
+  --trans:.2s cubic-bezier(.2,.8,.2,1);
+}
+
+/* ── Base ── */
+*{font-family:'Inter', sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
+.jakarta{font-family:'Plus Jakarta Sans', sans-serif}
+html{scroll-behavior:smooth; scrollbar-gutter:stable}
+html,body{max-width:100%; overflow-x:hidden}
+body{background:var(--zp-slate); color:#172036; font-size:14px; line-height:1.6}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(circle at 68% -10%,rgba(99,102,241,.07),transparent 30%),linear-gradient(180deg,#fafbff 0,#f5f7fb 280px)}
+@media (min-width:1536px){body{font-size:15px}}
+@media (min-width:1920px){body{font-size:16px}}
+a,button{font:inherit}
+input,select,textarea{font:inherit}
+input:focus,select:focus,textarea:focus{outline:none; border-color:var(--zp-indigo)!important; box-shadow:0 0 0 4px rgba(79,70,229,.08)}
+::selection{background:rgba(79,70,229,.15)}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:999px}
+::-webkit-scrollbar-track{background:transparent}
+img{max-width:100%; height:auto}
+
+/* ── Fluid Container ── */
+.container-fluid{width:100%; max-width:1450px; margin-inline:auto}
+@media (min-width:1536px){.container-fluid{max-width:1600px}}
+@media (min-width:1920px){.container-fluid{max-width:1800px}}
+
+/* ── Layout: Sidebar Drawer ── */
+#app-sidebar{
+  flex:0 0 auto;
+  width:260px;
+  min-width:260px;
+  min-height:100vh;
+  min-height:100dvh;
+  align-self:stretch;
+  background:linear-gradient(180deg,#08102f 0%,#0a1238 55%,#07102e 100%);
+}
+#app-sidebar aside{
+  display:flex;
+  flex-direction:column;
+  width:260px;
+  min-width:260px;
+  height:100vh;
+  height:100dvh;
+  min-height:100vh;
+  min-height:100dvh;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:30;
+  overflow:hidden;
+  background:linear-gradient(180deg,#08102f 0%,#0a1238 55%,#07102e 100%);
+  border-right:1px solid rgba(255,255,255,.06);
+}
+@media (max-width:1023px){
+  #app-sidebar{display:block;flex:0 0 0;width:0;min-width:0;min-height:0;background:transparent}
+  #app-sidebar > aside{display:none!important}
+}
+.mobile-drawer{
+  position:fixed; inset:0 auto 0 0; width:min(86vw,320px); max-width:320px;
+  background:var(--zp-navy); color:#fff; z-index:60;
+  transform:translateX(-100%); transition:transform .28s cubic-bezier(.32,.72,0,1);
+  overflow-y:auto; box-shadow:12px 0 40px rgba(0,0,0,.28);
+  display:flex; flex-direction:column;
+}
+.mobile-drawer.open{transform:translateX(0)}
+.mobile-backdrop{
+  position:fixed; inset:0; background:rgba(2,6,23,.48); backdrop-filter:blur(2px);
+  z-index:55; opacity:0; pointer-events:none; transition:opacity .2s;
+}
+.mobile-backdrop.open{opacity:1; pointer-events:auto}
+.hamburger{display:grid; place-items:center; flex:0 0 auto; width:36px; height:36px; border-radius:10px; border:1px solid #e2e8f0; background:#fff; color:#475569; transition:background .15s,color .15s,transform .15s}
+.hamburger:hover{background:#f8fafc;color:#0f172a}
+.hamburger:active{transform:scale(.96)}
+@media (max-width:360px){.hamburger{width:34px;height:34px}}
+
+/* Desktop compact mode: the single menu button collapses navigation to icons. */
+@media (min-width:1024px){
+  #app-sidebar{transition:width .22s ease,min-width .22s ease}
+  #app-sidebar aside{transition:width .22s ease,min-width .22s ease}
+  body.sidebar-collapsed #app-sidebar{width:76px;min-width:76px}
+  body.sidebar-collapsed #app-sidebar aside{width:76px;min-width:76px}
+  body.sidebar-collapsed #app-sidebar aside > div:first-child{padding-inline:18px;justify-content:center}
+  body.sidebar-collapsed #app-sidebar aside > div:first-child > div:last-child{display:none}
+  body.sidebar-collapsed #app-sidebar aside > div:nth-child(2){display:none}
+  body.sidebar-collapsed #app-sidebar nav{padding-inline:10px;margin-top:16px}
+  body.sidebar-collapsed #app-sidebar nav a{justify-content:center;padding:11px 8px;gap:0}
+  body.sidebar-collapsed #app-sidebar nav a > span{display:none}
+  body.sidebar-collapsed #app-sidebar aside > div:last-child{padding-inline:10px}
+  body.sidebar-collapsed #app-sidebar aside > div:last-child a{justify-content:center;font-size:0;padding:12px 8px}
+  body.sidebar-collapsed #app-sidebar aside > div:last-child svg{width:17px;height:17px}
+}
+
+/* The drawer must never coexist visually with the desktop sidebar. */
+@media (min-width:1024px){
+  .mobile-drawer,.mobile-backdrop{display:none!important}
+}
+
+/* ── Topbar ── */
+.top-search{transition:all .2s}
+.top-search:focus-within{border-color:var(--zp-indigo)!important; box-shadow:0 0 0 4px rgba(79,70,229,.08)}
+.top-search input::placeholder{color:#94a3b8}
+.ctrl-k{font-size:10px; color:#94a3b8; border:1px solid #e2e8f0; border-radius:6px; padding:2px 6px}
+
+/* Dropdowns */
+.dropdown{
+  position:absolute; top:calc(100% + 8px); right:0; min-width:300px; max-width:min(92vw,360px);
+  background:#fff; border:1px solid #e2e8f0; border-radius:16px; box-shadow:0 12px 32px rgba(16,24,40,.12);
+  padding:8px; z-index:40; display:none;
+}
+.dropdown.open{display:block; animation:dropIn .16s ease}
+@keyframes dropIn{from{opacity:0; transform:translateY(-6px) scale(.98)} to{opacity:1; transform:none}}
+.dropdown-item{padding:10px 12px; border-radius:10px; display:flex; gap:10px; align-items:flex-start}
+.dropdown-item:hover{background:#f8fafc}
+
+/* ── Cards & Components ── */
+.card{border:1px solid #e2e8f0; border-radius:16px; background:#fff; box-shadow:var(--shadow-card); transition:box-shadow var(--trans), border-color var(--trans), transform var(--trans)}
+.card:hover{box-shadow:var(--shadow-hover)}
+.card-hover{transition:transform var(--trans), box-shadow var(--trans), border-color var(--trans)}
+.card-hover:hover{transform:translateY(-1px); box-shadow:var(--shadow-hover); border-color:#c7d2fe}
+.resource-card{transition:border-color .18s, box-shadow .18s, transform .18s}
+.resource-card:hover{border-color:#c7d2fe; box-shadow:0 10px 28px rgba(79,70,229,.1); transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.card,.resource-card,.card-hover{transition:none}}
+
+/* Dashboard information hierarchy: core values live in one KPI summary and
+   detailed values live in charts. Repeated rail nodes are removed by layout.js. */
+.dashboard-secondary{display:none!important}
+.dashboard-kpi-summary > div{min-height:106px;display:flex;flex-direction:column;justify-content:center}
+.dashboard-kpi-summary > div > div:last-child{margin-top:auto;padding-top:6px}
+
+/* Refine existing Tailwind surfaces without duplicating markup per page. */
+main .bg-white.rounded-xl,main .bg-white.rounded-2xl{border-color:var(--zp-border)!important;box-shadow:var(--shadow-card)}
+main .bg-white.rounded-xl:hover,main .bg-white.rounded-2xl:hover{border-color:#dde2ec}
+#app-topbar header{background:rgba(255,255,255,.88)!important;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-color:rgba(226,232,240,.8)!important}
+#app-sidebar nav a{min-height:42px;transition:background var(--trans),color var(--trans),transform var(--trans)}
+#app-sidebar nav a:hover{transform:translateX(2px)}
+#app-sidebar nav a.bg-\[\#4f46e5\]{background:linear-gradient(135deg,#5b52ed,#4338ca)!important;box-shadow:0 8px 18px rgba(79,70,229,.28)}
+
+/* Donuts */
+.donut,.referral-donut,.act-donut,.earn-donut,.leads-donut{background:conic-gradient(#4f46e5 0 36%, #10b981 36% 62%, #0ea5e9 62% 78%, #f59e0b 78% 92%, #a5b4fc 92% 100%)}
+
+/* Toggles (profile) */
+.toggle-bg{transition:background .2s}
+.toggle-dot{transition:transform .2s}
+.peer:checked ~ .toggle-bg{background:#10b981}
+.peer:checked ~ .toggle-bg .toggle-dot{transform:translateX(16px)}
+
+/* Focus */
+a:focus-visible,button:focus-visible,[role="button"]:focus-visible{outline:2px solid var(--zp-indigo); outline-offset:2px; border-radius:8px}
+button:focus:not(:focus-visible),a:focus:not(:focus-visible){outline:none}
+
+/* ── Responsive Grid Helpers ── */
+/* Dashboard right rail: collapses below xl */
+@media (max-width:1279px){
+  .dashboard-layout{grid-template-columns:1fr}
+  .dashboard-rail{display:none}
+}
+/* Resource cards: 1 col mobile → 2 cols tablet → 3 cols desktop (changed from 4) — larger cards */
+.responsive-grid-4{grid-template-columns:repeat(1, minmax(0,1fr))}
+@media (min-width:560px){.responsive-grid-4{grid-template-columns:repeat(2, minmax(0,1fr))}}
+@media (min-width:1024px){.responsive-grid-4{grid-template-columns:repeat(2, minmax(0,1fr))}}
+@media (min-width:1280px){.responsive-grid-4{grid-template-columns:repeat(3, minmax(0,1fr))}}
+@media (min-width:1536px){.responsive-grid-4{grid-template-columns:repeat(3, minmax(0,1fr)); gap:1.25rem}}
+/* Keep original 4-col helper for other pages that still need it */
+.responsive-grid-4-legacy{grid-template-columns:repeat(1, minmax(0,1fr))}
+@media (min-width:480px){.responsive-grid-4-legacy{grid-template-columns:repeat(2, minmax(0,1fr))}}
+@media (min-width:1024px){.responsive-grid-4-legacy{grid-template-columns:repeat(4, minmax(0,1fr))}}
+
+/* ── Tables ── */
+.table-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:thin; border:1px solid #f1f5f9; border-radius:14px; background:#fff}
+.table-wrap::-webkit-scrollbar{height:6px}
+.table-wrap table{width:100%; min-width:720px; border-collapse:collapse}
+.table-wrap th{position:sticky; top:0; background:#f8fafc; z-index:1}
+@media (max-width:640px){
+  .table-wrap table{min-width:640px}
+  .table-wrap th, .table-wrap td{padding:10px 8px!important; font-size:11px}
+}
+
+/* ── Toast ── */
+#toast-container{position:fixed; right:16px; bottom:16px; z-index:70; display:flex; flex-direction:column; gap:8px; pointer-events:none; max-width:min(92vw,380px)}
+.toast{
+  pointer-events:auto; display:flex; gap:12px; align-items:flex-start;
+  background:#0f172a; color:#fff; border:1px solid rgba(255,255,255,.08);
+  padding:12px 14px; border-radius:14px; box-shadow:0 12px 32px rgba(2,6,23,.28);
+  font-size:13px; line-height:1.4; transform:translateY(6px); opacity:0; animation:toastIn .28s cubic-bezier(.32,.72,0,1) forwards;
+}
+.toast.success{border-color:rgba(16,185,129,.28)}
+.toast.error{border-color:rgba(239,68,68,.28)}
+.toast .toast-icon{width:28px; height:28px; border-radius:9px; display:grid; place-items:center; flex-shrink:0; font-size:14px}
+.toast.success .toast-icon{background:#064e3b; color:#6ee7b7}
+.toast.error .toast-icon{background:#7f1d1d; color:#fca5a5}
+.toast.info .toast-icon{background:#1e1b4b; color:#a5b4fc}
+.toast-close{margin-left:auto; width:24px; height:24px; display:grid; place-items:center; border-radius:8px; color:rgba(255,255,255,.6)}
+.toast-close:hover{background:rgba(255,255,255,.08); color:#fff}
+@keyframes toastIn{to{opacity:1; transform:none}}
+@keyframes toastOut{from{opacity:1; transform:none} to{opacity:0; transform:translateY(6px) scale(.98)}}
+
+/* ── Modal ── */
+#app-modal{position:fixed; inset:0; z-index:65; display:none; align-items:center; justify-content:center; padding:16px}
+#app-modal.open{display:flex}
+.modal-backdrop{position:absolute; inset:0; background:rgba(2,6,23,.48); backdrop-filter:blur(6px)}
+.modal-panel{
+  position:relative; width:min(96vw,640px); max-height:min(88vh,720px); overflow:auto;
+  background:#fff; border:1px solid #e2e8f0; border-radius:20px; box-shadow:0 20px 60px rgba(2,6,23,.22);
+  animation:modalIn .22s cubic-bezier(.32,.72,0,1)
+}
+@keyframes modalIn{from{opacity:0; transform:translateY(8px) scale(.98)} to{opacity:1; transform:none}}
+.modal-head{position:sticky; top:0; background:#fff; padding:18px 20px; border-bottom:1px solid #f1f5f9; display:flex; align-items:center; justify-content:space-between; gap:12px; z-index:1}
+.modal-body{padding:20px}
+.modal-actions{position:sticky; bottom:0; background:#fff; padding:16px 20px; border-top:1px solid #f1f5f9; display:flex; justify-content:flex-end; gap:10px}
+
+/* ── Mobile Bottom Nav ── */
+@media (max-width:1023px){
+  main{padding-bottom:78px}
+  #toast-container{bottom:78px}
+  #app-topbar + main,#app-topbar + div{min-width:0;max-width:100%}
+  #app-mobile-nav nav{overflow:hidden!important}
+  #app-mobile-nav nav a{flex:1 1 20%;min-width:0;padding-inline:4px!important}
+}
+@media (max-width:380px){
+  #toast-container{right:10px; left:10px; max-width:none}
+  #app-mobile-nav nav a span{display:none}
+  #app-mobile-nav nav a{padding-block:9px!important}
+  #app-topbar header > div:first-child{gap:6px}
+  #app-topbar header .notif-btn{display:none}
+  #app-topbar header .leading-tight > div:last-child{display:none}
+}
+
+/* ── Responsive Typography ── */
+.h1{font-size:clamp(18px, 2.2vw, 24px); font-weight:800; line-height:1.15}
+.h2{font-size:clamp(16px, 1.6vw, 20px); font-weight:700; line-height:1.25}
+.h3{font-size:clamp(13px, 1.1vw, 15px); font-weight:700}
+.card-title{font-size:13px; font-weight:700}
+.small{font-size:11px; color:#64748b}
+@media (min-width:1920px){.h1{font-size:28px} .h2{font-size:22px} .card-title{font-size:14px}}
+
+/* ── Responsive Spacing ── */
+@media (max-width:640px){
+  .p-responsive{padding:14px!important}
+  .gap-responsive{gap:12px!important}
+  .text-responsive{font-size:12px!important}
+}
+@media (max-width:767px){
+  main{padding-inline:12px!important}
+  main .grid.grid-cols-5,main .grid.grid-cols-6,main .grid.grid-cols-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  main h1,main h2{overflow-wrap:anywhere}
+  .modal-panel{border-radius:18px}
+}
+@media (max-width:420px){
+  main .grid.grid-cols-5,main .grid.grid-cols-6{grid-template-columns:1fr!important}
+  .dropdown{position:fixed;left:10px;right:10px;top:66px;min-width:0;max-width:none}
+}
+@media (min-width:1920px){
+  .p-responsive{padding:28px!important}
+}
+
+/* ── Interactive States ── */
+.btn-primary{background:var(--zp-indigo); color:#fff; border:1px solid var(--zp-indigo); border-radius:12px; padding:10px 16px; font-weight:700; font-size:12px; display:inline-flex; align-items:center; gap:8px; transition:all var(--trans)}
+.btn-primary:hover{background:var(--zp-indigo-dark); border-color:var(--zp-indigo-dark); transform:translateY(-1px); box-shadow:0 6px 16px rgba(79,70,229,.24)}
+.btn-primary:active{transform:none; box-shadow:none}
+.btn-ghost{background:#fff; color:#334155; border:1px solid #e2e8f0; border-radius:12px; padding:10px 16px; font-weight:600; font-size:12px; transition:all var(--trans)}
+.btn-ghost:hover{background:#f8fafc; border-color:#cbd5e1}
+.filter-chip{font-size:11px; font-weight:600; padding:6px 10px; border-radius:999px; border:1px solid #e2e8f0; background:#fff; display:inline-flex; align-items:center; gap:6px}
+.filter-chip.active{background:var(--zp-indigo); color:#fff; border-color:var(--zp-indigo)}
+
+/* Action menus, global command search and polished empty states. */
+.action-menu{position:fixed;z-index:80;min-width:190px;padding:6px;background:#fff;border:1px solid var(--zp-border);border-radius:14px;box-shadow:0 18px 50px rgba(15,23,42,.16);animation:dropIn .16s ease}
+.action-menu button,.action-menu a{width:100%;display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:9px;font-size:12px;font-weight:600;color:#334155;text-align:left}
+.action-menu button:hover,.action-menu a:hover{background:#f8fafc;color:#4338ca}
+.command-panel{position:fixed;z-index:85;top:76px;left:50%;transform:translateX(-50%);width:min(92vw,620px);background:#fff;border:1px solid var(--zp-border);border-radius:18px;box-shadow:0 24px 70px rgba(15,23,42,.18);padding:8px;animation:dropIn .16s ease}
+.command-result{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:11px;color:#334155}
+.command-result:hover,.command-result.active{background:#f0f0ff;color:#4338ca}
+.command-key{margin-left:auto;font-size:10px;color:#94a3b8;border:1px solid #e2e8f0;border-radius:6px;padding:2px 6px}
+.empty-state{padding:34px 18px;text-align:center;color:#64748b}
+.empty-state-icon{width:44px;height:44px;margin:0 auto 10px;border-radius:14px;background:#f0f0ff;color:#4f46e5;display:grid;place-items:center;font-size:18px}
+.skeleton{background:linear-gradient(90deg,#f1f5f9 25%,#f8fafc 37%,#f1f5f9 63%);background-size:400% 100%;animation:skeleton 1.25s ease infinite}
+@keyframes skeleton{0%{background-position:100% 0}100%{background-position:0 0}}
+
+/* ── Responsive Hero / Charts ── */
+.chart-wrap{position:relative; overflow:hidden; border-radius:14px}
+.chart-wrap svg{width:100%; height:auto; display:block}
+@media (max-width:640px){
+  .chart-wrap{height:160px}
+  .chart-labels{font-size:8px}
+}
+
+/* ── Print ── */
+@media print{
+  #app-sidebar, #app-mobile-nav, .mobile-drawer, .mobile-backdrop, #toast-container, #app-modal{display:none!important}
+  body{background:#fff}
+  .card{box-shadow:none; border:1px solid #e2e8f0}
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important}
+}
+
+/* ── Safe Area (iOS) ── */
+@supports (padding: max(0px)){
+  #app-mobile-nav{padding-bottom:max(6px, env(safe-area-inset-bottom))}
+  #toast-container{bottom:max(16px, env(safe-area-inset-bottom))}
+}
+
+/* ── Auto-adjust for height ── */
+@media (max-height:600px){
+  #app-sidebar aside{padding-top:4px; padding-bottom:4px}
+  #app-sidebar nav{margin-top:6px; gap:0}
+  #app-sidebar nav a{padding-top:7px; padding-bottom:7px}
+  #app-sidebar aside > div:nth-child(2){display:none}
+  .card{padding:12px}
+}
+
+/* ── Utility ── */
+.scrollbar-none::-webkit-scrollbar{display:none}
+.scrollbar-none{scrollbar-width:none; -ms-overflow-style:none}
+.line-clamp-2{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+.sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
