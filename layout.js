@@ -54,7 +54,8 @@ function buildSidebar(active){
       ${a('earnings','Earnings & Payouts','earnings.html', ico.earnings)}
       ${a('reports','Reports & Analytics','reports.html', ico.reports)}
     </nav>
-    <div class="p-3 mt-auto">
+    <div class="p-3 mt-auto space-y-0.5">
+      <a href="admin.html" class="flex items-center gap-2 px-2 py-2.5 text-xs text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3.5v5.5c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5.5z"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/></svg> Admin Panel</a>
       <a href="#" class="flex items-center gap-2 px-2 py-3 text-xs text-white/70 hover:text-white"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Sign Out</a>
     </div>
   </aside>
@@ -83,7 +84,8 @@ function buildSidebar(active){
         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" class="w-9 h-9 rounded-full">
         <div><div class="text-sm font-semibold">James Anderson</div><div class="text-xs text-amber-300">Gold Partner ★</div></div>
       </div>
-      <a href="#" class="mt-3 flex items-center justify-center gap-2 bg-[#4f46e5] text-white text-sm font-semibold py-2.5 rounded-xl">Sign Out</a>
+      <a href="admin.html" class="mt-3 flex items-center justify-center gap-2 border border-white/15 text-white text-sm font-semibold py-2.5 rounded-xl hover:bg-white/10 transition">🛡 Admin Panel</a>
+      <a href="#" class="mt-2 flex items-center justify-center gap-2 bg-[#4f46e5] text-white text-sm font-semibold py-2.5 rounded-xl">Sign Out</a>
     </div>
   </div>
   <div id="mobile-backdrop" class="mobile-backdrop lg:hidden"></div>`;
