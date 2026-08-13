@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZenPartner — Tickets</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+</head>
+<body class="bg-[#f6f7fb] text-slate-800 antialiased">
+<div class="min-h-screen flex">
+  <div id="app-sidebar"></div>
+  <div class="flex-1 min-w-0 flex flex-col">
+    <div id="app-topbar"></div>
+
+    <div class="flex gap-4 p-3 lg:p-4 bg-[#f6f7fb]">
+      <main class="flex-1 min-w-0 space-y-4">
+
+        <!-- Action row: New Ticket + Export -->
+        <div class="flex flex-wrap items-center justify-end gap-2">
+          <button id="ticket-export" class="flex items-center gap-1.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 text-[11.5px] font-semibold px-3 py-2 rounded-lg transition shadow-sm">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/></svg> Export
+          </button>
+          <button id="new-ticket-btn" class="flex items-center gap-1.5 bg-[#4f46e5] hover:bg-[#4338ca] text-white text-[11.5px] font-bold px-3 py-2 rounded-lg transition shadow-sm">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14"/><path d="M5 12h14"/></svg> New Ticket
+          </button>
+        </div>
+
+        <!-- ── KPI Cards (6) ── -->
+        <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
+          <div class="admin-card p-3.5"><div class="flex justify-between items-start"><div class="text-[11px] text-slate-500 font-medium leading-tight">Open Tickets</div><span class="w-7 h-7 rounded-lg bg-sky-50 text-sky-600 grid place-items-center shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></span></div><div class="text-xl font-extrabold mt-1.5">32</div><div class="text-[10px] mt-1"><span class="text-sky-600 font-semibold">12 high priority</span></div></div>
+          <div class="admin-card p-3.5"><div class="flex justify-between items-start"><div class="text-[11px] text-slate-500 font-medium leading-tight">In Progress</div><span class="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-600 grid place-items-center shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 4h6l2 2h4v14H3V6h4z"/><path d="M9 12h6"/><path d="M9 16h4"/></svg></span></div><div class="text-xl font-extrabold mt-1.5">18</div><div class="text-[10px] mt-1"><span class="text-emerald-600 font-semibold">↑ 4</span> <span class="text-slate-400">vs yesterday</span></div></div>
+          <div class="admin-card p-3.5"><div class="flex justify-between items-start"><div class="text-[11px] text-slate-500 font-medium leading-tight">Resolved (30d)</div><span class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 grid place-items-center shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><path d="M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0"/></svg></span></div><div class="text-xl font-extrabold mt-1.5">186</div><div class="text-[10px] mt-1"><span class="text-emerald-600 font-semibold">↑ 15%</span> <span class="text-slate-400">vs last 30 days</span></div></div>
+          <div class="admin-card p-3.5"><div class="flex justify-between items-start"><div class="text-[11px] text-slate-500 font-medium leading-tight">Avg. Response Time</div><span class="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 grid place-items-center shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span></div><div class="text-xl font-extrabold mt-1.5">1.8 <span class="text-sm font-bold text-slate-500">hrs</span></div><div class="text-[10px] mt-1"><span class="text-emerald-600 font-semibold">↓ 0.4 hrs</span> <span class="text-slate-400">vs last 30 days</span></div></div>
+          <div class="admin-card p-3.5"><div class="flex justify-between items-start"><div class="text-[11px] text-slate-500 font-medium leading-tight">Escalated</div><span class="w-7 h-7 rounded-lg bg-rose-50 text-rose-500 grid place-items-center shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 9v4"/><circle cx="12" cy="17.5" r="1" fill="currentColor"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span></div><div class="text-xl font-extrabold mt-1.5">6</div><div class="text-[10px] mt-1 text-slate-400">Needs attention</div></div>
+          <div class="admin-card p-3.5"><div class="flex justify-between items-start"><div class="text-[11px] text-slate-500 font-medium leading-tight">SLA Breached</div><span class="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 grid place-items-center shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 8v4l3 2"/><path d="M20.9 13.5a9 9 0 1 1-10.4-10.4"/><path d="M20.9 13.5L21 2l-6.9 6.2z"/></svg></span></div><div class="text-xl font-extrabold mt-1.5">2</div><div class="text-[10px] mt-1"><span class="text-red-500 font-semibold">↓ 3</span> <span class="text-slate-400">vs last 30 days</span></div></div>
+        </div>
+
+        <!-- ── Tickets table ── -->
+        <div class="admin-card overflow-hidden">
+          <div class="flex flex-wrap items-center gap-2 px-4 pt-4 pb-3">
+            <h3 class="text-[13px] font-bold flex items-center gap-2">All Tickets <span class="text-[10px] font-bold bg-indigo-50 text-indigo-600 rounded-full px-2 py-0.5">248</span></h3>
+            <div class="ml-auto flex items-center gap-2 flex-wrap">
+              <label class="flex items-center gap-2 bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 w-[220px] shadow-sm">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" class="shrink-0"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+                <input id="ticket-search" placeholder="Search tickets..." class="flex-1 text-[11px] placeholder:text-slate-400 bg-transparent outline-none min-w-0"/>
+              </label>
+              <select id="ticket-status" class="text-[11px] font-medium bg-white border border-slate-200 rounded-lg px-2.5 py-2 text-slate-600 outline-none shadow-sm">
+                <option value="all">Status: All</option>
+                <option>Open</option>
+                <option>In Progress</option>
+                <option>Resolved</option>
+              </select>
+              <select id="ticket-priority" class="text-[11px] font-medium bg-white border border-slate-200 rounded-lg px-2.5 py-2 text-slate-600 outline-none shadow-sm">
+                <option value="all">Priority: All</option>
+                <option>High</option>
+                <option>Medium</option>
+                <option>Low</option>
+              </select>
+            </div>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="admin-table w-full min-w-[1080px]">
+              <thead><tr>
+                <th>Ticket ID</th><th>Subject</th><th>Priority</th><th>Status</th><th>Assignee</th><th>Created</th><th>Updated</th><th class="text-center">Action</th>
+              </tr></thead>
+              <tbody id="ticket-tbody"></tbody>
+            </table>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 px-4 py-3">
+            <span id="ticket-count" class="text-[11px] text-slate-500">Showing 1 to 8 of 248 entries</span>
+            <div class="ml-auto flex items-center gap-2">
+              <span class="text-[11px] text-slate-500">8 per page</span>
+              <div class="flex items-center border border-slate-200 rounded-lg overflow-hidden">
+                <button id="page-prev" class="w-7 h-7 grid place-items-center text-slate-500 hover:bg-slate-50 disabled:opacity-40" disabled><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+                <button class="w-7 h-7 grid place-items-center bg-indigo-50 text-indigo-600 text-[11px] font-bold">1</button>
+                <button class="w-7 h-7 grid place-items-center text-slate-500 hover:bg-slate-50 text-[11px] font-medium">2</button>
+                <span class="w-5 text-center text-[10px] text-slate-400">…</span>
+                <button class="w-7 h-7 grid place-items-center text-slate-500 hover:bg-slate-50 text-[11px] font-medium">31</button>
+                <button id="page-next" class="w-7 h-7 grid place-items-center text-slate-500 hover:bg-slate-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Row: Priority distribution + SLA card ── -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div class="admin-card p-4">
+            <h3 class="text-[13px] font-bold">Tickets by Priority</h3>
+            <div class="mt-3 space-y-3">
+              <div><div class="flex items-center justify-between text-[11px] mb-1"><span class="text-slate-600 font-medium"><span class="w-2 h-2 rounded-full bg-red-400 inline-block mr-1.5"></span>High</span><span class="font-semibold text-slate-700">72 <span class="text-slate-400 font-medium">(29.0%)</span></span></div><div class="h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-red-400 rounded-full" style="width:29%"></div></div></div>
+              <div><div class="flex items-center justify-between text-[11px] mb-1"><span class="text-slate-600 font-medium"><span class="w-2 h-2 rounded-full bg-amber-400 inline-block mr-1.5"></span>Medium</span><span class="font-semibold text-slate-700">118 <span class="text-slate-400 font-medium">(47.6%)</span></span></div><div class="h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:47.6%"></div></div></div>
+              <div><div class="flex items-center justify-between text-[11px] mb-1"><span class="text-slate-600 font-medium"><span class="w-2 h-2 rounded-full bg-slate-300 inline-block mr-1.5"></span>Low</span><span class="font-semibold text-slate-700">58 <span class="text-slate-400 font-medium">(23.4%)</span></span></div><div class="h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-slate-300 rounded-full" style="width:23.4%"></div></div></div>
+            </div>
+          </div>
+          <div class="admin-card p-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-[13px] font-bold">SLA Compliance</h3>
+              <span class="text-[10px] font-bold bg-emerald-50 text-emerald-600 rounded-full px-2 py-0.5">96.8%</span>
+            </div>
+            <div class="mt-3 grid grid-cols-3 gap-2 text-center">
+              <div class="bg-slate-50/70 border border-slate-100 rounded-xl p-3"><div class="text-[9.5px] text-slate-500 font-semibold">Within SLA</div><div class="text-sm font-extrabold mt-0.5">240</div></div>
+              <div class="bg-slate-50/70 border border-slate-100 rounded-xl p-3"><div class="text-[9.5px] text-slate-500 font-semibold">Breached</div><div class="text-sm font-extrabold mt-0.5 text-red-500">8</div></div>
+              <div class="bg-slate-50/70 border border-slate-100 rounded-xl p-3"><div class="text-[9.5px] text-slate-500 font-semibold">Target</div><div class="text-sm font-extrabold mt-0.5">95%</div></div>
+            </div>
+            <div class="mt-4 h-1.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" style="width:96.8%"></div></div>
+            <div class="flex items-center justify-between mt-1.5 text-[10px] text-slate-400"><span>Average first response</span><span class="font-semibold text-slate-600">1.8 hrs</span></div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+</div>
+<div id="app-mobile-nav"></div>
+<script src="layout.js"></script>
+<script>
+  injectLayout({variant:'admin', active:'tickets', title:'Tickets', breadcrumb:'Tickets', searchPlaceholder:'Search tickets by ID, subject, partner...'});
+</script>
+</body>
+</html>
