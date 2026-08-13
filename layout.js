@@ -91,7 +91,59 @@ function buildSidebar(active){
   <div id="mobile-backdrop" class="mobile-backdrop lg:hidden"></div>`;
 }
 
-function buildTopbar(title,breadcrumb,searchPlaceholder,extraActions){
+function buildTopbar(title,breadcrumb,searchPlaceholder,extraActions,admin,homeUrl){
+  const home=homeUrl||(admin?'admin.html':'index.html');
+  const dateChip=admin?`
+      <button class="hidden sm:flex items-center gap-2 bg-white border border-slate-200 rounded-lg px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50 transition shadow-sm" id="admin-date-chip" aria-label="Date range">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+        May 01 – May 15, 2024
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.8"><path d="M6 9l6 6 6-6"/></svg>
+      </button>`:'';
+  const notifItems=admin?`
+      <div class="dropdown-item border border-slate-100 bg-slate-50/50 rounded-xl">
+        <span class="w-8 h-8 rounded-full bg-indigo-50 text-indigo-600 grid place-items-center shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="7" r="3"/><path d="M2 19a7 7 0 0 1 14 0"/><path d="M16 4.5a3 3 0 0 1 0 5"/><path d="M18.5 19a7 7 0 0 0-3-5.7"/></svg></span>
+        <div class="flex-1 min-w-0"><div class="text-[12px] font-semibold leading-tight">New partner registered — Emily Wilson</div><div class="text-[11px] text-slate-500">2 hours ago</div></div>
+        <span class="w-2 h-2 rounded-full bg-[#4f46e5] mt-2"></span>
+      </div>
+      <div class="dropdown-item hover:bg-slate-50">
+        <span class="w-8 h-8 rounded-full bg-amber-50 text-amber-600 grid place-items-center shrink-0">$</span>
+        <div class="flex-1 min-w-0"><div class="text-[12px] font-medium leading-tight">Payout of $2,500 pending approval</div><div class="text-[11px] text-slate-500">Yesterday</div></div>
+      </div>
+      <div class="dropdown-item hover:bg-slate-50">
+        <span class="w-8 h-8 rounded-full bg-rose-50 text-rose-600 grid place-items-center shrink-0">!</span>
+        <div class="flex-1 min-w-0"><div class="text-[12px] font-medium leading-tight">Support ticket #T-1042 escalated</div><div class="text-[11px] text-slate-500">2 days ago</div></div>
+      </div>`:`
+      <div class="dropdown-item border border-slate-100 bg-slate-50/50 rounded-xl">
+        <span class="w-8 h-8 rounded-full bg-indigo-50 text-indigo-600 grid place-items-center shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+        <div class="flex-1 min-w-0"><div class="text-[12px] font-semibold leading-tight">Training completed — Sales Process</div><div class="text-[11px] text-slate-500">2 hours ago</div></div>
+        <span class="w-2 h-2 rounded-full bg-[#4f46e5] mt-2"></span>
+      </div>
+      <div class="dropdown-item hover:bg-slate-50">
+        <span class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 grid place-items-center shrink-0">$</span>
+        <div class="flex-1 min-w-0"><div class="text-[12px] font-medium leading-tight">Payout of $2,500 completed</div><div class="text-[11px] text-slate-500">Yesterday</div></div>
+      </div>
+      <div class="dropdown-item hover:bg-slate-50">
+        <span class="w-8 h-8 rounded-full bg-sky-50 text-sky-600 grid place-items-center shrink-0">↗</span>
+        <div class="flex-1 min-w-0"><div class="text-[12px] font-medium leading-tight">New referral qualified</div><div class="text-[11px] text-slate-500">2 days ago</div></div>
+      </div>`;
+  const msgItems=admin?`
+      <div class="dropdown-item border border-slate-100 rounded-xl">
+        <img src="${ADMIN_AVATAR}" class="w-8 h-8 rounded-full">
+        <div class="flex-1 min-w-0"><div class="text-[12px] font-semibold">Support Team</div><div class="text-[11px] text-slate-500 truncate">Ticket #T-1042 has been escalated</div></div>
+        <span class="text-[10px] text-slate-400">2h</span>
+      </div>
+      <div class="dropdown-item"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" class="w-8 h-8 rounded-full"><div class="flex-1 min-w-0"><div class="text-[12px] font-semibold">James Anderson</div><div class="text-[11px] text-slate-500 truncate">Can you review my payout status?</div></div><span class="text-[10px] text-slate-400">1d</span></div>`:`
+      <div class="dropdown-item border border-slate-100 rounded-xl">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop&q=60" class="w-8 h-8 rounded-full">
+        <div class="flex-1 min-w-0"><div class="text-[12px] font-semibold">Sarah Mitchell</div><div class="text-[11px] text-slate-500 truncate">Reviewed your proposal — amazing work!</div></div>
+        <span class="text-[10px] text-slate-400">2h</span>
+      </div>
+      <div class="dropdown-item"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" class="w-8 h-8 rounded-full"><div class="flex-1 min-w-0"><div class="text-[12px] font-semibold">Michael Davis</div><div class="text-[11px] text-slate-500 truncate">Follow-up next week?</div></div><span class="text-[10px] text-slate-400">1d</span></div>`;
+  const profName=admin?'Admin User':'James Anderson';
+  const profEmail=admin?'admin@zentegra.com':'james@zentegra.com';
+  const profRole=admin?'Super Administrator':'Gold Partner';
+  const profRoleCls=admin?'text-indigo-600':'text-amber-600';
+  const profAvatar=admin?ADMIN_AVATAR:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60';
   return `
   <header class="bg-white border-b border-slate-200 sticky top-0 z-20">
     <div class="flex items-center gap-3 px-3 sm:px-4 lg:px-6 py-3">
@@ -100,9 +152,9 @@ function buildTopbar(title,breadcrumb,searchPlaceholder,extraActions){
       </button>
       <div class="leading-tight min-w-0">
         <div class="font-bold text-[15px] sm:text-[16px] jakarta truncate">${title}</div>
-        <div class="text-[11px] text-slate-500 truncate"><a href="index.html" class="hover:text-indigo-600">Home</a> <span class="mx-1">›</span> <span class="text-slate-700 font-medium">${breadcrumb}</span></div>
+        <div class="text-[11px] text-slate-500 truncate"><a href="${home}" class="hover:text-indigo-600">Home</a> <span class="mx-1">›</span> <span class="text-slate-700 font-medium">${breadcrumb}</span></div>
       </div>
-      <div class="hidden md:flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2 w-[260px] lg:w-[340px] ml-2 lg:ml-6 shadow-sm top-search">
+      <div class="hidden md:flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2 w-[240px] lg:w-[340px] ml-2 lg:ml-6 shadow-sm top-search">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" class="shrink-0"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
         <input id="top-search-input" placeholder="${searchPlaceholder}" class="flex-1 text-xs placeholder:text-slate-400 bg-transparent min-w-0"/>
         <span class="ctrl-k hidden xl:inline-flex">⌘ K</span>
@@ -111,6 +163,7 @@ function buildTopbar(title,breadcrumb,searchPlaceholder,extraActions){
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
       </button>
       <div class="ml-auto flex items-center gap-1.5 sm:gap-2">
+        ${dateChip}
         <div class="relative">
           <button class="notif-btn relative w-9 h-9 grid place-items-center rounded-full hover:bg-slate-50" data-dropdown="notif-dropdown" aria-label="Notifications">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.8"><path d="M6 8a6 6 0 0 1 12 0c0 7-6 5-6 9"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
@@ -120,22 +173,8 @@ function buildTopbar(title,breadcrumb,searchPlaceholder,extraActions){
             <div class="flex items-center justify-between px-2 py-1">
               <span class="text-xs font-bold">Notifications</span><span class="text-[11px] font-bold text-[#4f46e5] cursor-pointer">Mark all read</span>
             </div>
-            <div class="mt-2 space-y-1">
-              <div class="dropdown-item border border-slate-100 bg-slate-50/50 rounded-xl">
-                <span class="w-8 h-8 rounded-full bg-indigo-50 text-indigo-600 grid place-items-center shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
-                <div class="flex-1 min-w-0"><div class="text-[12px] font-semibold leading-tight">Training completed — Sales Process</div><div class="text-[11px] text-slate-500">2 hours ago</div></div>
-                <span class="w-2 h-2 rounded-full bg-[#4f46e5] mt-2"></span>
-              </div>
-              <div class="dropdown-item hover:bg-slate-50">
-                <span class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 grid place-items-center shrink-0">$</span>
-                <div class="flex-1 min-w-0"><div class="text-[12px] font-medium leading-tight">Payout of $2,500 completed</div><div class="text-[11px] text-slate-500">Yesterday</div></div>
-              </div>
-              <div class="dropdown-item hover:bg-slate-50">
-                <span class="w-8 h-8 rounded-full bg-sky-50 text-sky-600 grid place-items-center shrink-0">↗</span>
-                <div class="flex-1 min-w-0"><div class="text-[12px] font-medium leading-tight">New referral qualified</div><div class="text-[11px] text-slate-500">2 days ago</div></div>
-              </div>
-            </div>
-            <a href="activities.html" class="mt-2 block text-center text-[12px] font-bold text-[#4f46e5] py-2 hover:bg-indigo-50 rounded-xl">View all notifications</a>
+            <div class="mt-2 space-y-1">${notifItems}</div>
+            <a href="${admin?'admin-tickets.html':'activities.html'}" class="mt-2 block text-center text-[12px] font-bold text-[#4f46e5] py-2 hover:bg-indigo-50 rounded-xl">View all notifications</a>
           </div>
         </div>
         <div class="relative">
@@ -145,32 +184,24 @@ function buildTopbar(title,breadcrumb,searchPlaceholder,extraActions){
           </button>
           <div id="msg-dropdown" class="dropdown">
             <div class="text-xs font-bold px-2 py-1">Messages</div>
-            <div class="space-y-1 mt-2">
-              <div class="dropdown-item border border-slate-100 rounded-xl">
-                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop&q=60" class="w-8 h-8 rounded-full">
-                <div class="flex-1 min-w-0"><div class="text-[12px] font-semibold">Sarah Mitchell</div><div class="text-[11px] text-slate-500 truncate">Reviewed your proposal — amazing work!</div></div>
-                <span class="text-[10px] text-slate-400">2h</span>
-              </div>
-              <div class="dropdown-item"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" class="w-8 h-8 rounded-full"><div class="flex-1 min-w-0"><div class="text-[12px] font-semibold">Michael Davis</div><div class="text-[11px] text-slate-500 truncate">Follow-up next week?</div></div><span class="text-[10px] text-slate-400">1d</span></div>
-            </div>
+            <div class="space-y-1 mt-2">${msgItems}</div>
           </div>
         </div>
         <div class="relative">
           <button id="profile-toggle" class="hidden lg:flex items-center gap-2 pl-2 sm:pl-3 ml-1 hover:opacity-80" data-dropdown="profile-dropdown">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" class="w-8 h-8 rounded-full object-cover ring-2 ring-indigo-50">
+            <img src="${profAvatar}" class="w-8 h-8 rounded-full object-cover ring-2 ring-indigo-50">
             <div class="leading-tight hidden xl:block text-left">
-              <div class="text-xs font-semibold flex items-center gap-1">James Anderson <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
-              <div class="text-[10px] text-amber-600 font-medium">Gold Partner</div>
+              <div class="text-xs font-semibold flex items-center gap-1">${profName} <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+              <div class="text-[10px] ${profRoleCls} font-medium">${profRole}</div>
             </div>
           </button>
           <div id="profile-dropdown" class="dropdown" style="min-width:220px">
             <div class="p-3 flex gap-3 border-b border-slate-100">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" class="w-10 h-10 rounded-full">
-              <div><div class="text-sm font-bold">James Anderson</div><div class="text-xs text-slate-500">james@zentegra.com</div><div class="text-[11px] text-amber-600 font-semibold">Gold Partner</div></div>
+              <img src="${profAvatar}" class="w-10 h-10 rounded-full">
+              <div><div class="text-sm font-bold">${profName}</div><div class="text-xs text-slate-500">${profEmail}</div><div class="text-[11px] ${profRoleCls} font-semibold">${profRole}</div></div>
             </div>
             <div class="py-1">
-              <a href="profile.html" class="dropdown-item text-[13px] font-medium">My Profile</a>
-              <a href="#" class="dropdown-item text-[13px] font-medium">Settings</a>
+              ${admin?'<a href="#" class="dropdown-item text-[13px] font-medium">Admin Profile</a><a href="#" class="dropdown-item text-[13px] font-medium">System Settings</a><a href="index.html" class="dropdown-item text-[13px] font-medium">Partner Portal</a>':'<a href="profile.html" class="dropdown-item text-[13px] font-medium">My Profile</a><a href="#" class="dropdown-item text-[13px] font-medium">Settings</a>'}
               <a href="#" class="dropdown-item text-[13px] font-medium text-red-600">Sign Out</a>
             </div>
           </div>
@@ -187,6 +218,7 @@ function buildTopbar(title,breadcrumb,searchPlaceholder,extraActions){
     ${extraActions||''}
   </header>`;
 }
+
 
 function buildMobile(active){
   const i=(id,href,svg,label)=>{
@@ -213,9 +245,118 @@ function buildMobile(active){
   </nav>`;
 }
 
+
+// ── Admin Layout Builders (mirror the portal logic, same container IDs) ──
+function buildAdminSidebar(active){
+  const isOn=(id)=> active===id || (active==='partnerView' && id==='partners');
+  const a=(id,label,href,icon)=>{
+    const on=isOn(id);
+    const cls=on?'bg-[#4f46e5] text-white font-semibold shadow-sm':'text-white/80 hover:bg-white/10';
+    return `<a href="${href}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg ${cls}" data-admin-nav="${id}">${icon}<span class="truncate">${label}</span>${on?'<span class="ml-auto text-white/60">›</span>':''}</a>`;
+  };
+  const ico={
+    dash:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>`,
+    partners:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="7" r="3"/><path d="M2 19a7 7 0 0 1 14 0"/><path d="M16 4.5a3 3 0 0 1 0 5"/><path d="M18.5 19a7 7 0 0 0-3-5.7"/></svg>`,
+    onboard:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>`,
+    payouts:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 10h.01"/><path d="M18 14h.01"/></svg>`,
+    tickets:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M5.6 5.6l3.2 3.2"/><path d="M15.2 15.2l3.2 3.2"/><path d="M18.4 5.6l-3.2 3.2"/><path d="M8.8 15.2l-3.2 3.2"/></svg>`
+  };
+  return `
+  <aside class="hidden lg:flex w-[260px] bg-[#0a1033] text-white flex-col shrink-0 sticky top-0 h-screen overflow-y-auto scrollbar-none">
+    <div class="px-5 py-5 flex items-center gap-3">
+      <a href="admin.html" class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#7c3aed] via-[#4f46e5] to-[#06b6d4] flex items-center justify-center font-black text-lg rotate-3 shrink-0">Z</a>
+      <div>
+        <div class="font-extrabold tracking-wide text-[13px] leading-none">ZENPARTNER</div>
+        <div class="text-[10px] text-white/60 tracking-widest font-semibold">Admin Panel</div>
+      </div>
+    </div>
+    <div class="mx-3 mt-2 bg-white/[0.07] border border-white/10 rounded-xl p-3">
+      <div class="flex items-center gap-3">
+        <img src="${ADMIN_AVATAR}" class="w-9 h-9 rounded-full object-cover">
+        <div class="leading-tight">
+          <div class="text-xs font-semibold">Admin User</div>
+          <div class="text-[10px] text-indigo-300 font-medium flex items-center gap-1">Super Administrator <span>🛡</span></div>
+        </div>
+      </div>
+      <div class="mt-2 text-[9px] text-white/50">admin@zentegra.com</div>
+      <div class="mt-3">
+        <div class="flex justify-between text-[10px] font-medium"><span class="text-white/70">Panel Coverage</span><span class="text-indigo-300">100%</span></div>
+        <div class="mt-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-indigo-500 to-sky-400 rounded-full" style="width:100%"></div></div>
+      </div>
+    </div>
+    <nav class="px-2.5 mt-4 space-y-0.5 text-[13px] flex-1">
+      ${a('dashboard','Dashboard','admin.html',ico.dash)}
+      ${a('partners','All Partners','partners.html',ico.partners)}
+      ${a('onboarding','Onboarding Setup','partners-onboarding.html',ico.onboard)}
+      ${a('payouts','Commission & Payouts','admin-payouts.html',ico.payouts)}
+      ${a('tickets','Tickets','admin-tickets.html',ico.tickets)}
+    </nav>
+    <div class="p-3 mt-auto space-y-0.5">
+      <a href="index.html" class="flex items-center gap-2 px-2 py-2.5 text-xs text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg> View Partner Portal</a>
+      <a href="#" class="flex items-center gap-2 px-2 py-3 text-xs text-white/70 hover:text-white"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Sign Out</a>
+    </div>
+  </aside>
+
+  <!-- Mobile Drawer (injected, hidden by default) -->
+  <div id="mobile-drawer" class="mobile-drawer lg:hidden" aria-hidden="true">
+    <div class="p-5 flex items-center justify-between border-b border-white/10">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-[#7c3aed] via-[#4f46e5] to-[#06b6d4] grid place-items-center font-black">Z</div>
+        <div><div class="font-extrabold text-sm">ZENPARTNER</div><div class="text-[10px] text-white/60 tracking-widest">Admin Panel</div></div>
+      </div>
+      <button id="drawer-close" class="w-9 h-9 grid place-items-center rounded-xl bg-white/10 text-white hover:bg-white/15">✕</button>
+    </div>
+    <nav class="p-3 space-y-1 text-[13px] flex-1 overflow-y-auto">
+      ${a('dashboard','Dashboard','admin.html',ico.dash)}
+      ${a('partners','All Partners','partners.html',ico.partners)}
+      ${a('onboarding','Onboarding Setup','partners-onboarding.html',ico.onboard)}
+      ${a('payouts','Commission & Payouts','admin-payouts.html',ico.payouts)}
+      ${a('tickets','Tickets','admin-tickets.html',ico.tickets)}
+    </nav>
+    <div class="p-4 border-t border-white/10">
+      <div class="flex items-center gap-3">
+        <img src="${ADMIN_AVATAR}" class="w-9 h-9 rounded-full">
+        <div><div class="text-sm font-semibold">Admin User</div><div class="text-xs text-indigo-300">Super Administrator</div></div>
+      </div>
+      <a href="index.html" class="mt-3 flex items-center justify-center gap-2 border border-white/15 text-white text-sm font-semibold py-2.5 rounded-xl hover:bg-white/10 transition">🏠 Partner Portal</a>
+      <a href="#" class="mt-2 flex items-center justify-center gap-2 bg-[#4f46e5] text-white text-sm font-semibold py-2.5 rounded-xl">Sign Out</a>
+    </div>
+  </div>
+  <div id="mobile-backdrop" class="mobile-backdrop lg:hidden"></div>`;
+}
+
+function buildAdminMobile(active){
+  const i=(id,href,svg,label)=>{
+    const on=active===id || (active==='partnerView' && id==='partners');
+    return `<a href="${href}" class="flex flex-col items-center gap-1 ${on?'text-white bg-[#4f46e5] rounded-xl px-2.5 py-1.5':'text-white/60 py-1.5 px-2'}">${svg}<span class="text-[9px] font-semibold">${label}</span></a>`;
+  };
+  const s={
+    dash:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>`,
+    partners:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="7" r="3"/><path d="M2 19a7 7 0 0 1 14 0"/><path d="M16 4.5a3 3 0 0 1 0 5"/><path d="M18.5 19a7 7 0 0 0-3-5.7"/></svg>`,
+    onboard:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>`,
+    payouts:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 10h.01"/><path d="M18 14h.01"/></svg>`,
+    tickets:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M5.6 5.6l3.2 3.2"/><path d="M15.2 15.2l3.2 3.2"/><path d="M18.4 5.6l-3.2 3.2"/><path d="M8.8 15.2l-3.2 3.2"/></svg>`
+  };
+  return `
+  <nav class="lg:hidden fixed bottom-0 inset-x-0 bg-[#0a1033] border-t border-white/10 flex items-center gap-0.5 justify-around py-1.5 px-1 z-30 overflow-x-auto scrollbar-none" style="scrollbar-width:none; -ms-overflow-style:none">
+    ${i('dashboard','admin.html',s.dash,'Dashboard')}
+    ${i('partners','partners.html',s.partners,'Partners')}
+    ${i('onboarding','partners-onboarding.html',s.onboard,'Onboarding')}
+    ${i('payouts','admin-payouts.html',s.payouts,'Payouts')}
+    ${i('tickets','admin-tickets.html',s.tickets,'Tickets')}
+  </nav>`;
+}
+
 // ── Global State & Helpers ──
 let currentActive = 'dashboard';
 const STORE_KEY = 'zp_state_v2';
+const ADMIN_AVATAR='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&auto=format&fit=crop&q=60';
+
+// Storage is optional (private mode / sandboxed frames): never let it break the UI.
+function safeStoreGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function safeStoreSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+function safeSessionGet(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } }
+function safeSessionSet(k,v){ try{ sessionStorage.setItem(k,v); }catch(e){} }
 
 function getStore(){ try{return JSON.parse(localStorage.getItem(STORE_KEY)||'{}')}catch(e){return{}} }
 function setStore(patch){ const s={...getStore(),...patch}; localStorage.setItem(STORE_KEY, JSON.stringify(s)); return s; }
@@ -295,7 +436,7 @@ function wireGlobalUI(){
     const collapsed=document.body.classList.toggle('sidebar-collapsed');
     burger?.setAttribute('aria-expanded', String(!collapsed));
     burger?.setAttribute('aria-label', collapsed ? 'Expand navigation' : 'Collapse navigation');
-    localStorage.setItem('zp_sidebar_collapsed', collapsed ? '1' : '0');
+    safeStoreSet('zp_sidebar_collapsed', collapsed ? '1' : '0');
   }
   burger?.addEventListener('click', toggleNavigation);
   closeBtn?.addEventListener('click', closeDrawer);
@@ -309,7 +450,7 @@ function wireGlobalUI(){
   window.addEventListener('resize', syncNavigation);
 
   // Restore the user's compact desktop preference.
-  if(window.innerWidth >= 1024 && localStorage.getItem('zp_sidebar_collapsed')==='1'){
+  if(window.innerWidth >= 1024 && safeStoreGet('zp_sidebar_collapsed')==='1'){
     document.body.classList.add('sidebar-collapsed');
     burger?.setAttribute('aria-label','Expand navigation');
   }
@@ -1093,6 +1234,457 @@ function initReports(){
   });
 }
 
+
+// ── Admin Page Initializers (single source, mirror portal init logic) ──
+function initAdminDashboard(){
+  const tbody=document.getElementById('partner-tbody');
+  if(!tbody) return;
+  const rows=[...tbody.querySelectorAll('tr')];
+  const searchInput=document.getElementById('partner-search');
+  const statusFilter=document.getElementById('status-filter');
+  const countEl=document.getElementById('table-count');
+  const perPage=document.getElementById('per-page');
+  const applyFilters=()=>{
+    const q=(searchInput?.value||'').toLowerCase();
+    const st=statusFilter?.value||'all';
+    let visible=0;
+    rows.forEach(r=>{
+      const matchQ=!q||(r.dataset.search||'').includes(q);
+      const matchS=st==='all'||r.dataset.status===st;
+      const show=matchQ&&matchS;
+      r.style.display=show?'':'none';
+      if(show) visible++;
+    });
+    if(countEl) countEl.textContent = visible===rows.length
+      ? 'Showing 1 to '+rows.length+' of 248 entries'
+      : 'Showing 1 to '+visible+' of '+visible+' matching entries';
+  };
+  searchInput?.addEventListener('input',applyFilters);
+  statusFilter?.addEventListener('change',applyFilters);
+  perPage?.addEventListener('change',applyFilters);
+  const topSearch=document.getElementById('top-search-input');
+  topSearch?.addEventListener('input',()=>{ if(searchInput) searchInput.value=topSearch.value; applyFilters(); });
+  const prev=document.getElementById('page-prev');
+  const next=document.getElementById('page-next');
+  next?.addEventListener('click',()=>{ if(prev) prev.disabled=false; next.disabled=true; });
+  prev?.addEventListener('click',()=>{ if(next) next.disabled=false; prev.disabled=true; });
+  // Context actions use the shared modal + toast engine
+  [...document.querySelectorAll('button')].forEach(b=>{
+    if(b.textContent.includes('Assign New Task')){
+      b.addEventListener('click',e=>{
+        e.preventDefault(); e.stopPropagation();
+        openModal({title:'Assign New Task', body:`
+          <div class="space-y-3">
+            <label class="block"><span class="text-xs font-semibold">Task Title</span><input placeholder="e.g., Review project proposal" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"/></label>
+            <label class="block"><span class="text-xs font-semibold">Assign To</span><select class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"><option>James Anderson</option><option>Sarah Mitchell</option><option>Michael Davis</option></select></label>
+            <label class="block"><span class="text-xs font-semibold">Priority</span><select class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"><option>High</option><option>Medium</option><option>Low</option></select></label>
+            <label class="block"><span class="text-xs font-semibold">Due Date</span><input type="date" value="${new Date().toISOString().slice(0,10)}" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"/></label>
+          </div>`, actions:`<button class="btn-ghost" onclick="closeModal()">Cancel</button><button class="btn-primary" onclick="closeModal(); showToast('Task assigned successfully','success')">Assign Task</button>`});
+      });
+    }
+    if(b.textContent.includes('Add Follow Up')){
+      b.addEventListener('click',e=>{
+        e.preventDefault(); e.stopPropagation();
+        openModal({title:'Add Follow Up', body:`
+          <div class="space-y-3">
+            <label class="block"><span class="text-xs font-semibold">Partner</span><select class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"><option>James Anderson</option><option>Sarah Mitchell</option><option>Michael Davis</option></select></label>
+            <label class="block"><span class="text-xs font-semibold">Subject</span><input placeholder="Follow up on project update" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"/></label>
+            <label class="block"><span class="text-xs font-semibold">Notes</span><textarea rows="3" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"></textarea></label>
+          </div>`, actions:`<button class="btn-ghost" onclick="closeModal()">Cancel</button><button class="btn-primary" onclick="closeModal(); showToast('Follow up scheduled','success')">Schedule</button>`});
+      });
+    }
+  });
+}
+
+function initAdminPartners(){
+  const tbody=document.getElementById('partner-tbody');
+  if(!tbody) return;
+  const PARTNERS=[
+    {id:'ZP-2024-0001',name:'James Anderson',email:'james.anderson@example.com',phone:'+1 (555) 123-4567',level:'Gold Partner',status:'Active',kyc:'Verified',joined:'Jan 15, 2024',leads:96,projects:12,earnings:'$24,750',payouts:'$12,750',avatar:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0002',name:'Sarah Mitchell',email:'sarah.mitchell@example.com',phone:'+1 (555) 234-5678',level:'Gold Partner',status:'Active',kyc:'Verified',joined:'Jan 18, 2024',leads:64,projects:8,earnings:'$18,200',payouts:'$9,450',avatar:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0003',name:'Michael Davis',email:'michael.davis@example.com',phone:'+1 (555) 345-6789',level:'Silver Partner',status:'Active',kyc:'Verified',joined:'Jan 20, 2024',leads:78,projects:10,earnings:'$16,500',payouts:'$8,250',avatar:'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0004',name:'Emily Wilson',email:'emily.wilson@example.com',phone:'+1 (555) 456-7890',level:'Silver Partner',status:'Pending',kyc:'Pending',joined:'Jan 22, 2024',leads:10,projects:2,earnings:'$1,250',payouts:'$0',avatar:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0005',name:'David Lee',email:'david.lee@example.com',phone:'+1 (555) 567-8901',level:'Bronze Partner',status:'Active',kyc:'Verified',joined:'Jan 25, 2024',leads:42,projects:6,earnings:'$9,800',payouts:'$4,900',avatar:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0006',name:'Olivia Brown',email:'olivia.brown@example.com',phone:'+1 (555) 678-9012',level:'Bronze Partner',status:'Inactive',kyc:'Not Verified',joined:'Jan 28, 2024',leads:0,projects:0,earnings:'$0',payouts:'$0',avatar:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0007',name:'Daniel Martinez',email:'daniel.martinez@example.com',phone:'+1 (555) 789-0123',level:'Silver Partner',status:'Active',kyc:'Verified',joined:'Jan 30, 2024',leads:55,projects:7,earnings:'$12,600',payouts:'$6,300',avatar:'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0008',name:'Sophia Johnson',email:'sophia.johnson@example.com',phone:'+1 (555) 890-1234',level:'Bronze Partner',status:'Pending',kyc:'Pending',joined:'Feb 02, 2024',leads:5,projects:1,earnings:'$600',payouts:'$0',avatar:'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0009',name:'William Taylor',email:'william.taylor@example.com',phone:'+1 (555) 901-2345',level:'Silver Partner',status:'Active',kyc:'Verified',joined:'Feb 05, 2024',leads:8,projects:5,earnings:'$7,400',payouts:'$3,700',avatar:'https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0010',name:'Ava Thomas',email:'ava.thomas@example.com',phone:'+1 (555) 012-3456',level:'Bronze Partner',status:'Active',kyc:'Verified',joined:'Feb 08, 2024',leads:22,projects:3,earnings:'$4,200',payouts:'$2,100',avatar:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0011',name:'Benjamin Clark',email:'benjamin.clark@example.com',phone:'+1 (555) 111-2222',level:'Silver Partner',status:'Inactive',kyc:'Not Verified',joined:'Feb 10, 2024',leads:0,projects:0,earnings:'$0',payouts:'$0',avatar:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0012',name:'Mia Lewis',email:'mia.lewis@example.com',phone:'+1 (555) 222-3333',level:'Bronze Partner',status:'Active',kyc:'Verified',joined:'Feb 12, 2024',leads:18,projects:2,earnings:'$2,300',payouts:'$1,150',avatar:'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=80&auto=format&fit=crop&q=60'}
+  ];
+  const levelClass={'Gold Partner':'bg-[#fef3df] text-amber-600','Silver Partner':'bg-[#eff2f8] text-slate-600','Bronze Partner':'bg-[#fbeee0] text-[#b45309]'};
+  const statusClass={'Active':'bg-emerald-50 text-emerald-600','Pending':'bg-[#fef0da] text-amber-600','Inactive':'bg-[#fde8e8] text-red-500'};
+  const kycClass={'Verified':'bg-[#edf8f0] text-emerald-600','Pending':'bg-[#fefbf2] text-amber-600','Not Verified':'bg-[#fdeaea] text-red-500'};
+  const rowHtml=p=>`<tr data-id="${p.id}" data-status="${p.status}" data-level="${p.level}" data-kyc="${p.kyc}">
+    <td class="font-semibold text-slate-500">${p.id}</td>
+    <td><div class="flex items-center gap-2.5"><img src="${p.avatar}" class="w-7 h-7 rounded-full object-cover"><div class="text-[12.5px] font-semibold">${p.name}</div></div></td>
+    <td class="text-slate-500">${p.email}</td>
+    <td class="text-slate-500">${p.phone}</td>
+    <td><span class="level-pill ${levelClass[p.level]}"><span>★</span>${p.level}</span></td>
+    <td><span class="status-pill ${statusClass[p.status]}"><span class="w-1.5 h-1.5 rounded-full bg-current opacity-70"></span>${p.status}</span></td>
+    <td><span class="status-pill ${kycClass[p.kyc]}">${p.kyc}</span></td>
+    <td class="text-slate-500">${p.joined}</td>
+    <td class="text-center font-semibold">${p.leads}</td>
+    <td class="text-center font-semibold">${p.projects}</td>
+    <td class="text-right font-bold">${p.earnings}</td>
+    <td class="text-right">${p.payouts}</td>
+    <td><div class="flex items-center justify-center gap-1"><a href="partner-view.html" class="w-7 h-7 grid place-items-center rounded-lg hover:bg-indigo-50 text-slate-400 hover:text-indigo-600 transition" title="View"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></a><button class="row-more w-7 h-7 grid place-items-center rounded-lg hover:bg-slate-50 text-slate-400 hover:text-slate-600 transition" title="More" aria-label="More actions"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></button></div></td>
+  </tr>`;
+  const render=()=>{
+    const q=(document.getElementById('partner-search').value||'').toLowerCase();
+    const st=document.getElementById('status-filter').value;
+    const lv=document.getElementById('level-filter').value;
+    const kc=document.getElementById('kyc-filter').value;
+    const visible=PARTNERS.filter(p=>{
+      const hay=(p.id+' '+p.name+' '+p.email).toLowerCase();
+      return (!q||hay.includes(q)) && (st==='all'||p.status===st) && (lv==='all'||p.level===lv) && (kc==='all'||p.kyc===kc);
+    });
+    tbody.innerHTML=visible.map(rowHtml).join('');
+    document.getElementById('table-count').textContent = visible.length===PARTNERS.length
+      ? 'Showing 1 to '+PARTNERS.length+' of 248 entries'
+      : 'Showing 1 to '+visible.length+' of '+visible.length+' matching entries';
+  };
+  ['partner-search','status-filter','level-filter','kyc-filter'].forEach(id=>{
+    const el=document.getElementById(id);
+    el?.addEventListener('input',render);
+    el?.addEventListener('change',render);
+  });
+  document.getElementById('top-search-input')?.addEventListener('input',function(){document.getElementById('partner-search').value=this.value;render();});
+  render();
+  document.getElementById('export-btn')?.addEventListener('click',e=>{
+    e.preventDefault(); e.stopPropagation();
+    const rows=[['Partner ID','Partner','Email','Phone','Partner Level','Status','KYC Status','Joined On','Leads','Projects','Earnings','Payouts']];
+    PARTNERS.forEach(p=>rows.push([p.id,p.name,p.email,p.phone,p.level,p.status,p.kyc,p.joined,p.leads,p.projects,p.earnings,p.payouts]));
+    downloadStaticFile('zenpartners.csv', rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n'), 'text/csv');
+    showToast('Exported '+PARTNERS.length+' partners to CSV','success');
+  });
+  document.getElementById('add-btn')?.addEventListener('click',e=>{
+    e.preventDefault(); e.stopPropagation();
+    openModal({title:'Add New Partner', body:`
+      <div class="space-y-3">
+        <label class="block"><span class="text-xs font-semibold">Full Name</span><input id="np-name" placeholder="e.g. Liam Carter" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"/></label>
+        <label class="block"><span class="text-xs font-semibold">Email</span><input id="np-email" type="email" placeholder="liam.carter@example.com" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"/></label>
+        <label class="block"><span class="text-xs font-semibold">Phone</span><input id="np-phone" placeholder="+1 (555) 333-4444" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"/></label>
+        <div class="grid grid-cols-2 gap-3">
+          <label class="block"><span class="text-xs font-semibold">Partner Level</span><select id="np-level" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"><option>Bronze Partner</option><option>Silver Partner</option><option>Gold Partner</option></select></label>
+          <label class="block"><span class="text-xs font-semibold">Status</span><select id="np-status" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"><option>Active</option><option>Pending</option><option>Inactive</option></select></label>
+        </div>
+      </div>`, actions:`<button class="btn-ghost" onclick="closeModal()">Cancel</button><button class="btn-primary" id="save-partner">Add Partner</button>`});
+    document.getElementById('save-partner')?.addEventListener('click',()=>{
+      const name=document.getElementById('np-name').value.trim();
+      const email=document.getElementById('np-email').value.trim();
+      const phone=document.getElementById('np-phone').value.trim();
+      if(!name||!email){ showToast('Please enter name and email','error'); return; }
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ showToast('Please enter a valid email address','error'); return; }
+      const nextNum=PARTNERS.length+13;
+      PARTNERS.push({id:'ZP-2024-0'+String(nextNum).padStart(3,'0'),name,email,phone:phone||'—',level:document.getElementById('np-level').value,status:document.getElementById('np-status').value,kyc:'Pending',joined:new Date().toLocaleDateString('en-US',{month:'short',day:'2-digit',year:'numeric'}),leads:0,projects:0,earnings:'$0',payouts:'$0',avatar:'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&auto=format&fit=crop&q=60'});
+      render(); closeModal(); showToast('Partner '+name+' added successfully','success');
+    });
+  });
+  // per-page pagination (cosmetic)
+  const prev=document.getElementById('page-prev');
+  const next=document.getElementById('page-next');
+  next?.addEventListener('click',()=>{ if(prev) prev.disabled=false; next.disabled=true; });
+  prev?.addEventListener('click',()=>{ if(next) next.disabled=false; prev.disabled=true; });
+  // more-actions menus
+  document.addEventListener('click',e=>{
+    const more=e.target.closest('.row-more');
+    if(more){ e.preventDefault(); e.stopPropagation(); openActionMenu(more); }
+  });
+}
+
+function initAdminOnboarding(){
+  const tbody=document.getElementById('onboard-tbody');
+  if(!tbody) return;
+  const PARTNERS=[
+    {id:'ZP-2024-0001',name:'James Anderson',level:'Gold Partner',status:'Completed',overall:100,steps:['May 01, 2024','May 02, 2024','May 05, 2024','May 06, 2024','May 07, 2024','May 08, 2024'],avatar:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0002',name:'Sarah Mitchell',level:'Gold Partner',status:'In Progress',overall:33,steps:['May 03, 2024','May 04, 2024','In Progress','Pending','Pending','Pending'],avatar:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0003',name:'Michael Davis',level:'Silver Partner',status:'In Progress',overall:17,steps:['May 02, 2024','Pending','Pending','Pending','Pending','Pending'],avatar:'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0004',name:'Emily Wilson',level:'Bronze Partner',status:'In Progress',overall:22,steps:['May 06, 2024','In Progress','Pending','Pending','Pending','Pending'],avatar:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0005',name:'David Lee',level:'Bronze Partner',status:'Pending',overall:0,steps:['Pending','Pending','Pending','Pending','Pending','Pending'],avatar:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0006',name:'Olivia Brown',level:'Gold Partner',status:'In Progress',overall:67,steps:['May 04, 2024','May 05, 2024','May 06, 2024','In Progress','Pending','Pending'],avatar:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0007',name:'Daniel Martinez',level:'Silver Partner',status:'In Progress',overall:33,steps:['May 03, 2024','Pending','In Progress','Pending','Pending','Pending'],avatar:'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&auto=format&fit=crop&q=60'},
+    {id:'ZP-2024-0008',name:'Sophia Johnson',level:'Bronze Partner',status:'Pending',overall:0,steps:['Pending','Pending','Pending','Pending','Pending','Pending'],avatar:'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&auto=format&fit=crop&q=60'}
+  ];
+  const levelClass={'Gold Partner':'bg-[#fef3df] text-amber-600','Silver Partner':'bg-[#eff2f8] text-slate-600','Bronze Partner':'bg-[#fbeee0] text-[#b45309]'};
+  const statusClass={'Completed':'bg-emerald-50 text-emerald-600','In Progress':'bg-[#e7effe] text-blue-600','Pending':'bg-[#fef3e2] text-amber-600'};
+  const stepDoneClass='bg-emerald-50 text-emerald-600';
+  const stepProgressClass='bg-[#e7effe] text-blue-600';
+  const stepPendingClass='bg-[#fef3e2] text-amber-600';
+  const stepCell=v=>{
+    if(v==='Pending') return `<td><span class="step-pill ${stepPendingClass}"><span class="w-1.5 h-1.5 rounded-full bg-current opacity-70"></span>Pending</span></td>`;
+    if(v==='In Progress') return `<td><span class="step-pill ${stepProgressClass}"><span class="w-1.5 h-1.5 rounded-full bg-current opacity-70"></span>In Progress</span></td>`;
+    return `<td><span class="step-pill ${stepDoneClass}"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg>${v}</span></td>`;
+  };
+  const overallBar=p=>{
+    const barColor=p>=100?'bg-[#00a860]':(p>0?'bg-[#2563eb]':'bg-slate-200');
+    const textColor=p>=100?'text-emerald-600':(p>0?'text-blue-600':'text-slate-400');
+    return `<td><div class="flex items-center gap-2"><div class="w-14 h-1.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full ${barColor} rounded-full" style="width:${p}%"></div></div><span class="text-[11px] font-bold ${textColor}">${p}%</span></div></td>`;
+  };
+  const rowHtml=p=>`<tr data-id="${p.id}" data-status="${p.status}" data-level="${p.level}">
+    <td><div class="flex items-center gap-2.5"><img src="${p.avatar}" class="w-7 h-7 rounded-full object-cover"><div class="leading-tight"><div class="text-[12.5px] font-semibold">${p.name}</div><div class="text-[10px] text-slate-400">${p.id}</div></div></div></td>
+    <td><span class="level-pill ${levelClass[p.level]}"><span>★</span>${p.level}</span></td>
+    <td><span class="status-pill ${statusClass[p.status]}"><span class="w-1.5 h-1.5 rounded-full bg-current opacity-70"></span>${p.status}</span></td>
+    ${p.steps.map(stepCell).join('')}
+    ${overallBar(p.overall)}
+  </tr>`;
+  const render=()=>{
+    const q=(document.getElementById('partner-search').value||'').toLowerCase();
+    const st=document.getElementById('status-filter').value;
+    const lv=document.getElementById('level-filter').value;
+    const sp=document.getElementById('step-filter').value;
+    const stepMap={agreement:0,nda:1,training:2,learn:3,resources:4,ready:5};
+    const visible=PARTNERS.filter(p=>{
+      const hay=(p.id+' '+p.name).toLowerCase();
+      let stepOk=true;
+      if(sp!=='all') stepOk=!p.steps[stepMap[sp]].toLowerCase().includes('pending');
+      return (!q||hay.includes(q)) && (st==='all'||p.status===st) && (lv==='all'||p.level===lv) && stepOk;
+    });
+    tbody.innerHTML=visible.map(rowHtml).join('');
+    document.getElementById('table-count').textContent = visible.length===PARTNERS.length
+      ? 'Showing 1 to '+PARTNERS.length+' of 248 entries'
+      : 'Showing 1 to '+visible.length+' of '+visible.length+' matching entries';
+  };
+  ['partner-search','status-filter','level-filter','step-filter'].forEach(id=>{
+    const el=document.getElementById(id);
+    el?.addEventListener('input',render);
+    el?.addEventListener('change',render);
+  });
+  document.getElementById('top-search-input')?.addEventListener('input',function(){document.getElementById('partner-search').value=this.value;render();});
+  render();
+  document.getElementById('export-btn')?.addEventListener('click',e=>{
+    e.preventDefault(); e.stopPropagation();
+    const rows=[['Partner ID','Partner','Partner Level','Onboarding Status','Overall Progress','Agreement','NDA Sign','Training & Certification','Learn About Company','Resources Access','Ready to Refer']];
+    PARTNERS.forEach(p=>rows.push([p.id,p.name,p.level,p.status,p.overall+'%',...p.steps]));
+    downloadStaticFile('partners-onboarding.csv', rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n'), 'text/csv');
+    showToast('Exported onboarding data to CSV','success');
+  });
+  const filtersBtn=[...document.querySelectorAll('button')].find(b=>b.textContent.includes('Filters'));
+  filtersBtn?.addEventListener('click',e=>{
+    e.preventDefault(); e.stopPropagation();
+    openModal({title:'Filter Onboarding', body:`
+      <div class="grid grid-cols-1 gap-3 text-sm">
+        <label><span class="text-xs font-semibold">Onboarding Status</span><select class="w-full border border-slate-200 rounded-xl px-3 py-2"><option>All</option><option>Completed</option><option>In Progress</option><option>Pending</option></select></label>
+        <label><span class="text-xs font-semibold">Partner Level</span><select class="w-full border border-slate-200 rounded-xl px-3 py-2"><option>All</option><option>Gold Partner</option><option>Silver Partner</option><option>Bronze Partner</option></select></label>
+        <label><span class="text-xs font-semibold">Invited By</span><select class="w-full border border-slate-200 rounded-xl px-3 py-2"><option>All</option><option>Admin User</option><option>System</option></select></label>
+      </div>`, actions:`<button class="btn-ghost" onclick="closeModal()">Cancel</button><button class="btn-primary" onclick="closeModal(); showToast('Onboarding filters applied','success')">Apply Filters</button>`});
+  });
+  const prev=document.getElementById('page-prev');
+  const next=document.getElementById('page-next');
+  next?.addEventListener('click',()=>{ if(prev) prev.disabled=false; next.disabled=true; });
+  prev?.addEventListener('click',()=>{ if(next) next.disabled=false; prev.disabled=true; });
+}
+
+function initAdminPartnerView(){
+  document.querySelectorAll('.detail-tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      document.querySelectorAll('.detail-tab').forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+  const wire=(el,fn)=>el?.addEventListener('click',e=>{ e.preventDefault(); e.stopPropagation(); fn(); });
+  [...document.querySelectorAll('button,a')].forEach(el=>{
+    if(el.textContent.includes('Follow Up') && el.tagName==='BUTTON'){
+      wire(el,()=>openModal({title:'Add Follow Up', body:`<label class="block"><span class="text-xs font-semibold">Notes</span><textarea rows="4" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm" placeholder="What needs a follow up?"></textarea></label>`, actions:`<button class="btn-ghost" onclick="closeModal()">Cancel</button><button class="btn-primary" onclick="closeModal(); showToast('Follow up logged','success')">Save</button>`}));
+    }
+    if(el.textContent.includes('Assign Task') && el.tagName==='BUTTON'){
+      wire(el,()=>openModal({title:'Assign Task', body:`<label class="block"><span class="text-xs font-semibold">Task</span><input placeholder="Task title" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"/></label>`, actions:`<button class="btn-ghost" onclick="closeModal()">Cancel</button><button class="btn-primary" onclick="closeModal(); showToast('Task assigned','success')">Assign</button>`}));
+    }
+    if(el.textContent.includes('Send Email') && el.tagName==='BUTTON'){
+      wire(el,()=>showToast('Email composer opened (demo)','success'));
+    }
+    if(el.textContent.includes('Add New Task') && el.tagName==='BUTTON'){
+      wire(el,()=>showToast('New task added (demo)','success'));
+    }
+    if(el.textContent.includes('Add Follow Up') && el.tagName==='BUTTON' && el.textContent.trim().length<24){
+      wire(el,()=>showToast('Follow up added (demo)','success'));
+    }
+    if(el.textContent.includes('View Public Profile')){
+      wire(el,()=>openModal({title:'Public Profile — James Anderson', body:`<div class="flex items-center gap-4"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=60" class="w-16 h-16 rounded-full object-cover"><div><div class="font-bold text-sm">James Anderson</div><div class="text-xs text-slate-500">ZP-2024-0001 • Gold Partner</div><div class="text-xs text-slate-500 mt-1">New York, USA</div></div></div><div class="mt-4 text-sm text-slate-600">Public partner card preview — used in the partner directory. Demo content.</div>`, actions:`<button class="btn-primary" onclick="closeModal()">Close</button>`, size:'sm'}));
+    }
+  });
+  // View All Tasks / View All Follow Ups
+  [...document.querySelectorAll('a')].forEach(a=>{
+    if(a.textContent.includes('View All Tasks') || a.textContent.includes('View All Follow Ups')){
+      a.addEventListener('click',e=>{ e.preventDefault(); e.stopPropagation(); showToast('Opening full list (demo)','info'); });
+    }
+  });
+}
+
+function initAdminPayouts(){
+  const tbody=document.getElementById('payout-tbody');
+  if(!tbody) return;
+  const PAYOUTS=[
+    {id:'PO-2024-0521',partner:'James Anderson',amount:'$2,500',method:'Bank Transfer',status:'Pending',requested:'May 15, 2024',avatar:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=60'},
+    {id:'PO-2024-0520',partner:'Sarah Mitchell',amount:'$1,800',method:'Bank Transfer',status:'Approved',requested:'May 14, 2024',avatar:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&q=60'},
+    {id:'PO-2024-0519',partner:'Michael Davis',amount:'$3,200',method:'PayPal',status:'Paid',requested:'May 12, 2024',avatar:'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&auto=format&fit=crop&q=60'},
+    {id:'PO-2024-0518',partner:'Emily Wilson',amount:'$750',method:'Bank Transfer',status:'Pending',requested:'May 12, 2024',avatar:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&auto=format&fit=crop&q=60'},
+    {id:'PO-2024-0517',partner:'David Lee',amount:'$1,150',method:'Bank Transfer',status:'Rejected',requested:'May 10, 2024',avatar:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&auto=format&fit=crop&q=60'},
+    {id:'PO-2024-0516',partner:'Daniel Martinez',amount:'$2,900',method:'PayPal',status:'Paid',requested:'May 08, 2024',avatar:'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&auto=format&fit=crop&q=60'},
+    {id:'PO-2024-0515',partner:'William Taylor',amount:'$1,600',method:'Bank Transfer',status:'Approved',requested:'May 06, 2024',avatar:'https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?w=80&auto=format&fit=crop&q=60'},
+    {id:'PO-2024-0514',partner:'Ava Thomas',amount:'$950',method:'Bank Transfer',status:'Paid',requested:'May 04, 2024',avatar:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&auto=format&fit=crop&q=60'}
+  ];
+  const statusClass={'Pending':'bg-amber-50 text-amber-600','Approved':'bg-sky-50 text-sky-600','Paid':'bg-emerald-50 text-emerald-600','Rejected':'bg-rose-50 text-rose-500'};
+  const rowHtml=p=>`<tr data-status="${p.status}">
+    <td class="font-semibold text-slate-500">${p.id}</td>
+    <td><div class="flex items-center gap-2.5"><img src="${p.avatar}" class="w-7 h-7 rounded-full object-cover"><span class="font-semibold">${p.partner}</span></div></td>
+    <td class="text-right font-bold">${p.amount}</td>
+    <td class="text-slate-500">${p.method}</td>
+    <td><span class="status-pill ${statusClass[p.status]}"><span class="w-1.5 h-1.5 rounded-full bg-current opacity-70"></span>${p.status}</span></td>
+    <td class="text-slate-500">${p.requested}</td>
+    <td><div class="flex items-center justify-center gap-1">
+      <button class="payout-approve w-7 h-7 grid place-items-center rounded-lg hover:bg-emerald-50 text-slate-400 hover:text-emerald-600 transition" title="Approve"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg></button>
+      <button class="payout-reject w-7 h-7 grid place-items-center rounded-lg hover:bg-rose-50 text-slate-400 hover:text-rose-500 transition" title="Reject"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button>
+    </div></td>
+  </tr>`;
+  const render=()=>{
+    const q=(document.getElementById('payout-search').value||'').toLowerCase();
+    const st=document.getElementById('payout-status').value;
+    const visible=PAYOUTS.filter(p=>{
+      const hay=(p.id+' '+p.partner).toLowerCase();
+      return (!q||hay.includes(q)) && (st==='all'||p.status===st);
+    });
+    tbody.innerHTML=visible.map(rowHtml).join('');
+    document.getElementById('payout-count').textContent = visible.length===PAYOUTS.length
+      ? 'Showing 1 to '+PAYOUTS.length+' of 248 entries'
+      : 'Showing 1 to '+visible.length+' of '+visible.length+' matching entries';
+  };
+  document.getElementById('payout-search')?.addEventListener('input',render);
+  document.getElementById('payout-status')?.addEventListener('change',render);
+  document.getElementById('top-search-input')?.addEventListener('input',function(){document.getElementById('payout-search').value=this.value;render();});
+  render();
+  tbody.addEventListener('click',e=>{
+    const btn=e.target.closest('.payout-approve, .payout-reject');
+    if(!btn) return;
+    e.preventDefault(); e.stopPropagation();
+    const tr=btn.closest('tr');
+    const id=tr?.querySelector('td')?.textContent||'PO-0000';
+    if(btn.classList.contains('payout-approve')){
+      openModal({title:'Approve Payout', body:`<p class="text-sm text-slate-600">Approve payout <b>${id}</b>? Funds will be released on the next payment cycle.</p>`, actions:`<button class="btn-ghost" onclick="closeModal()">Cancel</button><button class="btn-primary" onclick="closeModal(); showToast('Payout ${id} approved','success')">Approve</button>`, size:'sm'});
+    } else {
+      openModal({title:'Reject Payout', body:`<label class="block"><span class="text-xs font-semibold">Reason (optional)</span><textarea rows="3" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm" placeholder="e.g., KYC verification missing"></textarea></label>`, actions:`<button class="btn-ghost" onclick="closeModal()">Cancel</button><button class="btn-primary" onclick="closeModal(); showToast('Payout ${id} rejected','error')">Reject</button>`, size:'sm'});
+    }
+  });
+  document.getElementById('payout-export')?.addEventListener('click',e=>{
+    e.preventDefault(); e.stopPropagation();
+    const rows=[['Request ID','Partner','Amount','Method','Status','Requested On']];
+    PAYOUTS.forEach(p=>rows.push([p.id,p.partner,p.amount,p.method,p.status,p.requested]));
+    downloadStaticFile('payouts.csv', rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n'), 'text/csv');
+    showToast('Payouts exported to CSV','success');
+  });
+  // Period tabs adjust KPI values (same logic as portal earnings tabs)
+  const tabs=[...document.querySelectorAll('.bg-white.border.rounded-xl.p-1 button')].filter(b=>b.textContent.match(/This Month|This Quarter|This Year/));
+  tabs.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const parent=btn.parentElement;
+      if(parent){ [...parent.querySelectorAll('button')].forEach(b=>b.className='px-3.5 py-1.5 rounded-lg text-slate-600 hover:bg-slate-50'); btn.className='bg-[#4f46e5] text-white px-3.5 py-1.5 rounded-lg shadow-sm'; }
+      const map={'This Month':['$18,250','$14,900','$11,400','$3,500'],'This Quarter':['$52,800','$41,200','$30,750','$10,450'],'This Year':['$248,750','$198,600','$127,500','$71,100']};
+      const v=map[btn.textContent.trim()]||map['This Year'];
+      [...document.querySelectorAll('.admin-kpi-value')].forEach((el,i)=>{ if(v[i]&&el) el.textContent=v[i]; });
+      showToast(`Showing payouts — ${btn.textContent.trim()}`,'info',1100);
+    });
+  });
+}
+
+function initAdminTickets(){
+  const tbody=document.getElementById('ticket-tbody');
+  if(!tbody) return;
+  let seq=1043;
+  const TICKETS=[
+    {id:'T-1042',subject:'Payout not received for April cycle',partner:'James Anderson',priority:'High',status:'In Progress',assignee:'Support Team',created:'May 15, 2024',updated:'May 15, 2024',avatar:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=60'},
+    {id:'T-1041',subject:'Access to partner resources revoked',partner:'Sarah Mitchell',priority:'Medium',status:'Open',assignee:'Unassigned',created:'May 15, 2024',updated:'May 15, 2024',avatar:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&q=60'},
+    {id:'T-1040',subject:'How to update KYC documents?',partner:'Michael Davis',priority:'Low',status:'Resolved',assignee:'Support Team',created:'May 14, 2024',updated:'May 14, 2024',avatar:'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&auto=format&fit=crop&q=60'},
+    {id:'T-1039',subject:'Commission rate discrepancy on referral',partner:'Emily Wilson',priority:'High',status:'Open',assignee:'Finance Team',created:'May 14, 2024',updated:'May 14, 2024',avatar:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&auto=format&fit=crop&q=60'},
+    {id:'T-1038',subject:'Training certificate not visible',partner:'David Lee',priority:'Medium',status:'In Progress',assignee:'Support Team',created:'May 13, 2024',updated:'May 14, 2024',avatar:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&auto=format&fit=crop&q=60'},
+    {id:'T-1037',subject:'Request for new referral template',partner:'Olivia Brown',priority:'Low',status:'Resolved',assignee:'Marketing Team',created:'May 12, 2024',updated:'May 13, 2024',avatar:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&auto=format&fit=crop&q=60'},
+    {id:'T-1036',subject:'Portal login issue — OTP not received',partner:'Daniel Martinez',priority:'High',status:'Resolved',assignee:'Support Team',created:'May 11, 2024',updated:'May 12, 2024',avatar:'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&auto=format&fit=crop&q=60'},
+    {id:'T-1035',subject:'Update bank account details',partner:'Sophia Johnson',priority:'Medium',status:'Open',assignee:'Finance Team',created:'May 10, 2024',updated:'May 11, 2024',avatar:'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&auto=format&fit=crop&q=60'}
+  ];
+  const priorityClass={'High':'bg-red-50 text-red-500','Medium':'bg-amber-50 text-amber-600','Low':'bg-slate-100 text-slate-500'};
+  const statusClass={'Open':'bg-sky-50 text-sky-600','In Progress':'bg-indigo-50 text-indigo-600','Resolved':'bg-emerald-50 text-emerald-600'};
+  const rowHtml=t=>`<tr data-status="${t.status}" data-priority="${t.priority}">
+    <td class="font-semibold text-slate-500">${t.id}</td>
+    <td><div class="leading-tight"><div class="font-semibold max-w-[280px] truncate">${t.subject}</div><div class="text-[10px] text-slate-400">${t.partner}</div></div></td>
+    <td><span class="priority-pill ${priorityClass[t.priority]}">${t.priority}</span></td>
+    <td><span class="status-pill ${statusClass[t.status]}"><span class="w-1.5 h-1.5 rounded-full bg-current opacity-70"></span>${t.status}</span></td>
+    <td class="text-slate-500">${t.assignee}</td>
+    <td class="text-slate-500">${t.created}</td>
+    <td class="text-slate-500">${t.updated}</td>
+    <td><div class="flex items-center justify-center gap-1">
+      <button class="ticket-view w-7 h-7 grid place-items-center rounded-lg hover:bg-indigo-50 text-slate-400 hover:text-indigo-600 transition" title="View"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button>
+      <button class="ticket-status w-7 h-7 grid place-items-center rounded-lg hover:bg-slate-50 text-slate-400 hover:text-slate-600 transition" title="Change status"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 17l4-4-4-4"/><path d="M12 17l4-4-4-4"/></svg></button>
+    </div></td>
+  </tr>`;
+  const render=()=>{
+    const q=(document.getElementById('ticket-search').value||'').toLowerCase();
+    const st=document.getElementById('ticket-status').value;
+    const pr=document.getElementById('ticket-priority').value;
+    const visible=TICKETS.filter(t=>{
+      const hay=(t.id+' '+t.subject+' '+t.partner).toLowerCase();
+      return (!q||hay.includes(q)) && (st==='all'||t.status===st) && (pr==='all'||t.priority===pr);
+    });
+    tbody.innerHTML=visible.map(rowHtml).join('');
+    document.getElementById('ticket-count').textContent = visible.length===TICKETS.length
+      ? 'Showing 1 to '+TICKETS.length+' of 248 entries'
+      : 'Showing 1 to '+visible.length+' of '+visible.length+' matching entries';
+  };
+  document.getElementById('ticket-search')?.addEventListener('input',render);
+  document.getElementById('ticket-status')?.addEventListener('change',render);
+  document.getElementById('ticket-priority')?.addEventListener('change',render);
+  document.getElementById('top-search-input')?.addEventListener('input',function(){document.getElementById('ticket-search').value=this.value;render();});
+  render();
+  tbody.addEventListener('click',e=>{
+    const view=e.target.closest('.ticket-view');
+    if(view){
+      e.preventDefault(); e.stopPropagation();
+      const tr=view.closest('tr');
+      const id=tr?.querySelector('td')?.textContent||'T-0000';
+      openModal({title:'Ticket '+id, body:`<div class="space-y-3 text-sm"><div class="p-3 bg-slate-50 border border-slate-100 rounded-xl"><b>${tr?.querySelector('.font-semibold')?.textContent||'Ticket subject'}</b></div><p class="text-slate-600">Full conversation thread and ticket details would appear here. This is a demo preview of the ticket view.</p><div class="flex gap-2"><span class="status-pill bg-amber-50 text-amber-600">Awaiting reply</span><span class="status-pill bg-indigo-50 text-indigo-600">Priority: High</span></div></div>`, actions:`<button class="btn-ghost" onclick="closeModal()">Close</button><button class="btn-primary" onclick="closeModal(); showToast('Replying to ticket…','success')">Reply</button>`});
+      return;
+    }
+    const st=e.target.closest('.ticket-status');
+    if(st){
+      e.preventDefault(); e.stopPropagation();
+      const tr=st.closest('tr');
+      const id=tr?.querySelector('td')?.textContent||'T-0000';
+      openModal({title:'Change Status — '+id, body:`<label class="block"><span class="text-xs font-semibold">New Status</span><select id="ticket-new-status" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"><option>Open</option><option>In Progress</option><option>Resolved</option></select></label>`, actions:`<button class="btn-ghost" onclick="closeModal()">Cancel</button><button class="btn-primary" onclick="(function(){const v=document.getElementById('ticket-new-status').value; const t=document.querySelector('#ticket-tbody tr'); showToast('Ticket moved to '+v,'success'); closeModal();})()">Update</button>`, size:'sm'});
+    }
+  });
+  document.getElementById('new-ticket-btn')?.addEventListener('click',e=>{
+    e.preventDefault(); e.stopPropagation();
+    openModal({title:'Open New Ticket', body:`
+      <div class="space-y-3">
+        <label class="block"><span class="text-xs font-semibold">Partner</span><select id="tk-partner" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"><option>James Anderson</option><option>Sarah Mitchell</option><option>Michael Davis</option><option>Emily Wilson</option><option>David Lee</option></select></label>
+        <label class="block"><span class="text-xs font-semibold">Subject</span><input id="tk-subject" placeholder="Brief summary of the issue" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"/></label>
+        <div class="grid grid-cols-2 gap-3">
+          <label class="block"><span class="text-xs font-semibold">Priority</span><select id="tk-priority" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"><option>Low</option><option>Medium</option><option>High</option></select></label>
+          <label class="block"><span class="text-xs font-semibold">Assignee</span><select id="tk-assignee" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"><option>Support Team</option><option>Finance Team</option><option>Marketing Team</option><option>Unassigned</option></select></label>
+        </div>
+        <label class="block"><span class="text-xs font-semibold">Description</span><textarea id="tk-desc" rows="3" class="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2 text-sm"></textarea></label>
+      </div>`, actions:`<button class="btn-ghost" onclick="closeModal()">Cancel</button><button class="btn-primary" id="tk-save">Create Ticket</button>`});
+    document.getElementById('tk-save')?.addEventListener('click',()=>{
+      const subject=document.getElementById('tk-subject').value.trim();
+      if(!subject){ showToast('Please enter a subject','error'); return; }
+      const now=new Date();
+      const today=now.toLocaleDateString('en-US',{month:'short',day:'2-digit',year:'numeric'});
+      TICKETS.unshift({id:'T-'+seq++,subject,partner:document.getElementById('tk-partner').value,priority:document.getElementById('tk-priority').value,status:'Open',assignee:document.getElementById('tk-assignee').value,created:today,updated:today,avatar:'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&auto=format&fit=crop&q=60'});
+      render(); closeModal(); showToast('Ticket created successfully','success');
+    });
+  });
+  document.getElementById('ticket-export')?.addEventListener('click',e=>{
+    e.preventDefault(); e.stopPropagation();
+    const rows=[['Ticket ID','Subject','Partner','Priority','Status','Assignee','Created','Updated']];
+    TICKETS.forEach(t=>rows.push([t.id,t.subject,t.partner,t.priority,t.status,t.assignee,t.created,t.updated]));
+    downloadStaticFile('tickets.csv', rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n'), 'text/csv');
+    showToast('Tickets exported to CSV','success');
+  });
+  const prev=document.getElementById('page-prev');
+  const next=document.getElementById('page-next');
+  next?.addEventListener('click',()=>{ if(prev) prev.disabled=false; next.disabled=true; });
+  prev?.addEventListener('click',()=>{ if(next) next.disabled=false; prev.disabled=true; });
+}
+
 // ── Universal Static Data & Action Layer ──
 // Covers controls that are intentionally shared or were previously placeholders.
 const ZP_DATA={
@@ -1127,6 +1719,22 @@ const ZP_DATA={
     ['Brand Guidelines','PDF','Marketing'],
     ['Product Demo Video','MP4','Video'],
     ['Proposal Template','DOCX','Template']
+  ]
+};
+
+const ZP_ADMIN={
+  pages:[
+    {name:'Admin Dashboard',url:'admin.html',key:'overview kpi partners growth'},
+    {name:'All Partners',url:'partners.html',key:'partners list status level kyc'},
+    {name:'Onboarding Setup',url:'partners-onboarding.html',key:'onboarding steps progress invited'},
+    {name:'Commission & Payouts',url:'admin-payouts.html',key:'commission payout requests history rates'},
+    {name:'Tickets',url:'admin-tickets.html',key:'support tickets priority status'}
+  ],
+  activity:[
+    ['New partner registered','Emily Wilson joined the program','Today, 9:20 AM'],
+    ['Payout approved','$2,500 payout approved for James Anderson','Yesterday'],
+    ['Ticket resolved','Ticket #T-1042 marked as resolved','Yesterday'],
+    ['Onboarding completed','Michael Davis finished onboarding','May 14, 2024']
   ]
 };
 
@@ -1172,14 +1780,14 @@ function openActionMenu(anchor){
   setTimeout(()=>document.addEventListener('click',()=>menu.remove(),{once:true}),0);
 }
 
-function setupCommandSearch(){
+function setupCommandSearch(pages){
   const input=document.getElementById('top-search-input');
   if(!input)return;
   let panel;
   function render(q=''){
     panel?.remove();
     const query=q.toLowerCase().trim();
-    const hits=ZP_DATA.pages.filter(p=>!query||`${p.name} ${p.key}`.toLowerCase().includes(query)).slice(0,7);
+    const hits=(pages||ZP_DATA.pages).filter(p=>!query||`${p.name} ${p.key}`.toLowerCase().includes(query)).slice(0,7);
     panel=document.createElement('div'); panel.className='command-panel'; panel.id='command-panel';
     panel.innerHTML=`<div class="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">Quick navigation</div>${hits.length?hits.map((p,i)=>`<a class="command-result ${i===0?'active':''}" href="${p.url}"><span class="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 grid place-items-center">↗</span><div><div class="text-sm font-semibold">${p.name}</div><div class="text-[11px] text-slate-500">${p.key}</div></div><span class="command-key">Enter</span></a>`).join(''):`<div class="empty-state"><div class="empty-state-icon">⌕</div><div class="font-semibold text-slate-700">No matching pages</div><div class="text-xs mt-1">Try “reports”, “referrals”, or “earnings”.</div></div>`}`;
     document.body.appendChild(panel);
@@ -1196,7 +1804,7 @@ function setupCommandSearch(){
 }
 
 function wireUniversalActions(opts){
-  setupCommandSearch();
+  setupCommandSearch(opts.variant==='admin'?ZP_ADMIN.pages:ZP_DATA.pages);
 
   // Useful default behavior for every placeholder anchor and unclaimed button.
   document.addEventListener('click',e=>{
@@ -1214,7 +1822,7 @@ function wireUniversalActions(opts){
     if(label.match(/View All Activities|Recent Activity/i)){showStaticList('Recent Activities',ZP_DATA.activity);return;}
     if(label.match(/View All Quotations|Quotation/i)){showStaticList('Quotations',[['Q-2024-0056','Website Redesign','$15,000'],['Q-2024-0063','Website Development','$10,000']]);return;}
     if(label.match(/View All|View Full Timeline/i)){
-      const data=opts.active==='resources'?ZP_DATA.resources:opts.active==='referral'?ZP_DATA.referrals:ZP_DATA.activity;
+      const data=opts.variant==='admin'?ZP_ADMIN.activity:opts.active==='resources'?ZP_DATA.resources:opts.active==='referral'?ZP_DATA.referrals:ZP_DATA.activity;
       showStaticList(label.replace('View All','All')||'Details',data);return;
     }
     if(label.match(/Export|Download/i)){
@@ -1222,7 +1830,7 @@ function wireUniversalActions(opts){
       showToast('Export downloaded successfully','success');return;
     }
     if(label.match(/Contact|Call|Email|Live Chat/i)){
-      openModal({title:'Contact Partner Support',body:`<div class="grid gap-3"><a href="mailto:support@zentegra.com" class="card p-3 text-sm font-semibold">Email • support@zentegra.com</a><a href="tel:+18885550198" class="card p-3 text-sm font-semibold">Call • +1 (888) 555-0198</a><div class="card p-3 text-sm"><b>Live chat</b><div class="text-xs text-slate-500">An agent is available now.</div></div></div>`,actions:`<button class="btn-ghost" onclick="closeModal()">Close</button><button class="btn-primary" onclick="closeModal();showToast('Starting live chat…','success')">Start Chat</button>`});return;
+      openModal({title:opts.variant==='admin'?'Contact Support':'Contact Partner Support',body:`<div class="grid gap-3"><a href="mailto:support@zentegra.com" class="card p-3 text-sm font-semibold">Email • support@zentegra.com</a><a href="tel:+18885550198" class="card p-3 text-sm font-semibold">Call • +1 (888) 555-0198</a><div class="card p-3 text-sm"><b>Live chat</b><div class="text-xs text-slate-500">An agent is available now.</div></div></div>`,actions:`<button class="btn-ghost" onclick="closeModal()">Close</button><button class="btn-primary" onclick="closeModal();showToast('Starting live chat…','success')">Start Chat</button>`});return;
     }
     if(label.match(/Explore|Resources/i)){location.href='resources.html';return;}
     if(label.match(/Add Referral/i)){location.href='referral.html';return;}
@@ -1252,12 +1860,13 @@ function wireUniversalActions(opts){
 // ── Bootstrap ──
 function injectLayout(opts){
   currentActive = opts.active;
+  const admin = opts.variant==='admin';
   const sidebarEl=document.getElementById('app-sidebar');
   const topbarEl=document.getElementById('app-topbar');
   const mobileEl=document.getElementById('app-mobile-nav');
-  if(sidebarEl) sidebarEl.innerHTML=buildSidebar(opts.active);
-  if(topbarEl) topbarEl.innerHTML=buildTopbar(opts.title, opts.breadcrumb, opts.searchPlaceholder||'Search anything...', opts.extraActions||'');
-  if(mobileEl) mobileEl.innerHTML=buildMobile(opts.active);
+  if(sidebarEl) sidebarEl.innerHTML=admin?buildAdminSidebar(opts.active):buildSidebar(opts.active);
+  if(topbarEl) topbarEl.innerHTML=buildTopbar(opts.title, opts.breadcrumb, opts.searchPlaceholder||'Search anything...', opts.extraActions||'', admin);
+  if(mobileEl) mobileEl.innerHTML=admin?buildAdminMobile(opts.active):buildMobile(opts.active);
   // ensure containers exist
   if(!document.getElementById('toast-container')){
     const c=document.createElement('div'); c.id='toast-container'; document.body.appendChild(c);
@@ -1285,7 +1894,15 @@ function injectLayout(opts){
       earnings:initEarnings,
       reports:initReports
     };
-    const fn=map[opts.active];
+    const adminMap={
+      dashboard:initAdminDashboard,
+      partners:initAdminPartners,
+      onboarding:initAdminOnboarding,
+      payouts:initAdminPayouts,
+      tickets:initAdminTickets,
+      partnerView:initAdminPartnerView
+    };
+    const fn=(admin?adminMap:map)[opts.active];
     try{ if(fn) fn(); }catch(e){ console.error('init error',e); }
     try{ wireUniversalActions(opts); }catch(e){ console.error('universal action error',e); }
 
@@ -1305,9 +1922,9 @@ function injectLayout(opts){
     window.addEventListener('resize', debounce(ro,120));
 
     // welcome toast on first load per session
-    if(!sessionStorage.getItem('zp_welcomed')){
-      sessionStorage.setItem('zp_welcomed','1');
-      setTimeout(()=>showToast(`Welcome back, James! 👋 — ${opts.title} loaded`,'info',2200), 500);
+    if(!safeSessionGet('zp_welcomed')){
+      safeSessionSet('zp_welcomed','1');
+      setTimeout(()=>showToast(admin?`Welcome back, Admin! 🛡 — ${opts.title} loaded`:`Welcome back, James! 👋 — ${opts.title} loaded`,'info',2200), 500);
     }
   }, 30);
 }

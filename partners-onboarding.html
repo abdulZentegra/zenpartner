@@ -3,140 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZenPartner — Partners Onboarding</title>
+<title>ZenPartner — Onboarding Setup</title>
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="app.css">
-<style>
-  /* ── Admin "Partners Onboarding" page (Admin4 design) ── */
-  .admin-nav-group{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.38);font-weight:700}
-  .admin-nav-link{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:10px;font-size:13px;color:rgba(255,255,255,.78);transition:background .15s,color .15s}
-  .admin-nav-link:hover{background:rgba(255,255,255,.08);color:#fff}
-  .admin-nav-link.active{background:linear-gradient(90deg,#4f46e5,#4338ca);color:#fff;font-weight:600;box-shadow:0 4px 14px rgba(79,70,229,.35)}
-  .admin-card{background:#fff;border:1px solid #eef0f6;border-radius:16px;box-shadow:0 1px 2px rgba(16,24,40,.03),0 8px 28px rgba(15,23,42,.04)}
-  .admin-table th{font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:#8b93a7;font-weight:700;text-align:left;padding:9px 10px;background:#fafbfe;border-bottom:1px solid #eef0f6;white-space:nowrap}
-  .admin-table td{padding:10px 10px;border-bottom:1px solid #f1f3f9;font-size:12px;vertical-align:middle;white-space:nowrap}
-  .admin-table tbody tr:hover{background:#fafbff}
-  .level-pill{display:inline-flex;align-items:center;gap:3px;padding:3px 10px;border-radius:999px;font-size:10.5px;font-weight:700}
-  .step-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;font-size:10.5px;font-weight:600;white-space:nowrap}
-  .status-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;font-size:10.5px;font-weight:600}
-</style>
-</head>
+<link rel="stylesheet" href="app.css"></head>
 <body class="bg-[#f6f7fb] text-slate-800 antialiased">
 <div class="min-h-screen flex">
 
   <!-- ══════════ ADMIN SIDEBAR (Admin4 design) ══════════ -->
-  <div id="admin-sidebar" class="hidden lg:block flex-none">
-    <aside class="fixed top-0 left-0 z-30 flex flex-col w-[250px] h-screen overflow-y-auto scrollbar-none text-white"
-           style="background:linear-gradient(180deg,#08102f 0%,#0a1238 55%,#07102e 100%);border-right:1px solid rgba(255,255,255,.06)">
-      <!-- Brand -->
-      <div class="px-5 py-5 flex items-center gap-3">
-        <a href="admin.html" class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#7c3aed] via-[#4f46e5] to-[#06b6d4] flex items-center justify-center font-black text-lg rotate-3 shrink-0">Z</a>
-        <div>
-          <div class="font-extrabold tracking-wide text-[13px] leading-none">ZENPARTNER</div>
-          <div class="text-[10px] text-white/60 tracking-widest font-semibold">Admin Portal</div>
-        </div>
-      </div>
-
-      <nav class="px-3 pb-6 flex-1 text-[13px]">
-        <!-- OVERVIEW -->
-        <div class="admin-nav-group px-3 mt-4 mb-1.5">Overview</div>
-        <a href="admin.html" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
-        <a href="admin.html" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l5-5 4 4 8-8"/><path d="M15 8h6v6"/></svg> Partners Overview</a>
-        <a href="partners.html" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="7" r="3"/><path d="M2 19a7 7 0 0 1 14 0"/><path d="M16 4.5a3 3 0 0 1 0 5"/><path d="M18.5 19a7 7 0 0 0-3-5.7"/></svg> All Partners</a>
-        <a href="partners-onboarding.html" class="admin-nav-link active"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg> Partners Onboarding</a>
-
-        <!-- MANAGEMENT -->
-        <div class="admin-nav-group px-3 mt-5 mb-1.5">Management</div>
-        <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/><path d="M12 6v4"/><path d="M10 8h4"/></svg> Partner Details</a>
-        <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/></svg> Tasks &amp; Assignments</a>
-        <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.2-.6L3 21l1.7-5.8a8.4 8.4 0 1 1 16.3-3.7z"/></svg> Follow Ups</a>
-        <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3.5v5.5c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5.5z"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/></svg> KYC &amp; Verification</a>
-        <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg> Performance Review</a>
-
-        <!-- PROGRAM MANAGEMENT -->
-        <div class="admin-nav-group px-3 mt-5 mb-1.5">Program Management</div>
-        <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3"/><path d="M12 19v3"/><path d="M2 12h3"/><path d="M19 12h3"/></svg> Leads &amp; Projects</a>
-        <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Activities</a>
-        <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="6"/><path d="M15 13a3 3 0 1 1-6 0"/><path d="M12 16v4"/><path d="M9 20h6"/></svg> Earnings &amp; Payouts</a>
-        <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg> Reports &amp; Analytics</a>
-
-        <!-- CONFIGURATION -->
-        <div class="admin-nav-group px-3 mt-5 mb-1.5">Configuration</div>
-        <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v1"/><path d="M19 3l.7 1.7L21.4 5.4l-1.7.7L19 7.8l-.7-1.7-1.7-.7 1.7-.7z"/></svg> Users &amp; Roles</a>
-        <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6L22 8"/></svg> Email Templates</a>
-        <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings</a>
-        <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg> Audit Logs</a>
-      </nav>
-
-      <!-- Support card + profile (bottom) -->
-      <div class="p-3 mt-auto">
-        <div class="rounded-xl bg-white/[0.06] border border-white/10 p-3.5">
-          <div class="flex items-center gap-2">
-            <span class="w-7 h-7 rounded-lg bg-[#4f46e5]/30 text-indigo-300 grid place-items-center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 10a3 3 0 0 1 6 0c0 2-3 2.5-3 4"/><circle cx="12" cy="17.5" r=".5" fill="currentColor"/></svg></span>
-            <div class="text-xs font-bold">Need Help?</div>
-          </div>
-          <p class="text-[10.5px] text-white/55 mt-1.5 leading-4">Our support team is here for you.</p>
-          <a href="#" class="mt-2.5 flex items-center justify-center gap-1.5 bg-[#4f46e5] hover:bg-[#4338ca] text-white text-[11px] font-bold py-2 rounded-lg transition">Contact Support</a>
-          <div class="mt-2.5 space-y-0.5 text-[10px] text-white/50">
-            <div class="flex items-center gap-1.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6L22 8"/></svg> admin@zentegra.com</div>
-            <div class="flex items-center gap-1.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg> +1 (688) 555-0198</div>
-          </div>
-        </div>
-        <a href="admin.html" class="mt-3 flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-white/[0.06] transition">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&auto=format&fit=crop&q=60" class="w-9 h-9 rounded-full object-cover">
-          <div class="flex-1 leading-tight">
-            <div class="text-xs font-semibold flex items-center gap-1">Admin User <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
-            <div class="text-[10px] text-white/50">Super Administrator</div>
-          </div>
-        </a>
-      </div>
-    </aside>
-  </div>
+  <div id="app-sidebar"></div>
 
   <!-- ══════════ MAIN COLUMN ══════════ -->
   <div class="flex-1 min-w-0 flex flex-col">
 
-    <!-- ── Topbar ── -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-20">
-      <div class="flex items-center gap-3 px-3 sm:px-4 lg:px-6 py-3">
-        <button id="admin-nav-toggle" class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
-        </button>
-        <div class="leading-tight min-w-0">
-          <div class="font-bold text-[15px] sm:text-[16px] jakarta truncate">Partners Onboarding</div>
-          <div class="text-[11px] text-slate-500 truncate"><a href="admin.html" class="hover:text-indigo-600">Home</a> <span class="mx-1">›</span> <span class="text-slate-700 font-medium">Partners Onboarding</span></div>
-        </div>
-        <label class="hidden md:flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2 w-[240px] lg:w-[340px] ml-2 lg:ml-6 shadow-sm focus-within:border-[#4f46e5] focus-within:ring-4 focus-within:ring-indigo-100 transition">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" class="shrink-0"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
-          <input id="top-search-input" placeholder="Search partner by name, email or ID.." class="flex-1 text-xs placeholder:text-slate-400 bg-transparent min-w-0 outline-none"/>
-          <span class="hidden xl:inline-flex text-[9px] font-semibold text-slate-400 border border-slate-200 rounded px-1.5 py-0.5">⌘ K</span>
-        </label>
-        <div class="ml-auto flex items-center gap-2 sm:gap-3">
-          <div class="relative">
-            <button id="admin-profile-toggle" class="flex items-center gap-2.5 pl-1 pr-2 py-1 rounded-xl hover:bg-slate-50 transition" aria-label="Admin profile">
-              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&auto=format&fit=crop&q=60" class="w-8 h-8 rounded-full object-cover ring-2 ring-indigo-100">
-              <div class="leading-tight hidden xl:block text-left">
-                <div class="text-xs font-semibold flex items-center gap-1">Admin User <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
-                <div class="text-[10px] text-slate-500 font-medium">Super Administrator</div>
-              </div>
-            </button>
-            <div id="admin-profile-dropdown" class="dropdown" style="min-width:210px">
-              <div class="p-3 flex gap-3 border-b border-slate-100">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&auto=format&fit=crop&q=60" class="w-10 h-10 rounded-full object-cover">
-                <div class="min-w-0"><div class="text-sm font-bold">Admin User</div><div class="text-xs text-slate-500">admin@zentegra.com</div><div class="text-[11px] text-indigo-600 font-semibold">Super Administrator</div></div>
-              </div>
-              <div class="py-1">
-                <a href="#" class="dropdown-item text-[13px] font-medium">Admin Profile</a>
-                <a href="#" class="dropdown-item text-[13px] font-medium">System Settings</a>
-                <a href="index.html" class="dropdown-item text-[13px] font-medium">Partner Portal</a>
-                <a href="#" class="dropdown-item text-[13px] font-medium text-red-600">Sign Out</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+    <div id="app-topbar"></div>
 
     <!-- ── Content ── -->
     <div class="flex gap-4 p-3 lg:p-4 bg-[#f6f7fb]">
@@ -321,155 +201,10 @@
   </div>
 </div>
 
-<!-- ── Mobile drawer + backdrop ── -->
-<div id="admin-mobile-backdrop" class="mobile-backdrop"></div>
-<div id="admin-mobile-drawer" class="mobile-drawer lg:hidden">
-  <div class="px-5 py-5 flex items-center gap-3 border-b border-white/10">
-    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#7c3aed] via-[#4f46e5] to-[#06b6d4] flex items-center justify-center font-black text-lg rotate-3">Z</div>
-    <div>
-      <div class="font-extrabold tracking-wide text-[13px] leading-none">ZENPARTNER</div>
-      <div class="text-[10px] text-white/60 tracking-widest font-semibold">Admin Portal</div>
-    </div>
-    <button id="admin-drawer-close" class="ml-auto w-8 h-8 grid place-items-center rounded-lg text-white/60 hover:bg-white/10"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button>
-  </div>
-  <nav class="px-3 py-4 flex-1 overflow-y-auto text-[13px]">
-    <div class="admin-nav-group px-3 mt-1 mb-1.5">Overview</div>
-    <a href="admin.html" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
-    <a href="admin.html" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l5-5 4 4 8-8"/><path d="M15 8h6v6"/></svg> Partners Overview</a>
-    <a href="partners.html" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="7" r="3"/><path d="M2 19a7 7 0 0 1 14 0"/><path d="M16 4.5a3 3 0 0 1 0 5"/><path d="M18.5 19a7 7 0 0 0-3-5.7"/></svg> All Partners</a>
-    <a href="partners-onboarding.html" class="admin-nav-link active"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg> Partners Onboarding</a>
-    <div class="admin-nav-group px-3 mt-5 mb-1.5">Management</div>
-    <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/><path d="M12 6v4"/><path d="M10 8h4"/></svg> Partner Details</a>
-    <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/></svg> Tasks &amp; Assignments</a>
-    <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.2-.6L3 21l1.7-5.8a8.4 8.4 0 1 1 16.3-3.7z"/></svg> Follow Ups</a>
-    <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3.5v5.5c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5.5z"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/></svg> KYC &amp; Verification</a>
-    <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg> Performance Review</a>
-    <div class="admin-nav-group px-3 mt-5 mb-1.5">Program Management</div>
-    <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3"/><path d="M12 19v3"/><path d="M2 12h3"/><path d="M19 12h3"/></svg> Leads &amp; Projects</a>
-    <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Activities</a>
-    <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="6"/><path d="M15 13a3 3 0 1 1-6 0"/><path d="M12 16v4"/><path d="M9 20h6"/></svg> Earnings &amp; Payouts</a>
-    <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg> Reports &amp; Analytics</a>
-    <div class="admin-nav-group px-3 mt-5 mb-1.5">Configuration</div>
-    <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v1"/><path d="M19 3l.7 1.7L21.4 5.4l-1.7.7L19 7.8l-.7-1.7-1.7-.7 1.7-.7z"/></svg> Users &amp; Roles</a>
-    <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6L22 8"/></svg> Email Templates</a>
-    <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings</a>
-    <a href="#" class="admin-nav-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg> Audit Logs</a>
-  </nav>
-  <div class="p-4 border-t border-white/10">
-    <div class="rounded-xl bg-white/[0.06] border border-white/10 p-3.5">
-      <div class="text-xs font-bold">Need Help?</div>
-      <p class="text-[10.5px] text-white/55 mt-1 leading-4">Our support team is here for you.</p>
-      <a href="#" class="mt-2 flex items-center justify-center bg-[#4f46e5] text-white text-[11px] font-bold py-2 rounded-lg">Contact Support</a>
-      <div class="mt-2 text-[10px] text-white/50">admin@zentegra.com · +1 (688) 555-0198</div>
-    </div>
-    <a href="admin.html" class="mt-2 flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-white/[0.06] transition">
-      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&auto=format&fit=crop&q=60" class="w-8 h-8 rounded-full object-cover">
-      <div class="leading-tight"><div class="text-xs font-semibold">Admin User</div><div class="text-[10px] text-white/50">Super Administrator</div></div>
-    </a>
-  </div>
-</div>
-
+<div id="app-mobile-nav"></div>
+<script src="layout.js"></script>
 <script>
-/* ── Data: onboarding rows (from Admin4.png) ── */
-const PARTNERS=[
-  {id:'ZP-2024-0001',name:'James Anderson',level:'Gold Partner',status:'Completed',overall:100,steps:['May 01, 2024','May 02, 2024','May 05, 2024','May 06, 2024','May 07, 2024','May 08, 2024'],avatar:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=60'},
-  {id:'ZP-2024-0002',name:'Sarah Mitchell',level:'Gold Partner',status:'In Progress',overall:33,steps:['May 03, 2024','May 04, 2024','In Progress','Pending','Pending','Pending'],avatar:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&q=60'},
-  {id:'ZP-2024-0003',name:'Michael Davis',level:'Silver Partner',status:'In Progress',overall:17,steps:['May 02, 2024','Pending','Pending','Pending','Pending','Pending'],avatar:'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&auto=format&fit=crop&q=60'},
-  {id:'ZP-2024-0004',name:'Emily Wilson',level:'Bronze Partner',status:'In Progress',overall:22,steps:['May 06, 2024','In Progress','Pending','Pending','Pending','Pending'],avatar:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&auto=format&fit=crop&q=60'},
-  {id:'ZP-2024-0005',name:'David Lee',level:'Bronze Partner',status:'Pending',overall:0,steps:['Pending','Pending','Pending','Pending','Pending','Pending'],avatar:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&auto=format&fit=crop&q=60'},
-  {id:'ZP-2024-0006',name:'Emily Wilson',level:'Gold Partner',status:'In Progress',overall:67,steps:['May 04, 2024','May 05, 2024','May 06, 2024','In Progress','Pending','Pending'],avatar:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&auto=format&fit=crop&q=60'},
-  {id:'ZP-2024-0007',name:'Daniel Martinez',level:'Silver Partner',status:'In Progress',overall:33,steps:['May 03, 2024','Pending','In Progress','Pending','Pending','Pending'],avatar:'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&auto=format&fit=crop&q=60'},
-  {id:'ZP-2024-0008',name:'Sophia Johnson',level:'Bronze Partner',status:'Pending',overall:0,steps:['Pending','Pending','Pending','Pending','Pending','Pending'],avatar:'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&auto=format&fit=crop&q=60'}
-];
-
-const levelClass={ 'Gold Partner':'bg-[#fef3df] text-amber-600', 'Silver Partner':'bg-[#eff2f8] text-slate-600', 'Bronze Partner':'bg-[#fbeee0] text-[#b45309]' };
-const statusClass={ 'Completed':'bg-emerald-50 text-emerald-600', 'In Progress':'bg-[#e7effe] text-blue-600', 'Pending':'bg-[#fef3e2] text-amber-600' };
-const stepDoneClass='bg-emerald-50 text-emerald-600';
-const stepProgressClass='bg-[#e7effe] text-blue-600';
-const stepPendingClass='bg-[#fef3e2] text-amber-600';
-
-function stepCell(v){
-  if(v==='Pending') return `<td><span class="step-pill ${stepPendingClass}"><span class="w-1.5 h-1.5 rounded-full bg-current opacity-70"></span>Pending</span></td>`;
-  if(v==='In Progress') return `<td><span class="step-pill ${stepProgressClass}"><span class="w-1.5 h-1.5 rounded-full bg-current opacity-70"></span>In Progress</span></td>`;
-  return `<td><span class="step-pill ${stepDoneClass}"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg>${v}</span></td>`;
-}
-function overallBar(p){
-  const barColor = p>=100 ? 'bg-[#00a860]' : (p>0 ? 'bg-[#2563eb]' : 'bg-slate-200');
-  const textColor = p>=100 ? 'text-emerald-600' : (p>0 ? 'text-blue-600' : 'text-slate-400');
-  return `<td><div class="flex items-center gap-2"><div class="w-14 h-1.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full ${barColor} rounded-full" style="width:${p}%"></div></div><span class="text-[11px] font-bold ${textColor}">${p}%</span></div></td>`;
-}
-
-function rowHtml(p){
-  return `<tr data-id="${p.id}" data-name="${p.name.toLowerCase()}" data-status="${p.status}" data-level="${p.level}" data-steps="${p.steps.join('|').toLowerCase()}">
-    <td><div class="flex items-center gap-2.5"><img src="${p.avatar}" class="w-7 h-7 rounded-full object-cover"><div class="leading-tight"><div class="text-[12.5px] font-semibold">${p.name}</div><div class="text-[10px] text-slate-400">${p.id}</div></div></div></td>
-    <td><span class="level-pill ${levelClass[p.level]}"><span>★</span>${p.level}</span></td>
-    <td><span class="status-pill ${statusClass[p.status]}"><span class="w-1.5 h-1.5 rounded-full bg-current opacity-70"></span>${p.status}</span></td>
-    ${p.steps.map(stepCell).join('')}
-    ${overallBar(p.overall)}
-  </tr>`;
-}
-
-const tbody=document.getElementById('onboard-tbody');
-tbody.innerHTML=PARTNERS.map(rowHtml).join('');
-
-function render(){
-  const q=(document.getElementById('partner-search').value||'').toLowerCase();
-  const st=document.getElementById('status-filter').value;
-  const lv=document.getElementById('level-filter').value;
-  const sp=document.getElementById('step-filter').value;
-  const stepMap={agreement:0,nda:1,training:2,learn:3,resources:4,ready:5};
-  const visible=PARTNERS.filter(p=>{
-    const hay=(p.id+' '+p.name).toLowerCase();
-    let stepOk=true;
-    if(sp!=='all'){ stepOk = !p.steps[stepMap[sp]].toLowerCase().includes('pending'); }
-    return (!q||hay.includes(q)) && (st==='all'||p.status===st) && (lv==='all'||p.level===lv) && stepOk;
-  });
-  tbody.innerHTML=visible.map(rowHtml).join('');
-  document.getElementById('table-count').textContent= visible.length===PARTNERS.length
-    ? 'Showing 1 to '+PARTNERS.length+' of 248 entries'
-    : 'Showing 1 to '+visible.length+' of '+visible.length+' matching entries';
-}
-['partner-search','status-filter','level-filter','step-filter'].forEach(id=>{
-  const el=document.getElementById(id);
-  el.addEventListener('input',render);
-  el.addEventListener('change',render);
-});
-const topSearch=document.getElementById('top-search-input');
-topSearch.addEventListener('input',function(){document.getElementById('partner-search').value=topSearch.value;render();});
-
-/* ── Export CSV ── */
-document.getElementById('export-btn').addEventListener('click',function(){
-  const rows=[['Partner ID','Partner','Partner Level','Onboarding Status','Overall Progress','Agreement','NDA Sign','Training & Certification','Learn About Company','Resources Access','Ready to Refer']];
-  PARTNERS.forEach(p=>rows.push([p.id,p.name,p.level,p.status,p.overall+'%',...p.steps]));
-  const csv=rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
-  a.download='partners-onboarding.csv';
-  a.click();
-});
-
-/* ── Mobile drawer ── */
-const drawer=document.getElementById('admin-mobile-drawer');
-const backdrop=document.getElementById('admin-mobile-backdrop');
-const toggle=document.getElementById('admin-nav-toggle');
-const closeBtn=document.getElementById('admin-drawer-close');
-function openDrawer(){drawer.classList.add('open');backdrop.classList.add('open');toggle.setAttribute('aria-expanded','true');}
-function closeDrawer(){drawer.classList.remove('open');backdrop.classList.remove('open');toggle.setAttribute('aria-expanded','false');}
-toggle.addEventListener('click',openDrawer);
-closeBtn.addEventListener('click',closeDrawer);
-backdrop.addEventListener('click',closeDrawer);
-
-/* ── Admin profile dropdown ── */
-const pBtn=document.getElementById('admin-profile-toggle');
-const pMenu=document.getElementById('admin-profile-dropdown');
-pBtn.addEventListener('click',function(e){e.stopPropagation();pMenu.classList.toggle('open');});
-document.addEventListener('click',function(){pMenu.classList.remove('open');});
-
-/* ── Pagination (cosmetic) ── */
-const prev=document.getElementById('page-prev');
-const next=document.getElementById('page-next');
-next.addEventListener('click',function(){prev.disabled=false;next.disabled=true;});
-prev.addEventListener('click',function(){next.disabled=false;prev.disabled=true;});
+  injectLayout({variant:'admin', active:'onboarding', title:'Onboarding Setup', breadcrumb:'Onboarding Setup', searchPlaceholder:'Search partner by name, email or ID...'});
 </script>
 </body>
 </html>

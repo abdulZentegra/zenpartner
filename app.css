@@ -320,6 +320,30 @@ button:focus:not(:focus-visible),a:focus:not(:focus-visible){outline:none}
   #toast-container{bottom:max(16px, env(safe-area-inset-bottom))}
 }
 
+/* ── Admin Components (shared across all admin pages) ── */
+.admin-card{background:#fff;border:1px solid #eef0f6;border-radius:16px;box-shadow:0 1px 2px rgba(16,24,40,.03),0 8px 28px rgba(15,23,42,.04)}
+.admin-card:hover{border-color:#dde2ec}
+.admin-table th{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:#8b93a7;font-weight:700;text-align:left;padding:10px 14px;background:#fafbfe;border-bottom:1px solid #eef0f6;white-space:nowrap}
+.admin-table td{padding:11px 14px;border-bottom:1px solid #f1f3f9;font-size:12.5px;vertical-align:middle;white-space:nowrap}
+.admin-table tbody tr:hover{background:#fafbff}
+.status-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;font-size:10.5px;font-weight:600}
+.level-pill{display:inline-flex;align-items:center;gap:3px;padding:3px 10px;border-radius:999px;font-size:10.5px;font-weight:700}
+.priority-pill{display:inline-flex;align-items:center;padding:2.5px 9px;border-radius:6px;font-size:10.5px;font-weight:700}
+.step-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;font-size:10.5px;font-weight:600;white-space:nowrap}
+.info-row{display:flex;align-items:center;gap:10px;padding:7px 0}
+.info-label{width:88px;flex:none;font-size:11px;color:#8b93a7;font-weight:600}
+.info-value{font-size:12px;font-weight:600;color:#334155;min-width:0}
+.detail-tab{position:relative;padding:9px 4px;font-size:12.5px;font-weight:600;color:#64748b;cursor:pointer;transition:color .15s;white-space:nowrap}
+.detail-tab:hover{color:#4f46e5}
+.detail-tab.active{color:#4f46e5}
+.detail-tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2.5px;background:#4f46e5;border-radius:99px}
+/* Admin tables stay usable on small screens */
+@media (max-width:640px){
+  .admin-table th,.admin-table td{padding:9px 8px!important;font-size:11px}
+}
+/* Admin KPI value sizing scales with viewport (matches portal KPI rhythm) */
+.admin-kpi-value{font-size:clamp(17px,2vw,22px);line-height:1.1;font-weight:800}
+
 /* ── Auto-adjust for height ── */
 @media (max-height:600px){
   #app-sidebar aside{padding-top:4px; padding-bottom:4px}
