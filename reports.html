@@ -4,238 +4,123 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reports & Analytics — ZenPartner</title>
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="app.css">
-<style>
-.jakarta{font-family:'Plus Jakarta Sans',sans-serif}
-.leads-donut{background: conic-gradient(#4f46e5 0 38%, #60a5fa 38% 64%, #10b981 64% 83%, #f97316 83% 94%, #38bdf8 94% 99%, #f59e0b 99% 100%)}
-</style>
+<script src="https://static.zohocdn.com/creator/widgets/version/2.0/widgetsdk-min.js"></script>
 </head>
-<body class="bg-[#f6f7fb] text-slate-800 antialiased">
-<div class="min-h-screen flex">
+<body>
+<div class="zp-shell">
   <div id="app-sidebar"></div>
-  <div class="flex-1 min-w-0 flex flex-col">
+  <div class="zp-main">
     <div id="app-topbar"></div>
+    <div class="zp-content">
+      <main class="zp-page">
 
-    <main class="p-4 lg:p-5 max-w-[1450px] mx-auto w-full space-y-4">
-      <!-- Top Filters -->
-      <div class="flex flex-wrap items-center gap-2 justify-between">
-        <div class="bg-white border border-slate-200 rounded-xl p-1 flex gap-1 text-[11px] font-semibold">
-          <button class="bg-[#4f46e5] text-white px-3.5 py-1.5 rounded-lg shadow-sm">This Year</button>
-          <button class="px-3.5 py-1.5 rounded-lg text-slate-600 hover:bg-slate-50">This Quarter</button>
-          <button class="px-3.5 py-1.5 rounded-lg text-slate-600 hover:bg-slate-50">This Month</button>
-          <button class="px-3.5 py-1.5 rounded-lg text-slate-600 hover:bg-slate-50">Custom Range</button>
-          <button class="w-7 h-7 rounded-lg bg-white border border-slate-200 grid place-items-center text-slate-500"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></button>
-        </div>
-        <a href="#" class="inline-flex items-center gap-1.5 bg-white border border-indigo-200 text-indigo-700 text-[11px] font-bold px-4 py-2 rounded-xl hover:bg-indigo-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Export Report</a>
-      </div>
-
-      <!-- Stats Row -->
-      <div class="grid grid-cols-2 lg:grid-cols-6 gap-3">
-        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
-          <div class="text-[11px] font-semibold text-slate-500">Total Leads</div>
-          <div class="text-[18px] font-extrabold mt-1">1,248</div>
-          <div class="text-[11px] mt-1"><span class="text-emerald-600 font-bold">↑ 20%</span> <span class="text-slate-500">vs last year</span></div>
-        </div>
-        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
-          <div class="text-[11px] font-semibold text-slate-500">Qualified Leads</div>
-          <div class="text-[18px] font-extrabold mt-1">420</div>
-          <div class="text-[11px] mt-1"><span class="text-emerald-600 font-bold">↑ 18%</span> <span class="text-slate-500">vs last year</span></div>
-        </div>
-        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
-          <div class="text-[11px] font-semibold text-slate-500">Projects Won</div>
-          <div class="text-[18px] font-extrabold mt-1">186</div>
-          <div class="text-[11px] mt-1"><span class="text-emerald-600 font-bold">↑ 25%</span> <span class="text-slate-500">vs last year</span></div>
-        </div>
-        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
-          <div class="text-[11px] font-semibold text-slate-500">Conversion Rate</div>
-          <div class="text-[18px] font-extrabold mt-1">14.92%</div>
-          <div class="text-[11px] mt-1"><span class="text-emerald-600 font-bold">↑ 12%</span> <span class="text-slate-500">vs last year</span></div>
-        </div>
-        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
-          <div class="text-[11px] font-semibold text-slate-500">Total Earnings</div>
-          <div class="text-[18px] font-extrabold mt-1">$24,750</div>
-          <div class="text-[11px] mt-1"><span class="text-emerald-600 font-bold">↑ 15%</span> <span class="text-slate-500">vs last year</span></div>
-        </div>
-        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
-          <div class="text-[11px] font-semibold text-slate-500">Total Payouts</div>
-          <div class="text-[18px] font-extrabold mt-1">$12,750</div>
-          <div class="text-[11px] mt-1"><span class="text-emerald-600 font-bold">↑ 20%</span> <span class="text-slate-500">vs last year</span></div>
-        </div>
-      </div>
-
-      <!-- Middle Charts -->
-      <div class="grid grid-cols-1 xl:grid-cols-12 gap-4">
-        <!-- Leads vs Projects vs Earnings (span 6) -->
-        <div class="xl:col-span-5 bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
-          <h3 class="text-[12px] font-bold">Leads vs Projects vs Earnings</h3>
-          <div class="flex gap-3 text-[10px] font-semibold mt-2">
-            <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#4f46e5]"></span> Leads</span>
-            <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Projects Won</span>
-            <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-orange-400"></span> Earnings (USD)</span>
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+          <div class="zp-segmented">
+            <button class="active">This Year</button><button>This Quarter</button><button>This Month</button><button>Custom Range</button>
           </div>
-          <div class="mt-4 h-[200px] relative">
-            <svg viewBox="0 0 600 200" class="w-full h-full">
-              <!-- grid -->
-              <line x1="40" y1="20" x2="600" y2="20" stroke="#f1f5f9" stroke-width="1"/>
-              <line x1="40" y1="60" x2="600" y2="60" stroke="#f1f5f9" stroke-width="1"/>
-              <line x1="40" y1="100" x2="600" y2="100" stroke="#f1f5f9" stroke-width="1"/>
-              <line x1="40" y1="140" x2="600" y2="140" stroke="#f1f5f9" stroke-width="1"/>
-              <line x1="40" y1="180" x2="600" y2="180" stroke="#f1f5f9" stroke-width="1"/>
-              <!-- bars - Leads (indigo) and Projects Won (green) -->
-              <g opacity="0.95">
-                <!-- Jan -->
-                <rect x="44" y="140" width="10" height="40" rx="1" fill="#6366f1"/><rect x="56" y="160" width="10" height="20" rx="1" fill="#10b981"/>
-                <!-- Feb -->
-                <rect x="78" y="110" width="10" height="70" rx="1" fill="#f97316" opacity="0.9"/><rect x="90" y="165" width="10" height="15" rx="1" fill="#10b981"/>
-                <!-- Mar -->
-                <rect x="112" y="150" width="10" height="30" rx="1" fill="#6366f1"/><rect x="124" y="170" width="10" height="10" rx="1" fill="#10b981"/>
-                <!-- Apr -->
-                <rect x="146" y="165" width="10" height="15" rx="1" fill="#6366f1"/><rect x="158" y="170" width="10" height="10" rx="1" fill="#a5b4fc"/>
-                <!-- May -->
-                <rect x="180" y="80" width="14" height="100" rx="1" fill="#4f46e5"/><rect x="196" y="120" width="10" height="60" rx="1" fill="#f59e0b"/>
-                <!-- Jun -->
-                <rect x="224" y="160" width="10" height="20" rx="1" fill="#6366f1"/><rect x="236" y="170" width="10" height="10" rx="1" fill="#10b981"/>
-                <!-- Jul -->
-                <rect x="258" y="140" width="10" height="40" rx="1" fill="#6366f1"/><rect x="270" y="155" width="10" height="25" rx="1" fill="#10b981"/>
-                <!-- Aug -->
-                <rect x="292" y="170" width="10" height="10" rx="1" fill="#a5b4fc"/><rect x="304" y="165" width="10" height="15" rx="1" fill="#6366f1"/>
-                <!-- Sep -->
-                <rect x="326" y="100" width="10" height="80" rx="1" fill="#f97316"/><rect x="338" y="150" width="10" height="30" rx="1" fill="#10b981"/>
-                <!-- Oct -->
-                <rect x="360" y="70" width="14" height="110" rx="1" fill="#4f46e5"/><rect x="376" y="90" width="10" height="90" rx="1" fill="#6366f1"/>
-                <!-- Nov -->
-                <rect x="404" y="80" width="10" height="100" rx="1" fill="#f59e0b"/><rect x="416" y="100" width="10" height="80" rx="1" fill="#4f46e5"/>
-                <!-- Dec -->
-                <rect x="448" y="100" width="10" height="80" rx="1" fill="#10b981"/><rect x="460" y="110" width="10" height="70" rx="1" fill="#6366f1"/><rect x="472" y="40" width="10" height="140" rx="1" fill="#10b981"/>
-              </g>
-              <!-- Earnings line (orange) -->
-              <polyline fill="none" stroke="#fb923c" stroke-width="1.6" points="50,120 84,90 118,110 152,130 188,70 228,110 264,100 298,130 332,110 368,50 410,40 456,120 488,60 534,80"/>
-              <polyline fill="none" stroke="#60a5fa" stroke-width="1.4" opacity="0.5" points="50,150 84,140 118,150 152,160 188,100 228,120 264,110 298,140 332,120 368,80 410,60 456,110 488,90 534,100"/>
-            </svg>
-            <div class="absolute left-0 top-0 bottom-6 flex flex-col justify-between text-[9px] text-slate-400">
-              <span>250</span><span>200</span><span>150</span><span>100</span><span>50</span><span>0</span>
-            </div>
-            <div class="absolute right-0 top-0 bottom-6 flex flex-col justify-between text-[9px] text-slate-400 text-right">
-              <span>$25K</span><span>$20K</span><span>$15K</span><span>$10K</span><span>$5K</span><span>$0</span>
-            </div>
-            <div class="absolute left-8 right-6 bottom-0 flex justify-between text-[9px] text-slate-500">
-              <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
-            </div>
-          </div>
+          <button class="btn btn-sm btn-primary"><i class="bi bi-download"></i> Export Report</button>
         </div>
 
-        <!-- Leads by Status -->
-        <div class="xl:col-span-3 bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
-          <h3 class="text-[12px] font-bold">Leads by Status</h3>
-          <div class="flex gap-3 mt-4 items-center">
-            <div class="relative w-[120px] h-[120px] shrink-0">
-              <div class="absolute inset-0 rounded-full leads-donut"></div>
-              <div class="absolute inset-[22px] bg-white rounded-full grid place-items-center border border-slate-100 shadow-inner">
-                <div class="text-center"><div class="text-[13px] font-extrabold leading-none">1,248</div><div class="text-[10px] text-slate-500">Total</div></div>
+        <!-- Stats -->
+        <div class="row row-cols-2 row-cols-lg-6 g-3">
+          <div class="col"><div class="zp-card zp-card--hover p-3"><div class="text-muted fw-semibold" style="font-size:.7rem">Total Leads</div><div class="fs-4 fw-bold mt-1 report-value">1,248</div><div style="font-size:.68rem"><span class="text-success fw-bold">↑ 20%</span> <span class="text-muted">vs year</span></div></div></div>
+          <div class="col"><div class="zp-card zp-card--hover p-3"><div class="text-muted fw-semibold" style="font-size:.7rem">Qualified Leads</div><div class="fs-4 fw-bold mt-1 report-value">420</div><div style="font-size:.68rem"><span class="text-success fw-bold">↑ 18%</span> <span class="text-muted">vs year</span></div></div></div>
+          <div class="col"><div class="zp-card zp-card--hover p-3"><div class="text-muted fw-semibold" style="font-size:.7rem">Projects Won</div><div class="fs-4 fw-bold mt-1 report-value">186</div><div style="font-size:.68rem"><span class="text-success fw-bold">↑ 25%</span> <span class="text-muted">vs year</span></div></div></div>
+          <div class="col"><div class="zp-card zp-card--hover p-3"><div class="text-muted fw-semibold" style="font-size:.7rem">Conversion Rate</div><div class="fs-4 fw-bold mt-1 report-value">14.92%</div><div style="font-size:.68rem"><span class="text-success fw-bold">↑ 12%</span> <span class="text-muted">vs year</span></div></div></div>
+          <div class="col"><div class="zp-card zp-card--hover p-3"><div class="text-muted fw-semibold" style="font-size:.7rem">Total Earnings</div><div class="fs-4 fw-bold mt-1 report-value">$24,750</div><div style="font-size:.68rem"><span class="text-success fw-bold">↑ 15%</span> <span class="text-muted">vs year</span></div></div></div>
+          <div class="col"><div class="zp-card zp-card--hover p-3"><div class="text-muted fw-semibold" style="font-size:.7rem">Total Payouts</div><div class="fs-4 fw-bold mt-1 report-value">$12,750</div><div style="font-size:.68rem"><span class="text-success fw-bold">↑ 20%</span> <span class="text-muted">vs year</span></div></div></div>
+        </div>
+
+        <!-- Middle charts -->
+        <div class="row g-3">
+          <div class="col-xl-5">
+            <div class="zp-card p-4">
+              <h3 class="zp-card-title">Leads vs Projects vs Earnings</h3>
+              <div class="d-flex gap-3 mt-2" style="font-size:.68rem"><span class="d-flex align-items-center gap-1"><span style="width:8px;height:8px;border-radius:99px;background:#4f46e5"></span>Leads</span><span class="d-flex align-items-center gap-1"><span style="width:8px;height:8px;border-radius:99px;background:#10b981"></span>Projects Won</span><span class="d-flex align-items-center gap-1"><span style="width:8px;height:8px;border-radius:99px;background:#f97316"></span>Earnings</span></div>
+              <div class="zp-chart mt-3" style="height:200px">
+                <svg viewBox="0 0 600 200" preserveAspectRatio="none" style="height:100%;width:100%">
+                  <line x1="40" y1="20" x2="600" y2="20" stroke="#f1f5f9"/><line x1="40" y1="60" x2="600" y2="60" stroke="#f1f5f9"/><line x1="40" y1="100" x2="600" y2="100" stroke="#f1f5f9"/><line x1="40" y1="140" x2="600" y2="140" stroke="#f1f5f9"/><line x1="40" y1="180" x2="600" y2="180" stroke="#f1f5f9"/>
+                  <rect x="44" y="140" width="10" height="40" rx="1" fill="#6366f1"/><rect x="56" y="160" width="10" height="20" rx="1" fill="#10b981"/>
+                  <rect x="78" y="110" width="10" height="70" rx="1" fill="#f97316" opacity=".9"/><rect x="90" y="165" width="10" height="15" rx="1" fill="#10b981"/>
+                  <rect x="112" y="150" width="10" height="30" rx="1" fill="#6366f1"/><rect x="124" y="170" width="10" height="10" rx="1" fill="#10b981"/>
+                  <rect x="180" y="80" width="14" height="100" rx="1" fill="#4f46e5"/><rect x="196" y="120" width="10" height="60" rx="1" fill="#f59e0b"/>
+                  <rect x="326" y="100" width="10" height="80" rx="1" fill="#f97316"/><rect x="338" y="150" width="10" height="30" rx="1" fill="#10b981"/>
+                  <rect x="360" y="70" width="14" height="110" rx="1" fill="#4f46e5"/><rect x="376" y="90" width="10" height="90" rx="1" fill="#6366f1"/>
+                  <rect x="404" y="80" width="10" height="100" rx="1" fill="#f59e0b"/><rect x="416" y="100" width="10" height="80" rx="1" fill="#4f46e5"/>
+                  <rect x="448" y="100" width="10" height="80" rx="1" fill="#10b981"/><rect x="472" y="40" width="10" height="140" rx="1" fill="#10b981"/>
+                  <polyline fill="none" stroke="#fb923c" stroke-width="1.6" points="50,120 84,90 118,110 152,130 188,70 228,110 264,100 298,130 332,110 368,50 410,40 456,120 488,60 534,80"/>
+                </svg>
               </div>
-            </div>
-            <div class="space-y-1.5 text-[11px] flex-1">
-              <div class="flex justify-between"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#4f46e5]"></span> New</span><span class="text-slate-500">480 (38%)</span></div>
-              <div class="flex justify-between"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-sky-500"></span> Qualified</span><span class="text-slate-500">320 (26%)</span></div>
-              <div class="flex justify-between"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> In Progress</span><span class="text-slate-500">240 (19%)</span></div>
-              <div class="flex justify-between"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-orange-400"></span> Converted</span><span class="text-slate-500">140 (11%)</span></div>
-              <div class="flex justify-between"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-sky-400"></span> Closed (Won)</span><span class="text-slate-500">68 (5%)</span></div>
-              <div class="flex justify-between"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-red-400"></span> Closed (Lost)</span><span class="text-slate-500">0 (0%)</span></div>
+              <div class="d-flex justify-content-between text-muted mt-1" style="font-size:.62rem"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span></div>
             </div>
           </div>
-        </div>
-
-        <!-- Top Performing Services + Earnings Trend -->
-        <div class="xl:col-span-4 space-y-4">
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
-            <h3 class="text-[12px] font-bold">Top Performing Services</h3>
-            <div class="mt-3 overflow-hidden rounded-xl border border-slate-100">
-              <div class="grid grid-cols-[1.4fr_0.6fr_0.6fr] bg-[#f8fafc] text-[10px] font-bold text-slate-500 uppercase tracking-wide px-3 py-2">
-                <span>Service</span><span class="text-right">Projects</span><span class="text-right">Earnings</span>
-              </div>
-              <div class="divide-y divide-slate-100 text-[11px]">
-                <div class="grid grid-cols-[1.4fr_0.6fr_0.6fr] px-3 py-2"><span>Website Development</span><span class="text-right font-semibold">68</span><span class="text-right font-semibold">$8,200</span></div>
-                <div class="grid grid-cols-[1.4fr_0.6fr_0.6fr] px-3 py-2 bg-slate-50/40"><span>Mobile App Development</span><span class="text-right font-semibold">42</span><span class="text-right font-semibold">$5,100</span></div>
-                <div class="grid grid-cols-[1.4fr_0.6fr_0.6fr] px-3 py-2"><span>Cloud Solutions</span><span class="text-right font-semibold">38</span><span class="text-right font-semibold">$3,200</span></div>
-                <div class="grid grid-cols-[1.4fr_0.6fr_0.6fr] px-3 py-2 bg-slate-50/40"><span>Digital Marketing</span><span class="text-right font-semibold">24</span><span class="text-right font-semibold">$1,400</span></div>
-                <div class="grid grid-cols-[1.4fr_0.6fr_0.6fr] px-3 py-2"><span>Others</span><span class="text-right font-semibold">14</span><span class="text-right font-semibold">$600</span></div>
-                <div class="grid grid-cols-[1.4fr_0.6fr_0.6fr] px-3 py-2 bg-[#f0f0ff] font-bold"><span>Total</span><span class="text-right">186</span><span class="text-right">$18,500</span></div>
+          <div class="col-xl-3">
+            <div class="zp-card p-4">
+              <h3 class="zp-card-title">Leads by Status</h3>
+              <div class="d-flex gap-3 mt-3 align-items-center">
+                <div class="position-relative flex-shrink-0" style="width:120px;height:120px"><div class="zp-donut position-absolute inset-0 rounded-circle" style="background:conic-gradient(#4f46e5 0 38%,#60a5fa 38% 64%,#10b981 64% 83%,#f97316 83% 94%,#38bdf8 94% 99%,#f59e0b 99% 100%)"></div><div class="zp-donut-hole d-grid"><div class="text-center"><div class="fw-bold">1,248</div><div class="text-muted" style="font-size:.66rem">Total</div></div></div></div>
+                <div class="flex-grow-1 d-flex flex-column gap-1" style="font-size:.7rem">
+                  <div class="d-flex justify-content-between"><span class="d-flex align-items-center gap-1"><span style="width:8px;height:8px;border-radius:99px;background:#4f46e5"></span>New</span><span class="text-muted">480</span></div>
+                  <div class="d-flex justify-content-between"><span class="d-flex align-items-center gap-1"><span style="width:8px;height:8px;border-radius:99px;background:#60a5fa"></span>Qualified</span><span class="text-muted">320</span></div>
+                  <div class="d-flex justify-content-between"><span class="d-flex align-items-center gap-1"><span style="width:8px;height:8px;border-radius:99px;background:#10b981"></span>In Progress</span><span class="text-muted">240</span></div>
+                  <div class="d-flex justify-content-between"><span class="d-flex align-items-center gap-1"><span style="width:8px;height:8px;border-radius:99px;background:#f97316"></span>Converted</span><span class="text-muted">140</span></div>
+                  <div class="d-flex justify-content-between"><span class="d-flex align-items-center gap-1"><span style="width:8px;height:8px;border-radius:99px;background:#38bdf8"></span>Won</span><span class="text-muted">68</span></div>
+                </div>
               </div>
             </div>
           </div>
-
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
-            <h3 class="text-[12px] font-bold">Earnings Trend (Monthly)</h3>
-            <div class="mt-4 h-[140px] relative">
-              <svg viewBox="0 0 400 140" class="w-full h-full">
-                <line x1="30" y1="20" x2="400" y2="20" stroke="#f1f5f9" stroke-width="1"/>
-                <line x1="30" y1="55" x2="400" y2="55" stroke="#f1f5f9" stroke-width="1"/>
-                <line x1="30" y1="90" x2="400" y2="90" stroke="#f1f5f9" stroke-width="1"/>
-                <line x1="30" y1="125" x2="400" y2="125" stroke="#f1f5f9" stroke-width="1"/>
-                <path d="M30,100 L60,80 L90,60 L120,55 L150,35 L180,40 L210,20 L240,50 L270,70 L300,55 L330,35 L360,55 L390,30 L400,20" fill="none" stroke="#4f46e5" stroke-width="1.6"/>
-                <path d="M30,100 L60,80 L90,60 L120,55 L150,35 L180,40 L210,20 L240,50 L270,70 L300,55 L330,35 L360,55 L390,30 L400,20 L400,125 L30,125 Z" fill="#4f46e5" opacity="0.08"/>
-                <circle cx="210" cy="20" r="3" fill="white" stroke="#4f46e5" stroke-width="1.5"/>
-                <circle cx="400" cy="20" r="3" fill="white" stroke="#4f46e5" stroke-width="1.5"/>
-              </svg>
-              <div class="absolute left-0 top-0 bottom-6 flex flex-col justify-between text-[9px] text-slate-400">
-                <span>$10K</span><span>$8K</span><span>$6K</span><span>$4K</span><span>$2K</span><span>$0</span>
+          <div class="col-xl-4">
+            <div class="zp-card p-4 mb-3">
+              <h3 class="zp-card-title">Top Performing Services</h3>
+              <div class="table-responsive mt-2">
+                <table class="zp-table">
+                  <thead><tr><th>Service</th><th class="text-end">Projects</th><th class="text-end">Earnings</th></tr></thead>
+                  <tbody>
+                    <tr><td>Website Development</td><td class="text-end fw-semibold">68</td><td class="text-end fw-semibold">$8,200</td></tr>
+                    <tr><td>Mobile App Development</td><td class="text-end fw-semibold">42</td><td class="text-end fw-semibold">$5,100</td></tr>
+                    <tr><td>Cloud Solutions</td><td class="text-end fw-semibold">38</td><td class="text-end fw-semibold">$3,200</td></tr>
+                    <tr><td>Digital Marketing</td><td class="text-end fw-semibold">24</td><td class="text-end fw-semibold">$1,400</td></tr>
+                    <tr class="fw-bold" style="background:#f0f0ff"><td>Total</td><td class="text-end">186</td><td class="text-end">$18,500</td></tr>
+                  </tbody>
+                </table>
               </div>
-              <div class="absolute left-8 right-0 bottom-0 flex justify-between text-[9px] text-slate-500">
-                <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+            </div>
+            <div class="zp-card p-4">
+              <h3 class="zp-card-title">Earnings Trend (Monthly)</h3>
+              <div class="zp-chart mt-3" style="height:120px">
+                <svg viewBox="0 0 400 120" preserveAspectRatio="none" style="height:100%;width:100%">
+                  <line x1="30" y1="20" x2="400" y2="20" stroke="#f1f5f9"/><line x1="30" y1="55" x2="400" y2="55" stroke="#f1f5f9"/><line x1="30" y1="90" x2="400" y2="90" stroke="#f1f5f9"/>
+                  <path d="M30,90 L60,70 L90,50 L120,45 L150,30 L180,35 L210,20 L240,45 L270,60 L300,50 L330,30 L360,50 L390,28 L400,20" fill="none" stroke="#4f46e5" stroke-width="1.6"/>
+                  <path d="M30,90 L60,70 L90,50 L120,45 L150,30 L180,35 L210,20 L240,45 L270,60 L300,50 L330,30 L360,50 L390,28 L400,20 L400,110 L30,110 Z" fill="#4f46e5" opacity="0.08"/>
+                </svg>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Reports Library -->
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
-        <h3 class="text-[12px] font-bold">Reports Library</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 mt-3">
-          <a href="#" class="border border-slate-200 rounded-xl p-4 hover:border-indigo-200 hover:bg-indigo-50/30 group">
-            <span class="w-8 h-8 rounded-lg bg-sky-50 border border-sky-100 text-sky-600 grid place-items-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
-            <div class="text-[11px] font-bold mt-3">Leads Report</div>
-            <div class="text-[10px] text-slate-500 leading-3 mt-1">Detailed leads analysis and trends</div>
-            <div class="text-[10px] font-bold text-[#4f46e5] mt-3">View Report</div>
-          </a>
-          <a href="#" class="border border-slate-200 rounded-xl p-4 hover:border-indigo-200 hover:bg-indigo-50/30 group">
-            <span class="w-8 h-8 rounded-lg bg-violet-50 border border-violet-100 text-violet-600 grid place-items-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></span>
-            <div class="text-[11px] font-bold mt-3">Projects Report</div>
-            <div class="text-[10px] text-slate-500 leading-3 mt-1">Project performance and status report</div>
-            <div class="text-[10px] font-bold text-[#4f46e5] mt-3">View Report</div>
-          </a>
-          <a href="#" class="border border-slate-200 rounded-xl p-4 hover:border-indigo-200 hover:bg-indigo-50/30 group">
-            <span class="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-100 text-emerald-600 grid place-items-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="6"/><path d="M15 13a3 3 0 1 1-6 0"/><path d="M12 16v4"/><path d="M9 20h6"/></svg></span>
-            <div class="text-[11px] font-bold mt-3">Earnings Report</div>
-            <div class="text-[10px] text-slate-500 leading-3 mt-1">Earnings breakdown and analysis</div>
-            <div class="text-[10px] font-bold text-[#4f46e5] mt-3">View Report</div>
-          </a>
-          <a href="#" class="border border-slate-200 rounded-xl p-4 hover:border-indigo-200 hover:bg-indigo-50/30 group">
-            <span class="w-8 h-8 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-600 grid place-items-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
-            <div class="text-[11px] font-bold mt-3">Payouts Report</div>
-            <div class="text-[10px] text-slate-500 leading-3 mt-1">Payout history and summary</div>
-            <div class="text-[10px] font-bold text-[#4f46e5] mt-3">View Report</div>
-          </a>
-          <a href="#" class="border border-slate-200 rounded-xl p-4 hover:border-indigo-200 hover:bg-indigo-50/30 group">
-            <span class="w-8 h-8 rounded-lg bg-sky-50 border border-sky-100 text-sky-600 grid place-items-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M12 16a16 12 0 0 1 0-16"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></span>
-            <div class="text-[11px] font-bold mt-3">Conversion Report</div>
-            <div class="text-[10px] text-slate-500 leading-3 mt-1">Conversion rates and funnel analysis</div>
-            <div class="text-[10px] font-bold text-[#4f46e5] mt-3">View Report</div>
-          </a>
-          <a href="#" class="border border-slate-200 rounded-xl p-4 hover:border-indigo-200 hover:bg-indigo-50/30 group">
-            <span class="w-8 h-8 rounded-lg bg-violet-50 border border-violet-100 text-violet-600 grid place-items-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/><path d="M14 2v4"/></svg></span>
-            <div class="text-[11px] font-bold mt-3">Performance Report</div>
-            <div class="text-[10px] text-slate-500 leading-3 mt-1">Overall performance metrics</div>
-            <div class="text-[10px] font-bold text-[#4f46e5] mt-3">View Report</div>
-          </a>
+        <!-- Reports Library -->
+        <div class="zp-card p-4">
+          <h3 class="zp-card-title">Reports Library</h3>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-6 g-3 mt-2">
+            <div class="col"><a href="#" class="border rounded-3 p-3 d-block text-decoration-none hover-lift"><span class="zp-stat-icon tint-sky" style="width:32px;height:32px"><i class="bi bi-file-earmark-bar-graph"></i></span><div class="fw-bold mt-2" style="font-size:.72rem">Leads Report</div><div class="text-muted" style="font-size:.64rem">Detailed leads analysis</div><div class="text-primary fw-bold mt-2" style="font-size:.66rem">View Report</div></a></div>
+            <div class="col"><a href="#" class="border rounded-3 p-3 d-block text-decoration-none hover-lift"><span class="zp-stat-icon tint-violet" style="width:32px;height:32px"><i class="bi bi-diagram-3"></i></span><div class="fw-bold mt-2" style="font-size:.72rem">Projects Report</div><div class="text-muted" style="font-size:.64rem">Project performance</div><div class="text-primary fw-bold mt-2" style="font-size:.66rem">View Report</div></a></div>
+            <div class="col"><a href="#" class="border rounded-3 p-3 d-block text-decoration-none hover-lift"><span class="zp-stat-icon tint-emerald" style="width:32px;height:32px"><i class="bi bi-cash-coin"></i></span><div class="fw-bold mt-2" style="font-size:.72rem">Earnings Report</div><div class="text-muted" style="font-size:.64rem">Earnings breakdown</div><div class="text-primary fw-bold mt-2" style="font-size:.66rem">View Report</div></a></div>
+            <div class="col"><a href="#" class="border rounded-3 p-3 d-block text-decoration-none hover-lift"><span class="zp-stat-icon tint-indigo" style="width:32px;height:32px"><i class="bi bi-download"></i></span><div class="fw-bold mt-2" style="font-size:.72rem">Payouts Report</div><div class="text-muted" style="font-size:.64rem">Payout history</div><div class="text-primary fw-bold mt-2" style="font-size:.66rem">View Report</div></a></div>
+            <div class="col"><a href="#" class="border rounded-3 p-3 d-block text-decoration-none hover-lift"><span class="zp-stat-icon tint-sky" style="width:32px;height:32px"><i class="bi bi-graph-up"></i></span><div class="fw-bold mt-2" style="font-size:.72rem">Conversion Report</div><div class="text-muted" style="font-size:.64rem">Funnel analysis</div><div class="text-primary fw-bold mt-2" style="font-size:.66rem">View Report</div></a></div>
+            <div class="col"><a href="#" class="border rounded-3 p-3 d-block text-decoration-none hover-lift"><span class="zp-stat-icon tint-violet" style="width:32px;height:32px"><i class="bi bi-bar-chart"></i></span><div class="fw-bold mt-2" style="font-size:.72rem">Performance Report</div><div class="text-muted" style="font-size:.64rem">Overall metrics</div><div class="text-primary fw-bold mt-2" style="font-size:.66rem">View Report</div></a></div>
+          </div>
         </div>
-      </div>
-    </main>
+
+      </main>
+    </div>
   </div>
 </div>
 <div id="app-mobile-nav"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="layout.js"></script>
 <script>injectLayout({active:'reports', title:'Reports & Analytics', breadcrumb:'Reports & Analytics', searchPlaceholder:'Search reports...'});</script>
 </body>

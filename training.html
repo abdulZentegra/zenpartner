@@ -4,117 +4,108 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Training & Learning — ZenPartner</title>
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="app.css">
+<script src="https://static.zohocdn.com/creator/widgets/version/2.0/widgetsdk-min.js"></script>
 </head>
-<body class="bg-[#f6f7fb] text-slate-800 antialiased">
-<div class="min-h-screen flex">
+<body>
+<div class="zp-shell">
   <div id="app-sidebar"></div>
-  <div class="flex-1 min-w-0 flex flex-col">
+  <div class="zp-main">
     <div id="app-topbar"></div>
+    <div class="zp-content">
+      <main class="zp-page">
 
-    <main class="p-4 lg:p-5 max-w-[1450px] mx-auto w-full space-y-4">
-      <div class="grid grid-cols-1 xl:grid-cols-[1.65fr_0.95fr] gap-4">
-        <div class="bg-[#0b1433] rounded-xl overflow-hidden relative p-6 lg:p-7 flex flex-col justify-between min-h-[210px] border border-indigo-900">
-          <div class="absolute inset-0 opacity-60" style="background: radial-gradient(500px 200px at 25% 20%, #4f46e5 0%, transparent 60%), radial-gradient(400px 200px at 70% 50%, #312e81 0%, transparent 70%);"></div>
-          <div class="absolute right-0 top-0 bottom-0 w-[52%] hidden lg:flex items-center justify-center pointer-events-none">
-            <div class="relative w-[280px] h-[160px]">
-              <div class="absolute bottom-2 left-6 w-[150px] h-[90px] bg-gradient-to-br from-sky-200 to-indigo-200 rounded-lg border-[3px] border-slate-800 overflow-hidden shadow-xl flex items-center justify-center">
-                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&auto=format&fit=crop&q=60" class="w-full h-full object-cover mix-blend-multiply opacity-80">
-                <div class="absolute w-10 h-10 bg-white/90 rounded-full grid place-items-center shadow"><svg width="18" height="18" viewBox="0 0 24 24" fill="#4f46e5"><path d="M8 5.14v14l11-7z"/></svg></div>
+        <div class="row g-3">
+          <div class="col-xl-8">
+            <!-- Hero -->
+            <div class="zp-hero">
+              <div class="zp-hero-glow"></div>
+              <div class="zp-hero-body" style="max-width:60%">
+                <h1>Learn. Grow. Succeed Together.</h1>
+                <p>Complete the required training and certifications to unlock exclusive resources and benefits.</p>
+                <div class="d-flex gap-2 mt-3 flex-wrap">
+                  <div class="glass border rounded-3 px-3 py-2 d-flex align-items-center gap-2 text-white" style="border-color:rgba(255,255,255,.2)!important">
+                    <i class="bi bi-mortarboard fs-5"></i>
+                    <div><div class="text-white-50" style="font-size:.66rem">Your Progress</div><div class="fw-bold" style="font-size:.76rem">75% Completed</div></div>
+                  </div>
+                  <div class="glass border rounded-3 px-3 py-2 d-flex align-items-center gap-2 text-warning" style="border-color:rgba(255,255,255,.2)!important">
+                    <i class="bi bi-award fs-5"></i>
+                    <div><div class="text-white-50" style="font-size:.66rem">Certification Status</div><div class="fw-bold" style="font-size:.76rem">In Progress</div></div>
+                  </div>
+                </div>
               </div>
-              <div class="absolute bottom-2 right-10 w-[90px] flex flex-col items-center">
-                <div class="w-[90px] h-[12px] bg-amber-400 rounded-sm border border-amber-500 shadow"></div>
-                <div class="w-[88px] h-[12px] bg-orange-400 rounded-sm border border-orange-500 -mt-1"></div>
-                <div class="w-[90px] h-[14px] bg-indigo-900 rounded-sm border border-indigo-950 -mt-1 flex items-center justify-center"><div class="w-10 h-1 bg-white/30 rounded-full"></div></div>
+            </div>
+
+            <!-- My Courses -->
+            <div class="zp-card p-4 mt-3">
+              <h3 class="zp-card-title">My Courses</h3>
+              <div class="zp-segmented mt-3">
+                <button class="active">All Courses</button><button>In Progress</button><button>Completed</button><button>Not Started</button>
               </div>
-              <div class="absolute -top-1 right-8 w-[110px] h-[70px] drop-shadow-xl">
-                <div class="w-[90px] h-[45px] bg-[#2c1a8a] rotate-[-6deg] rounded-sm relative mx-auto" style="clip-path: polygon(50% 0, 100% 35%, 50% 70%, 0 35%)"><div class="absolute top-[35%] left-1/2 -translate-x-1/2 w-2 h-6 bg-amber-400 rounded-full"></div></div>
-                <div class="w-3 h-3 bg-amber-400 rounded-full absolute left-[48%] top-[45%]"></div>
-              </div>
-              <div class="absolute bottom-8 right-2 text-emerald-600">
-                <svg width="28" height="32" viewBox="0 0 24 32" fill="none"><ellipse cx="12" cy="28" rx="8" ry="3" fill="#1e293b"/><path d="M12 28 C12 20, 8 14, 4 12 C6 10, 10 13, 12 16 C14 13, 18 10, 20 12 C16 14, 12 20, 12 28" fill="#22c55e" stroke="#16a34a" stroke-width="0.7"/></svg>
+              <div class="table-responsive mt-3">
+                <table class="zp-table">
+                  <thead><tr><th>Course</th><th>Provider</th><th style="width:180px">Progress</th><th>Status</th><th class="text-end">Action</th></tr></thead>
+                  <tbody>
+                    <tr class="zp-course"><td><div class="d-flex gap-2 align-items-center"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=100&auto=format&fit=crop&q=60" style="width:52px;height:36px;object-fit:cover;border-radius:8px" alt=""><div><div class="fw-bold">Zentegra Solutions Overview</div><div class="text-muted" style="font-size:.68rem">Overview of Zentegra's solutions.</div></div></div></td><td class="text-secondary">TrainerCentral</td><td><div class="d-flex align-items-center gap-2"><div class="zp-progress flex-grow-1" style="width:80px"><span style="width:100%;background:#10b981"></span></div><span class="small">100%</span></div></td><td><span class="zp-pill no-dot zp-pill--emerald">Completed</span></td><td class="text-end"><button class="btn btn-sm btn-outline-primary">Review</button></td></tr>
+                    <tr class="zp-course"><td><div class="d-flex gap-2 align-items-center"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=100&auto=format&fit=crop&q=60" style="width:52px;height:36px;object-fit:cover;border-radius:8px" alt=""><div><div class="fw-bold">Sales Process &amp; Methodology</div><div class="text-muted" style="font-size:.68rem">Understand our sales process.</div></div></div></td><td class="text-secondary">TrainerCentral</td><td><div class="d-flex align-items-center gap-2"><div class="zp-progress flex-grow-1" style="width:80px"><span style="width:75%;background:#0ea5e9"></span></div><span class="small">75%</span></div></td><td><span class="zp-pill no-dot zp-pill--blue">In Progress</span></td><td class="text-end"><button class="btn btn-sm btn-primary" data-continue>Continue</button></td></tr>
+                    <tr class="zp-course"><td><div class="d-flex gap-2 align-items-center"><img src="https://images.unsplash.com/photo-1451187580459-43490279c429?w=100&auto=format&fit=crop&q=60" style="width:52px;height:36px;object-fit:cover;border-radius:8px" alt=""><div><div class="fw-bold">Cloud &amp; Technology Basics</div><div class="text-muted" style="font-size:.68rem">Learn the basics of cloud tech.</div></div></div></td><td class="text-secondary">TrainerCentral</td><td><div class="d-flex align-items-center gap-2"><div class="zp-progress flex-grow-1" style="width:80px"><span style="width:40%;background:#4f46e5"></span></div><span class="small">40%</span></div></td><td><span class="zp-pill no-dot zp-pill--blue">In Progress</span></td><td class="text-end"><button class="btn btn-sm btn-primary" data-continue>Continue</button></td></tr>
+                    <tr class="zp-course"><td><div class="d-flex gap-2 align-items-center"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=100&auto=format&fit=crop&q=60" style="width:52px;height:36px;object-fit:cover;border-radius:8px" alt=""><div><div class="fw-bold">Compliance &amp; Policies</div><div class="text-muted" style="font-size:.68rem">Policies and compliance requirements.</div></div></div></td><td class="text-secondary">TrainerCentral</td><td><div class="d-flex align-items-center gap-2"><div class="zp-progress flex-grow-1" style="width:80px"><span style="width:0%"></span></div><span class="small">0%</span></div></td><td><span class="zp-pill no-dot zp-pill--slate">Not Started</span></td><td class="text-end"><button class="btn btn-sm btn-outline-primary" data-continue>Start</button></td></tr>
+                    <tr class="zp-course"><td><div class="d-flex gap-2 align-items-center"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=100&auto=format&fit=crop&q=60" style="width:52px;height:36px;object-fit:cover;border-radius:8px" alt=""><div><div class="fw-bold">Partner Success Program</div><div class="text-muted" style="font-size:.68rem">How we ensure partner success.</div></div></div></td><td class="text-secondary">TrainerCentral</td><td><div class="d-flex align-items-center gap-2"><div class="zp-progress flex-grow-1" style="width:80px"><span style="width:0%"></span></div><span class="small">0%</span></div></td><td><span class="zp-pill no-dot zp-pill--slate">Not Started</span></td><td class="text-end"><button class="btn btn-sm btn-outline-primary" data-continue>Start</button></td></tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
-          <div class="relative z-10 max-w-[55%]">
-            <h2 class="text-white text-[18px] font-extrabold jakarta leading-tight">Learn. Grow. Succeed Together.</h2>
-            <p class="text-white/70 text-[11px] leading-4 mt-1.5 max-w-[360px]">Complete the required training and certifications to unlock exclusive resources and benefits.</p>
-          </div>
-          <div class="relative z-10 flex gap-3 mt-5">
-            <div class="bg-white/10 backdrop-blur border border-white/15 rounded-xl px-4 py-3 flex items-center gap-3 min-w-[170px]">
-              <span class="w-8 h-8 rounded-lg bg-white/15 grid place-items-center text-white"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 10l8-4-8-4-8 4 8 4z"/><path d="M4 10v4c0 1.5 3 3 8 3s8-1.5 8-3v-4"/><path d="M4 10l8 4 8-4"/></svg></span>
-              <div><div class="text-[10px] text-white/70 font-medium">Your Progress</div><div class="text-xs font-bold text-white">75% Completed</div><div class="mt-1.5 w-[110px] h-1 bg-white/20 rounded-full overflow-hidden"><div class="h-full bg-sky-400 rounded-full" style="width:75%"></div></div></div>
+
+          <div class="col-xl-4">
+            <!-- Summary -->
+            <div class="zp-card p-4">
+              <div class="zp-card-head"><h3 class="zp-card-title">Training Summary</h3><a href="#" class="zp-card-link">View Full Report</a></div>
+              <div class="row row-cols-4 text-center mt-3">
+                <div class="col"><div class="zp-stat-icon tint-blue mx-auto" style="width:34px;height:34px"><i class="bi bi-book"></i></div><div class="text-muted mt-2" style="font-size:.64rem">Enrolled</div><div class="fs-5 fw-bold">5</div></div>
+                <div class="col"><div class="zp-stat-icon tint-emerald mx-auto" style="width:34px;height:34px"><i class="bi bi-patch-check"></i></div><div class="text-muted mt-2" style="font-size:.64rem">Completed</div><div class="fs-5 fw-bold">3</div></div>
+                <div class="col"><div class="zp-stat-icon tint-violet mx-auto" style="width:34px;height:34px"><i class="bi bi-clock"></i></div><div class="text-muted mt-2" style="font-size:.64rem">In Progress</div><div class="fs-5 fw-bold">2</div></div>
+                <div class="col"><div class="zp-stat-icon tint-orange mx-auto" style="width:34px;height:34px"><i class="bi bi-award"></i></div><div class="text-muted mt-2" style="font-size:.64rem">Certificates</div><div class="fs-5 fw-bold">2</div></div>
+              </div>
             </div>
-            <div class="bg-white/10 backdrop-blur border border-white/15 rounded-xl px-4 py-3 flex items-center gap-3 min-w-[170px]">
-              <span class="w-8 h-8 rounded-lg bg-amber-400/20 border border-amber-400/30 grid place-items-center text-amber-300"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="6"/><path d="M15 12l-3 3-3-3"/><path d="M12 15V8"/></svg></span>
-              <div><div class="text-[10px] text-white/70 font-medium">Certification Status</div><div class="text-xs font-bold text-amber-300">In Progress</div></div>
+            <!-- Certificates -->
+            <div class="zp-card p-4 mt-3">
+              <div class="zp-card-head"><h3 class="zp-card-title">Certificates Earned</h3><a href="#" class="zp-card-link">View All</a></div>
+              <div class="d-flex flex-column gap-2 mt-3">
+                <div class="d-flex align-items-center gap-3 p-2 border rounded-3"><span class="zp-stat-icon tint-indigo" style="width:36px;height:36px"><i class="bi bi-award"></i></span><div class="flex-grow-1"><div class="fw-bold" style="font-size:.76rem">ZenPartner Certified</div><div class="text-muted" style="font-size:.68rem">Issued on May 05, 2024</div></div><a href="#" class="btn btn-sm btn-outline-primary">View</a></div>
+                <div class="d-flex align-items-center gap-3 p-2 border rounded-3"><span class="zp-stat-icon tint-emerald" style="width:36px;height:36px"><i class="bi bi-award"></i></span><div class="flex-grow-1"><div class="fw-bold" style="font-size:.76rem">Sales Process Specialist</div><div class="text-muted" style="font-size:.68rem">Issued on Apr 20, 2024</div></div><a href="#" class="btn btn-sm btn-outline-primary">View</a></div>
+              </div>
+            </div>
+            <!-- Upcoming -->
+            <div class="zp-card p-4 mt-3">
+              <div class="zp-card-head"><h3 class="zp-card-title">Upcoming Learning</h3><a href="#" class="zp-card-link">View Calendar</a></div>
+              <div class="d-flex gap-3 align-items-center p-3 rounded-3 border mt-3" style="background:#f8fafc">
+                <div class="bg-white border rounded-3 text-center px-3 py-2 flex-shrink-0"><div class="text-primary fw-bold" style="font-size:.6rem;letter-spacing:.1em">MAY</div><div class="fs-4 fw-bold">20</div></div>
+                <div class="flex-grow-1"><div class="fw-bold" style="font-size:.76rem">Advanced Cloud Solutions</div><div class="text-muted" style="font-size:.68rem"><i class="bi bi-clock me-1"></i>10:00 AM – 12:00 PM (EST)</div></div>
+                <a href="#" class="btn btn-sm btn-outline-primary">Join Session</a>
+              </div>
+            </div>
+            <!-- Learning Resources -->
+            <div class="zp-card p-4 mt-3">
+              <div class="zp-card-head"><h3 class="zp-card-title">Learning Resources</h3><a href="#" class="zp-card-link">View All</a></div>
+              <div class="row row-cols-3 g-2 mt-2">
+                <div class="col"><a href="#" class="border rounded-3 p-2 text-center d-block text-decoration-none hover-lift"><span class="zp-stat-icon tint-blue mx-auto" style="width:32px;height:32px"><i class="bi bi-journal-text"></i></span><div class="fw-bold mt-1" style="font-size:.7rem">Guides</div></a></div>
+                <div class="col"><a href="#" class="border rounded-3 p-2 text-center d-block text-decoration-none hover-lift"><span class="zp-stat-icon tint-emerald mx-auto" style="width:32px;height:32px"><i class="bi bi-play-circle"></i></span><div class="fw-bold mt-1" style="font-size:.7rem">Videos</div></a></div>
+                <div class="col"><a href="#" class="border rounded-3 p-2 text-center d-block text-decoration-none hover-lift"><span class="zp-stat-icon tint-orange mx-auto" style="width:32px;height:32px"><i class="bi bi-question-circle"></i></span><div class="fw-bold mt-1" style="font-size:.7rem">FAQs</div></a></div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-5">
-          <div class="flex items-center justify-between"><h3 class="text-xs font-bold">Training Summary</h3><a href="#" class="text-[11px] font-semibold text-indigo-600">View Full Report</a></div>
-          <div class="grid grid-cols-4 divide-x divide-slate-100 mt-4 text-center">
-            <div class="px-2"><div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 mx-auto grid place-items-center border border-blue-100"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="text-[10px] text-slate-500 mt-2 leading-tight">Enrolled Courses</div><div class="text-lg font-extrabold mt-1">5</div><div class="text-[10px] text-slate-500 mt-0.5">Total</div></div>
-            <div class="px-2"><div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 mx-auto grid place-items-center border border-emerald-100"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="text-[10px] text-slate-500 mt-2 leading-tight">Completed Courses</div><div class="text-lg font-extrabold mt-1">3</div><div class="text-[10px] text-slate-500 mt-0.5">This Year</div></div>
-            <div class="px-2"><div class="w-8 h-8 rounded-lg bg-violet-50 text-violet-600 mx-auto grid place-items-center border border-violet-100"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="text-[10px] text-slate-500 mt-2 leading-tight">In Progress</div><div class="text-lg font-extrabold mt-1">2</div><div class="text-[10px] text-indigo-600 font-medium mt-0.5">Continue Learning</div></div>
-            <div class="px-2"><div class="w-8 h-8 rounded-lg bg-orange-50 text-orange-500 mx-auto grid place-items-center border border-orange-100"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="10" r="2"/><path d="M12 12v2"/><path d="M9 14h6"/></svg></div><div class="text-[10px] text-slate-500 mt-2 leading-tight">Certificates Earned</div><div class="text-lg font-extrabold mt-1">2</div><div class="text-[10px] text-indigo-600 font-medium mt-0.5">View Certificates</div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 xl:grid-cols-[1.65fr_0.95fr] gap-4">
-        <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-5">
-          <div class="flex items-center justify-between"><h3 class="text-sm font-bold">My Courses</h3></div>
-          <div class="flex gap-1 mt-3 border-b border-slate-100 pb-1 text-[11px] font-medium">
-            <span class="px-3 py-1.5 rounded-md bg-indigo-50 text-indigo-700 border border-indigo-200">All Courses</span>
-            <span class="px-3 py-1.5 rounded-md text-slate-500">In Progress</span>
-            <span class="px-3 py-1.5 rounded-md text-slate-500">Completed</span>
-            <span class="px-3 py-1.5 rounded-md text-slate-500">Not Started</span>
-          </div>
-          <div class="mt-3 overflow-x-auto">
-            <div class="min-w-[620px]">
-              <div class="grid grid-cols-[1.8fr_0.8fr_1fr_0.8fr_0.7fr] text-[10px] font-semibold text-slate-500 border-b border-slate-100 pb-2 px-1"><span>Course</span><span>Provider</span><span>Progress</span><span>Status</span><span class="text-right">Action</span></div>
-              <div class="divide-y divide-slate-50">
-                <div class="grid grid-cols-[1.8fr_0.8fr_1fr_0.8fr_0.7fr] items-center py-3 px-1 gap-2"><div class="flex gap-2"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=100&auto=format&fit=crop&q=60" class="w-14 h-10 rounded-lg object-cover border border-slate-100"><div class="leading-tight"><div class="text-[11px] font-bold leading-none">Zentegra Solutions Overview</div><div class="text-[10px] text-slate-500 leading-tight mt-1">Overview of Zentegra's solutions and value proposition.</div></div></div><span class="text-[11px] text-slate-600">TrainerCentral</span><div class="flex items-center gap-2"><div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-emerald-600 rounded-full" style="width:100%"></div></div><span class="text-[10px] font-medium">100%</span></div><span class="inline-flex text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100 px-2 py-1 rounded-full w-fit">Completed</span><div class="text-right"><a href="#" class="text-[11px] font-semibold text-indigo-600 border border-indigo-200 rounded-lg px-4 py-1.5 hover:bg-indigo-50">Review</a></div></div>
-                <div class="grid grid-cols-[1.8fr_0.8fr_1fr_0.8fr_0.7fr] items-center py-3 px-1 gap-2"><div class="flex gap-2"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=100&auto=format&fit=crop&q=60" class="w-14 h-10 rounded-lg object-cover border border-slate-100"><div class="leading-tight"><div class="text-[11px] font-bold leading-none">Sales Process & Methodology</div><div class="text-[10px] text-slate-500 leading-tight mt-1">Understand our sales process and partner approach.</div></div></div><span class="text-[11px] text-slate-600">TrainerCentral</span><div class="flex items-center gap-2"><div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-sky-500 rounded-full" style="width:75%"></div></div><span class="text-[10px] font-medium">75%</span></div><span class="inline-flex text-[10px] font-semibold bg-sky-50 text-sky-700 border border-sky-100 px-2 py-1 rounded-full w-fit">In Progress</span><div class="text-right"><a href="#" class="text-[11px] font-semibold text-white bg-[#4f46e5] rounded-lg px-4 py-1.5 hover:bg-[#4338ca]">Continue</a></div></div>
-                <div class="grid grid-cols-[1.8fr_0.8fr_1fr_0.8fr_0.7fr] items-center py-3 px-1 gap-2"><div class="flex gap-2"><img src="https://images.unsplash.com/photo-1451187580459-43490279c429?w=100&auto=format&fit=crop&q=60" class="w-14 h-10 rounded-lg object-cover border border-slate-100"><div class="leading-tight"><div class="text-[11px] font-bold leading-none">Cloud & Technology Basics</div><div class="text-[10px] text-slate-500 leading-tight mt-1">Learn the basics of cloud technology and services.</div></div></div><span class="text-[11px] text-slate-600">TrainerCentral</span><div class="flex items-center gap-2"><div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-[#4f46e5] rounded-full" style="width:40%"></div></div><span class="text-[10px] font-medium">40%</span></div><span class="inline-flex text-[10px] font-semibold bg-sky-50 text-sky-700 border border-sky-100 px-2 py-1 rounded-full w-fit">In Progress</span><div class="text-right"><a href="#" class="text-[11px] font-semibold text-white bg-[#4f46e5] rounded-lg px-4 py-1.5 hover:bg-[#4338ca]">Continue</a></div></div>
-                <div class="grid grid-cols-[1.8fr_0.8fr_1fr_0.8fr_0.7fr] items-center py-3 px-1 gap-2"><div class="flex gap-2"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=100&auto=format&fit=crop&q=60" class="w-14 h-10 rounded-lg object-cover border border-slate-100"><div class="leading-tight"><div class="text-[11px] font-bold leading-none">Compliance & Policies</div><div class="text-[10px] text-slate-500 leading-tight mt-1">Important policies and compliance requirements.</div></div></div><span class="text-[11px] text-slate-600">TrainerCentral</span><div class="flex items-center gap-2"><div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-slate-300 rounded-full" style="width:0%"></div></div><span class="text-[10px] font-medium">0%</span></div><span class="inline-flex text-[10px] font-semibold bg-slate-100 text-slate-600 border border-slate-200 px-2 py-1 rounded-full w-fit">Not Started</span><div class="text-right"><a href="#" class="text-[11px] font-semibold text-indigo-600 border border-indigo-200 rounded-lg px-4 py-1.5 hover:bg-indigo-50">Start</a></div></div>
-                <div class="grid grid-cols-[1.8fr_0.8fr_1fr_0.8fr_0.7fr] items-center py-3 px-1 gap-2"><div class="flex gap-2"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=100&auto=format&fit=crop&q=60" class="w-14 h-10 rounded-lg object-cover border border-slate-100"><div class="leading-tight"><div class="text-[11px] font-bold leading-none">Partner Success Program</div><div class="text-[10px] text-slate-500 leading-tight mt-1">How we ensure partner success and growth.</div></div></div><span class="text-[11px] text-slate-600">TrainerCentral</span><div class="flex items-center gap-2"><div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-slate-300 rounded-full" style="width:0%"></div></div><span class="text-[10px] font-medium">0%</span></div><span class="inline-flex text-[10px] font-semibold bg-slate-100 text-slate-600 border border-slate-200 px-2 py-1 rounded-full w-fit">Not Started</span><div class="text-right"><a href="#" class="text-[11px] font-semibold text-indigo-600 border border-indigo-200 rounded-lg px-4 py-1.5 hover:bg-indigo-50">Start</a></div></div>
-              </div>
-            </div>
-          </div>
-          <div class="flex justify-center mt-4"><a href="#" class="text-xs font-semibold text-indigo-600 border border-indigo-200 rounded-lg px-5 py-2 hover:bg-indigo-50 inline-flex items-center gap-1">View All Courses <span>→</span></a></div>
-        </div>
-
-        <div class="space-y-4">
-          <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-5">
-            <div class="flex items-center justify-between"><h3 class="text-xs font-bold">Certificates Earned</h3><a href="#" class="text-[11px] font-semibold text-indigo-600">View All</a></div>
-            <div class="mt-4 space-y-3">
-              <div class="flex items-center gap-3 p-3 border border-slate-100 rounded-xl hover:border-indigo-100"><span class="w-9 h-9 rounded-full bg-indigo-50 border border-indigo-100 grid place-items-center text-indigo-600 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/><path d="M9 12l2 2 4-4"/></svg></span><div class="flex-1 leading-tight"><div class="text-[11px] font-bold">ZenPartner Certified</div><div class="text-[10px] text-slate-500">Issued on May 05, 2024</div></div><a href="#" class="text-[10px] font-semibold text-indigo-600 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-50">View Certificate</a><a href="#" class="w-7 h-7 grid place-items-center rounded-lg border border-indigo-200 text-indigo-600 hover:bg-indigo-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a></div>
-              <div class="flex items-center gap-3 p-3 border border-slate-100 rounded-xl hover:border-indigo-100"><span class="w-9 h-9 rounded-full bg-emerald-50 border border-emerald-100 grid place-items-center text-emerald-600 shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/><path d="M9 12l2 2 4-4"/></svg></span><div class="flex-1 leading-tight"><div class="text-[11px] font-bold">Sales Process Specialist</div><div class="text-[10px] text-slate-500">Issued on Apr 20, 2024</div></div><a href="#" class="text-[10px] font-semibold text-indigo-600 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-50">View Certificate</a><a href="#" class="w-7 h-7 grid place-items-center rounded-lg border border-indigo-200 text-indigo-600 hover:bg-indigo-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a></div>
-            </div>
-          </div>
-          <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-5">
-            <div class="flex items-center justify-between"><h3 class="text-xs font-bold">Upcoming Learning</h3><a href="#" class="text-[11px] font-semibold text-indigo-600">View Calendar</a></div>
-            <div class="mt-4 flex gap-3 items-center p-3 bg-slate-50/60 border border-slate-100 rounded-xl"><div class="w-12 h-14 rounded-xl bg-white border border-slate-200 grid place-items-center text-center shadow-sm shrink-0"><div class="text-[9px] font-bold tracking-widest text-indigo-600 leading-none mt-1">MAY</div><div class="text-lg font-extrabold leading-none mt-1">20</div></div><div class="flex-1 leading-tight"><div class="text-[11px] font-bold">Advanced Cloud Solutions</div><div class="text-[10px] text-slate-500">Live Session with Expert</div><div class="text-[10px] text-slate-500 flex items-center gap-1 mt-1"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 10:00 AM - 12:00 PM (EST)</div></div><a href="#" class="text-[11px] font-semibold text-indigo-600 border border-indigo-200 rounded-lg px-3 py-1.5 bg-white hover:bg-indigo-50">Join Session</a></div>
-          </div>
-          <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-5">
-            <div class="flex items-center justify-between"><h3 class="text-xs font-bold">Learning Resources</h3><a href="#" class="text-[11px] font-semibold text-indigo-600">View All</a></div>
-            <div class="grid grid-cols-3 gap-3 mt-4">
-              <a href="#" class="border border-slate-200 rounded-xl p-3 text-center hover:border-indigo-200 hover:bg-indigo-50/30 transition-colors group"><span class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 text-blue-600 mx-auto grid place-items-center group-hover:bg-white"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><div class="text-[11px] font-bold mt-2">User Guides</div><div class="text-[9px] text-slate-500 leading-3 mt-1">Step-by-step guides and manuals.</div><span class="mt-2 inline-flex text-[10px] font-semibold text-indigo-600 border border-indigo-200 rounded-md px-2 py-0.5 bg-white">Explore</span></a>
-              <a href="#" class="border border-slate-200 rounded-xl p-3 text-center hover:border-indigo-200 hover:bg-indigo-50/30 transition-colors group"><span class="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-100 text-emerald-600 mx-auto grid place-items-center group-hover:bg-white"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span><div class="text-[11px] font-bold mt-2">Video Tutorials</div><div class="text-[9px] text-slate-500 leading-3 mt-1">Watch training videos on key topics.</div><span class="mt-2 inline-flex text-[10px] font-semibold text-indigo-600 border border-indigo-200 rounded-md px-2 py-0.5 bg-white">Explore</span></a>
-              <a href="#" class="border border-slate-200 rounded-xl p-3 text-center hover:border-indigo-200 hover:bg-indigo-50/30 transition-colors group"><span class="w-8 h-8 rounded-lg bg-orange-50 border border-orange-100 text-orange-500 mx-auto grid place-items-center group-hover:bg-white"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v5"/><path d="M12 16h.01"/><path d="M8 12h8"/></svg></span><div class="text-[11px] font-bold mt-2">FAQs</div><div class="text-[9px] text-slate-500 leading-3 mt-1">Find answers to common questions.</div><span class="mt-2 inline-flex text-[10px] font-semibold text-indigo-600 border border-indigo-200 rounded-md px-2 py-0.5 bg-white">Explore</span></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+      </main>
+    </div>
   </div>
 </div>
 <div id="app-mobile-nav"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="layout.js"></script>
 <script>injectLayout({active:'training', title:'Training & Learning', breadcrumb:'Training & Learning', searchPlaceholder:'Search anything...'});</script>
 </body>
