@@ -4,406 +4,111 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Referrals — ZenPartner</title>
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="app.css">
-<style>
-.jakarta{font-family:'Plus Jakarta Sans',sans-serif}
-.referral-donut{
-  background: conic-gradient(
-    #4f46e5 0% 29%,
-    #10b981 29% 52%,
-    #f59e0b 52% 71%,
-    #f97316 71% 88%,
-    #0ea5e9 88% 100%
-  );
-}
-</style>
+<script src="https://static.zohocdn.com/creator/widgets/version/2.0/widgetsdk-min.js"></script>
 </head>
-<body class="bg-[#f6f7fb] text-slate-800 antialiased">
-<div class="min-h-screen flex">
+<body>
+<div class="zp-shell">
   <div id="app-sidebar"></div>
-  <div class="flex-1 min-w-0 flex flex-col">
+  <div class="zp-main">
     <div id="app-topbar"></div>
+    <div class="zp-content">
+      <main class="zp-page">
 
-    <main class="p-4 lg:p-5 max-w-[1450px] mx-auto w-full space-y-4">
-
-      <!-- TOP GRID: Form + Overview -->
-      <div class="grid grid-cols-1 xl:grid-cols-[1.35fr_0.95fr] gap-4 items-start">
-
-        <!-- Add New Referral -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 lg:p-6">
-          <div class="flex gap-3 items-start">
-            <span class="w-9 h-9 rounded-xl bg-[#f0f0ff] border border-indigo-100 text-[#4f46e5] grid place-items-center shrink-0">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="7" r="3"/><path d="M14 11a3 3 0 1 0 0-6"/><path d="M2 19a5 5 0 0 1 10 0"/><path d="M14 19a5 5 0 0 1 5 0"/><path d="M14 8l2 2 2-2"/><path d="M14 14l2 2 2-2"/></svg>
-            </span>
-            <div>
-              <h2 class="text-[14px] font-extrabold jakarta">Add New Referral</h2>
-              <p class="text-[11px] text-slate-500 mt-0.5">Submit a new business opportunity and we'll help you take it forward.</p>
+        <div class="row g-3">
+          <!-- Form -->
+          <div class="col-xl-7">
+            <div class="zp-card p-4">
+              <div class="d-flex gap-3 align-items-start">
+                <span class="zp-stat-icon tint-indigo" style="width:38px;height:38px"><i class="bi bi-person-plus"></i></span>
+                <div><h2 class="jakarta fs-6 fw-bold mb-1">Add New Referral</h2><p class="text-muted mb-0" style="font-size:.72rem">Submit a new business opportunity and we'll help you take it forward.</p></div>
+              </div>
+              <form id="referral-form" class="mt-4" onsubmit="return false;">
+                <div class="row g-3">
+                  <div class="col-md-4"><label class="form-label">Company Name <span class="text-danger">*</span></label><input id="ref-company" class="form-control" placeholder="Enter company name"></div>
+                  <div class="col-md-4"><label class="form-label">Contact Person <span class="text-danger">*</span></label><input id="ref-contact" class="form-control" placeholder="Enter contact person name"></div>
+                  <div class="col-md-4"><label class="form-label">Email <span class="text-danger">*</span></label><input id="ref-email" type="email" class="form-control" placeholder="Enter email address"></div>
+                  <div class="col-md-4"><label class="form-label">Phone Number <span class="text-danger">*</span></label><input class="form-control" value="(555) 123-4567"></div>
+                  <div class="col-md-4"><label class="form-label">Project / Service Interest <span class="text-danger">*</span></label><select id="ref-service" class="form-select"><option>Select service / solution</option><option>Website Development</option><option>Mobile App Development</option><option>Cloud Solutions</option><option>Digital Marketing</option></select></div>
+                  <div class="col-md-4"><label class="form-label">Estimated Project Value</label><select id="ref-value" class="form-select"><option>Select range</option><option>$10,000 - $20,000</option><option>$20,000 - $30,000</option><option>$25,000 - $50,000</option><option>$50,000 - $100,000</option></select></div>
+                  <div class="col-md-8"><label class="form-label">Project Description</label><textarea class="form-control" rows="3" placeholder="Briefly describe the project requirement..."></textarea></div>
+                  <div class="col-md-4"><label class="form-label">How did you hear about us?</label><select class="form-select"><option>Select source</option><option>Google Search</option><option>Referral</option><option>Social Media</option><option>Event</option></select></div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between mt-4">
+                  <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                  <button type="submit" id="ref-submit" class="btn btn-primary">Submit Referral <i class="bi bi-send"></i></button>
+                </div>
+              </form>
             </div>
           </div>
 
-          <form class="mt-5 space-y-4" onsubmit="return false;">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <div>
-                <label class="text-[11px] font-semibold text-slate-700">Company Name <span class="text-red-500">*</span></label>
-                <input placeholder="Enter company name" class="mt-1 w-full bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-[11px] placeholder:text-slate-400 focus:border-indigo-300 focus:ring-4 focus:ring-indigo-50">
+          <!-- Overview -->
+          <div class="col-xl-5">
+            <div class="zp-card p-4 h-100">
+              <div class="zp-card-head"><h3 class="zp-card-title">Referral Overview</h3><select class="form-select form-select-sm w-auto"><option>This Year</option><option>This Month</option><option>Last Year</option></select></div>
+              <div class="row row-cols-2 row-cols-md-5 g-2 mt-3">
+                <div class="col"><div class="rounded-3 border p-2 text-center" style="background:#f8f7ff"><div class="text-muted" style="font-size:.64rem;font-weight:600">Total</div><div class="fw-bold text-primary">24</div></div></div>
+                <div class="col"><div class="rounded-3 border p-2 text-center"><div class="text-muted" style="font-size:.64rem;font-weight:600">Qualified</div><div class="fw-bold">12</div></div></div>
+                <div class="col"><div class="rounded-3 border p-2 text-center"><div class="text-muted" style="font-size:.64rem;font-weight:600">In Progress</div><div class="fw-bold">7</div></div></div>
+                <div class="col"><div class="rounded-3 border p-2 text-center"><div class="text-muted" style="font-size:.64rem;font-weight:600">Converted</div><div class="fw-bold">5</div></div></div>
+                <div class="col"><div class="rounded-3 border p-2 text-center"><div class="text-muted" style="font-size:.64rem;font-weight:600">Won</div><div class="fw-bold">5</div></div></div>
               </div>
-              <div>
-                <label class="text-[11px] font-semibold text-slate-700">Contact Person <span class="text-red-500">*</span></label>
-                <input placeholder="Enter contact person name" class="mt-1 w-full bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-[11px] placeholder:text-slate-400 focus:border-indigo-300 focus:ring-4 focus:ring-indigo-50">
-              </div>
-              <div>
-                <label class="text-[11px] font-semibold text-slate-700">Email <span class="text-red-500">*</span></label>
-                <input type="email" placeholder="Enter email address" class="mt-1 w-full bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-[11px] placeholder:text-slate-400 focus:border-indigo-300 focus:ring-4 focus:ring-indigo-50">
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <div>
-                <label class="text-[11px] font-semibold text-slate-700">Phone Number <span class="text-red-500">*</span></label>
-                <div class="mt-1 flex gap-2">
-                  <div class="flex items-center gap-1.5 bg-white border border-slate-200 rounded-lg px-2.5 py-2.5 text-[11px] font-medium shrink-0 cursor-pointer hover:bg-slate-50">
-                    <span class="text-[14px]">🇺🇸</span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                  </div>
-                  <input placeholder="(555) 123-4567" class="flex-1 bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-[11px] placeholder:text-slate-400 focus:border-indigo-300 focus:ring-4 focus:ring-indigo-50" value="(555) 123-4567">
+              <div class="d-flex gap-4 mt-4 align-items-center">
+                <div class="position-relative flex-shrink-0" style="width:110px;height:110px"><div class="zp-donut position-absolute inset-0 rounded-circle" style="background:conic-gradient(#4f46e5 0 29%,#10b981 29% 52%,#f59e0b 52% 71%,#f97316 71% 88%,#0ea5e9 88% 100%)"></div><div class="zp-donut-hole d-grid"><div class="text-center"><div class="fw-bold">24</div><div class="text-muted" style="font-size:.66rem">Total</div></div></div></div>
+                <div class="flex-grow-1 d-flex flex-column gap-1" style="font-size:.7rem">
+                  <div class="d-flex align-items-center gap-2"><span style="width:8px;height:8px;border-radius:99px;background:#4f46e5"></span><span class="flex-grow-1">New</span><span class="text-muted">7</span></div>
+                  <div class="d-flex align-items-center gap-2"><span style="width:8px;height:8px;border-radius:99px;background:#10b981"></span><span class="flex-grow-1">Qualified</span><span class="text-muted">12</span></div>
+                  <div class="d-flex align-items-center gap-2"><span style="width:8px;height:8px;border-radius:99px;background:#f59e0b"></span><span class="flex-grow-1">In Progress</span><span class="text-muted">7</span></div>
+                  <div class="d-flex align-items-center gap-2"><span style="width:8px;height:8px;border-radius:99px;background:#f97316"></span><span class="flex-grow-1">Converted</span><span class="text-muted">5</span></div>
+                  <div class="d-flex align-items-center gap-2"><span style="width:8px;height:8px;border-radius:99px;background:#0ea5e9"></span><span class="flex-grow-1">Won</span><span class="text-muted">5</span></div>
                 </div>
               </div>
-              <div>
-                <label class="text-[11px] font-semibold text-slate-700">Project / Service Interest <span class="text-red-500">*</span></label>
-                <div class="mt-1 relative">
-                  <select class="w-full appearance-none bg-white border border-slate-200 rounded-lg px-3 py-2.5 pr-8 text-[11px] text-slate-500 focus:border-indigo-300 focus:ring-4 focus:ring-indigo-50">
-                    <option>Select service / solution</option>
-                    <option>Website Development</option>
-                    <option>Mobile App Development</option>
-                    <option>Cloud Solutions</option>
-                    <option>Digital Marketing</option>
-                  </select>
-                  <svg class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                </div>
-              </div>
-              <div>
-                <label class="text-[11px] font-semibold text-slate-700">Estimated Project Value</label>
-                <div class="mt-1 relative">
-                  <select class="w-full appearance-none bg-white border border-slate-200 rounded-lg px-3 py-2.5 pr-8 text-[11px] text-slate-500 focus:border-indigo-300 focus:ring-4 focus:ring-indigo-50">
-                    <option>Select range</option>
-                    <option>$10,000 - $20,000</option>
-                    <option>$20,000 - $30,000</option>
-                    <option>$25,000 - $50,000</option>
-                    <option>$50,000 - $100,000</option>
-                  </select>
-                  <svg class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                </div>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-[1.6fr_1fr] gap-3">
-              <div>
-                <label class="text-[11px] font-semibold text-slate-700">Project Description</label>
-                <textarea rows="3" placeholder="Briefly describe the project requirement..." class="mt-1 w-full bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-[11px] placeholder:text-slate-400 focus:border-indigo-300 focus:ring-4 focus:ring-indigo-50 resize-none"></textarea>
-              </div>
-              <div>
-                <label class="text-[11px] font-semibold text-slate-700">How did you hear about us?</label>
-                <div class="mt-1 relative">
-                  <select class="w-full appearance-none bg-white border border-slate-200 rounded-lg px-3 py-2.5 pr-8 text-[11px] text-slate-500 focus:border-indigo-300 focus:ring-4 focus:ring-indigo-50">
-                    <option>Select source</option>
-                    <option>Google Search</option>
-                    <option>Referral</option>
-                    <option>Social Media</option>
-                    <option>Event</option>
-                  </select>
-                  <svg class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                </div>
-                <div class="mt-4 flex justify-end md:justify-start">
-                  <!-- placeholder spacer for alignment on desktop; buttons moved below on mobile? Keep consistent -->
-                </div>
-              </div>
-            </div>
-
-            <div class="flex items-center justify-between pt-2">
-              <button type="reset" class="bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 text-[12px] font-semibold px-6 py-2 rounded-xl">Reset</button>
-              <button type="submit" class="bg-[#4f46e5] hover:bg-[#4338ca] text-white text-[12px] font-bold px-6 py-2.5 rounded-xl inline-flex items-center gap-2 shadow-sm">Submit Referral <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
-            </div>
-          </form>
-        </div>
-
-        <!-- Referral Overview -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 lg:p-6">
-          <div class="flex items-center justify-between">
-            <h3 class="text-[13px] font-bold">Referral Overview</h3>
-            <div class="relative">
-              <select class="appearance-none bg-white border border-slate-200 rounded-lg pl-3 pr-7 py-1.5 text-[11px] font-medium">
-                <option>This Year</option>
-                <option>This Month</option>
-                <option>Last Year</option>
-              </select>
-              <svg class="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-5 gap-2 mt-4">
-            <div class="bg-[#f8f7ff] border border-violet-100 rounded-xl p-3">
-              <div class="text-[10px] font-semibold text-slate-500 leading-tight">Total Referrals</div>
-              <div class="text-[16px] font-extrabold text-[#4f46e5] mt-1">24</div>
-              <div class="text-[10px] font-bold text-emerald-600 flex items-center gap-0.5 mt-1">↑ 20% <span class="font-normal text-slate-500">vs last year</span></div>
-            </div>
-            <div class="bg-white border border-slate-100 rounded-xl p-3">
-              <div class="text-[10px] font-semibold text-slate-500 leading-tight">Qualified</div>
-              <div class="text-[16px] font-extrabold text-slate-900 mt-1">12</div>
-              <div class="text-[10px] font-bold text-emerald-600 flex items-center gap-0.5 mt-1">↑ 25% <span class="font-normal text-slate-500">vs last year</span></div>
-            </div>
-            <div class="bg-white border border-slate-100 rounded-xl p-3">
-              <div class="text-[10px] font-semibold text-slate-500 leading-tight">In Progress</div>
-              <div class="text-[16px] font-extrabold text-slate-900 mt-1">7</div>
-              <div class="text-[10px] font-bold text-emerald-600 flex items-center gap-0.5 mt-1">↑ 16% <span class="font-normal text-slate-500">vs last year</span></div>
-            </div>
-            <div class="bg-white border border-slate-100 rounded-xl p-3">
-              <div class="text-[10px] font-semibold text-slate-500 leading-tight">Converted</div>
-              <div class="text-[16px] font-extrabold text-slate-900 mt-1">5</div>
-              <div class="text-[10px] font-bold text-emerald-600 flex items-center gap-0.5 mt-1">↑ 40% <span class="font-normal text-slate-500">vs last year</span></div>
-            </div>
-            <div class="bg-white border border-slate-100 rounded-xl p-3">
-              <div class="text-[10px] font-semibold text-slate-500 leading-tight">Closed (Won)</div>
-              <div class="text-[16px] font-extrabold text-slate-900 mt-1">5</div>
-              <div class="text-[10px] font-bold text-emerald-600 flex items-center gap-0.5 mt-1">↑ 67% <span class="font-normal text-slate-500">vs last year</span></div>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-6 mt-6">
-            <!-- Donut -->
-            <div>
-              <h4 class="text-[12px] font-bold">By Status</h4>
-              <div class="flex gap-4 mt-3 items-center">
-                <div class="relative w-[110px] h-[110px] shrink-0">
-                  <div class="absolute inset-0 rounded-full referral-donut"></div>
-                  <div class="absolute inset-[18px] bg-white rounded-full grid place-items-center shadow-inner border border-slate-100">
-                    <div class="text-center">
-                      <div class="text-[16px] font-extrabold leading-none">24</div>
-                      <div class="text-[10px] text-slate-500 font-medium">Total</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="space-y-2 text-[11px]">
-                  <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#4f46e5]"></span><span class="flex-1 font-medium">New</span><span class="text-slate-500">7 (29%)</span></div>
-                  <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-500"></span><span class="flex-1 font-medium">Qualified</span><span class="text-slate-500">12 (50%)</span></div>
-                  <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-amber-500"></span><span class="flex-1 font-medium">In Progress</span><span class="text-slate-500">7 (29%)</span></div>
-                  <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-orange-500"></span><span class="flex-1 font-medium">Converted</span><span class="text-slate-500">5 (21%)</span></div>
-                  <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-sky-500"></span><span class="flex-1 font-medium">Closed (Won)</span><span class="text-slate-500">5 (21%)</span></div>
-                </div>
-              </div>
-            </div>
-            <!-- Top Services -->
-            <div>
-              <h4 class="text-[12px] font-bold">Top Services Referred</h4>
-              <div class="mt-3 space-y-3">
-                <div>
-                  <div class="flex justify-between text-[11px]"><span class="font-medium">Website Development</span><span class="text-slate-500">8 (33%)</span></div>
-                  <div class="mt-1 h-1.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-[#4f46e5] rounded-full" style="width:33%"></div></div>
-                </div>
-                <div>
-                  <div class="flex justify-between text-[11px]"><span class="font-medium">Mobile App Development</span><span class="text-slate-500">6 (25%)</span></div>
-                  <div class="mt-1 h-1.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-sky-500 rounded-full" style="width:25%"></div></div>
-                </div>
-                <div>
-                  <div class="flex justify-between text-[11px]"><span class="font-medium">Cloud Solutions</span><span class="text-slate-500">4 (17%)</span></div>
-                  <div class="mt-1 h-1.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-emerald-500 rounded-full" style="width:17%"></div></div>
-                </div>
-                <div>
-                  <div class="flex justify-between text-[11px]"><span class="font-medium">Digital Marketing</span><span class="text-slate-500">3 (13%)</span></div>
-                  <div class="mt-1 h-1.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-orange-400 rounded-full" style="width:13%"></div></div>
-                </div>
-                <div>
-                  <div class="flex justify-between text-[11px]"><span class="font-medium">Others</span><span class="text-slate-500">3 (21%)</span></div>
-                  <div class="mt-1 h-1.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:13%"></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Referral List -->
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 lg:p-6">
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-          <div>
-            <h3 class="text-[14px] font-extrabold">Referral List</h3>
-            <p class="text-[11px] text-slate-500 mt-0.5">View and track all your submitted referrals.</p>
-          </div>
-          <a href="#" class="inline-flex items-center gap-1.5 bg-white border border-indigo-200 hover:bg-indigo-50 text-[#4f46e5] text-[11px] font-bold px-4 py-2 rounded-xl self-start lg:self-auto"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Export</a>
-        </div>
-
-        <div class="flex flex-col lg:flex-row gap-2.5 mt-4">
-          <label class="flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2.5 flex-1 focus-within:border-indigo-300 focus-within:ring-4 focus-within:ring-indigo-50">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
-            <input placeholder="Search referrals by company, contact person..." class="flex-1 text-[11px] placeholder:text-slate-400 bg-transparent"/>
-          </label>
-          <div class="flex gap-2 flex-wrap">
-            <div class="relative">
-              <select class="appearance-none bg-white border border-slate-200 rounded-xl pl-3 pr-7 py-2.5 text-[11px] font-medium min-w-[110px]"><option>All Status</option><option>New</option><option>Qualified</option><option>In Progress</option><option>Converted</option><option>Closed (Won)</option></select>
-              <svg class="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="relative">
-              <select class="appearance-none bg-white border border-slate-200 rounded-xl pl-3 pr-7 py-2.5 text-[11px] font-medium min-w-[120px]"><option>All Services</option><option>Website Development</option><option>Mobile App</option><option>Cloud Solutions</option></select>
-              <svg class="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="relative">
-              <select class="appearance-none bg-white border border-slate-200 rounded-xl pl-3 pr-7 py-2.5 text-[11px] font-medium min-w-[100px]"><option>All Time</option><option>This Month</option><option>This Year</option></select>
-              <svg class="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <button class="inline-flex items-center gap-1.5 bg-white border border-indigo-200 text-[#4f46e5] text-[11px] font-bold px-4 py-2.5 rounded-xl hover:bg-indigo-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/></svg> Filter</button>
-          </div>
-        </div>
-
-        <div class="mt-4 border border-slate-100 rounded-xl overflow-hidden overflow-x-auto">
-          <div class="min-w-[980px]">
-            <div class="grid grid-cols-[110px_1.6fr_1.2fr_1fr_0.9fr_1.1fr_1fr_1fr_80px] bg-[#f8fafc] text-[10px] font-bold text-slate-500 uppercase tracking-wide px-3 py-3 border-b border-slate-100">
-              <span>Ref ID</span>
-              <span>Company / Contact</span>
-              <span>Service Interest</span>
-              <span>Est. Value</span>
-              <span>Status</span>
-              <span>Lead Owner</span>
-              <span>Submitted On</span>
-              <span>Last Updated</span>
-              <span class="text-right">Action</span>
-            </div>
-            <div class="divide-y divide-slate-100 bg-white">
-              <!-- Row 1 -->
-              <div class="grid grid-cols-[110px_1.6fr_1.2fr_1fr_0.9fr_1.1fr_1fr_1fr_80px] items-center px-3 py-3 text-[11px]">
-                <span class="font-medium text-slate-500">REF-2024-024</span>
-                <div class="leading-tight">
-                  <div class="font-bold text-slate-900">TechNova Solutions</div>
-                  <div class="text-slate-600">John Smith</div>
-                  <div class="text-[10px] text-slate-500">john@technova.com</div>
-                </div>
-                <span class="inline-flex w-fit text-[11px] font-medium bg-violet-50 text-violet-700 border border-violet-200 px-2 py-1 rounded-full">Website Development</span>
-                <span class="text-slate-700 font-medium">$25,000 - $50,000</span>
-                <span><span class="inline-flex text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-1 rounded-full">Qualified</span></span>
-                <div class="flex items-center gap-2">
-                  <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop&q=60" class="w-6 h-6 rounded-full object-cover">
-                  <span class="font-medium">Sarah Mitchell</span>
-                </div>
-                <span class="text-slate-600">May 10, 2024</span>
-                <span class="text-slate-600">May 15, 2024</span>
-                <div class="flex justify-end gap-1">
-                  <a href="leads.html" class="w-7 h-7 rounded-lg bg-white border border-slate-200 grid place-items-center text-indigo-600 hover:bg-indigo-50" title="View"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></a>
-                  <button class="w-7 h-7 rounded-lg bg-white border border-slate-200 grid place-items-center text-slate-400 hover:bg-slate-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></button>
-                </div>
-              </div>
-              <!-- Row 2 -->
-              <div class="grid grid-cols-[110px_1.6fr_1.2fr_1fr_0.9fr_1.1fr_1fr_1fr_80px] items-center px-3 py-3 text-[11px] bg-slate-50/40">
-                <span class="font-medium text-slate-500">REF-2024-023</span>
-                <div class="leading-tight">
-                  <div class="font-bold text-slate-900">BrightWave Industries</div>
-                  <div class="text-slate-600">Lisa Brown</div>
-                  <div class="text-[10px] text-slate-500">lisa@brightwave.com</div>
-                </div>
-                <span class="inline-flex w-fit text-[11px] font-medium bg-teal-50 text-teal-700 border border-teal-200 px-2 py-1 rounded-full">Mobile App Development</span>
-                <span class="text-slate-700 font-medium">$50,000 - $100,000</span>
-                <span><span class="inline-flex text-[10px] font-bold bg-sky-50 text-sky-700 border border-sky-200 px-2 py-1 rounded-full">In Progress</span></span>
-                <div class="flex items-center gap-2">
-                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" class="w-6 h-6 rounded-full object-cover">
-                  <span class="font-medium">Michael Davis</span>
-                </div>
-                <span class="text-slate-600">May 08, 2024</span>
-                <span class="text-slate-600">May 14, 2024</span>
-                <div class="flex justify-end gap-1">
-                  <a href="leads.html" class="w-7 h-7 rounded-lg bg-white border border-slate-200 grid place-items-center text-indigo-600 hover:bg-indigo-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></a>
-                  <button class="w-7 h-7 rounded-lg bg-white border border-slate-200 grid place-items-center text-slate-400 hover:bg-slate-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></button>
-                </div>
-              </div>
-              <!-- Row 3 -->
-              <div class="grid grid-cols-[110px_1.6fr_1.2fr_1fr_0.9fr_1.1fr_1fr_1fr_80px] items-center px-3 py-3 text-[11px]">
-                <span class="font-medium text-slate-500">REF-2024-022</span>
-                <div class="leading-tight">
-                  <div class="font-bold text-slate-900">CloudCore Systems</div>
-                  <div class="text-slate-600">Robert Johnson</div>
-                  <div class="text-[10px] text-slate-500">robert@cloudcore.com</div>
-                </div>
-                <span class="inline-flex w-fit text-[11px] font-medium bg-sky-50 text-sky-700 border border-sky-200 px-2 py-1 rounded-full">Cloud Solutions</span>
-                <span class="text-slate-700 font-medium">$20,000 - $30,000</span>
-                <span><span class="inline-flex text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-1 rounded-full">New</span></span>
-                <div class="flex items-center gap-2">
-                  <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop&q=60" class="w-6 h-6 rounded-full object-cover">
-                  <span class="font-medium">Sarah Mitchell</span>
-                </div>
-                <span class="text-slate-600">May 07, 2024</span>
-                <span class="text-slate-600">May 07, 2024</span>
-                <div class="flex justify-end gap-1">
-                  <a href="leads.html" class="w-7 h-7 rounded-lg bg-white border border-slate-200 grid place-items-center text-indigo-600 hover:bg-indigo-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></a>
-                  <button class="w-7 h-7 rounded-lg bg-white border border-slate-200 grid place-items-center text-slate-400 hover:bg-slate-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></button>
-                </div>
-              </div>
-              <!-- Row 4 -->
-              <div class="grid grid-cols-[110px_1.6fr_1.2fr_1fr_0.9fr_1.1fr_1fr_1fr_80px] items-center px-3 py-3 text-[11px] bg-slate-50/40">
-                <span class="font-medium text-slate-500">REF-2024-021</span>
-                <div class="leading-tight">
-                  <div class="font-bold text-slate-900">MarketEdge LLC</div>
-                  <div class="text-slate-600">David Lee</div>
-                  <div class="text-[10px] text-slate-500">david@marketedge.com</div>
-                </div>
-                <span class="inline-flex w-fit text-[11px] font-medium bg-orange-50 text-orange-700 border border-orange-200 px-2 py-1 rounded-full">Digital Marketing</span>
-                <span class="text-slate-700 font-medium">$10,000 - $20,000</span>
-                <span><span class="inline-flex text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 px-2 py-1 rounded-full">Converted</span></span>
-                <div class="flex items-center gap-2">
-                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" class="w-6 h-6 rounded-full object-cover">
-                  <span class="font-medium">Michael Davis</span>
-                </div>
-                <span class="text-slate-600">May 05, 2024</span>
-                <span class="text-slate-600">May 12, 2024</span>
-                <div class="flex justify-end gap-1">
-                  <a href="leads.html" class="w-7 h-7 rounded-lg bg-white border border-slate-200 grid place-items-center text-indigo-600 hover:bg-indigo-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></a>
-                  <button class="w-7 h-7 rounded-lg bg-white border border-slate-200 grid place-items-center text-slate-400 hover:bg-slate-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></button>
-                </div>
-              </div>
-              <!-- Row 5 -->
-              <div class="grid grid-cols-[110px_1.6fr_1.2fr_1fr_0.9fr_1.1fr_1fr_1fr_80px] items-center px-3 py-3 text-[11px]">
-                <span class="font-medium text-slate-500">REF-2024-020</span>
-                <div class="leading-tight">
-                  <div class="font-bold text-slate-900">InnovaTech</div>
-                  <div class="text-slate-600">Emily Wilson</div>
-                  <div class="text-[10px] text-slate-500">emily@innovatech.com</div>
-                </div>
-                <span class="inline-flex w-fit text-[11px] font-medium bg-violet-50 text-violet-700 border border-violet-200 px-2 py-1 rounded-full">Website Development</span>
-                <span class="text-slate-700 font-medium">$15,000 - $25,000</span>
-                <span><span class="inline-flex text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-1 rounded-full">Closed (Won)</span></span>
-                <div class="flex items-center gap-2">
-                  <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop&q=60" class="w-6 h-6 rounded-full object-cover">
-                  <span class="font-medium">Sarah Mitchell</span>
-                </div>
-                <span class="text-slate-600">May 02, 2024</span>
-                <span class="text-slate-600">May 11, 2024</span>
-                <div class="flex justify-end gap-1">
-                  <a href="leads.html" class="w-7 h-7 rounded-lg bg-white border border-slate-200 grid place-items-center text-indigo-600 hover:bg-indigo-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></a>
-                  <button class="w-7 h-7 rounded-lg bg-white border border-slate-200 grid place-items-center text-slate-400 hover:bg-slate-50"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></button>
+              <div class="mt-4">
+                <h4 class="zp-card-title">Top Services Referred</h4>
+                <div class="d-flex flex-column gap-2 mt-2">
+                  <div><div class="d-flex justify-content-between" style="font-size:.7rem"><span>Website Development</span><span class="text-muted">8</span></div><div class="zp-progress mt-1"><span style="width:33%;background:#4f46e5"></span></div></div>
+                  <div><div class="d-flex justify-content-between" style="font-size:.7rem"><span>Mobile App Development</span><span class="text-muted">6</span></div><div class="zp-progress mt-1"><span style="width:25%;background:#0ea5e9"></span></div></div>
+                  <div><div class="d-flex justify-content-between" style="font-size:.7rem"><span>Cloud Solutions</span><span class="text-muted">4</span></div><div class="zp-progress mt-1"><span style="width:17%;background:#10b981"></span></div></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mt-4 pt-4 border-t border-slate-100">
-          <span class="text-[11px] text-slate-500 font-medium">Showing 1 to 5 of 24 entries</span>
-          <div class="flex items-center gap-1.5">
-            <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-slate-500 hover:bg-slate-50"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></a>
-            <a href="#" class="w-8 h-8 rounded-xl bg-[#4f46e5] text-white grid place-items-center text-[11px] font-bold shadow-md">1</a>
-            <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-[11px] font-semibold text-slate-700 hover:bg-slate-50">2</a>
-            <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-[11px] font-semibold text-slate-700 hover:bg-slate-50">3</a>
-            <span class="px-1 text-slate-400">...</span>
-            <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-[11px] font-semibold text-slate-700 hover:bg-slate-50">5</a>
-            <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-slate-500 hover:bg-slate-50"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
+        <!-- Referral list -->
+        <div class="zp-card p-4">
+          <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3">
+            <div><h3 class="zp-card-title">Referral List</h3><p class="text-muted mb-0" style="font-size:.72rem">View and track all your submitted referrals.</p></div>
+            <button class="btn btn-outline-primary align-self-start align-self-lg-auto"><i class="bi bi-download"></i> Export</button>
+          </div>
+          <div class="zp-table-wrap mt-3">
+            <table class="zp-table">
+              <thead><tr><th>Ref ID</th><th>Company / Contact</th><th>Service</th><th>Est. Value</th><th>Status</th><th>Lead Owner</th><th>Submitted On</th><th class="text-end">Action</th></tr></thead>
+              <tbody>
+                <tr><td class="text-secondary fw-semibold">REF-2024-024</td><td><div class="fw-bold">TechNova Solutions</div><div class="text-muted" style="font-size:.68rem">John Smith</div></td><td><span class="zp-pill no-dot zp-pill--violet">Website Development</span></td><td class="text-secondary">$25,000 - $50,000</td><td><span class="zp-pill no-dot zp-pill--emerald">Qualified</span></td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop&q=60" style="width:24px;height:24px;border-radius:50%;object-fit:cover" alt=""><span>Sarah Mitchell</span></div></td><td class="text-secondary">May 10, 2024</td><td class="text-end"><a href="leads.html" class="row-action" title="View"><i class="bi bi-eye"></i></a></td></tr>
+                <tr><td class="text-secondary fw-semibold">REF-2024-023</td><td><div class="fw-bold">BrightWave Industries</div><div class="text-muted" style="font-size:.68rem">Lisa Brown</div></td><td><span class="zp-pill no-dot zp-pill--teal">Mobile App</span></td><td class="text-secondary">$50,000 - $100,000</td><td><span class="zp-pill no-dot zp-pill--sky">In Progress</span></td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" style="width:24px;height:24px;border-radius:50%;object-fit:cover" alt=""><span>Michael Davis</span></div></td><td class="text-secondary">May 08, 2024</td><td class="text-end"><a href="leads.html" class="row-action" title="View"><i class="bi bi-eye"></i></a></td></tr>
+                <tr><td class="text-secondary fw-semibold">REF-2024-022</td><td><div class="fw-bold">CloudCore Systems</div><div class="text-muted" style="font-size:.68rem">Robert Johnson</div></td><td><span class="zp-pill no-dot zp-pill--sky">Cloud Solutions</span></td><td class="text-secondary">$20,000 - $30,000</td><td><span class="zp-pill no-dot zp-pill--indigo">New</span></td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop&q=60" style="width:24px;height:24px;border-radius:50%;object-fit:cover" alt=""><span>Sarah Mitchell</span></div></td><td class="text-secondary">May 07, 2024</td><td class="text-end"><a href="leads.html" class="row-action" title="View"><i class="bi bi-eye"></i></a></td></tr>
+                <tr><td class="text-secondary fw-semibold">REF-2024-021</td><td><div class="fw-bold">MarketEdge LLC</div><div class="text-muted" style="font-size:.68rem">David Lee</div></td><td><span class="zp-pill no-dot zp-pill--orange">Digital Marketing</span></td><td class="text-secondary">$10,000 - $20,000</td><td><span class="zp-pill no-dot zp-pill--amber">Converted</span></td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" style="width:24px;height:24px;border-radius:50%;object-fit:cover" alt=""><span>Michael Davis</span></div></td><td class="text-secondary">May 05, 2024</td><td class="text-end"><a href="leads.html" class="row-action" title="View"><i class="bi bi-eye"></i></a></td></tr>
+                <tr><td class="text-secondary fw-semibold">REF-2024-020</td><td><div class="fw-bold">InnovaTech</div><div class="text-muted" style="font-size:.68rem">Emily Wilson</div></td><td><span class="zp-pill no-dot zp-pill--violet">Website Development</span></td><td class="text-secondary">$15,000 - $25,000</td><td><span class="zp-pill no-dot zp-pill--emerald">Closed (Won)</span></td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop&q=60" style="width:24px;height:24px;border-radius:50%;object-fit:cover" alt=""><span>Sarah Mitchell</span></div></td><td class="text-secondary">May 02, 2024</td><td class="text-end"><a href="leads.html" class="row-action" title="View"><i class="bi bi-eye"></i></a></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3 mt-3">
+            <span class="text-muted" style="font-size:.72rem">Showing 1 to 5 of <span id="ref-total">24</span> entries</span>
+            <nav><ul class="pagination pagination-sm mb-0"><li class="page-item disabled"><a class="page-link" href="#"><i class="bi bi-chevron-left"></i></a></li><li class="page-item active"><a class="page-link" href="#">1</a></li><li class="page-item"><a class="page-link" href="#">2</a></li><li class="page-item"><a class="page-link" href="#">3</a></li><li class="page-item"><a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a></li></ul></nav>
           </div>
         </div>
-      </div>
 
-    </main>
+      </main>
+    </div>
   </div>
 </div>
 <div id="app-mobile-nav"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="layout.js"></script>
-<script>
-  injectLayout({active:'referral', title:'Referrals', breadcrumb:'Add Referral / Leads', searchPlaceholder:'Search anything...'});
-</script>
+<script>injectLayout({active:'referral', title:'Referrals', breadcrumb:'Add Referral / Leads', searchPlaceholder:'Search anything...'});</script>
 </body>
 </html>

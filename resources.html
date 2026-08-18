@@ -4,542 +4,191 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Resources Center — ZenPartner</title>
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="app.css">
-<style>
-.line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.resource-card{transition:all .22s cubic-bezier(.2,.8,.2,1)}
-.resource-card:hover{transform:translateY(-2px)}
-</style>
+<script src="https://static.zohocdn.com/creator/widgets/version/2.0/widgetsdk-min.js"></script>
 </head>
-<body class="bg-[#f6f7fb] text-slate-800 antialiased">
-<div class="min-h-screen flex">
+<body>
+<div class="zp-shell">
   <div id="app-sidebar"></div>
-  <div class="flex-1 min-w-0 flex flex-col">
+  <div class="zp-main">
     <div id="app-topbar"></div>
+    <div class="zp-content">
+      <main class="zp-page">
 
-    <main class="p-4 lg:p-6 max-w-[1450px] mx-auto w-full space-y-5">
-
-      <!-- HERO + QUICK ACCESS -->
-      <div class="grid grid-cols-1 xl:grid-cols-[1.68fr_0.92fr] gap-4">
-        <!-- Hero -->
-        <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden relative shadow-sm">
-          <div class="absolute inset-0 bg-gradient-to-br from-[#eef2ff] via-[#f5f3ff] to-white"></div>
-          <div class="absolute inset-0 opacity-[0.06]" style="background-image: radial-gradient(#4f46e5 1px, transparent 1px); background-size: 20px 20px;"></div>
-          <!-- soft blob -->
-          <div class="absolute -right-10 -top-10 w-[280px] h-[180px] bg-gradient-to-br from-indigo-200/40 to-violet-200/40 rounded-full blur-2xl"></div>
-          <div class="relative p-6 lg:p-8 flex gap-6 items-center">
-            <!-- Illustration -->
-            <div class="relative w-[168px] h-[122px] shrink-0 hidden sm:block">
-              <div class="absolute left-1 top-6 w-[92px] h-[76px] bg-gradient-to-br from-indigo-600 to-violet-600 rounded-2xl shadow-xl border border-indigo-700 flex items-center justify-center overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-tr from-black/10 to-white/10"></div>
-                <div class="w-[56px] h-[44px] bg-white rounded-xl shadow-md flex items-center justify-center relative">
-                  <div class="w-8 h-5 bg-indigo-50 rounded-md border border-indigo-100 flex items-center justify-center gap-0.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span><span class="w-4 h-1 rounded-full bg-indigo-200"></span>
-                  </div>
-                  <div class="absolute -right-1 -bottom-1 w-5 h-5 bg-emerald-500 rounded-full border-2 border-white grid place-items-center text-white text-[8px]">✓</div>
-                </div>
-                <div class="absolute -right-2 -bottom-2 w-10 h-10 bg-white/15 rounded-full blur-xl"></div>
-              </div>
-              <div class="absolute left-[78px] top-3 w-[62px] h-[76px] bg-white rounded-xl border border-slate-200 shadow-md p-2.5 rotate-[4deg]">
-                <div class="flex gap-1"><span class="w-2 h-2 rounded-full bg-red-400"></span><span class="w-2 h-2 rounded-full bg-amber-400"></span><span class="w-2 h-2 rounded-full bg-emerald-400"></span></div>
-                <div class="mt-3 space-y-1.5"><div class="h-1 bg-slate-100 rounded-full w-full"></div><div class="h-1 bg-slate-100 rounded-full w-5/6"></div><div class="h-1 bg-indigo-100 rounded-full w-3/5"></div></div>
-                <div class="mt-3 h-7 bg-gradient-to-br from-indigo-50 to-violet-50 rounded-lg border border-indigo-100 flex items-center justify-center"><div class="w-6 h-1 bg-indigo-200 rounded-full"></div></div>
-              </div>
-              <div class="absolute left-[92px] top-0 w-[54px] h-[66px] bg-white rounded-xl border border-slate-200 shadow-sm p-2 -rotate-[5deg] opacity-90">
-                <div class="h-1 bg-slate-100 rounded-full w-full"></div><div class="h-1 bg-slate-100 rounded-full w-2/3 mt-1.5"></div>
-                <div class="mt-2 h-8 bg-orange-50 rounded-md border border-orange-100"></div>
-              </div>
-              <div class="absolute left-[44px] -top-1 w-[94px] h-[46px] bg-white rounded-full shadow-lg border border-indigo-100 flex items-center justify-center overflow-hidden">
-                <div class="w-[72px] h-[32px] bg-gradient-to-b from-sky-50 to-indigo-50 rounded-full"></div>
-                <div class="absolute w-8 h-8 bg-white rounded-full left-2 top-1 shadow-sm"></div>
-                <div class="absolute w-6 h-6 bg-white rounded-full right-3 top-0.5 shadow-sm"></div>
-                <div class="absolute left-1/2 -translate-x-1/2 bottom-1 w-7 h-7 bg-indigo-600 rounded-full grid place-items-center text-white shadow-md"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></div>
+        <div class="row g-3">
+          <!-- Hero -->
+          <div class="col-xl-8">
+            <div class="zp-card p-4 position-relative overflow-hidden" style="background:linear-gradient(135deg,#eef2ff,#f5f3ff)">
+              <span class="zp-pill no-dot zp-pill--indigo"><span class="spinner-grow spinner-grow-sm text-primary me-1" role="status"></span>128 Total Resources • Updated weekly</span>
+              <h2 class="jakarta fs-3 fw-bold mt-2">Everything you need, <span class="text-primary">in one place.</span></h2>
+              <p class="text-secondary" style="font-size:.8rem;max-width:480px">Access guides, templates, marketing materials, and tools to grow your business with Zentegra. Search, filter, and download in seconds.</p>
+              <div class="d-flex flex-wrap gap-2 mt-3">
+                <div class="border rounded-3 px-3 py-2 d-flex align-items-center gap-2 bg-white shadow-sm"><span class="zp-stat-icon tint-indigo" style="width:36px;height:36px"><i class="bi bi-files"></i></span><div><div class="fs-5 fw-bold lh-1">128</div><div class="text-muted" style="font-size:.68rem">Total Resources</div></div><span class="zp-pill no-dot zp-pill--emerald">+12 new</span></div>
+                <div class="border rounded-3 px-3 py-2 d-flex align-items-center gap-2 bg-white shadow-sm"><span class="zp-stat-icon tint-amber" style="width:36px;height:36px"><i class="bi bi-file-earmark-arrow-down"></i></span><div><div class="fs-5 fw-bold lh-1">12</div><div class="text-muted" style="font-size:.68rem">New This Month</div></div></div>
+                <div class="border rounded-3 px-3 py-2 d-flex align-items-center gap-2 bg-white shadow-sm"><span class="zp-stat-icon tint-emerald" style="width:36px;height:36px"><i class="bi bi-download"></i></span><div><div class="fs-5 fw-bold lh-1">45</div><div class="text-muted" style="font-size:.68rem">Downloads This Month</div></div></div>
               </div>
             </div>
-
-            <div class="flex-1 min-w-0">
-              <div class="inline-flex items-center gap-1.5 bg-indigo-50 border border-indigo-200 text-indigo-700 text-[10px] font-bold px-2.5 py-1 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-indigo-600 animate-pulse"></span> 128 Total Resources • Updated weekly</div>
-              <h2 class="jakarta text-[20px] lg:text-[22px] font-extrabold text-slate-900 leading-tight mt-3">Everything you need, <span class="text-indigo-600">in one place.</span></h2>
-              <p class="text-[12px] text-slate-600 leading-5 mt-1.5 max-w-[480px]">Access guides, templates, marketing materials, and tools to grow your business with Zentegra. Search, filter, and download in seconds.</p>
-              <div class="flex flex-wrap gap-3 mt-5">
-                <div class="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 shadow-sm">
-                  <span class="w-9 h-9 rounded-xl bg-indigo-600 text-white grid place-items-center shadow-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
-                  <div class="leading-tight"><div class="text-[15px] font-extrabold leading-none">128</div><div class="text-[11px] text-slate-500 font-medium">Total Resources</div></div>
-                  <span class="ml-1 text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.5 rounded-full">+12 new</span>
-                </div>
-                <div class="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 shadow-sm">
-                  <span class="w-9 h-9 rounded-xl bg-amber-500 text-white grid place-items-center shadow-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="13" x2="12" y2="17"/><polyline points="9 14 12 17 15 14"/></svg></span>
-                  <div class="leading-tight"><div class="text-[15px] font-extrabold leading-none">12</div><div class="text-[11px] text-slate-500 font-medium">New This Month</div></div>
-                </div>
-                <div class="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 shadow-sm">
-                  <span class="w-9 h-9 rounded-xl bg-emerald-600 text-white grid place-items-center shadow-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
-                  <div class="leading-tight"><div class="text-[15px] font-extrabold leading-none">45</div><div class="text-[11px] text-slate-500 font-medium">Downloads This Month</div></div>
-                </div>
+          </div>
+          <!-- Quick Access -->
+          <div class="col-xl-4">
+            <div class="zp-card p-4 h-100">
+              <div class="zp-card-head"><h3 class="zp-card-title">Quick Access</h3><span class="text-muted" style="font-size:.68rem">Jump to</span></div>
+              <div class="row row-cols-3 g-2 mt-2">
+                <div class="col"><a href="#" class="border rounded-3 p-2 d-block text-center text-decoration-none hover-lift"><span class="zp-stat-icon mx-auto" style="width:34px;height:34px;background:#7c3aed;color:#fff"><i class="bi bi-megaphone"></i></span><div class="fw-bold mt-1" style="font-size:.68rem">Marketing</div><div class="text-muted" style="font-size:.62rem">24</div></a></div>
+                <div class="col"><a href="#" class="border rounded-3 p-2 d-block text-center text-decoration-none hover-lift"><span class="zp-stat-icon mx-auto" style="width:34px;height:34px;background:#059669;color:#fff"><i class="bi bi-briefcase"></i></span><div class="fw-bold mt-1" style="font-size:.68rem">Sales</div><div class="text-muted" style="font-size:.62rem">18</div></a></div>
+                <div class="col"><a href="#" class="border rounded-3 p-2 d-block text-center text-decoration-none hover-lift"><span class="zp-stat-icon mx-auto" style="width:34px;height:34px;background:#0284c7;color:#fff"><i class="bi bi-people"></i></span><div class="fw-bold mt-1" style="font-size:.68rem">Partner</div><div class="text-muted" style="font-size:.62rem">22</div></a></div>
+                <div class="col"><a href="#" class="border rounded-3 p-2 d-block text-center text-decoration-none hover-lift"><span class="zp-stat-icon mx-auto" style="width:34px;height:34px;background:#ea580c;color:#fff"><i class="bi bi-shield-check"></i></span><div class="fw-bold mt-1" style="font-size:.68rem">Legal</div><div class="text-muted" style="font-size:.62rem">15</div></a></div>
+                <div class="col"><a href="#" class="border rounded-3 p-2 d-block text-center text-decoration-none hover-lift"><span class="zp-stat-icon mx-auto" style="width:34px;height:34px;background:#7c3aed;color:#fff"><i class="bi bi-box-seam"></i></span><div class="fw-bold mt-1" style="font-size:.68rem">Product</div><div class="text-muted" style="font-size:.62rem">28</div></a></div>
+                <div class="col"><a href="#" class="border rounded-3 p-2 d-block text-center text-decoration-none hover-lift"><span class="zp-stat-icon mx-auto" style="width:34px;height:34px;background:#0891b2;color:#fff"><i class="bi bi-file-earmark-text"></i></span><div class="fw-bold mt-1" style="font-size:.68rem">Templates</div><div class="text-muted" style="font-size:.62rem">21</div></a></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Quick Access -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
-          <div class="flex items-center justify-between">
-            <h3 class="text-[13px] font-bold">Quick Access</h3>
-            <span class="text-[11px] text-slate-400">Jump to</span>
-          </div>
-          <div class="grid grid-cols-3 gap-3 mt-4">
-            <a href="#" class="group border border-slate-200 rounded-2xl p-3.5 flex flex-col gap-3 hover:border-indigo-300 hover:bg-indigo-50/40 hover:shadow-md transition-all">
-              <span class="w-9 h-9 rounded-xl bg-violet-600 text-white grid place-items-center shadow-sm group-hover:scale-105 transition-transform"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11 13a4 4 0 0 1 0 8H9a4 4 0 0 1 0-8h2z"/></svg></span>
-              <div class="leading-tight"><div class="text-[12px] font-bold">Marketing</div><div class="text-[11px] text-slate-500">Materials • 24</div></div>
-            </a>
-            <a href="#" class="group border border-slate-200 rounded-2xl p-3.5 flex flex-col gap-3 hover:border-emerald-300 hover:bg-emerald-50/40 hover:shadow-md transition-all">
-              <span class="w-9 h-9 rounded-xl bg-emerald-600 text-white grid place-items-center shadow-sm group-hover:scale-105 transition-transform"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
-              <div class="leading-tight"><div class="text-[12px] font-bold">Sales</div><div class="text-[11px] text-slate-500">Tools • 18</div></div>
-            </a>
-            <a href="#" class="group border border-slate-200 rounded-2xl p-3.5 flex flex-col gap-3 hover:border-sky-300 hover:bg-sky-50/40 hover:shadow-md transition-all">
-              <span class="w-9 h-9 rounded-xl bg-sky-600 text-white grid place-items-center shadow-sm group-hover:scale-105 transition-transform"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
-              <div class="leading-tight"><div class="text-[12px] font-bold">Partner</div><div class="text-[11px] text-slate-500">Guides • 22</div></div>
-            </a>
-            <a href="#" class="group border border-slate-200 rounded-2xl p-3.5 flex flex-col gap-3 hover:border-orange-300 hover:bg-orange-50/40 hover:shadow-md transition-all">
-              <span class="w-9 h-9 rounded-xl bg-orange-500 text-white grid place-items-center shadow-sm group-hover:scale-105 transition-transform"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M10 13a3 3 0 1 0 6 0"/><path d="M10 13h6"/></svg></span>
-              <div class="leading-tight"><div class="text-[12px] font-bold">Legal</div><div class="text-[11px] text-slate-500">Documents • 15</div></div>
-            </a>
-            <a href="#" class="group border border-slate-200 rounded-2xl p-3.5 flex flex-col gap-3 hover:border-violet-300 hover:bg-violet-50/40 hover:shadow-md transition-all">
-              <span class="w-9 h-9 rounded-xl bg-violet-500 text-white grid place-items-center shadow-sm group-hover:scale-105 transition-transform"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-              <div class="leading-tight"><div class="text-[12px] font-bold">Product</div><div class="text-[11px] text-slate-500">Information • 28</div></div>
-            </a>
-            <a href="#" class="group border border-slate-200 rounded-2xl p-3.5 flex flex-col gap-3 hover:border-cyan-300 hover:bg-cyan-50/40 hover:shadow-md transition-all">
-              <span class="w-9 h-9 rounded-xl bg-cyan-600 text-white grid place-items-center shadow-sm group-hover:scale-105 transition-transform"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="12" y1="13" x2="12" y2="17"/></svg></span>
-              <div class="leading-tight"><div class="text-[12px] font-bold">Templates</div><div class="text-[11px] text-slate-500">& Forms • 21</div></div>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- BROWSE BAR -->
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 lg:p-5">
-        <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-3">
-          <h3 class="text-[13px] font-bold shrink-0">Browse Resources</h3>
-          <div class="flex flex-col lg:flex-row gap-3 flex-1 xl:ml-6">
-            <label class="flex items-center gap-2.5 bg-[#f8fafc] border border-slate-200 rounded-xl px-3.5 py-2.5 flex-1 focus-within:bg-white focus-within:border-indigo-300 focus-within:ring-4 focus-within:ring-indigo-50 transition-all group">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" class="group-focus-within:stroke-indigo-500"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
-              <input placeholder="Search resources, guides, templates..." class="flex-1 text-[13px] placeholder:text-slate-400 bg-transparent"/>
-              <span class="hidden sm:inline-flex text-[11px] font-medium text-slate-400 bg-white border border-slate-200 px-2 py-1 rounded-lg">⌘ K</span>
-            </label>
-            <div class="flex gap-2 flex-wrap">
-              <div class="relative">
-                <select class="appearance-none bg-white border border-slate-200 rounded-xl pl-3.5 pr-8 py-2.5 text-[12px] font-semibold text-slate-700 hover:border-slate-300 focus:border-indigo-300 focus:ring-4 focus:ring-indigo-50"><option>All Categories</option><option>Marketing</option><option>Sales</option><option>Partner Guides</option></select>
-                <svg class="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-              </div>
-              <div class="relative">
-                <select class="appearance-none bg-white border border-slate-200 rounded-xl pl-3.5 pr-8 py-2.5 text-[12px] font-semibold text-slate-700 hover:border-slate-300 focus:border-indigo-300 focus:ring-4 focus:ring-indigo-50"><option>All Types</option><option>PDF</option><option>PPT</option><option>XLSX</option><option>DOCX</option></select>
-                <svg class="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-              </div>
-              <div class="relative">
-                <select class="appearance-none bg-white border border-slate-200 rounded-xl pl-3.5 pr-8 py-2.5 text-[12px] font-semibold text-slate-700 hover:border-slate-300"><option>All Audiences</option><option>Partners</option><option>Customers</option></select>
-                <svg class="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-              </div>
-              <div class="relative">
-                <select class="appearance-none bg-white border border-slate-200 rounded-xl pl-3.5 pr-8 py-2.5 text-[12px] font-semibold text-slate-700 hover:border-slate-300"><option>All Languages</option><option>English</option></select>
-                <svg class="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-              </div>
-              <button class="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-black text-white text-[12px] font-semibold px-4 py-2.5 rounded-xl transition-colors"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9c2.5 0 4.7 1 6.4 2.7"/><path d="M21 3v6h-6"/></svg> Reset</button>
+        <!-- Browse bar -->
+        <div class="zp-card p-4">
+          <div class="d-flex flex-column flex-xl-row align-items-xl-center justify-content-between gap-3">
+            <h3 class="zp-card-title flex-shrink-0">Browse Resources</h3>
+            <div class="d-flex flex-column flex-lg-row gap-2 flex-grow-1 ms-xl-3">
+              <div class="zp-top-search flex-grow-1" style="width:auto"><i class="bi bi-search text-muted"></i><input placeholder="Search resources, guides, templates..."><span class="zp-kbd">⌘ K</span></div>
+              <select class="form-select w-auto"><option>All Categories</option><option>Marketing</option><option>Sales</option><option>Partner Guides</option></select>
+              <select class="form-select w-auto"><option>All Types</option><option>PDF</option><option>PPT</option><option>XLSX</option><option>DOCX</option></select>
+              <button class="btn btn-dark">Reset</button>
             </div>
           </div>
         </div>
-        <!-- active filters hint -->
-        <div class="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-slate-100 text-[11px]">
-          <span class="text-slate-500 font-medium">Active:</span>
-          <span class="inline-flex items-center gap-1 bg-indigo-50 border border-indigo-200 text-indigo-700 px-2.5 py-1 rounded-full font-semibold">All Resources <span class="bg-indigo-600 text-white w-4 h-4 rounded-full grid place-items-center text-[10px]">128</span></span>
-          <span class="text-slate-400">•</span>
-          <span class="text-slate-500">Try: <a href="#" class="text-indigo-600 font-semibold hover:underline">PDF</a>, <a href="#" class="text-indigo-600 font-semibold hover:underline">Sales Playbook</a>, <a href="#" class="text-indigo-600 font-semibold hover:underline">Templates</a></span>
-        </div>
-      </div>
 
-      <!-- MAIN GRID -->
-      <div class="grid grid-cols-1 xl:grid-cols-[1.68fr_0.92fr] gap-5">
-        <!-- LEFT: All Resources -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 lg:p-6">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div>
-              <h3 class="text-[14px] font-extrabold">All Resources <span class="text-slate-400 font-semibold">(128)</span></h3>
-              <p class="text-[11px] text-slate-500 mt-0.5">Handpicked for partners — updated May 2024</p>
+        <div class="row g-3">
+          <!-- All Resources -->
+          <div class="col-xl-8">
+            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2 mb-3">
+              <div><h3 class="zp-card-title">All Resources <span class="text-muted fw-semibold">(128)</span></h3><p class="text-muted mb-0" style="font-size:.68rem">Handpicked for partners — updated May 2024</p></div>
+              <select class="form-select form-select-sm w-auto"><option>Newest First</option><option>Most Downloaded</option><option>Name A → Z</option></select>
             </div>
-            <div class="flex items-center gap-2">
-              <span class="text-[11px] text-slate-500 font-medium hidden sm:inline">Sort by:</span>
-              <div class="relative">
-                <select class="appearance-none bg-[#f8fafc] border border-slate-200 rounded-xl pl-3 pr-8 py-2 text-[12px] font-semibold"><option>Newest First</option><option>Most Downloaded</option><option>Name A → Z</option></select>
-                <svg class="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-              </div>
-              <div class="hidden sm:flex bg-slate-100 p-1 rounded-xl">
-                <button class="w-7 h-7 rounded-lg bg-white shadow-sm border border-slate-200 grid place-items-center text-indigo-600"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></button>
-                <button class="w-7 h-7 rounded-lg grid place-items-center text-slate-400 hover:text-slate-600"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></button>
-              </div>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-3">
+              <!-- card helper -->
+              <div class="col"><div class="resource-card zp-card overflow-hidden d-flex flex-column h-100">
+                <div class="position-relative p-3 overflow-hidden" style="height:92px;background:linear-gradient(135deg,#7c3aed,#4f46e5,#9333ea)">
+                  <div class="position-absolute rounded-circle" style="width:80px;height:80px;background:rgba(255,255,255,.15);filter:blur(20px);top:-24px;right:-24px"></div>
+                  <div class="d-flex gap-3 h-100 align-items-center position-relative">
+                    <div class="bg-white rounded-2 p-2 d-flex flex-column align-items-center shadow" style="width:52px;height:68px"><i class="bi bi-file-earmark-text text-primary" style="font-size:1.2rem"></i><span class="text-white fw-bold" style="font-size:.55rem;background:#ef4444;padding:1px 6px;border-radius:4px;margin-top:2px">PDF</span></div>
+                    <div class="flex-grow-1 d-flex flex-column justify-content-between align-items-end">
+                      <a href="#" class="rounded-circle d-grid place-items-center text-white" data-download style="width:28px;height:28px;background:rgba(255,255,255,.15)"><i class="bi bi-download"></i></a>
+                      <span class="text-white fw-bold" style="font-size:.62rem;background:rgba(0,0,0,.2);padding:2px 8px;border-radius:99px">2.4 MB</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-3 flex-grow-1"><div class="fw-bold" style="font-size:.76rem">ZenPartner Program Overview</div><div class="text-muted" style="font-size:.7rem">Complete overview of the ZenPartner program, benefits, and partnership model.</div><div class="mt-2 d-flex align-items-center gap-2"><span class="zp-pill no-dot zp-pill--violet">Partner Guide</span><span class="text-muted" style="font-size:.66rem">Featured</span></div></div>
+                <div class="px-3 py-2 border-top d-flex align-items-center justify-content-between" style="background:#f8fafc"><span class="text-muted" style="font-size:.68rem">PDF • May 01</span><a href="#" data-download class="row-action"><i class="bi bi-download"></i></a></div>
+              </div></div>
+
+              <div class="col"><div class="resource-card zp-card overflow-hidden d-flex flex-column h-100">
+                <div class="position-relative p-3 overflow-hidden" style="height:92px;background:linear-gradient(135deg,#10b981,#059669,#0d9488)">
+                  <div class="position-absolute rounded-circle" style="width:80px;height:80px;background:rgba(255,255,255,.15);filter:blur(20px);top:-24px;right:-24px"></div>
+                  <div class="d-flex gap-3 h-100 align-items-center position-relative">
+                    <div class="bg-white rounded-2 p-2 d-flex flex-column align-items-center shadow" style="width:52px;height:68px"><i class="bi bi-table text-success" style="font-size:1.2rem"></i><span class="text-white fw-bold" style="font-size:.55rem;background:#059669;padding:1px 6px;border-radius:4px;margin-top:2px">XLSX</span></div>
+                    <div class="flex-grow-1 d-flex flex-column justify-content-between align-items-end"><a href="#" class="rounded-circle d-grid place-items-center text-white" data-download style="width:28px;height:28px;background:rgba(255,255,255,.15)"><i class="bi bi-download"></i></a><span class="text-white fw-bold" style="font-size:.62rem;background:rgba(0,0,0,.2);padding:2px 8px;border-radius:99px">1.1 MB</span></div>
+                  </div>
+                </div>
+                <div class="p-3 flex-grow-1"><div class="fw-bold" style="font-size:.76rem">Commission Structure Guide</div><div class="text-muted" style="font-size:.7rem">Detailed commission structure, payout policy, and incentive details.</div><div class="mt-2"><span class="zp-pill no-dot zp-pill--emerald">Finance</span></div></div>
+                <div class="px-3 py-2 border-top d-flex align-items-center justify-content-between" style="background:#f8fafc"><span class="text-muted" style="font-size:.68rem">XLSX • May 02</span><a href="#" data-download class="row-action"><i class="bi bi-download"></i></a></div>
+              </div></div>
+
+              <div class="col"><div class="resource-card zp-card overflow-hidden d-flex flex-column h-100">
+                <div class="position-relative p-3 overflow-hidden" style="height:92px;background:linear-gradient(135deg,#0ea5e9,#2563eb,#4f46e5)">
+                  <div class="d-flex gap-3 h-100 align-items-center position-relative">
+                    <div class="bg-white rounded-2 p-2 d-flex flex-column align-items-center shadow" style="width:52px;height:68px"><i class="bi bi-easel text-primary" style="font-size:1.2rem"></i><span class="text-white fw-bold" style="font-size:.55rem;background:#f97316;padding:1px 6px;border-radius:4px;margin-top:2px">PPT</span></div>
+                    <div class="flex-grow-1 d-flex flex-column justify-content-between align-items-end"><a href="#" class="rounded-circle d-grid place-items-center text-white" data-download style="width:28px;height:28px;background:rgba(255,255,255,.15)"><i class="bi bi-download"></i></a><span class="text-white fw-bold" style="font-size:.62rem;background:rgba(0,0,0,.2);padding:2px 8px;border-radius:99px">5.7 MB</span></div>
+                  </div>
+                </div>
+                <div class="p-3 flex-grow-1"><div class="fw-bold" style="font-size:.76rem">Solution Portfolio Presentation</div><div class="text-muted" style="font-size:.7rem">Comprehensive presentation of Zentegra solutions and services.</div><div class="mt-2"><span class="zp-pill no-dot zp-pill--sky">Sales Deck</span></div></div>
+                <div class="px-3 py-2 border-top d-flex align-items-center justify-content-between" style="background:#f8fafc"><span class="text-muted" style="font-size:.68rem">PPT • Apr 28</span><a href="#" data-download class="row-action"><i class="bi bi-download"></i></a></div>
+              </div></div>
+
+              <div class="col"><div class="resource-card zp-card overflow-hidden d-flex flex-column h-100">
+                <div class="position-relative p-3 overflow-hidden" style="height:92px;background:linear-gradient(135deg,#f97316,#f59e0b,#ea580c)">
+                  <div class="d-flex gap-3 h-100 align-items-center position-relative">
+                    <div class="bg-white rounded-2 p-2 d-flex flex-column align-items-center shadow" style="width:52px;height:68px"><i class="bi bi-palette text-warning" style="font-size:1.2rem"></i><span class="text-white fw-bold" style="font-size:.55rem;background:#f97316;padding:1px 6px;border-radius:4px;margin-top:2px">PDF</span></div>
+                    <div class="flex-grow-1 d-flex flex-column justify-content-between align-items-end"><a href="#" class="rounded-circle d-grid place-items-center text-white" data-download style="width:28px;height:28px;background:rgba(255,255,255,.15)"><i class="bi bi-download"></i></a><span class="text-white fw-bold" style="font-size:.62rem;background:rgba(0,0,0,.2);padding:2px 8px;border-radius:99px">3.7 MB</span></div>
+                  </div>
+                </div>
+                <div class="p-3 flex-grow-1"><div class="fw-bold" style="font-size:.76rem">Brand Guidelines</div><div class="text-muted" style="font-size:.7rem">Official brand guidelines, logos, color codes, and usage rules.</div><div class="mt-2"><span class="zp-pill no-dot zp-pill--orange">Marketing</span></div></div>
+                <div class="px-3 py-2 border-top d-flex align-items-center justify-content-between" style="background:#f8fafc"><span class="text-muted" style="font-size:.68rem">PDF • Apr 30</span><a href="#" data-download class="row-action"><i class="bi bi-download"></i></a></div>
+              </div></div>
+
+              <div class="col"><div class="resource-card zp-card overflow-hidden d-flex flex-column h-100">
+                <div class="position-relative p-3 overflow-hidden" style="height:92px;background:linear-gradient(135deg,#06b6d4,#14b8a6,#10b981)">
+                  <div class="d-flex gap-3 h-100 align-items-center position-relative">
+                    <div class="bg-white rounded-2 p-2 d-flex flex-column align-items-center justify-content-center shadow position-relative" style="width:52px;height:68px"><span class="rounded-circle bg-teal text-white d-grid place-items-center" style="width:30px;height:30px;background:#0d9488"><i class="bi bi-play-fill"></i></span><span class="text-white fw-bold position-absolute" style="font-size:.55rem;background:#0d9488;padding:1px 6px;border-radius:4px;bottom:4px">MP4</span></div>
+                    <div class="flex-grow-1 d-flex flex-column justify-content-between align-items-end"><a href="#" class="rounded-circle d-grid place-items-center text-white" data-download style="width:28px;height:28px;background:rgba(255,255,255,.15)"><i class="bi bi-download"></i></a><span class="text-white fw-bold" style="font-size:.62rem;background:rgba(0,0,0,.2);padding:2px 8px;border-radius:99px">24.6 MB</span></div>
+                  </div>
+                </div>
+                <div class="p-3 flex-grow-1"><div class="fw-bold" style="font-size:.76rem">Product Demo Video</div><div class="text-muted" style="font-size:.7rem">Detailed product demo to help you understand key features.</div><div class="mt-2"><span class="zp-pill no-dot zp-pill--teal">Video</span><span class="text-muted ms-2" style="font-size:.66rem">12 min</span></div></div>
+                <div class="px-3 py-2 border-top d-flex align-items-center justify-content-between" style="background:#f8fafc"><span class="text-muted" style="font-size:.68rem">MP4 • Apr 22</span><a href="#" data-download class="row-action"><i class="bi bi-download"></i></a></div>
+              </div></div>
+
+              <div class="col"><div class="resource-card zp-card overflow-hidden d-flex flex-column h-100">
+                <div class="position-relative p-3 overflow-hidden" style="height:92px;background:linear-gradient(135deg,#7c3aed,#4f46e5,#2563eb)">
+                  <div class="d-flex gap-3 h-100 align-items-center position-relative">
+                    <div class="bg-white rounded-2 p-2 d-flex flex-column align-items-center shadow" style="width:52px;height:68px"><i class="bi bi-journal-bookmark text-primary" style="font-size:1.2rem"></i><span class="text-white fw-bold" style="font-size:.55rem;background:#ef4444;padding:1px 6px;border-radius:4px;margin-top:2px">PDF</span></div>
+                    <div class="flex-grow-1 d-flex flex-column justify-content-between align-items-end"><a href="#" class="rounded-circle d-grid place-items-center text-white" data-download style="width:28px;height:28px;background:rgba(255,255,255,.15)"><i class="bi bi-download"></i></a><span class="text-white fw-bold" style="font-size:.62rem;background:rgba(0,0,0,.2);padding:2px 8px;border-radius:99px">1.8 MB</span></div>
+                  </div>
+                </div>
+                <div class="p-3 flex-grow-1"><div class="fw-bold" style="font-size:.76rem">Sales Playbook</div><div class="text-muted" style="font-size:.7rem">Best practices, pitch strategies, and objection handling guide.</div><div class="mt-2"><span class="zp-pill no-dot zp-pill--indigo">Sales</span></div></div>
+                <div class="px-3 py-2 border-top d-flex align-items-center justify-content-between" style="background:#f8fafc"><span class="text-muted" style="font-size:.68rem">PDF • May 03</span><a href="#" data-download class="row-action"><i class="bi bi-download"></i></a></div>
+              </div></div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3 mt-4">
+              <nav><ul class="pagination pagination-sm mb-0"><li class="page-item"><a class="page-link" href="#"><i class="bi bi-chevron-left"></i></a></li><li class="page-item active"><a class="page-link" href="#">1</a></li><li class="page-item"><a class="page-link" href="#">2</a></li><li class="page-item"><a class="page-link" href="#">3</a></li><li class="page-item"><a class="page-link" href="#">4</a></li><li class="page-item"><a class="page-link" href="#">16</a></li><li class="page-item"><a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a></li></ul></nav>
+              <span class="text-muted" style="font-size:.72rem">Showing <b class="text-dark">1–6</b> of 128 resources</span>
             </div>
           </div>
 
-          <!-- CARDS GRID: now 2 on tablet, 3 on desktop (instead of 4) — larger, more readable cards -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5 mt-6">
-
-            <!-- 1 PDF -->
-            <div class="resource-card group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:border-indigo-200 hover:shadow-[0_12px_32px_rgba(79,70,229,0.12)]">
-              <div class="h-[92px] bg-gradient-to-br from-violet-600 via-indigo-600 to-purple-700 relative p-3 overflow-hidden">
-                <div class="absolute -right-6 -top-6 w-20 h-20 bg-white/15 rounded-full blur-xl"></div>
-                <div class="absolute -left-3 -bottom-3 w-16 h-16 bg-black/10 rounded-full blur-lg"></div>
-                <div class="relative flex gap-3 h-full">
-                  <div class="w-[52px] h-[68px] bg-white rounded-xl shadow-lg border border-white/20 flex flex-col items-center justify-center gap-1.5 p-1.5">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13h6"/><path d="M9 17h4"/></svg>
-                    <span class="text-[8px] font-extrabold tracking-widest text-white bg-[#ef4444] px-1.5 py-0.5 rounded">PDF</span>
-                  </div>
-                  <div class="flex-1 flex flex-col justify-between items-end">
-                    <span class="w-7 h-7 rounded-full bg-white/15 backdrop-blur border border-white/20 grid place-items-center text-white group-hover:bg-white group-hover:text-indigo-600 transition-colors"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 5v14"/><path d="M5 12l7 7 7-7"/></svg></span>
-                    <span class="text-[10px] font-bold text-white bg-black/20 backdrop-blur px-2 py-1 rounded-full border border-white/10">2.4 MB</span>
-                  </div>
-                </div>
-              </div>
-              <div class="p-4 flex-1 flex flex-col">
-                <div class="text-[12px] font-extrabold leading-tight text-slate-900">ZenPartner Program Overview</div>
-                <div class="text-[11px] text-slate-500 leading-[1.5] mt-1.5 line-clamp-2">Complete overview of the ZenPartner program, benefits, and partnership model.</div>
-                <div class="flex items-center gap-1.5 mt-3">
-                  <span class="text-[10px] font-bold bg-violet-50 text-violet-700 border border-violet-200 px-2 py-1 rounded-full">Partner Guide</span>
-                  <span class="w-1 h-1 rounded-full bg-slate-300"></span>
-                  <span class="text-[10px] text-slate-500">Featured</span>
-                </div>
-              </div>
-              <div class="px-4 py-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-                <span class="text-[11px] font-medium text-slate-600">PDF • May 01</span>
-                <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-indigo-600 shadow-sm group-hover:bg-[#4f46e5] group-hover:text-white group-hover:border-[#4f46e5] transition-colors"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+          <!-- Right rail -->
+          <div class="col-xl-4">
+            <div class="zp-card p-4 mb-3">
+              <div class="zp-card-head"><h3 class="zp-card-title">Resource Categories</h3><a href="#" class="zp-card-link">View All</a></div>
+              <div class="d-flex flex-column gap-1 mt-3">
+                <a href="#" class="d-flex align-items-center gap-3 p-2 rounded-3 text-decoration-none hover-lift"><span class="zp-stat-icon" style="width:36px;height:36px;background:#7c3aed;color:#fff"><i class="bi bi-megaphone"></i></span><span class="flex-grow-1 fw-semibold text-secondary" style="font-size:.76rem">Marketing Materials</span><span class="badge bg-dark rounded-pill">24</span></a>
+                <a href="#" class="d-flex align-items-center gap-3 p-2 rounded-3 text-decoration-none hover-lift"><span class="zp-stat-icon" style="width:36px;height:36px;background:#059669;color:#fff"><i class="bi bi-briefcase"></i></span><span class="flex-grow-1 fw-semibold text-secondary" style="font-size:.76rem">Sales Tools</span><span class="badge bg-dark rounded-pill">18</span></a>
+                <a href="#" class="d-flex align-items-center gap-3 p-2 rounded-3 text-decoration-none hover-lift"><span class="zp-stat-icon" style="width:36px;height:36px;background:#0284c7;color:#fff"><i class="bi bi-people"></i></span><span class="flex-grow-1 fw-semibold text-secondary" style="font-size:.76rem">Partner Guides</span><span class="badge bg-dark rounded-pill">22</span></a>
+                <a href="#" class="d-flex align-items-center gap-3 p-2 rounded-3 text-decoration-none hover-lift"><span class="zp-stat-icon" style="width:36px;height:36px;background:#ea580c;color:#fff"><i class="bi bi-shield-check"></i></span><span class="flex-grow-1 fw-semibold text-secondary" style="font-size:.76rem">Legal Documents</span><span class="badge bg-dark rounded-pill">15</span></a>
+                <a href="#" class="d-flex align-items-center gap-3 p-2 rounded-3 text-decoration-none hover-lift"><span class="zp-stat-icon" style="width:36px;height:36px;background:#4f46e5;color:#fff"><i class="bi bi-box-seam"></i></span><span class="flex-grow-1 fw-semibold text-secondary" style="font-size:.76rem">Product Information</span><span class="badge bg-dark rounded-pill">28</span></a>
+                <a href="#" class="d-flex align-items-center gap-3 p-2 rounded-3 text-decoration-none hover-lift"><span class="zp-stat-icon" style="width:36px;height:36px;background:#0891b2;color:#fff"><i class="bi bi-file-earmark-text"></i></span><span class="flex-grow-1 fw-semibold text-secondary" style="font-size:.76rem">Templates &amp; Forms</span><span class="badge bg-dark rounded-pill">21</span></a>
               </div>
             </div>
 
-            <!-- 2 XLSX -->
-            <div class="resource-card group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:border-emerald-200 hover:shadow-[0_12px_32px_rgba(16,185,129,0.12)]">
-              <div class="h-[92px] bg-gradient-to-br from-emerald-500 via-green-600 to-teal-600 relative p-3 overflow-hidden">
-                <div class="absolute -right-6 -top-6 w-20 h-20 bg-white/15 rounded-full blur-xl"></div>
-                <div class="relative flex gap-3 h-full">
-                  <div class="w-[52px] h-[68px] bg-white rounded-xl shadow-lg border border-white/20 flex flex-col items-center justify-center gap-1.5 p-1.5">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 9h8"/><path d="M8 13h8"/><path d="M8 17h8"/></svg>
-                    <span class="text-[8px] font-extrabold tracking-widest text-white bg-[#059669] px-1.5 py-0.5 rounded">XLSX</span>
-                  </div>
-                  <div class="flex-1 flex flex-col justify-between items-end">
-                    <span class="w-7 h-7 rounded-full bg-white/15 backdrop-blur border border-white/20 grid place-items-center text-white group-hover:bg-white group-hover:text-emerald-600 transition-colors"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 5v14"/><path d="M5 12l7 7 7-7"/></svg></span>
-                    <span class="text-[10px] font-bold text-white bg-black/20 backdrop-blur px-2 py-1 rounded-full border border-white/10">1.1 MB</span>
-                  </div>
-                </div>
-              </div>
-              <div class="p-4 flex-1 flex flex-col">
-                <div class="text-[12px] font-extrabold leading-tight text-slate-900">Commission Structure Guide</div>
-                <div class="text-[11px] text-slate-500 leading-[1.5] mt-1.5 line-clamp-2">Detailed commission structure, payout policy, and incentive details.</div>
-                <div class="flex items-center gap-1.5 mt-3">
-                  <span class="text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-1 rounded-full">Finance</span>
-                  <span class="w-1 h-1 rounded-full bg-slate-300"></span>
-                  <span class="text-[10px] text-slate-500">Updated</span>
-                </div>
-              </div>
-              <div class="px-4 py-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-                <span class="text-[11px] font-medium text-slate-600">XLSX • May 02</span>
-                <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-emerald-600 shadow-sm group-hover:bg-emerald-600 group-hover:text-white group-hover:border-emerald-600 transition-colors"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+            <div class="zp-card p-4 mb-3">
+              <div class="zp-card-head"><h3 class="zp-card-title">Recently Added</h3><a href="#" class="zp-card-link">View All</a></div>
+              <div class="d-flex flex-column gap-2 mt-3">
+                <div class="d-flex gap-3 p-2 border rounded-3 align-items-center"><span class="zp-stat-icon tint-rose" style="width:32px;height:32px"><i class="bi bi-file-earmark-pdf"></i></span><div class="flex-grow-1"><div class="fw-bold" style="font-size:.74rem">Partner Incentive Program Q2 2024</div><div class="text-muted" style="font-size:.66rem">May 10, 2024 • PDF</div></div><a href="#" class="row-action" data-download><i class="bi bi-download"></i></a></div>
+                <div class="d-flex gap-3 p-2 border rounded-3 align-items-center"><span class="zp-stat-icon tint-blue" style="width:32px;height:32px"><i class="bi bi-easel"></i></span><div class="flex-grow-1"><div class="fw-bold" style="font-size:.74rem">Zentegra Product Roadmap</div><div class="text-muted" style="font-size:.66rem">May 08, 2024 • PPT</div></div><a href="#" class="row-action" data-download><i class="bi bi-download"></i></a></div>
+                <div class="d-flex gap-3 p-2 border rounded-3 align-items-center"><span class="zp-stat-icon tint-emerald" style="width:32px;height:32px"><i class="bi bi-file-earmark-pdf"></i></span><div class="flex-grow-1"><div class="fw-bold" style="font-size:.74rem">Competitive Comparison Guide</div><div class="text-muted" style="font-size:.66rem">May 05, 2024 • PDF</div></div><a href="#" class="row-action" data-download><i class="bi bi-download"></i></a></div>
               </div>
             </div>
 
-            <!-- 3 PPT -->
-            <div class="resource-card group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:border-sky-200 hover:shadow-[0_12px_32px_rgba(14,165,233,0.12)]">
-              <div class="h-[92px] bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-600 relative p-3 overflow-hidden">
-                <div class="absolute -right-6 -top-6 w-20 h-20 bg-white/15 rounded-full blur-xl"></div>
-                <div class="relative flex gap-3 h-full">
-                  <div class="w-[52px] h-[68px] bg-white rounded-xl shadow-lg border border-white/20 flex flex-col items-center justify-center gap-1.5 p-1.5">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v6"/><path d="M9 11l3-3 3 3"/><circle cx="12" cy="16" r="1" fill="#0ea5e9"/></svg>
-                    <span class="text-[8px] font-extrabold tracking-widest text-white bg-[#f97316] px-1.5 py-0.5 rounded">PPT</span>
-                  </div>
-                  <div class="flex-1 flex flex-col justify-between items-end">
-                    <span class="w-7 h-7 rounded-full bg-white/15 backdrop-blur border border-white/20 grid place-items-center text-white group-hover:bg-white group-hover:text-sky-600 transition-colors"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 5v14"/><path d="M5 12l7 7 7-7"/></svg></span>
-                    <span class="text-[10px] font-bold text-white bg-black/20 backdrop-blur px-2 py-1 rounded-full border border-white/10">5.7 MB</span>
-                  </div>
-                </div>
-              </div>
-              <div class="p-4 flex-1 flex flex-col">
-                <div class="text-[12px] font-extrabold leading-tight text-slate-900">Solution Portfolio Presentation</div>
-                <div class="text-[11px] text-slate-500 leading-[1.5] mt-1.5 line-clamp-2">Comprehensive presentation of Zentegra solutions and services.</div>
-                <div class="flex items-center gap-1.5 mt-3">
-                  <span class="text-[10px] font-bold bg-sky-50 text-sky-700 border border-sky-200 px-2 py-1 rounded-full">Sales Deck</span>
-                  <span class="w-1 h-1 rounded-full bg-slate-300"></span>
-                  <span class="text-[10px] text-slate-500">Popular</span>
-                </div>
-              </div>
-              <div class="px-4 py-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-                <span class="text-[11px] font-medium text-slate-600">PPT • Apr 28</span>
-                <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-sky-600 shadow-sm group-hover:bg-sky-600 group-hover:text-white group-hover:border-sky-600 transition-colors"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
-              </div>
+            <div class="zp-card p-4 position-relative overflow-hidden" style="background:var(--zp-gradient-hero);color:#fff">
+              <span class="zp-stat-icon" style="width:40px;height:40px;background:#fff;color:#4f46e5"><i class="bi bi-send"></i></span>
+              <h3 class="text-white mt-3" style="font-size:.8rem">Can't find what you need?</h3>
+              <p class="text-white-50" style="font-size:.72rem">Request a specific resource from our partner support team — we'll create it for you.</p>
+              <a href="#" class="btn btn-light btn-sm fw-bold text-primary">Request Resource <i class="bi bi-arrow-right"></i></a>
             </div>
-
-            <!-- 4 Brand -->
-            <div class="resource-card group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:border-orange-200 hover:shadow-[0_12px_32px_rgba(249,115,22,0.12)]">
-              <div class="h-[92px] bg-gradient-to-br from-orange-500 via-amber-500 to-orange-600 relative p-3 overflow-hidden">
-                <div class="absolute -right-6 -top-6 w-20 h-20 bg-white/15 rounded-full blur-xl"></div>
-                <div class="relative flex gap-3 h-full">
-                  <div class="w-[52px] h-[68px] bg-white rounded-xl shadow-lg border border-white/20 flex flex-col items-center justify-center gap-1.5 p-1.5">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M12 8v2"/><path d="M12 14v2"/></svg>
-                    <span class="text-[8px] font-extrabold tracking-widest text-white bg-[#f97316] px-1.5 py-0.5 rounded">PDF</span>
-                  </div>
-                  <div class="flex-1 flex flex-col justify-between items-end">
-                    <span class="w-7 h-7 rounded-full bg-white/15 backdrop-blur border border-white/20 grid place-items-center text-white group-hover:bg-white group-hover:text-orange-600 transition-colors"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 5v14"/><path d="M5 12l7 7 7-7"/></svg></span>
-                    <span class="text-[10px] font-bold text-white bg-black/20 backdrop-blur px-2 py-1 rounded-full border border-white/10">3.7 MB</span>
-                  </div>
-                </div>
-              </div>
-              <div class="p-4 flex-1 flex flex-col">
-                <div class="text-[12px] font-extrabold leading-tight text-slate-900">Brand Guidelines</div>
-                <div class="text-[11px] text-slate-500 leading-[1.5] mt-1.5 line-clamp-2">Official brand guidelines, logos, color codes, and usage rules.</div>
-                <div class="flex items-center gap-1.5 mt-3">
-                  <span class="text-[10px] font-bold bg-orange-50 text-orange-700 border border-orange-200 px-2 py-1 rounded-full">Marketing</span>
-                  <span class="w-1 h-1 rounded-full bg-slate-300"></span>
-                  <span class="text-[10px] text-slate-500">Essential</span>
-                </div>
-              </div>
-              <div class="px-4 py-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-                <span class="text-[11px] font-medium text-slate-600">PDF • Apr 30</span>
-                <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-orange-600 shadow-sm group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-colors"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
-              </div>
-            </div>
-
-            <!-- 5 MP4 -->
-            <div class="resource-card group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:border-teal-200 hover:shadow-[0_12px_32px_rgba(20,184,166,0.12)]">
-              <div class="h-[92px] bg-gradient-to-br from-cyan-500 via-teal-500 to-emerald-600 relative p-3 overflow-hidden">
-                <div class="absolute inset-0 opacity-20"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&auto=format&fit=crop&q=60" class="w-full h-full object-cover mix-blend-overlay"></div>
-                <div class="absolute -right-6 -top-6 w-20 h-20 bg-white/15 rounded-full blur-xl"></div>
-                <div class="relative flex gap-3 h-full">
-                  <div class="w-[52px] h-[68px] bg-white rounded-xl shadow-lg border border-white/20 flex flex-col items-center justify-center gap-1 relative overflow-hidden">
-                    <div class="w-9 h-9 rounded-full bg-teal-600 grid place-items-center text-white shadow"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5.14v14l11-7z"/></svg></div>
-                    <span class="text-[8px] font-extrabold tracking-widest text-white bg-teal-600 px-1.5 py-0.5 rounded absolute bottom-1">MP4</span>
-                  </div>
-                  <div class="flex-1 flex flex-col justify-between items-end">
-                    <span class="w-7 h-7 rounded-full bg-white/15 backdrop-blur border border-white/20 grid place-items-center text-white group-hover:bg-white group-hover:text-teal-600 transition-colors"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 5v14"/><path d="M5 12l7 7 7-7"/></svg></span>
-                    <span class="text-[10px] font-bold text-white bg-black/20 backdrop-blur px-2 py-1 rounded-full border border-white/10">24.6 MB</span>
-                  </div>
-                </div>
-              </div>
-              <div class="p-4 flex-1 flex flex-col">
-                <div class="text-[12px] font-extrabold leading-tight text-slate-900">Product Demo Video</div>
-                <div class="text-[11px] text-slate-500 leading-[1.5] mt-1.5 line-clamp-2">Detailed product demo to help you understand key features and benefits.</div>
-                <div class="flex items-center gap-1.5 mt-3">
-                  <span class="text-[10px] font-bold bg-teal-50 text-teal-700 border border-teal-200 px-2 py-1 rounded-full">Video</span>
-                  <span class="w-1 h-1 rounded-full bg-slate-300"></span>
-                  <span class="text-[10px] text-slate-500">12 min</span>
-                </div>
-              </div>
-              <div class="px-4 py-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-                <span class="text-[11px] font-medium text-slate-600">MP4 • Apr 22</span>
-                <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-teal-600 shadow-sm group-hover:bg-teal-600 group-hover:text-white group-hover:border-teal-600 transition-colors"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
-              </div>
-            </div>
-
-            <!-- 6 Sales Playbook -->
-            <div class="resource-card group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:border-indigo-200 hover:shadow-[0_12px_32px_rgba(79,70,229,0.12)]">
-              <div class="h-[92px] bg-gradient-to-br from-violet-600 via-indigo-600 to-blue-700 relative p-3 overflow-hidden">
-                <div class="absolute -right-6 -top-6 w-20 h-20 bg-white/15 rounded-full blur-xl"></div>
-                <div class="relative flex gap-3 h-full">
-                  <div class="w-[52px] h-[68px] bg-white rounded-xl shadow-lg border border-white/20 flex flex-col items-center justify-center gap-1.5 p-1.5">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><path d="M12 16l-1 1 1 1"/><path d="M9 16l3-3"/></svg>
-                    <span class="text-[8px] font-extrabold tracking-widest text-white bg-[#ef4444] px-1.5 py-0.5 rounded">PDF</span>
-                  </div>
-                  <div class="flex-1 flex flex-col justify-between items-end">
-                    <span class="w-7 h-7 rounded-full bg-white/15 backdrop-blur border border-white/20 grid place-items-center text-white group-hover:bg-white group-hover:text-indigo-600 transition-colors"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 5v14"/><path d="M5 12l7 7 7-7"/></svg></span>
-                    <span class="text-[10px] font-bold text-white bg-black/20 backdrop-blur px-2 py-1 rounded-full border border-white/10">1.8 MB</span>
-                  </div>
-                </div>
-              </div>
-              <div class="p-4 flex-1 flex flex-col">
-                <div class="text-[12px] font-extrabold leading-tight text-slate-900">Sales Playbook</div>
-                <div class="text-[11px] text-slate-500 leading-[1.5] mt-1.5 line-clamp-2">Best practices, pitch strategies, and objection handling guide.</div>
-                <div class="flex items-center gap-1.5 mt-3">
-                  <span class="text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-1 rounded-full">Sales</span>
-                  <span class="w-1 h-1 rounded-full bg-slate-300"></span>
-                  <span class="text-[10px] text-slate-500">Updated</span>
-                </div>
-              </div>
-              <div class="px-4 py-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-                <span class="text-[11px] font-medium text-slate-600">PDF • May 03</span>
-                <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-indigo-600 shadow-sm group-hover:bg-[#4f46e5] group-hover:text-white group-hover:border-[#4f46e5] transition-colors"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
-              </div>
-            </div>
-
-            <!-- 7 Proposal -->
-            <div class="resource-card group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:border-emerald-200 hover:shadow-[0_12px_32px_rgba(16,185,129,0.12)]">
-              <div class="h-[92px] bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600 relative p-3 overflow-hidden">
-                <div class="absolute -right-6 -top-6 w-20 h-20 bg-white/15 rounded-full blur-xl"></div>
-                <div class="relative flex gap-3 h-full">
-                  <div class="w-[52px] h-[68px] bg-white rounded-xl shadow-lg border border-white/20 flex flex-col items-center justify-center gap-1.5 p-1.5">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14b8a6" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
-                    <span class="text-[8px] font-extrabold tracking-widest text-white bg-[#0e7490] px-1.5 py-0.5 rounded">DOCX</span>
-                  </div>
-                  <div class="flex-1 flex flex-col justify-between items-end">
-                    <span class="w-7 h-7 rounded-full bg-white/15 backdrop-blur border border-white/20 grid place-items-center text-white group-hover:bg-white group-hover:text-teal-600 transition-colors"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 5v14"/><path d="M5 12l7 7 7-7"/></svg></span>
-                    <span class="text-[10px] font-bold text-white bg-black/20 backdrop-blur px-2 py-1 rounded-full border border-white/10">880 KB</span>
-                  </div>
-                </div>
-              </div>
-              <div class="p-4 flex-1 flex flex-col">
-                <div class="text-[12px] font-extrabold leading-tight text-slate-900">Proposal Template</div>
-                <div class="text-[11px] text-slate-500 leading-[1.5] mt-1.5 line-clamp-2">Pre-built proposal template to help you create winning proposals.</div>
-                <div class="flex items-center gap-1.5 mt-3">
-                  <span class="text-[10px] font-bold bg-teal-50 text-teal-700 border border-teal-200 px-2 py-1 rounded-full">Template</span>
-                  <span class="w-1 h-1 rounded-full bg-slate-300"></span>
-                  <span class="text-[10px] text-slate-500">Editable</span>
-                </div>
-              </div>
-              <div class="px-4 py-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-                <span class="text-[11px] font-medium text-slate-600">DOCX • May 08</span>
-                <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-teal-600 shadow-sm group-hover:bg-teal-600 group-hover:text-white group-hover:border-teal-600 transition-colors"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
-              </div>
-            </div>
-
-            <!-- 8 Case Studies -->
-            <div class="resource-card group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:border-violet-200 hover:shadow-[0_12px_32px_rgba(139,92,246,0.12)]">
-              <div class="h-[92px] bg-gradient-to-br from-purple-500 via-violet-600 to-indigo-700 relative p-3 overflow-hidden">
-                <div class="absolute -right-6 -top-6 w-20 h-20 bg-white/15 rounded-full blur-xl"></div>
-                <div class="relative flex gap-3 h-full">
-                  <div class="w-[52px] h-[68px] bg-white rounded-xl shadow-lg border border-white/20 flex flex-col items-center justify-center gap-1.5 p-1.5">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.6"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11a3 3 0 0 1-3 3"/><path d="M16 8a3 3 0 0 1 3 3"/></svg>
-                    <span class="text-[8px] font-extrabold tracking-widest text-white bg-[#7c3aed] px-1.5 py-0.5 rounded">PDF</span>
-                  </div>
-                  <div class="flex-1 flex flex-col justify-between items-end">
-                    <span class="w-7 h-7 rounded-full bg-white/15 backdrop-blur border border-white/20 grid place-items-center text-white group-hover:bg-white group-hover:text-violet-600 transition-colors"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 5v14"/><path d="M5 12l7 7 7-7"/></svg></span>
-                    <span class="text-[10px] font-bold text-white bg-black/20 backdrop-blur px-2 py-1 rounded-full border border-white/10">4.3 MB</span>
-                  </div>
-                </div>
-              </div>
-              <div class="p-4 flex-1 flex flex-col">
-                <div class="text-[12px] font-extrabold leading-tight text-slate-900">Case Studies Collection</div>
-                <div class="text-[11px] text-slate-500 leading-[1.5] mt-1.5 line-clamp-2">Success stories from our customers and partners.</div>
-                <div class="flex items-center gap-1.5 mt-3">
-                  <span class="text-[10px] font-bold bg-violet-50 text-violet-700 border border-violet-200 px-2 py-1 rounded-full">Proof</span>
-                  <span class="w-1 h-1 rounded-full bg-slate-300"></span>
-                  <span class="text-[10px] text-slate-500">5 stories</span>
-                </div>
-              </div>
-              <div class="px-4 py-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-                <span class="text-[11px] font-medium text-slate-600">PDF • Apr 18</span>
-                <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-violet-600 shadow-sm group-hover:bg-violet-600 group-hover:text-white group-hover:border-violet-600 transition-colors"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Pagination -->
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mt-8 pt-6 border-t border-slate-100">
-            <div class="flex items-center gap-1.5">
-              <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-slate-500 hover:bg-slate-50 hover:border-slate-300"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></a>
-              <a href="#" class="w-8 h-8 rounded-xl bg-[#4f46e5] text-white grid place-items-center text-[12px] font-bold shadow-md shadow-indigo-200">1</a>
-              <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-[12px] font-semibold text-slate-700 hover:bg-slate-50 hover:border-slate-300">2</a>
-              <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-[12px] font-semibold text-slate-700 hover:bg-slate-50">3</a>
-              <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-[12px] font-semibold text-slate-700 hover:bg-slate-50">4</a>
-              <span class="px-1 text-slate-400 text-[12px]">…</span>
-              <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-[12px] font-semibold text-slate-700 hover:bg-slate-50">16</a>
-              <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-slate-500 hover:bg-slate-50"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></a>
-            </div>
-            <span class="text-[12px] text-slate-500 font-medium">Showing <span class="text-slate-900 font-bold">1–8</span> of 128 resources</span>
           </div>
         </div>
 
-        <!-- RIGHT RAIL -->
-        <div class="space-y-4">
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
-            <div class="flex items-center justify-between">
-              <h3 class="text-[13px] font-bold">Resource Categories</h3>
-              <a href="#" class="text-[11px] font-bold text-indigo-600 hover:underline">View All</a>
-            </div>
-            <div class="mt-4 space-y-1">
-              <a href="#" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-colors group">
-                <span class="w-9 h-9 rounded-xl bg-violet-600 text-white grid place-items-center shadow-sm group-hover:scale-105 transition-transform"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11l18-5v12L3 14v-3z"/></svg></span>
-                <span class="text-[12px] font-semibold flex-1">Marketing Materials</span><span class="text-[11px] font-bold bg-slate-900 text-white px-2 py-0.5 rounded-full">24</span>
-              </a>
-              <a href="#" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-colors group">
-                <span class="w-9 h-9 rounded-xl bg-emerald-600 text-white grid place-items-center shadow-sm group-hover:scale-105 transition-transform"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
-                <span class="text-[12px] font-semibold flex-1">Sales Tools</span><span class="text-[11px] font-bold bg-slate-900 text-white px-2 py-0.5 rounded-full">18</span>
-              </a>
-              <a href="#" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-colors group">
-                <span class="w-9 h-9 rounded-xl bg-sky-600 text-white grid place-items-center shadow-sm group-hover:scale-105 transition-transform"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
-                <span class="text-[12px] font-semibold flex-1">Partner Guides</span><span class="text-[11px] font-bold bg-slate-900 text-white px-2 py-0.5 rounded-full">22</span>
-              </a>
-              <a href="#" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-colors group">
-                <span class="w-9 h-9 rounded-xl bg-orange-500 text-white grid place-items-center shadow-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
-                <span class="text-[12px] font-semibold flex-1">Legal Documents</span><span class="text-[11px] font-bold bg-slate-900 text-white px-2 py-0.5 rounded-full">15</span>
-              </a>
-              <a href="#" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-colors group">
-                <span class="w-9 h-9 rounded-xl bg-indigo-600 text-white grid place-items-center shadow-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-                <span class="text-[12px] font-semibold flex-1">Product Information</span><span class="text-[11px] font-bold bg-slate-900 text-white px-2 py-0.5 rounded-full">28</span>
-              </a>
-              <a href="#" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-colors group">
-                <span class="w-9 h-9 rounded-xl bg-cyan-600 text-white grid place-items-center shadow-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
-                <span class="text-[12px] font-semibold flex-1">Templates & Forms</span><span class="text-[11px] font-bold bg-slate-900 text-white px-2 py-0.5 rounded-full">21</span>
-              </a>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
-            <div class="flex items-center justify-between">
-              <h3 class="text-[13px] font-bold">Recently Added</h3>
-              <a href="#" class="text-[11px] font-bold text-indigo-600 hover:underline">View All</a>
-            </div>
-            <div class="mt-4 space-y-3">
-              <div class="flex gap-3 p-2.5 rounded-xl border border-slate-100 hover:border-indigo-100 hover:bg-indigo-50/30 items-start transition-colors">
-                <span class="w-8 h-8 rounded-xl bg-red-500 text-white grid place-items-center shrink-0 shadow-sm"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
-                <div class="flex-1 leading-tight"><div class="text-[12px] font-bold leading-tight">Partner Incentive Program Q2 2024</div><div class="text-[11px] text-slate-500">May 10, 2024 • PDF</div></div>
-                <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-indigo-600 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 shadow-sm"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
-              </div>
-              <div class="flex gap-3 p-2.5 rounded-xl border border-slate-100 hover:border-indigo-100 hover:bg-indigo-50/30 items-start transition-colors">
-                <span class="w-8 h-8 rounded-xl bg-blue-600 text-white grid place-items-center shrink-0 shadow-sm"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
-                <div class="flex-1 leading-tight"><div class="text-[12px] font-bold leading-tight">Zentegra Product Roadmap</div><div class="text-[11px] text-slate-500">May 08, 2024 • PPT</div></div>
-                <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-indigo-600 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 shadow-sm"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
-              </div>
-              <div class="flex gap-3 p-2.5 rounded-xl border border-slate-100 hover:border-indigo-100 hover:bg-indigo-50/30 items-start transition-colors">
-                <span class="w-8 h-8 rounded-xl bg-emerald-600 text-white grid place-items-center shrink-0 shadow-sm"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
-                <div class="flex-1 leading-tight"><div class="text-[12px] font-bold leading-tight">Competitive Comparison Guide</div><div class="text-[11px] text-slate-500">May 05, 2024 • PDF</div></div>
-                <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-indigo-600 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 shadow-sm"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
-              </div>
-              <div class="flex gap-3 p-2.5 rounded-xl border border-slate-100 hover:border-indigo-100 hover:bg-indigo-50/30 items-start transition-colors">
-                <span class="w-8 h-8 rounded-xl bg-amber-500 text-white grid place-items-center shrink-0 shadow-sm"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
-                <div class="flex-1 leading-tight"><div class="text-[12px] font-bold leading-tight">Email Templates for Partners</div><div class="text-[11px] text-slate-500">May 03, 2024 • ZIP</div></div>
-                <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-indigo-600 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 shadow-sm"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
-              </div>
-              <div class="flex gap-3 p-2.5 rounded-xl border border-slate-100 hover:border-indigo-100 hover:bg-indigo-50/30 items-start transition-colors">
-                <span class="w-8 h-8 rounded-xl bg-violet-600 text-white grid place-items-center shrink-0 shadow-sm"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
-                <div class="flex-1 leading-tight"><div class="text-[12px] font-bold leading-tight">Renewal Best Practices Guide</div><div class="text-[11px] text-slate-500">Apr 30, 2024 • PDF</div></div>
-                <a href="#" class="w-8 h-8 rounded-xl bg-white border border-slate-200 grid place-items-center text-indigo-600 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 shadow-sm"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-[#0a1033] rounded-2xl p-6 relative overflow-hidden border border-indigo-900">
-            <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/30 via-violet-600/20 to-transparent"></div>
-            <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-indigo-500/20 rounded-full blur-2xl"></div>
-            <div class="relative">
-              <div class="w-10 h-10 rounded-xl bg-white text-indigo-600 grid place-items-center shadow-lg">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-              </div>
-              <h3 class="text-white font-bold text-[13px] mt-3">Can't find what you need?</h3>
-              <p class="text-[11px] text-white/70 leading-4 mt-1 max-w-[200px]">Request a specific resource from our partner support team — we’ll create it for you.</p>
-              <a href="#" class="mt-4 inline-flex bg-white text-indigo-700 text-[12px] font-bold px-4 py-2 rounded-xl hover:bg-indigo-50 transition-colors shadow">Request Resource <span class="ml-1">→</span></a>
-            </div>
-            <!-- floating folders -->
-            <div class="absolute right-4 bottom-4 w-[88px] h-[72px] hidden sm:block opacity-90">
-              <div class="absolute right-0 bottom-0 w-[68px] h-[54px] bg-gradient-to-br from-indigo-500 to-violet-600 rounded-xl shadow-xl border border-white/20"></div>
-              <div class="absolute right-6 bottom-6 w-[52px] h-[52px] bg-white rounded-xl shadow-md border border-slate-200 rotate-3 flex items-center justify-center">
-                <div class="w-6 h-6 bg-indigo-50 rounded-md border border-indigo-100"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </main>
+      </main>
+    </div>
   </div>
 </div>
 <div id="app-mobile-nav"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="layout.js"></script>
-<script>
-  injectLayout({active:'resources', title:'Resources Center', breadcrumb:'Resources Center', searchPlaceholder:'Search resources...'});
-</script>
+<script>injectLayout({active:'resources', title:'Resources Center', breadcrumb:'Resources Center', searchPlaceholder:'Search resources...'});</script>
 </body>
 </html>
