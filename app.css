@@ -337,6 +337,41 @@ button:focus:not(:focus-visible),a:focus:not(:focus-visible){outline:none}
 .detail-tab:hover{color:#4f46e5}
 .detail-tab.active{color:#4f46e5}
 .detail-tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2.5px;background:#4f46e5;border-radius:99px}
+/* Onboarding stepper (partner full view) */
+.onboarding-steps{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;position:relative}
+.onboarding-steps .step{position:relative;padding:0 8px 0 0;min-width:0}
+.onboarding-steps .step-dot{
+  width:26px;height:26px;border-radius:999px;display:grid;place-items:center;flex:none;
+  background:#f1f5f9;color:#94a3b8;border:2px solid #e2e8f0;position:relative;z-index:1;
+}
+.onboarding-steps .step.done .step-dot{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.onboarding-steps .step.active .step-dot{background:#4f46e5;color:#fff;border-color:#4f46e5;box-shadow:0 0 0 4px rgba(79,70,229,.15)}
+.onboarding-steps .step:not(.done) .step-dot svg{display:none}
+.onboarding-steps .step.active .step-dot::before{content:"";width:8px;height:8px;border-radius:999px;background:#fff}
+/* connector line */
+.onboarding-steps .step:not(:last-child)::after{
+  content:"";position:absolute;top:12px;left:26px;right:6px;height:2px;background:#e2e8f0;z-index:0;
+}
+.onboarding-steps .step.done:not(:last-child)::after{background:#4f46e5}
+.onboarding-steps .step.active:not(:last-child)::after{background:#c7d2fe}
+.step-body{margin-top:9px}
+.step-title{font-size:11px;font-weight:700;color:#334155;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.step-action{font-size:10px;color:#8b93a7;font-weight:600;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.step-status{display:inline-flex;align-items:center;gap:4px;margin-top:7px;padding:2px 8px;border-radius:999px;font-size:9.5px;font-weight:700}
+.step-status::before{content:"";width:5px;height:5px;border-radius:999px;background:currentColor;opacity:.8}
+.step-status.is-done{background:#edf8f0;color:#059669}
+.step-status.is-progress{background:#e7effe;color:#2563eb}
+.step-status.is-pending{background:#fef3e2;color:#b45309}
+@media (max-width:1023px){
+  .onboarding-steps{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:18px}
+  .onboarding-steps .step:nth-child(3)::after{display:none}
+}
+@media (max-width:540px){
+  .onboarding-steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}
+  .onboarding-steps .step:nth-child(2)::after,
+  .onboarding-steps .step:nth-child(4)::after{display:none}
+}
+
 /* Admin tables stay usable on small screens */
 @media (max-width:640px){
   .admin-table th,.admin-table td{padding:9px 8px!important;font-size:11px}
