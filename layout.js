@@ -1,3 +1,7 @@
+/* NOTE: the init* helpers below are legacy demo wiring. ZPApp.boot() injects this
+   layout with skipInit:true, so page content always comes from app.js / pages.js
+   using live Creator records (see DATA.md). Only the sidebar/topbar/modal/toast
+   builders in this file are used at runtime. */
 // ═══════════════════════════════════════════════════════════════════════════
 // ZenPartner — Layout Injector + Interactive Engine (Bootstrap 5.3)
 // SINGLE SOURCE: sidebar / topbar / mobile nav + all JS interactions.

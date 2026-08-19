@@ -483,6 +483,12 @@
       const body = wrap.querySelector('.d-flex.flex-column.gap-2.mt-3');
       if (body) body.innerHTML = rows;
     }
+
+    // Derived dashboard values (pipeline, commission, charts, timeline).
+    if (global.ZPPages) {
+      try { global.ZPPages.dashboardExtras(session); }
+      catch (e) { console.warn('dashboard extras failed', e); }
+    }
   }
 
   async function mountOnboarding() {
@@ -636,6 +642,11 @@
         }
       });
     }
+
+    if (global.ZPPages) {
+      try { global.ZPPages.profileExtras(session); }
+      catch (e) { console.warn('profileExtras failed', e); }
+    }
   }
 
   function takenFor(courseId) {
@@ -729,6 +740,11 @@
         }
       });
     }
+
+    if (global.ZPPages) {
+      try { global.ZPPages.trainingExtras(session); }
+      catch (e) { console.warn('trainingExtras failed', e); }
+    }
   }
 
   function docMeta(name) {
@@ -784,6 +800,11 @@
     if (titleCount) titleCount.innerHTML = 'All Resources <span class="text-muted fw-semibold">(' + docs.length + ')</span>';
     const heroPill = $('.zp-pill.zp-pill--indigo');
     if (heroPill && /Total Resources/.test(heroPill.textContent)) heroPill.innerHTML = '<span class="spinner-grow spinner-grow-sm text-primary me-1"></span>' + docs.length + ' documents from Partner_Documents';
+
+    if (global.ZPPages) {
+      try { global.ZPPages.resourcesExtras(session); }
+      catch (e) { console.warn('resourcesExtras failed', e); }
+    }
   }
 
   async function mountReferral() {
@@ -851,6 +872,39 @@
         }
       });
     }
+
+    if (global.ZPPages) {
+      try { global.ZPPages.referralExtras(session); }
+      catch (e) { console.warn('referralExtras failed', e); }
+    }
+  }
+
+  let adminStats = {};
+
+  function buildAdminStats(partners, referrals) {
+    adminStats = {};
+    const D = global.ZPData;
+    if (!D) return adminStats;
+    const all = D.leadsForAll(referrals || [], partners || []);
+    (partners || []).forEach(function (p) {
+      const mine = all.filter(function (l) { return l.partnerId === p.ID; });
+      const won = mine.filter(function (l) { return l.won; });
+      const dates = mine.map(function (l) { return l.created; }).sort(function (a, b) { return a - b; });
+      adminStats[p.ID] = {
+        leads: mine.length,
+        projects: won.length,
+        pipeline: mine.reduce(function (a, l) { return a + l.value; }, 0),
+        earnings: won.reduce(function (a, l) { return a + l.commission; }, 0),
+        payouts: won.filter(function (l) { return l.paid; }).reduce(function (a, l) { return a + l.commission; }, 0),
+        joined: field(p, 'Added_Time') ? D.fmtDate(field(p, 'Added_Time')) : (dates[0] ? D.fmtDate(dates[0]) : '—')
+      };
+    });
+    adminStats.__all = all;
+    return adminStats;
+  }
+
+  function statsFor(id) {
+    return adminStats[id] || { leads: 0, projects: 0, pipeline: 0, earnings: 0, payouts: 0, joined: '—' };
   }
 
   function partnerRow(p, compact) {
@@ -865,9 +919,10 @@
         '<td class="text-secondary fw-semibold">' + esc(p.ID) + '</td>' +
         '<td><div class="d-flex align-items-center gap-2"><img src="' + esc(avatar) + '" style="width:28px;height:28px;border-radius:50%;object-fit:cover" alt=""><div><div class="fw-semibold">' + esc(name) + '</div><div class="text-muted" style="font-size:.68rem">' + esc(email) + '</div></div></div></td>' +
         '<td><span class="zp-pill ' + statusClass(status) + '">' + esc(status || '—') + '</span></td>' +
-        '<td class="text-center fw-semibold">—</td><td class="text-center fw-semibold">—</td>' +
-        '<td class="text-end fw-bold">' + esc(type) + '</td><td class="text-end">' + esc(field(p, 'Organization_Name')) + '</td>' +
-        '<td class="text-secondary">—</td>' +
+        '<td class="text-center fw-semibold">' + statsFor(p.ID).projects + '</td><td class="text-center fw-semibold">' + statsFor(p.ID).leads + '</td>' +
+        '<td class="text-end fw-bold">' + (global.ZPData ? global.ZPData.moneyShort(statsFor(p.ID).earnings) : '—') + '</td>' +
+        '<td class="text-end">' + (global.ZPData ? global.ZPData.moneyShort(statsFor(p.ID).payouts) : '—') + '</td>' +
+        '<td class="text-secondary">' + esc(statsFor(p.ID).joined) + '</td>' +
         '<td class="text-center"><a href="partner-view.html?id=' + encodeURIComponent(p.ID) + '" class="row-action"><i class="fa-solid fa-eye"></i></a></td></tr>';
     }
     return '<tr data-id="' + p.ID + '" data-status="' + esc(status) + '" data-level="' + esc(type) + '" data-search="' + esc((p.ID + ' ' + name + ' ' + email).toLowerCase()) + '">' +
@@ -877,8 +932,8 @@
       '<td>' + typePill(type) + '</td>' +
       '<td><span class="zp-pill ' + statusClass(status) + '">' + esc(status || '—') + '</span></td>' +
       '<td>' + pill(field(p, 'Organization_Name') ? 'Linked' : '—') + '</td>' +
-      '<td class="text-secondary">' + esc(Z().prettyDate(field(p, 'Added_Time')) || '—') + '</td>' +
-      '<td class="text-center fw-semibold">—</td><td class="text-center fw-semibold">—</td>' +
+      '<td class="text-secondary">' + esc(statsFor(p.ID).joined) + '</td>' +
+      '<td class="text-center fw-semibold">' + statsFor(p.ID).leads + '</td><td class="text-center fw-semibold">' + statsFor(p.ID).projects + '</td>' +
       '<td class="text-end fw-bold">' + esc(field(p, 'Organization_Name')) + '</td>' +
       '<td class="text-end">' + esc((Z().asList(p.services_of_interest)[0]) || '—') + '</td>' +
       '<td class="text-center"><a href="partner-view.html?id=' + encodeURIComponent(p.ID) + '" class="row-action" title="View"><i class="fa-solid fa-eye"></i></a></td></tr>';
@@ -938,6 +993,8 @@
 
   async function mountAdminPartners() {
     const partners = await Z().getRecords(Z().REPORTS.partners);
+    const allRefs = await Z().getRecords(Z().REPORTS.referrals);
+    buildAdminStats(partners, allRefs);
     const tbody = $('#partner-tbody');
     const statusSel = $('#status-filter');
     const levelSel = $('#level-filter');
@@ -969,11 +1026,7 @@
       addBtn.parentNode.replaceChild(clone, addBtn);
       clone.addEventListener('click', function (e) { e.preventDefault(); addPartnerModal(); });
     }
-    const kpis = $$('.zp-stat-value');
-    if (kpis[0]) kpis[0].textContent = String(partners.length);
-    if (kpis[1]) kpis[1].textContent = String(partners.filter(function (p) { return field(p, 'partner_status') === 'Active'; }).length);
-    const refs = await Z().getRecords(Z().REPORTS.referrals);
-    if (kpis[2]) kpis[2].textContent = String(refs.length);
+    if (global.ZPPages) global.ZPPages.adminKpis(partners, allRefs);
   }
 
   async function mountAdminOnboarding() {
@@ -1036,6 +1089,11 @@
         }).join('');
       }
     }
+
+    if (global.ZPPages) {
+      try { global.ZPPages.adminOnboardingExtras(partners, tasks, rows); }
+      catch (e) { console.warn('adminOnboardingExtras failed', e); }
+    }
   }
 
   async function mountAdminPartnerView() {
@@ -1088,12 +1146,18 @@
     }
     const crumb = $('#app-topbar .zp-breadcrumb span.text-secondary');
     if (crumb) crumb.textContent = 'Partners › ' + s.name;
+
+    if (global.ZPPages) {
+      try { global.ZPPages.partnerViewExtras(session); }
+      catch (e) { console.warn('partnerViewExtras failed', e); }
+    }
   }
 
   async function mountAdminDashboard() {
     const partners = await Z().getRecords(Z().REPORTS.partners);
     const tasks = await Z().getRecords(Z().REPORTS.tasks);
     const refs = await Z().getRecords(Z().REPORTS.referrals);
+    buildAdminStats(partners, refs);
     const tbody = $('#partner-tbody');
     if (tbody) tbody.innerHTML = partners.slice(0, 8).map(function (p) { return partnerRow(p, true); }).join('');
     const kpis = $$('.zp-stat-value');
@@ -1152,6 +1216,11 @@
     }
     const invite = $$('a,button').find(function (b) { return /Invite Partner/.test(b.textContent); });
     invite?.addEventListener('click', function (e) { e.preventDefault(); addPartnerModal(); });
+
+    if (global.ZPPages) {
+      try { global.ZPPages.adminDashboardExtras(partners, refs, tasks, adminStats); }
+      catch (e) { console.warn('admin dashboard extras failed', e); }
+    }
   }
 
   async function mountGeneric() {
@@ -1164,6 +1233,8 @@
     }
   }
 
+  function pages() { return global.ZPPages; }
+
   async function mount(active, variant) {
     try {
       if (variant === 'admin') {
@@ -1171,6 +1242,8 @@
         if (active === 'onboarding') return mountAdminOnboarding();
         if (active === 'partnerView') return mountAdminPartnerView();
         if (active === 'dashboard') return mountAdminDashboard();
+        if (active === 'payouts' && pages()) return pages().adminPayouts(session);
+        if (active === 'tickets' && pages()) return pages().adminTickets(session);
         return;
       }
       if (active === 'dashboard') return mountDashboard();
@@ -1179,6 +1252,10 @@
       if (active === 'training') return mountTraining();
       if (active === 'resources') return mountResources();
       if (active === 'referral') return mountReferral();
+      if (active === 'leads' && pages()) return pages().leads(session);
+      if (active === 'activities' && pages()) return pages().activities(session);
+      if (active === 'earnings' && pages()) return pages().earnings(session);
+      if (active === 'reports' && pages()) return pages().reports(session);
       return mountGeneric();
     } catch (e) {
       console.error('mount error', e);
@@ -1204,6 +1281,14 @@
     if (onboardLink) {
       const badge = onboardLink.querySelector('.badge');
       if (badge) badge.innerHTML = s.onboard.allDone ? '<i class="fa-solid fa-check"></i>' : s.onboard.done + '/' + s.onboard.total;
+    }
+    if (global.ZPPages && !s.isAdmin) {
+      try {
+        global.ZPPages.chromeExtras({
+          tasks: (s.steps || []).map(function (x) { return x.record; }).filter(Boolean).concat(s.extraTasks || []),
+          referrals: s.referrals, taken: s.taken, documents: s.documents
+        });
+      } catch (e) { /* ignore */ }
     }
     const top = $('#app-topbar');
     if (top && !top.querySelector('.zp-live-chip')) {
@@ -1248,6 +1333,18 @@
     session: session,
     reload: reloadMine,
     refresh: refreshActive,
-    mount: mount
+    mount: mount,
+    ui: {
+      esc: esc,
+      pill: pill,
+      typePill: typePill,
+      statusClass: statusClass,
+      emptyState: emptyState,
+      registerCard: registerCard,
+      bindRegister: bindRegister,
+      showToast: function () { return global.showToast.apply(null, arguments); },
+      openModal: function () { return global.openModal.apply(null, arguments); },
+      closeModal: function () { return global.closeModal.apply(null, arguments); }
+    }
   };
 })(window);

@@ -89,7 +89,7 @@
     }
   ];
 
-  const DEMO_KEY = 'zp_creator_db_v1';
+  const DEMO_KEY = 'zp_creator_db_v2';
   const DEFAULT_AVATAR = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=60';
 
   const state = {
@@ -197,6 +197,13 @@
     return cut > 0 ? fp.slice(cut + 1) : fp;
   }
 
+  function daysAgo(n) {
+    const d = new Date(Date.now() - n * 86400000);
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return String(d.getDate()).padStart(2, '0') + '-' + months[d.getMonth()] + '-' + d.getFullYear() +
+      ' ' + String(9 + (n % 8)).padStart(2, '0') + ':' + String((n * 7) % 60).padStart(2, '0') + ':00';
+  }
+
   function today() {
     const d = new Date();
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -236,6 +243,7 @@
       partners: [
         {
           ID: p1,
+          Added_Time: daysAgo(300),
           Organization_Name: 'Acme Corporation',
           partner_name: 'James Anderson',
           partner_type: 'Zoho Partner',
@@ -250,6 +258,7 @@
         },
         {
           ID: p2,
+          Added_Time: daysAgo(120),
           Organization_Name: 'BrightWave Solutions',
           partner_name: 'Sarah Mitchell',
           partner_type: 'Agency',
@@ -264,6 +273,7 @@
         },
         {
           ID: p3,
+          Added_Time: daysAgo(20),
           Organization_Name: 'Northstar Consulting',
           partner_name: 'Michael Davis',
           partner_type: 'Consultant',
@@ -295,10 +305,10 @@
         taskRec('3900000000125', p3, 'Michael Davis', 'Resources Access', ONBOARD_TASKS[4].description, '19-Aug-2026', 'Low', 'Pending')
       ],
       referrals: [
-        { ID: '3900000000201', partner_id: { ID: p1, zc_display_value: 'James Anderson' }, Company_Name: 'TechNova Solutions', Contact_Person: 'John Smith', Email: 'john@technova.com', Project_Service_Interest: 'Website Development', How_did_you_hear_about_us: 'Referral', Project_Description: 'Corporate site rebuild with partner portal integration.' },
-        { ID: '3900000000202', partner_id: { ID: p1, zc_display_value: 'James Anderson' }, Company_Name: 'BrightWave Industries', Contact_Person: 'Lisa Brown', Email: 'lisa@brightwave.io', Project_Service_Interest: 'Mobile App Development', How_did_you_hear_about_us: 'Event', Project_Description: 'Field-service mobile app for technicians.' },
-        { ID: '3900000000203', partner_id: { ID: p1, zc_display_value: 'James Anderson' }, Company_Name: 'CloudCore Systems', Contact_Person: 'Robert Johnson', Email: 'robert@cloudcore.com', Project_Service_Interest: 'Cloud Solutions', How_did_you_hear_about_us: 'Google Search', Project_Description: 'Migrate on-prem CRM to Zoho cloud.' },
-        { ID: '3900000000204', partner_id: { ID: p2, zc_display_value: 'Sarah Mitchell' }, Company_Name: 'Harbor Health', Contact_Person: 'Priya Nair', Email: 'priya@harbor.health', Project_Service_Interest: 'Implementation', How_did_you_hear_about_us: 'Partner Portal', Project_Description: 'Clinic operations suite implementation.' }
+        { ID: '3900000000201', Added_Time: daysAgo(92), partner_id: { ID: p1, zc_display_value: 'James Anderson' }, Company_Name: 'TechNova Solutions', Contact_Person: 'John Smith', Email: 'john@technova.com', Project_Service_Interest: 'Website Development', How_did_you_hear_about_us: 'Referral', Project_Description: 'Corporate site rebuild with partner portal integration.' },
+        { ID: '3900000000202', Added_Time: daysAgo(41), partner_id: { ID: p1, zc_display_value: 'James Anderson' }, Company_Name: 'BrightWave Industries', Contact_Person: 'Lisa Brown', Email: 'lisa@brightwave.io', Project_Service_Interest: 'Mobile App Development', How_did_you_hear_about_us: 'Event', Project_Description: 'Field-service mobile app for technicians.' },
+        { ID: '3900000000203', Added_Time: daysAgo(16), partner_id: { ID: p1, zc_display_value: 'James Anderson' }, Company_Name: 'CloudCore Systems', Contact_Person: 'Robert Johnson', Email: 'robert@cloudcore.com', Project_Service_Interest: 'Cloud Solutions', How_did_you_hear_about_us: 'Google Search', Project_Description: 'Migrate on-prem CRM to Zoho cloud.' },
+        { ID: '3900000000204', Added_Time: daysAgo(4), partner_id: { ID: p2, zc_display_value: 'Sarah Mitchell' }, Company_Name: 'Harbor Health', Contact_Person: 'Priya Nair', Email: 'priya@harbor.health', Project_Service_Interest: 'Implementation', How_did_you_hear_about_us: 'Partner Portal', Project_Description: 'Clinic operations suite implementation.' }
       ],
       courses: [
         { ID: c1, Course_Name: 'Zentegra Solutions Overview', Description: 'Overview of Zentegra solutions and the partner value proposition.', Url: 'https://learn.zentegra.com/solutions-overview' },
@@ -307,17 +317,17 @@
         { ID: c4, Course_Name: 'Compliance & Policies', Description: 'Partner code of conduct, data handling and brand usage.', Url: 'https://learn.zentegra.com/compliance' }
       ],
       taken: [
-        { ID: '3900000000301', Partner_Name: { ID: p1, zc_display_value: 'James Anderson' }, Course_Name: { ID: c1, zc_display_value: 'Zentegra Solutions Overview' }, status: 'Completed' },
-        { ID: '3900000000302', Partner_Name: { ID: p1, zc_display_value: 'James Anderson' }, Course_Name: { ID: c2, zc_display_value: 'Sales Process & Methodology' }, status: 'In Progress' },
-        { ID: '3900000000303', Partner_Name: { ID: p1, zc_display_value: 'James Anderson' }, Course_Name: { ID: c3, zc_display_value: 'Cloud & Technology Basics' }, status: 'Enrolled' }
+        { ID: '3900000000301', Added_Time: daysAgo(30), Partner_Name: { ID: p1, zc_display_value: 'James Anderson' }, Course_Name: { ID: c1, zc_display_value: 'Zentegra Solutions Overview' }, status: 'Completed' },
+        { ID: '3900000000302', Added_Time: daysAgo(12), Partner_Name: { ID: p1, zc_display_value: 'James Anderson' }, Course_Name: { ID: c2, zc_display_value: 'Sales Process & Methodology' }, status: 'In Progress' },
+        { ID: '3900000000303', Added_Time: daysAgo(3), Partner_Name: { ID: p1, zc_display_value: 'James Anderson' }, Course_Name: { ID: c3, zc_display_value: 'Cloud & Technology Basics' }, status: 'Enrolled' }
       ],
       documents: [
-        { ID: '3900000000401', Document_Name: 'Partner Agreement', File_upload: ['/demo/Partner_Agreement.pdf'] },
-        { ID: '3900000000402', Document_Name: 'Non-Disclosure Agreement', File_upload: ['/demo/NDA.pdf'] },
-        { ID: '3900000000403', Document_Name: 'Commission Structure Guide', File_upload: ['/demo/Commission_Guide.xlsx'] },
-        { ID: '3900000000404', Document_Name: 'Brand Guidelines', File_upload: ['/demo/Brand_Guidelines.pdf'] },
-        { ID: '3900000000405', Document_Name: 'Sales Playbook', File_upload: ['/demo/Sales_Playbook.pdf'] },
-        { ID: '3900000000406', Document_Name: 'Solution Portfolio Presentation', File_upload: ['/demo/Portfolio.pptx'] }
+        { ID: '3900000000401', Added_Time: daysAgo(120), Document_Name: 'Partner Agreement', File_upload: ['/demo/Partner_Agreement.pdf'] },
+        { ID: '3900000000402', Added_Time: daysAgo(118), Document_Name: 'Non-Disclosure Agreement', File_upload: ['/demo/NDA.pdf'] },
+        { ID: '3900000000403', Added_Time: daysAgo(90), Document_Name: 'Commission Structure Guide', File_upload: ['/demo/Commission_Guide.xlsx'] },
+        { ID: '3900000000404', Added_Time: daysAgo(60), Document_Name: 'Brand Guidelines', File_upload: ['/demo/Brand_Guidelines.pdf'] },
+        { ID: '3900000000405', Added_Time: daysAgo(30), Document_Name: 'Sales Playbook', File_upload: ['/demo/Sales_Playbook.pdf'] },
+        { ID: '3900000000406', Added_Time: daysAgo(7), Document_Name: 'Solution Portfolio Presentation', File_upload: ['/demo/Portfolio.pptx'] }
       ]
     };
   }
@@ -433,7 +443,7 @@
     const db = readDemo();
     const key = formToBucket(form);
     if (!key) throw new Error('Unknown form ' + form);
-    const rec = hydrateLookups(Object.assign({}, data, { ID: nextId(db) }), db);
+    const rec = hydrateLookups(Object.assign({ Added_Time: daysAgo(0) }, data, { ID: nextId(db) }), db);
     db[key].push(rec);
     writeDemo(db);
     return rec.ID;
