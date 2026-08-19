@@ -11,6 +11,23 @@ const USER_AVATAR='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?
 const STORE_KEY='zp_state_v3';
 let currentActive='dashboard';
 
+function sessionUser(){
+  const s=window.ZP&&ZP.session;
+  if(!s)return{name:'Partner',first:'Partner',email:'',avatar:USER_AVATAR,type:'Partner',status:'',id:'',pct:0,adminName:'Admin User',adminEmail:'admin@zentegra.com'};
+  return{
+    name:s.name||'Partner',
+    first:s.firstName||'Partner',
+    email:s.email||s.loginUser||'',
+    avatar:s.avatar||USER_AVATAR,
+    type:s.type||'Partner',
+    status:s.status||'',
+    id:s.partnerId||'',
+    pct:(s.onboard&&s.onboard.pct)||0,
+    adminName:s.adminName||(s.loginUser?s.loginUser.split('@')[0]:'Admin User'),
+    adminEmail:s.loginUser||'admin@zentegra.com'
+  };
+}
+
 /* ── safe storage ── */
 function safeStoreGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
 function safeStoreSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
@@ -113,6 +130,7 @@ function _navLink(id,label,href,icon,active,badge=''){
   return `<a href="${href}" class="zp-nav-link ${on?'active':''}"><i class="fa-solid fa-fw ${icon}"></i><span>${label}</span>${badge}${on?'<i class="fa-solid fa-chevron-right ms-auto" style="font-size:.8rem;opacity:.6"></i>':''}</a>`;
 }
 function buildSidebar(active){
+  const u=sessionUser();
   const nav=`
     ${_navLink('dashboard','Dashboard','index.html','fa-table-cells-large',active, active==='dashboard'?'<span class="zp-nav-badge"></span>':'')}
     ${_navLink('profile','My Profile','profile.html','fa-user',active)}
@@ -129,16 +147,16 @@ function buildSidebar(active){
       <div class="zp-brand-text"><div class="zp-brand-title">ZENPARTNER</div><div class="zp-brand-sub">Partner Portal</div></div>
     </div>
     <div class="zp-user-card d-flex align-items-center gap-2">
-      <img src="${USER_AVATAR}" class="avatar" alt="James Anderson">
+      <img src="${u.avatar}" class="avatar" alt="${u.name}">
       <div class="flex-grow-1 min-w-0">
-        <div class="fw-semibold" style="font-size:.76rem">James Anderson</div>
-        <div class="text-warning" style="font-size:.66rem"><i class="fa-solid fa-star"></i> Gold Partner</div>
+        <div class="fw-semibold" style="font-size:.76rem">${u.name}</div>
+        <div class="text-warning" style="font-size:.66rem"><i class="fa-solid fa-star"></i> ${u.type||'Partner'}</div>
       </div>
     </div>
-    <div class="px-3 mb-2 zp-side-extra" style="font-size:.66rem;color:rgba(255,255,255,.5)">Partner ID: ZP-2024-0015</div>
+    <div class="px-3 mb-2 zp-side-extra" style="font-size:.66rem;color:rgba(255,255,255,.5)">Partner ID: ${u.id||'—'}</div>
     <div class="px-3 mb-2 zp-side-extra">
-      <div class="d-flex justify-content-between" style="font-size:.68rem"><span style="color:rgba(255,255,255,.7)">Profile Strength</span><span class="text-success">90%</span></div>
-      <div class="zp-progress mt-1"><span style="width:90%"></span></div>
+      <div class="d-flex justify-content-between" style="font-size:.68rem"><span style="color:rgba(255,255,255,.7)">Onboarding</span><span class="text-success">${u.pct}%</span></div>
+      <div class="zp-progress mt-1"><span style="width:${u.pct}%"></span></div>
     </div>
     <nav class="zp-nav flex-grow-1">${nav}</nav>
     <div class="zp-sidebar-foot">
@@ -159,8 +177,8 @@ function buildSidebar(active){
     <div class="offcanvas-body p-2">
       <nav class="zp-nav">${nav}</nav>
       <div class="zp-user-card d-flex align-items-center gap-2 mt-3">
-        <img src="${USER_AVATAR}" class="avatar" alt="">
-        <div class="flex-grow-1"><div class="fw-semibold" style="font-size:.8rem">James Anderson</div><div class="text-warning" style="font-size:.7rem"><i class="fa-solid fa-star"></i> Gold Partner</div></div>
+        <img src="${u.avatar}" class="avatar" alt="">
+        <div class="flex-grow-1"><div class="fw-semibold" style="font-size:.8rem">${u.name}</div><div class="text-warning" style="font-size:.7rem"><i class="fa-solid fa-star"></i> ${u.type||'Partner'}</div></div>
       </div>
       <a href="admin.html" class="btn btn-outline-light w-100 mt-2 btn-sm"><i class="fa-solid fa-shield-halved me-1"></i>Admin Panel</a>
       <a href="#" class="btn btn-primary w-100 mt-2 btn-sm" data-signout><i class="fa-solid fa-right-from-bracket me-1"></i>Sign Out</a>
@@ -169,6 +187,7 @@ function buildSidebar(active){
 }
 
 function buildAdminSidebar(active){
+  const u=sessionUser();
   const sec=l=>`<div class="zp-nav-section">${l}</div>`;
   const a=(id,label,href,icon)=>_navLink(id,label,href,icon,active);
   const nav=`
@@ -200,13 +219,13 @@ function buildAdminSidebar(active){
       <div class="zp-brand-text"><div class="zp-brand-title">ZENPARTNER</div><div class="zp-brand-sub">Admin Panel</div></div>
     </div>
     <div class="zp-user-card d-flex align-items-center gap-2">
-      <img src="${ADMIN_AVATAR}" class="avatar" alt="Admin User">
+      <img src="${ADMIN_AVATAR}" class="avatar" alt="${u.adminName}">
       <div class="flex-grow-1 min-w-0">
-        <div class="fw-semibold" style="font-size:.76rem">Admin User</div>
+        <div class="fw-semibold" style="font-size:.76rem">${u.adminName}</div>
         <div style="font-size:.66rem;color:#a5b4fc"><i class="fa-solid fa-shield-halved"></i> Super Administrator</div>
       </div>
     </div>
-    <div class="px-3 mb-2 zp-side-extra" style="font-size:.66rem;color:rgba(255,255,255,.5)">admin@zentegra.com</div>
+    <div class="px-3 mb-2 zp-side-extra" style="font-size:.66rem;color:rgba(255,255,255,.5)">${u.adminEmail}</div>
     <div class="px-3 mb-2 zp-side-extra">
       <div class="d-flex justify-content-between" style="font-size:.68rem"><span style="color:rgba(255,255,255,.7)">Panel Coverage</span><span style="color:#a5b4fc">100%</span></div>
       <div class="zp-progress mt-1"><span style="width:100%;background:linear-gradient(90deg,#6366f1,#38bdf8)"></span></div>
@@ -254,10 +273,12 @@ function buildTopbar(title,breadcrumb,searchPlaceholder,extraActions,admin,homeU
       <div class="dropdown-item bg-light rounded"><i class="fa-solid fa-circle-check text-primary"></i><div><div class="fw-semibold" style="font-size:.76rem">Training completed — Sales Process</div><div class="text-muted" style="font-size:.7rem">2 hours ago</div></div></div>
       <div class="dropdown-item"><i class="fa-solid fa-coins text-success"></i><div><div class="fw-medium" style="font-size:.76rem">Payout of $2,500 completed</div><div class="text-muted" style="font-size:.7rem">Yesterday</div></div></div>
       <div class="dropdown-item"><i class="fa-solid fa-arrow-trend-up text-info"></i><div><div class="fw-medium" style="font-size:.76rem">New referral qualified</div><div class="text-muted" style="font-size:.7rem">2 days ago</div></div></div>`;
-  const profName=admin?'Admin User':'James Anderson';
-  const profRole=admin?'Super Administrator':'Gold Partner';
+  const u=sessionUser();
+  const profName=admin?u.adminName:u.name;
+  const profRole=admin?'Super Administrator':(u.type||'Partner');
   const profRoleCls=admin?'text-primary':'text-warning-emphasis';
-  const profAvatar=admin?ADMIN_AVATAR:USER_AVATAR;
+  const profAvatar=admin?ADMIN_AVATAR:u.avatar;
+  const profEmail=admin?u.adminEmail:u.email;
   return `
   <header class="zp-topbar">
     <nav class="navbar">
@@ -300,7 +321,7 @@ function buildTopbar(title,breadcrumb,searchPlaceholder,extraActions,admin,homeU
             <div class="d-none d-xl-block text-start"><div class="fw-semibold" style="font-size:.74rem">${profName} <i class="fa-solid fa-chevron-down" style="font-size:.6rem"></i></div><div class="${profRoleCls}" style="font-size:.66rem;font-weight:600">${profRole}</div></div>
           </button>
           <div class="dropdown-menu dropdown-menu-end" style="min-width:230px">
-            <div class="dropdown-item"><img src="${profAvatar}" style="width:38px;height:38px;border-radius:50%"><div><div class="fw-semibold" style="font-size:.8rem">${profName}</div><div class="text-muted" style="font-size:.7rem">${admin?'admin@zentegra.com':'james@zentegra.com'}</div><div class="${profRoleCls}" style="font-size:.7rem;font-weight:600">${profRole}</div></div></div>
+            <div class="dropdown-item"><img src="${profAvatar}" style="width:38px;height:38px;border-radius:50%"><div><div class="fw-semibold" style="font-size:.8rem">${profName}</div><div class="text-muted" style="font-size:.7rem">${profEmail||'—'}</div><div class="${profRoleCls}" style="font-size:.7rem;font-weight:600">${profRole}</div></div></div>
             <div class="dropdown-divider"></div>
             ${admin?'<a href="#" class="dropdown-item">Admin Profile</a><a href="#" class="dropdown-item">System Settings</a><a href="index.html" class="dropdown-item">Partner Portal</a>':'<a href="profile.html" class="dropdown-item">My Profile</a><a href="#" class="dropdown-item">Settings</a>'}
             <div class="dropdown-divider"></div>
@@ -534,7 +555,7 @@ function wireUniversalActions(opts){
     if(e.defaultPrevented)return;
     const control=e.target.closest('a,button');
     if(!control)return;
-    if(control.id||control.dataset.bsToggle||control.dataset.dropdown||control.type==='submit'||control.type==='reset')return;
+    if(control.id||control.dataset.bsToggle||control.dataset.dropdown||control.dataset.zp!==undefined||control.dataset.step||control.dataset.course||control.type==='submit'||control.type==='reset')return;
     const href=control.getAttribute('href');
     const label=control.textContent.replace(/\s+/g,' ').trim();
     const isPlaceholder=control.tagName==='A'&&(href==='#'||href===''||href===null);
@@ -905,13 +926,15 @@ function injectLayout(opts){
 
   setTimeout(()=>{
     try{wireGlobalUI()}catch(e){console.error('global UI error',e)}
-    const map={dashboard:initDashboard,onboarding:initOnboarding,profile:initProfile,training:initTraining,resources:initResources,referral:initReferral,leads:initLeads,activities:initActivities,earnings:initEarnings,reports:initReports};
-    const adminMap={dashboard:initAdminDashboard,partners:initAdminPartners,onboarding:initAdminOnboarding,payouts:initAdminPayouts,tickets:initAdminTickets,partnerView:initAdminPartnerView};
-    const fn=(admin?adminMap:map)[opts.active];
-    try{if(fn)fn()}catch(e){console.error('init error',e)}
+    if(!opts.skipInit){
+      const map={dashboard:initDashboard,onboarding:initOnboarding,profile:initProfile,training:initTraining,resources:initResources,referral:initReferral,leads:initLeads,activities:initActivities,earnings:initEarnings,reports:initReports};
+      const adminMap={dashboard:initAdminDashboard,partners:initAdminPartners,onboarding:initAdminOnboarding,payouts:initAdminPayouts,tickets:initAdminTickets,partnerView:initAdminPartnerView};
+      const fn=(admin?adminMap:map)[opts.active];
+      try{if(fn)fn()}catch(e){console.error('init error',e)}
+    }
     try{wireUniversalActions(opts)}catch(e){console.error('universal action error',e)}
 
-    if(!safeSessionGet('zp_welcomed')){safeSessionSet('zp_welcomed','1');setTimeout(()=>showToast(admin?`Welcome back, Admin! 🛡 — ${opts.title} loaded`:`Welcome back, James! 👋 — ${opts.title} loaded`,'info',2200),500)}
+    if(!opts.skipInit && !safeSessionGet('zp_welcomed')){safeSessionSet('zp_welcomed','1');const u=sessionUser();setTimeout(()=>showToast(admin?`Welcome back, ${u.adminName}! — ${opts.title} loaded`:`Welcome back, ${u.first}! — ${opts.title} loaded`,'info',2200),500)}
   },30);
 }
 window.injectLayout=injectLayout;

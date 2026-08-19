@@ -39,13 +39,12 @@
           </div>
           <div class="d-flex flex-wrap align-items-center gap-2 px-3 pb-3">
             <div class="zp-input-icon"><i class="fa-solid fa-magnifying-glass"></i><input id="partner-search" class="form-control form-control-sm" placeholder="Search partners..." style="padding-left:2.1rem"></div>
-            <select id="status-filter" class="form-select form-select-sm w-auto"><option value="all">Status: All</option><option value="Active">Active</option><option value="Pending">Pending</option><option value="Inactive">Inactive</option></select>
-            <select id="level-filter" class="form-select form-select-sm w-auto"><option value="all">Partner Level: All</option><option value="Gold Partner">Gold Partner</option><option value="Silver Partner">Silver Partner</option><option value="Bronze Partner">Bronze Partner</option></select>
-            <select id="kyc-filter" class="form-select form-select-sm w-auto"><option value="all">KYC Status: All</option><option value="Verified">Verified</option><option value="Pending">Pending</option><option value="Not Verified">Not Verified</option></select>
+            <select id="status-filter" class="form-select form-select-sm w-auto"><option value="all">Status: All</option></select>
+            <select id="level-filter" class="form-select form-select-sm w-auto"><option value="all">Partner Type: All</option></select>
           </div>
           <div class="table-responsive">
             <table class="zp-table" style="min-width:1280px">
-              <thead><tr><th>Partner ID</th><th>Partner</th><th>Email</th><th>Phone</th><th>Partner Level</th><th>Status</th><th>KYC Status</th><th>Joined On</th><th class="text-center">Leads</th><th class="text-center">Projects</th><th class="text-end">Earnings</th><th class="text-end">Payouts</th><th class="text-center">Action</th></tr></thead>
+              <thead><tr><th>Record ID</th><th>Partner</th><th>Email</th><th>Phone</th><th>Partner Type</th><th>Status</th><th>Linked</th><th>Joined On</th><th class="text-center">Leads</th><th class="text-center">Projects</th><th class="text-end">Organization</th><th class="text-end">Service</th><th class="text-center">Action</th></tr></thead>
               <tbody id="partner-tbody"></tbody>
             </table>
           </div>
@@ -64,7 +63,9 @@
 </div>
 <div id="app-mobile-nav"></div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="zoho.js"></script>
 <script src="layout.js"></script>
-<script>injectLayout({variant:'admin', active:'partners', title:'All Partners', breadcrumb:'All Partners', searchPlaceholder:'Search partners by name, email, or ID...'});</script>
+<script src="app.js"></script>
+<script>ZPApp.boot({variant:'admin', active:'partners', title:'All Partners', breadcrumb:'All Partners', searchPlaceholder:'Search partners by name, email, or ID...'});</script>
 </body>
 </html>

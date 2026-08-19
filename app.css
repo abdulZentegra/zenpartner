@@ -449,6 +449,21 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2px solid var(--
   .zp-topbar .navbar{padding:.5rem .65rem}
 }
 
+/* ── 22e. Dynamic process / Creator boot ── */
+#zp-boot{position:fixed;inset:0;z-index:2000;display:grid;place-items:center;background:rgba(244,246,251,.88);backdrop-filter:blur(10px);transition:opacity .2s ease}
+#zp-boot.leaving{opacity:0;pointer-events:none}
+.zp-boot-card{width:min(92vw,320px);background:#fff;border:1px solid var(--zp-border);border-radius:18px;padding:1.4rem 1.3rem;text-align:center;box-shadow:var(--zp-shadow-card)}
+.zp-live-chip{display:inline-flex;align-items:center;gap:.4rem;font-size:.64rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:.28rem .6rem;border-radius:99px;border:1px solid var(--zp-border);background:#fff}
+.zp-live-chip i{font-size:.45rem}
+.zp-live-chip.live{color:#059669;background:#ecfdf5;border-color:#a7f3d0}
+.zp-live-chip.live i{color:#10b981}
+.zp-live-chip.demo{color:#b45309;background:#fffbeb;border-color:#fde68a}
+.zp-live-chip.demo i{color:#f59e0b}
+.zp-multi{display:flex;flex-wrap:wrap;gap:6px;padding:.45rem;border:1px solid var(--zp-border);border-radius:12px;background:#fafbff;max-height:132px;overflow:auto}
+.zp-check{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:600;color:#334155;background:#fff;border:1px solid var(--zp-border-soft);border-radius:99px;padding:.22rem .6rem;cursor:pointer}
+.zp-check:has(input:checked){background:#eef2ff;border-color:#c7d2fe;color:#4338ca}
+.zp-check input{margin:0;accent-color:var(--zp-indigo)}
+
 /* ── 23. Print ── */
 @media print{
   .zp-sidebar,.zp-bottomnav,.zp-offcanvas,#zp-toasts,.zp-topbar .zp-icon-btn,.zp-burger{display:none!important}
