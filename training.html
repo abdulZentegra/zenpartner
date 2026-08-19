@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Training & Learning — ZenPartner</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="app.css">
 <script src="https://static.zohocdn.com/creator/widgets/version/2.0/widgetsdk-min.js"></script>
@@ -23,16 +23,22 @@
             <!-- Hero -->
             <div class="zp-hero">
               <div class="zp-hero-glow"></div>
-              <div class="zp-hero-body" style="max-width:60%">
-                <h1>Learn. Grow. Succeed Together.</h1>
+              <svg class="zp-hero-lines" viewBox="0 0 240 300" fill="none">
+                <path d="M10 250 C 60 180, 120 80, 230 10" stroke="#a5b4fc" stroke-width="0.7" stroke-dasharray="2 4"/>
+                <path d="M20 20 C 80 90, 100 200, 200 280" stroke="#a5b4fc" stroke-width="0.7"/>
+                <circle cx="60" cy="80" r="1.5" fill="white"/><circle cx="150" cy="120" r="1.5" fill="white"/>
+              </svg>
+              <div class="zp-hero-body">
+                <span class="zp-hero-chip"><i class="fa-solid fa-graduation-cap"></i> Training &amp; Certification</span>
+                <h1 class="mt-3">Learn. Grow. Succeed Together.</h1>
                 <p>Complete the required training and certifications to unlock exclusive resources and benefits.</p>
                 <div class="d-flex gap-2 mt-3 flex-wrap">
                   <div class="glass border rounded-3 px-3 py-2 d-flex align-items-center gap-2 text-white" style="border-color:rgba(255,255,255,.2)!important">
-                    <i class="bi bi-mortarboard fs-5"></i>
+                    <i class="fa-solid fa-graduation-cap fs-5"></i>
                     <div><div class="text-white-50" style="font-size:.66rem">Your Progress</div><div class="fw-bold" style="font-size:.76rem">75% Completed</div></div>
                   </div>
                   <div class="glass border rounded-3 px-3 py-2 d-flex align-items-center gap-2 text-warning" style="border-color:rgba(255,255,255,.2)!important">
-                    <i class="bi bi-award fs-5"></i>
+                    <i class="fa-solid fa-award fs-5"></i>
                     <div><div class="text-white-50" style="font-size:.66rem">Certification Status</div><div class="fw-bold" style="font-size:.76rem">In Progress</div></div>
                   </div>
                 </div>
@@ -65,18 +71,18 @@
             <div class="zp-card p-4">
               <div class="zp-card-head"><h3 class="zp-card-title">Training Summary</h3><a href="#" class="zp-card-link">View Full Report</a></div>
               <div class="row row-cols-4 text-center mt-3">
-                <div class="col"><div class="zp-stat-icon tint-blue mx-auto" style="width:34px;height:34px"><i class="bi bi-book"></i></div><div class="text-muted mt-2" style="font-size:.64rem">Enrolled</div><div class="fs-5 fw-bold">5</div></div>
-                <div class="col"><div class="zp-stat-icon tint-emerald mx-auto" style="width:34px;height:34px"><i class="bi bi-patch-check"></i></div><div class="text-muted mt-2" style="font-size:.64rem">Completed</div><div class="fs-5 fw-bold">3</div></div>
-                <div class="col"><div class="zp-stat-icon tint-violet mx-auto" style="width:34px;height:34px"><i class="bi bi-clock"></i></div><div class="text-muted mt-2" style="font-size:.64rem">In Progress</div><div class="fs-5 fw-bold">2</div></div>
-                <div class="col"><div class="zp-stat-icon tint-orange mx-auto" style="width:34px;height:34px"><i class="bi bi-award"></i></div><div class="text-muted mt-2" style="font-size:.64rem">Certificates</div><div class="fs-5 fw-bold">2</div></div>
+                <div class="col"><div class="zp-stat-icon tint-blue mx-auto" style="width:34px;height:34px"><i class="fa-solid fa-book"></i></div><div class="text-muted mt-2" style="font-size:.64rem">Enrolled</div><div class="fs-5 fw-bold">5</div></div>
+                <div class="col"><div class="zp-stat-icon tint-emerald mx-auto" style="width:34px;height:34px"><i class="fa-solid fa-circle-check"></i></div><div class="text-muted mt-2" style="font-size:.64rem">Completed</div><div class="fs-5 fw-bold">3</div></div>
+                <div class="col"><div class="zp-stat-icon tint-violet mx-auto" style="width:34px;height:34px"><i class="fa-solid fa-clock"></i></div><div class="text-muted mt-2" style="font-size:.64rem">In Progress</div><div class="fs-5 fw-bold">2</div></div>
+                <div class="col"><div class="zp-stat-icon tint-orange mx-auto" style="width:34px;height:34px"><i class="fa-solid fa-award"></i></div><div class="text-muted mt-2" style="font-size:.64rem">Certificates</div><div class="fs-5 fw-bold">2</div></div>
               </div>
             </div>
             <!-- Certificates -->
             <div class="zp-card p-4 mt-3">
               <div class="zp-card-head"><h3 class="zp-card-title">Certificates Earned</h3><a href="#" class="zp-card-link">View All</a></div>
               <div class="d-flex flex-column gap-2 mt-3">
-                <div class="d-flex align-items-center gap-3 p-2 border rounded-3"><span class="zp-stat-icon tint-indigo" style="width:36px;height:36px"><i class="bi bi-award"></i></span><div class="flex-grow-1"><div class="fw-bold" style="font-size:.76rem">ZenPartner Certified</div><div class="text-muted" style="font-size:.68rem">Issued on May 05, 2024</div></div><a href="#" class="btn btn-sm btn-outline-primary">View</a></div>
-                <div class="d-flex align-items-center gap-3 p-2 border rounded-3"><span class="zp-stat-icon tint-emerald" style="width:36px;height:36px"><i class="bi bi-award"></i></span><div class="flex-grow-1"><div class="fw-bold" style="font-size:.76rem">Sales Process Specialist</div><div class="text-muted" style="font-size:.68rem">Issued on Apr 20, 2024</div></div><a href="#" class="btn btn-sm btn-outline-primary">View</a></div>
+                <div class="d-flex align-items-center gap-3 p-2 border rounded-3"><span class="zp-stat-icon tint-indigo" style="width:36px;height:36px"><i class="fa-solid fa-award"></i></span><div class="flex-grow-1"><div class="fw-bold" style="font-size:.76rem">ZenPartner Certified</div><div class="text-muted" style="font-size:.68rem">Issued on May 05, 2024</div></div><a href="#" class="btn btn-sm btn-outline-primary">View</a></div>
+                <div class="d-flex align-items-center gap-3 p-2 border rounded-3"><span class="zp-stat-icon tint-emerald" style="width:36px;height:36px"><i class="fa-solid fa-award"></i></span><div class="flex-grow-1"><div class="fw-bold" style="font-size:.76rem">Sales Process Specialist</div><div class="text-muted" style="font-size:.68rem">Issued on Apr 20, 2024</div></div><a href="#" class="btn btn-sm btn-outline-primary">View</a></div>
               </div>
             </div>
             <!-- Upcoming -->
@@ -84,7 +90,7 @@
               <div class="zp-card-head"><h3 class="zp-card-title">Upcoming Learning</h3><a href="#" class="zp-card-link">View Calendar</a></div>
               <div class="d-flex gap-3 align-items-center p-3 rounded-3 border mt-3" style="background:#f8fafc">
                 <div class="bg-white border rounded-3 text-center px-3 py-2 flex-shrink-0"><div class="text-primary fw-bold" style="font-size:.6rem;letter-spacing:.1em">MAY</div><div class="fs-4 fw-bold">20</div></div>
-                <div class="flex-grow-1"><div class="fw-bold" style="font-size:.76rem">Advanced Cloud Solutions</div><div class="text-muted" style="font-size:.68rem"><i class="bi bi-clock me-1"></i>10:00 AM – 12:00 PM (EST)</div></div>
+                <div class="flex-grow-1"><div class="fw-bold" style="font-size:.76rem">Advanced Cloud Solutions</div><div class="text-muted" style="font-size:.68rem"><i class="fa-solid fa-clock me-1"></i>10:00 AM – 12:00 PM (EST)</div></div>
                 <a href="#" class="btn btn-sm btn-outline-primary">Join Session</a>
               </div>
             </div>
@@ -92,9 +98,9 @@
             <div class="zp-card p-4 mt-3">
               <div class="zp-card-head"><h3 class="zp-card-title">Learning Resources</h3><a href="#" class="zp-card-link">View All</a></div>
               <div class="row row-cols-3 g-2 mt-2">
-                <div class="col"><a href="#" class="border rounded-3 p-2 text-center d-block text-decoration-none hover-lift"><span class="zp-stat-icon tint-blue mx-auto" style="width:32px;height:32px"><i class="bi bi-journal-text"></i></span><div class="fw-bold mt-1" style="font-size:.7rem">Guides</div></a></div>
-                <div class="col"><a href="#" class="border rounded-3 p-2 text-center d-block text-decoration-none hover-lift"><span class="zp-stat-icon tint-emerald mx-auto" style="width:32px;height:32px"><i class="bi bi-play-circle"></i></span><div class="fw-bold mt-1" style="font-size:.7rem">Videos</div></a></div>
-                <div class="col"><a href="#" class="border rounded-3 p-2 text-center d-block text-decoration-none hover-lift"><span class="zp-stat-icon tint-orange mx-auto" style="width:32px;height:32px"><i class="bi bi-question-circle"></i></span><div class="fw-bold mt-1" style="font-size:.7rem">FAQs</div></a></div>
+                <div class="col"><a href="#" class="border rounded-3 p-2 text-center d-block text-decoration-none hover-lift"><span class="zp-stat-icon tint-blue mx-auto" style="width:32px;height:32px"><i class="fa-solid fa-book-open"></i></span><div class="fw-bold mt-1" style="font-size:.7rem">Guides</div></a></div>
+                <div class="col"><a href="#" class="border rounded-3 p-2 text-center d-block text-decoration-none hover-lift"><span class="zp-stat-icon tint-emerald mx-auto" style="width:32px;height:32px"><i class="fa-solid fa-circle-play"></i></span><div class="fw-bold mt-1" style="font-size:.7rem">Videos</div></a></div>
+                <div class="col"><a href="#" class="border rounded-3 p-2 text-center d-block text-decoration-none hover-lift"><span class="zp-stat-icon tint-orange mx-auto" style="width:32px;height:32px"><i class="fa-solid fa-circle-question"></i></span><div class="fw-bold mt-1" style="font-size:.7rem">FAQs</div></a></div>
               </div>
             </div>
           </div>

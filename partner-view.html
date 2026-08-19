@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ZenPartner — Partner Overview</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="app.css">
 <script src="https://static.zohocdn.com/creator/widgets/version/2.0/widgetsdk-min.js"></script>
@@ -27,14 +27,14 @@
               <span class="zp-pill zp-level zp-pill--amber">Gold Partner</span>
             </div>
             <div class="d-flex align-items-center gap-2">
-              <button class="btn btn-sm btn-outline-primary"><i class="bi bi-chat-dots"></i> Follow Up</button>
-              <button class="btn btn-sm btn-outline-primary" data-task><i class="bi bi-list-task"></i> Assign Task</button>
+              <button class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-comments"></i> Follow Up</button>
+              <button class="btn btn-sm btn-outline-primary" data-task><i class="fa-solid fa-list-check"></i> Assign Task</button>
             </div>
           </div>
-          <div class="row row-cols-1 row-cols-sm-3 g-0">
-            <div class="col p-3 border-sm-end border-bottom border-sm-bottom-0"><div class="text-muted" style="font-size:.7rem">Total Leads</div><div class="d-flex align-items-baseline gap-2 mt-1"><span class="fs-3 fw-bold">96</span><span class="text-success fw-semibold" style="font-size:.7rem">↑ 15%</span></div></div>
-            <div class="col p-3 border-sm-end border-bottom border-sm-bottom-0"><div class="text-muted" style="font-size:.7rem">Total Earnings</div><div class="d-flex align-items-baseline gap-2 mt-1"><span class="fs-3 fw-bold">$24,750</span><span class="text-success fw-semibold" style="font-size:.7rem">↑ 16%</span></div></div>
-            <div class="col p-3"><div class="text-muted" style="font-size:.7rem">Pending Earnings</div><div class="d-flex align-items-baseline gap-2 mt-1"><span class="fs-3 fw-bold">$12,750</span><span class="text-success fw-semibold" style="font-size:.7rem">↑ 8%</span></div></div>
+          <div class="row row-cols-1 row-cols-md-3 g-2 p-3">
+            <div class="col"><div class="border rounded-3 p-3 h-100" style="background:#f8fafc"><div class="text-muted" style="font-size:.7rem">Total Leads</div><div class="d-flex align-items-baseline gap-2 mt-1"><span class="fs-3 fw-bold">96</span><span class="text-success fw-semibold" style="font-size:.7rem">↑ 15%</span></div></div></div>
+            <div class="col"><div class="border rounded-3 p-3 h-100" style="background:#f8fafc"><div class="text-muted" style="font-size:.7rem">Total Earnings</div><div class="d-flex align-items-baseline gap-2 mt-1"><span class="fs-3 fw-bold">$24,750</span><span class="text-success fw-semibold" style="font-size:.7rem">↑ 16%</span></div></div></div>
+            <div class="col"><div class="border rounded-3 p-3 h-100" style="background:#f8fafc"><div class="text-muted" style="font-size:.7rem">Pending Earnings</div><div class="d-flex align-items-baseline gap-2 mt-1"><span class="fs-3 fw-bold">$12,750</span><span class="text-success fw-semibold" style="font-size:.7rem">↑ 8%</span></div></div></div>
           </div>
         </div>
 
@@ -53,10 +53,10 @@
                 <div class="zp-info-row"><span class="zp-info-label">Website</span><span class="zp-info-value text-primary text-truncate">www.brightwave.com</span></div>
               </div>
               <div class="row row-cols-2 g-2 mt-3 pt-3 border-top">
-                <div class="col"><button class="btn btn-sm btn-outline-primary w-100"><i class="bi bi-eye"></i> View Profile</button></div>
-                <div class="col"><button class="btn btn-sm btn-outline-primary w-100" data-email><i class="bi bi-envelope"></i> Send Email</button></div>
-                <div class="col"><button class="btn btn-sm btn-outline-primary w-100"><i class="bi bi-telephone"></i> Call Now</button></div>
-                <div class="col"><button class="btn btn-sm btn-outline-primary w-100" data-note><i class="bi bi-pencil"></i> Add Note</button></div>
+                <div class="col"><button class="btn btn-sm btn-outline-primary w-100"><i class="fa-solid fa-eye"></i> View Profile</button></div>
+                <div class="col"><button class="btn btn-sm btn-outline-primary w-100" data-email><i class="fa-solid fa-envelope"></i> Send Email</button></div>
+                <div class="col"><button class="btn btn-sm btn-outline-primary w-100"><i class="fa-solid fa-phone"></i> Call Now</button></div>
+                <div class="col"><button class="btn btn-sm btn-outline-primary w-100" data-note><i class="fa-solid fa-pen"></i> Add Note</button></div>
               </div>
             </div>
           </div>
@@ -66,12 +66,12 @@
             <div class="zp-card p-4 h-100">
               <div class="zp-card-head"><h3 class="zp-card-title">Onboarding Progress</h3><span class="text-primary fw-bold" style="font-size:.72rem">4 of 6 completed</span></div>
               <div class="zp-stepper mt-4">
-                <div class="zp-step done"><span class="zp-step-dot"><i class="bi bi-check2"></i></span><div class="zp-step-title">Agreement</div><div class="zp-step-sub">View &amp; Accept</div><span class="zp-pill zp-pill--emerald mt-2 no-dot">Completed</span></div>
-                <div class="zp-step done"><span class="zp-step-dot"><i class="bi bi-check2"></i></span><div class="zp-step-title">NDA Sign</div><div class="zp-step-sub">Review &amp; Sign</div><span class="zp-pill zp-pill--emerald mt-2 no-dot">Completed</span></div>
-                <div class="zp-step done"><span class="zp-step-dot"><i class="bi bi-check2"></i></span><div class="zp-step-title">Training &amp; Certification</div><div class="zp-step-sub">Complete Training</div><span class="zp-pill zp-pill--emerald mt-2 no-dot">Completed</span></div>
-                <div class="zp-step done"><span class="zp-step-dot"><i class="bi bi-check2"></i></span><div class="zp-step-title">Learn About Company</div><div class="zp-step-sub">Complete Learning</div><span class="zp-pill zp-pill--emerald mt-2 no-dot">Completed</span></div>
-                <div class="zp-step active"><span class="zp-step-dot"><i class="bi bi-folder2-open"></i></span><div class="zp-step-title">Resources Access</div><div class="zp-step-sub">Access Granted</div><span class="zp-pill zp-pill--blue mt-2 no-dot">In Progress</span></div>
-                <div class="zp-step"><span class="zp-step-dot"><i class="bi bi-send"></i></span><div class="zp-step-title">Ready to Refer</div><div class="zp-step-sub">Start Referring Leads</div><span class="zp-pill zp-pill--amber mt-2 no-dot">Pending</span></div>
+                <div class="zp-step done"><span class="zp-step-dot"><i class="fa-solid fa-check"></i></span><div class="zp-step-title">Agreement</div><div class="zp-step-sub">View &amp; Accept</div><span class="zp-pill zp-pill--emerald mt-2 no-dot">Completed</span></div>
+                <div class="zp-step done"><span class="zp-step-dot"><i class="fa-solid fa-check"></i></span><div class="zp-step-title">NDA Sign</div><div class="zp-step-sub">Review &amp; Sign</div><span class="zp-pill zp-pill--emerald mt-2 no-dot">Completed</span></div>
+                <div class="zp-step done"><span class="zp-step-dot"><i class="fa-solid fa-check"></i></span><div class="zp-step-title">Training &amp; Certification</div><div class="zp-step-sub">Complete Training</div><span class="zp-pill zp-pill--emerald mt-2 no-dot">Completed</span></div>
+                <div class="zp-step done"><span class="zp-step-dot"><i class="fa-solid fa-check"></i></span><div class="zp-step-title">Learn About Company</div><div class="zp-step-sub">Complete Learning</div><span class="zp-pill zp-pill--emerald mt-2 no-dot">Completed</span></div>
+                <div class="zp-step active"><span class="zp-step-dot"><i class="fa-solid fa-folder-open"></i></span><div class="zp-step-title">Resources Access</div><div class="zp-step-sub">Access Granted</div><span class="zp-pill zp-pill--blue mt-2 no-dot">In Progress</span></div>
+                <div class="zp-step"><span class="zp-step-dot"><i class="fa-solid fa-paper-plane"></i></span><div class="zp-step-title">Ready to Refer</div><div class="zp-step-sub">Start Referring Leads</div><span class="zp-pill zp-pill--amber mt-2 no-dot">Pending</span></div>
               </div>
             </div>
           </div>
@@ -118,10 +118,10 @@
             <div class="zp-card p-4 h-100">
               <div class="zp-card-head"><h3 class="zp-card-title">Recent Activity</h3><a href="#" class="zp-card-link">View All</a></div>
               <div class="d-flex flex-column gap-3 mt-3">
-                <div class="d-flex gap-2"><span class="zp-stat-icon tint-indigo flex-shrink-0" style="width:28px;height:28px;font-size:.8rem"><i class="bi bi-folder2-open"></i></span><div><div class="fw-semibold" style="font-size:.74rem">Resources access granted by Admin User</div><div class="text-muted" style="font-size:.66rem">May 07, 2024 10:30 AM</div></div></div>
-                <div class="d-flex gap-2"><span class="zp-stat-icon tint-emerald flex-shrink-0" style="width:28px;height:28px;font-size:.8rem"><i class="bi bi-mortarboard"></i></span><div><div class="fw-semibold" style="font-size:.74rem">Training "Product Overview" completed</div><div class="text-muted" style="font-size:.66rem">May 05, 2024 04:15 PM</div></div></div>
-                <div class="d-flex gap-2"><span class="zp-stat-icon tint-sky flex-shrink-0" style="width:28px;height:28px;font-size:.8rem"><i class="bi bi-pencil"></i></span><div><div class="fw-semibold" style="font-size:.74rem">NDA signed</div><div class="text-muted" style="font-size:.66rem">May 02, 2024 09:20 AM</div></div></div>
-                <div class="d-flex gap-2"><span class="zp-stat-icon tint-amber flex-shrink-0" style="width:28px;height:28px;font-size:.8rem"><i class="bi bi-check2-circle"></i></span><div><div class="fw-semibold" style="font-size:.74rem">Partner agreement accepted</div><div class="text-muted" style="font-size:.66rem">May 01, 2024 11:05 AM</div></div></div>
+                <div class="d-flex gap-2"><span class="zp-stat-icon tint-indigo flex-shrink-0" style="width:28px;height:28px;font-size:.8rem"><i class="fa-solid fa-folder-open"></i></span><div><div class="fw-semibold" style="font-size:.74rem">Resources access granted by Admin User</div><div class="text-muted" style="font-size:.66rem">May 07, 2024 10:30 AM</div></div></div>
+                <div class="d-flex gap-2"><span class="zp-stat-icon tint-emerald flex-shrink-0" style="width:28px;height:28px;font-size:.8rem"><i class="fa-solid fa-graduation-cap"></i></span><div><div class="fw-semibold" style="font-size:.74rem">Training "Product Overview" completed</div><div class="text-muted" style="font-size:.66rem">May 05, 2024 04:15 PM</div></div></div>
+                <div class="d-flex gap-2"><span class="zp-stat-icon tint-sky flex-shrink-0" style="width:28px;height:28px;font-size:.8rem"><i class="fa-solid fa-pen"></i></span><div><div class="fw-semibold" style="font-size:.74rem">NDA signed</div><div class="text-muted" style="font-size:.66rem">May 02, 2024 09:20 AM</div></div></div>
+                <div class="d-flex gap-2"><span class="zp-stat-icon tint-amber flex-shrink-0" style="width:28px;height:28px;font-size:.8rem"><i class="fa-solid fa-circle-check"></i></span><div><div class="fw-semibold" style="font-size:.74rem">Partner agreement accepted</div><div class="text-muted" style="font-size:.66rem">May 01, 2024 11:05 AM</div></div></div>
               </div>
             </div>
           </div>

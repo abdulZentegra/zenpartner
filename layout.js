@@ -92,7 +92,7 @@ function openActionMenu(anchor){
   document.querySelectorAll('.action-menu').forEach(m=>m.remove());
   const menu=document.createElement('div');
   menu.className='action-menu';
-  menu.innerHTML=`<button data-menu-action="view"><i class="bi bi-eye"></i>View details</button><button data-menu-action="edit"><i class="bi bi-pencil"></i>Edit item</button><button data-menu-action="duplicate"><i class="bi bi-copy"></i>Duplicate</button><button data-menu-action="archive"><i class="bi bi-archive"></i>Archive</button>`;
+  menu.innerHTML=`<button data-menu-action="view"><i class="fa-solid fa-eye"></i>View details</button><button data-menu-action="edit"><i class="fa-solid fa-pen"></i>Edit item</button><button data-menu-action="duplicate"><i class="fa-solid fa-copy"></i>Duplicate</button><button data-menu-action="archive"><i class="fa-solid fa-box-archive"></i>Archive</button>`;
   document.body.appendChild(menu);
   const r=anchor.getBoundingClientRect(),width=200;
   menu.style.left=Math.max(8,Math.min(window.innerWidth-width-8,r.right-width))+'px';
@@ -110,18 +110,18 @@ function openActionMenu(anchor){
 /* ═══════════════ Sidebar builders ═══════════════ */
 function _navLink(id,label,href,icon,active,badge=''){
   const on=active===id||(active==='leads'&&id==='referral');
-  return `<a href="${href}" class="zp-nav-link ${on?'active':''}"><i class="bi ${icon}"></i><span>${label}</span>${badge}${on?'<i class="bi bi-chevron-right ms-auto" style="font-size:.8rem;opacity:.6"></i>':''}</a>`;
+  return `<a href="${href}" class="zp-nav-link ${on?'active':''}"><i class="fa-solid fa-fw ${icon}"></i><span>${label}</span>${badge}${on?'<i class="fa-solid fa-chevron-right ms-auto" style="font-size:.8rem;opacity:.6"></i>':''}</a>`;
 }
 function buildSidebar(active){
   const nav=`
-    ${_navLink('dashboard','Dashboard','index.html','bi-grid-1x2',active, active==='dashboard'?'<span class="zp-nav-badge"></span>':'')}
-    ${_navLink('profile','My Profile','profile.html','bi-person',active)}
-    ${_navLink('onboarding','Onboarding & Overview','onboarding.html','bi-clipboard2-check',active,'<span class="badge rounded-pill bg-success ms-auto" style="font-size:.6rem"><i class="bi bi-check2"></i></span>')}
-    ${_navLink('training','Training & Learning','training.html','bi-mortarboard',active)}
-    ${_navLink('resources','Resources Center','resources.html','bi-folder2-open',active)}
-    ${_navLink('referral','Add Referral / Leads','referral.html','bi-people',active)}
-    ${_navLink('earnings','Earnings & Payouts','earnings.html','bi-wallet2',active)}
-    ${_navLink('reports','Reports & Analytics','reports.html','bi-graph-up-arrow',active)}`;
+    ${_navLink('dashboard','Dashboard','index.html','fa-table-cells-large',active, active==='dashboard'?'<span class="zp-nav-badge"></span>':'')}
+    ${_navLink('profile','My Profile','profile.html','fa-user',active)}
+    ${_navLink('onboarding','Onboarding & Overview','onboarding.html','fa-clipboard-check',active,'<span class="badge rounded-pill bg-success ms-auto" style="font-size:.6rem"><i class="fa-solid fa-check"></i></span>')}
+    ${_navLink('training','Training & Learning','training.html','fa-graduation-cap',active)}
+    ${_navLink('resources','Resources Center','resources.html','fa-folder-open',active)}
+    ${_navLink('referral','Add Referral / Leads','referral.html','fa-users',active)}
+    ${_navLink('earnings','Earnings & Payouts','earnings.html','fa-wallet',active)}
+    ${_navLink('reports','Reports & Analytics','reports.html','fa-arrow-trend-up',active)}`;
   return `
   <aside class="zp-sidebar d-none d-lg-flex">
     <div class="zp-brand">
@@ -132,18 +132,18 @@ function buildSidebar(active){
       <img src="${USER_AVATAR}" class="avatar" alt="James Anderson">
       <div class="flex-grow-1 min-w-0">
         <div class="fw-semibold" style="font-size:.76rem">James Anderson</div>
-        <div class="text-warning" style="font-size:.66rem"><i class="bi bi-star-fill"></i> Gold Partner</div>
+        <div class="text-warning" style="font-size:.66rem"><i class="fa-solid fa-star"></i> Gold Partner</div>
       </div>
     </div>
-    <div class="px-3 mb-2" style="font-size:.66rem;color:rgba(255,255,255,.5)">Partner ID: ZP-2024-0015</div>
-    <div class="px-3 mb-2">
+    <div class="px-3 mb-2 zp-side-extra" style="font-size:.66rem;color:rgba(255,255,255,.5)">Partner ID: ZP-2024-0015</div>
+    <div class="px-3 mb-2 zp-side-extra">
       <div class="d-flex justify-content-between" style="font-size:.68rem"><span style="color:rgba(255,255,255,.7)">Profile Strength</span><span class="text-success">90%</span></div>
       <div class="zp-progress mt-1"><span style="width:90%"></span></div>
     </div>
     <nav class="zp-nav flex-grow-1">${nav}</nav>
     <div class="zp-sidebar-foot">
-      <a href="admin.html" class="zp-nav-link"><i class="bi bi-shield-lock"></i><span>Admin Panel</span></a>
-      <a href="#" class="zp-nav-link" data-signout><i class="bi bi-box-arrow-right"></i><span>Sign Out</span></a>
+      <a href="admin.html" class="zp-nav-link"><i class="fa-solid fa-shield-halved"></i><span>Admin Panel</span></a>
+      <a href="#" class="zp-nav-link" data-signout><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></a>
     </div>
   </aside>
 
@@ -160,10 +160,10 @@ function buildSidebar(active){
       <nav class="zp-nav">${nav}</nav>
       <div class="zp-user-card d-flex align-items-center gap-2 mt-3">
         <img src="${USER_AVATAR}" class="avatar" alt="">
-        <div class="flex-grow-1"><div class="fw-semibold" style="font-size:.8rem">James Anderson</div><div class="text-warning" style="font-size:.7rem"><i class="bi bi-star-fill"></i> Gold Partner</div></div>
+        <div class="flex-grow-1"><div class="fw-semibold" style="font-size:.8rem">James Anderson</div><div class="text-warning" style="font-size:.7rem"><i class="fa-solid fa-star"></i> Gold Partner</div></div>
       </div>
-      <a href="admin.html" class="btn btn-outline-light w-100 mt-2 btn-sm"><i class="bi bi-shield-lock me-1"></i>Admin Panel</a>
-      <a href="#" class="btn btn-primary w-100 mt-2 btn-sm" data-signout><i class="bi bi-box-arrow-right me-1"></i>Sign Out</a>
+      <a href="admin.html" class="btn btn-outline-light w-100 mt-2 btn-sm"><i class="fa-solid fa-shield-halved me-1"></i>Admin Panel</a>
+      <a href="#" class="btn btn-primary w-100 mt-2 btn-sm" data-signout><i class="fa-solid fa-right-from-bracket me-1"></i>Sign Out</a>
     </div>
   </div>`;
 }
@@ -173,26 +173,26 @@ function buildAdminSidebar(active){
   const a=(id,label,href,icon)=>_navLink(id,label,href,icon,active);
   const nav=`
     ${sec('Overview')}
-    ${a('dashboard','Dashboard','admin.html','bi-grid')}
-    ${a('partnersOverview','Partners Overview','partners.html','bi-speedometer2')}
-    ${a('partners','All Partners','partners.html','bi-people')}
-    ${a('onboarding','Partners Onboarding','partners-onboarding.html','bi-clipboard2-check')}
+    ${a('dashboard','Dashboard','admin.html','fa-grip')}
+    ${a('partnersOverview','Partners Overview','partners.html','fa-gauge-high')}
+    ${a('partners','All Partners','partners.html','fa-users')}
+    ${a('onboarding','Partners Onboarding','partners-onboarding.html','fa-clipboard-check')}
     ${sec('Partner Management')}
-    ${a('partnerView','Partner Details','partner-view.html','bi-person-badge')}
-    ${a('tasks','Tasks & Assignments','#','bi-list-task')}
-    ${a('followups','Follow Ups','#','bi-chat-dots')}
-    ${a('kyc','KYC & Verification','#','bi-shield-check')}
-    ${a('performance','Performance Review','#','bi-trophy')}
+    ${a('partnerView','Partner Details','partner-view.html','fa-id-badge')}
+    ${a('tasks','Tasks & Assignments','#','fa-list-check')}
+    ${a('followups','Follow Ups','#','fa-comments')}
+    ${a('kyc','KYC & Verification','#','fa-shield-halved')}
+    ${a('performance','Performance Review','#','fa-trophy')}
     ${sec('Reports & Analytics')}
-    ${a('leads','Leads & Projects','leads.html','bi-bullseye')}
-    ${a('payouts','Earnings & Payouts','admin-payouts.html','bi-cash-stack')}
-    ${a('reports','Reports & Analytics','reports.html','bi-bar-chart')}
-    ${a('tickets','Support Tickets','admin-tickets.html','bi-life-preserver')}
+    ${a('leads','Leads & Projects','leads.html','fa-bullseye')}
+    ${a('payouts','Earnings & Payouts','admin-payouts.html','fa-money-bills')}
+    ${a('reports','Reports & Analytics','reports.html','fa-chart-column')}
+    ${a('tickets','Support Tickets','admin-tickets.html','fa-life-ring')}
     ${sec('Configuration')}
-    ${a('users','Users & Roles','#','bi-person-gear')}
-    ${a('templates','Email Templates','#','bi-envelope-paper')}
-    ${a('settings','Settings','#','bi-gear')}
-    ${a('audit','Audit Logs','#','bi-shield-lock')}`;
+    ${a('users','Users & Roles','#','fa-user-gear')}
+    ${a('templates','Email Templates','#','fa-envelope-open-text')}
+    ${a('settings','Settings','#','fa-gear')}
+    ${a('audit','Audit Logs','#','fa-shield-halved')}`;
   return `
   <aside class="zp-sidebar d-none d-lg-flex">
     <div class="zp-brand">
@@ -203,24 +203,24 @@ function buildAdminSidebar(active){
       <img src="${ADMIN_AVATAR}" class="avatar" alt="Admin User">
       <div class="flex-grow-1 min-w-0">
         <div class="fw-semibold" style="font-size:.76rem">Admin User</div>
-        <div style="font-size:.66rem;color:#a5b4fc"><i class="bi bi-shield-fill"></i> Super Administrator</div>
+        <div style="font-size:.66rem;color:#a5b4fc"><i class="fa-solid fa-shield-halved"></i> Super Administrator</div>
       </div>
     </div>
-    <div class="px-3 mb-2" style="font-size:.66rem;color:rgba(255,255,255,.5)">admin@zentegra.com</div>
-    <div class="px-3 mb-2">
+    <div class="px-3 mb-2 zp-side-extra" style="font-size:.66rem;color:rgba(255,255,255,.5)">admin@zentegra.com</div>
+    <div class="px-3 mb-2 zp-side-extra">
       <div class="d-flex justify-content-between" style="font-size:.68rem"><span style="color:rgba(255,255,255,.7)">Panel Coverage</span><span style="color:#a5b4fc">100%</span></div>
       <div class="zp-progress mt-1"><span style="width:100%;background:linear-gradient(90deg,#6366f1,#38bdf8)"></span></div>
     </div>
     <nav class="zp-nav flex-grow-1" style="overflow-y:auto">${nav}</nav>
     <div class="zp-sidebar-foot">
-      <div class="zp-user-card mb-1">
+      <div class="zp-user-card mb-1 zp-side-extra">
         <div class="fw-semibold" style="font-size:.72rem">Need Help?</div>
         <div style="font-size:.64rem;color:rgba(255,255,255,.5)">Our support team is here for you.</div>
         <a href="mailto:admin@zentegra.com" class="d-block small text-white-50 text-truncate mt-1">admin@zentegra.com</a>
         <a href="tel:+18885550198" class="d-block small text-white-50">+1 (888) 555-0198</a>
       </div>
-      <a href="index.html" class="zp-nav-link"><i class="bi bi-house"></i><span>View Partner Portal</span></a>
-      <a href="#" class="zp-nav-link" data-signout><i class="bi bi-box-arrow-right"></i><span>Sign Out</span></a>
+      <a href="index.html" class="zp-nav-link"><i class="fa-solid fa-house"></i><span>View Partner Portal</span></a>
+      <a href="#" class="zp-nav-link" data-signout><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></a>
     </div>
   </aside>
 
@@ -234,8 +234,8 @@ function buildAdminSidebar(active){
     </div>
     <div class="offcanvas-body p-2">
       <nav class="zp-nav">${nav}</nav>
-      <a href="index.html" class="btn btn-outline-light w-100 mt-3 btn-sm"><i class="bi bi-house me-1"></i>Partner Portal</a>
-      <a href="#" class="btn btn-primary w-100 mt-2 btn-sm" data-signout><i class="bi bi-box-arrow-right me-1"></i>Sign Out</a>
+      <a href="index.html" class="btn btn-outline-light w-100 mt-3 btn-sm"><i class="fa-solid fa-house me-1"></i>Partner Portal</a>
+      <a href="#" class="btn btn-primary w-100 mt-2 btn-sm" data-signout><i class="fa-solid fa-right-from-bracket me-1"></i>Sign Out</a>
     </div>
   </div>`;
 }
@@ -245,15 +245,15 @@ function buildTopbar(title,breadcrumb,searchPlaceholder,extraActions,admin,homeU
   const home=homeUrl||(admin?'admin.html':'index.html');
   const dateChip=admin?`
     <button class="btn btn-sm btn-outline-secondary d-none d-sm-inline-flex align-items-center gap-2" id="admin-date-chip">
-      <i class="bi bi-calendar3"></i> May 01 – May 15, 2024 <i class="bi bi-chevron-down" style="font-size:.7rem"></i>
+      <i class="fa-solid fa-calendar-days"></i> May 01 – May 15, 2024 <i class="fa-solid fa-chevron-down" style="font-size:.7rem"></i>
     </button>`:'';
   const notifItems=admin?`
       <div class="dropdown-item bg-light rounded"><div class="fw-semibold" style="font-size:.76rem">New partner registered — Emily Wilson</div><div class="text-muted" style="font-size:.7rem">2 hours ago</div></div>
-      <div class="dropdown-item"><i class="bi bi-cash-coin text-warning"></i><div><div class="fw-medium" style="font-size:.76rem">Payout of $2,500 pending approval</div><div class="text-muted" style="font-size:.7rem">Yesterday</div></div></div>
-      <div class="dropdown-item"><i class="bi bi-exclamation-circle text-danger"></i><div><div class="fw-medium" style="font-size:.76rem">Support ticket #T-1042 escalated</div><div class="text-muted" style="font-size:.7rem">2 days ago</div></div></div>`:`
-      <div class="dropdown-item bg-light rounded"><i class="bi bi-patch-check text-primary"></i><div><div class="fw-semibold" style="font-size:.76rem">Training completed — Sales Process</div><div class="text-muted" style="font-size:.7rem">2 hours ago</div></div></div>
-      <div class="dropdown-item"><i class="bi bi-cash-coin text-success"></i><div><div class="fw-medium" style="font-size:.76rem">Payout of $2,500 completed</div><div class="text-muted" style="font-size:.7rem">Yesterday</div></div></div>
-      <div class="dropdown-item"><i class="bi bi-graph-up-arrow text-info"></i><div><div class="fw-medium" style="font-size:.76rem">New referral qualified</div><div class="text-muted" style="font-size:.7rem">2 days ago</div></div></div>`;
+      <div class="dropdown-item"><i class="fa-solid fa-coins text-warning"></i><div><div class="fw-medium" style="font-size:.76rem">Payout of $2,500 pending approval</div><div class="text-muted" style="font-size:.7rem">Yesterday</div></div></div>
+      <div class="dropdown-item"><i class="fa-solid fa-circle-exclamation text-danger"></i><div><div class="fw-medium" style="font-size:.76rem">Support ticket #T-1042 escalated</div><div class="text-muted" style="font-size:.7rem">2 days ago</div></div></div>`:`
+      <div class="dropdown-item bg-light rounded"><i class="fa-solid fa-circle-check text-primary"></i><div><div class="fw-semibold" style="font-size:.76rem">Training completed — Sales Process</div><div class="text-muted" style="font-size:.7rem">2 hours ago</div></div></div>
+      <div class="dropdown-item"><i class="fa-solid fa-coins text-success"></i><div><div class="fw-medium" style="font-size:.76rem">Payout of $2,500 completed</div><div class="text-muted" style="font-size:.7rem">Yesterday</div></div></div>
+      <div class="dropdown-item"><i class="fa-solid fa-arrow-trend-up text-info"></i><div><div class="fw-medium" style="font-size:.76rem">New referral qualified</div><div class="text-muted" style="font-size:.7rem">2 days ago</div></div></div>`;
   const profName=admin?'Admin User':'James Anderson';
   const profRole=admin?'Super Administrator':'Gold Partner';
   const profRoleCls=admin?'text-primary':'text-warning-emphasis';
@@ -262,7 +262,7 @@ function buildTopbar(title,breadcrumb,searchPlaceholder,extraActions,admin,homeU
   <header class="zp-topbar">
     <nav class="navbar">
       <div class="d-flex align-items-center gap-2 me-2">
-        <button id="nav-toggle" class="zp-burger" aria-label="Toggle navigation"><i class="bi bi-list"></i></button>
+        <button id="nav-toggle" class="zp-burger" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
         <div class="d-none d-sm-block min-w-0">
           <div class="zp-page-title text-truncate">${title}</div>
           <div class="zp-breadcrumb text-truncate"><a href="${home}" class="text-decoration-none text-muted">Home</a> <span class="mx-1">›</span> <span class="text-secondary fw-medium">${breadcrumb}</span></div>
@@ -270,16 +270,16 @@ function buildTopbar(title,breadcrumb,searchPlaceholder,extraActions,admin,homeU
       </div>
 
       <div class="zp-top-search d-none d-md-flex me-auto ms-2 ms-lg-4">
-        <i class="bi bi-search text-muted"></i>
+        <i class="fa-solid fa-magnifying-glass text-muted"></i>
         <input id="top-search-input" placeholder="${searchPlaceholder}" autocomplete="off">
         <span class="zp-kbd d-none d-xl-inline">⌘K</span>
       </div>
-      <button id="mobile-search-toggle" class="zp-burger d-md-none ms-auto" aria-label="Search"><i class="bi bi-search"></i></button>
+      <button id="mobile-search-toggle" class="zp-burger d-md-none ms-auto" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
 
       <div class="d-flex align-items-center gap-1 ms-2">
         ${dateChip}
         <div class="dropdown zp-dropdown">
-          <button class="zp-icon-btn" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-bell"></i><span class="zp-badge-dot">5</span></button>
+          <button class="zp-icon-btn" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bell"></i><span class="zp-badge-dot">5</span></button>
           <div class="dropdown-menu dropdown-menu-end">
             <div class="d-flex align-items-center justify-content-between px-2 py-1"><span class="dropdown-header p-0">Notifications</span><span class="text-primary cursor-pointer mark-read" style="font-size:.7rem;font-weight:700">Mark all read</span></div>
             <div class="mt-1">${notifItems}</div>
@@ -287,7 +287,7 @@ function buildTopbar(title,breadcrumb,searchPlaceholder,extraActions,admin,homeU
           </div>
         </div>
         <div class="dropdown zp-dropdown d-none d-sm-block">
-          <button class="zp-icon-btn" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-envelope"></i><span class="zp-badge-dot">3</span></button>
+          <button class="zp-icon-btn" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-envelope"></i><span class="zp-badge-dot">3</span></button>
           <div class="dropdown-menu dropdown-menu-end">
             <span class="dropdown-header">Messages</span>
             <div class="dropdown-item"><img src="${USER_AVATAR}" style="width:32px;height:32px;border-radius:50%"><div><div class="fw-semibold" style="font-size:.76rem">Sarah Mitchell</div><div class="text-muted text-truncate" style="font-size:.7rem">Reviewed your proposal!</div></div></div>
@@ -297,7 +297,7 @@ function buildTopbar(title,breadcrumb,searchPlaceholder,extraActions,admin,homeU
         <div class="dropdown zp-dropdown">
           <button class="d-flex align-items-center gap-2 border-0 bg-transparent ps-1" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="${profAvatar}" class="zp-avatar" alt="">
-            <div class="d-none d-xl-block text-start"><div class="fw-semibold" style="font-size:.74rem">${profName} <i class="bi bi-chevron-down" style="font-size:.6rem"></i></div><div class="${profRoleCls}" style="font-size:.66rem;font-weight:600">${profRole}</div></div>
+            <div class="d-none d-xl-block text-start"><div class="fw-semibold" style="font-size:.74rem">${profName} <i class="fa-solid fa-chevron-down" style="font-size:.6rem"></i></div><div class="${profRoleCls}" style="font-size:.66rem;font-weight:600">${profRole}</div></div>
           </button>
           <div class="dropdown-menu dropdown-menu-end" style="min-width:230px">
             <div class="dropdown-item"><img src="${profAvatar}" style="width:38px;height:38px;border-radius:50%"><div><div class="fw-semibold" style="font-size:.8rem">${profName}</div><div class="text-muted" style="font-size:.7rem">${admin?'admin@zentegra.com':'james@zentegra.com'}</div><div class="${profRoleCls}" style="font-size:.7rem;font-weight:600">${profRole}</div></div></div>
@@ -310,7 +310,7 @@ function buildTopbar(title,breadcrumb,searchPlaceholder,extraActions,admin,homeU
       </div>
     </nav>
     <div id="mobile-search-bar" class="d-none px-3 pb-2 d-md-none">
-      <div class="zp-top-search w-100"><i class="bi bi-search text-muted"></i><input placeholder="${searchPlaceholder}"><button id="mobile-search-close" class="border-0 bg-transparent text-muted">✕</button></div>
+      <div class="zp-top-search w-100"><i class="fa-solid fa-magnifying-glass text-muted"></i><input placeholder="${searchPlaceholder}"><button id="mobile-search-close" class="border-0 bg-transparent text-muted">✕</button></div>
     </div>
     ${extraActions||''}
   </header>`;
@@ -319,23 +319,23 @@ function buildTopbar(title,breadcrumb,searchPlaceholder,extraActions,admin,homeU
 /* ═══════════════ Mobile bottom nav ═══════════════ */
 function _bottomLink(id,href,icon,label,active){
   const on=active===id||(active==='leads'&&id==='referral')||(active==='partnerView'&&id==='partners');
-  return `<a href="${href}" class="${on?'active':''}"><i class="bi ${icon}"></i><span>${label}</span></a>`;
+  return `<a href="${href}" class="${on?'active':''}"><i class="fa-solid fa-fw ${icon}"></i><span>${label}</span></a>`;
 }
 function buildMobile(active){
   return `<nav class="zp-bottomnav">
-    ${_bottomLink('dashboard','index.html','bi-grid-1x2','Dashboard',active)}
-    ${_bottomLink('referral','referral.html','bi-people','Referrals',active)}
-    ${_bottomLink('earnings','earnings.html','bi-wallet2','Earnings',active)}
-    ${_bottomLink('reports','reports.html','bi-graph-up-arrow','Reports',active)}
+    ${_bottomLink('dashboard','index.html','fa-table-cells-large','Dashboard',active)}
+    ${_bottomLink('referral','referral.html','fa-users','Referrals',active)}
+    ${_bottomLink('earnings','earnings.html','fa-wallet','Earnings',active)}
+    ${_bottomLink('reports','reports.html','fa-arrow-trend-up','Reports',active)}
   </nav>`;
 }
 function buildAdminMobile(active){
   return `<nav class="zp-bottomnav">
-    ${_bottomLink('dashboard','admin.html','bi-grid','Dashboard',active)}
-    ${_bottomLink('partners','partners.html','bi-people','Partners',active)}
-    ${_bottomLink('onboarding','partners-onboarding.html','bi-clipboard2-check','Onboarding',active)}
-    ${_bottomLink('payouts','admin-payouts.html','bi-cash-stack','Payouts',active)}
-    ${_bottomLink('tickets','admin-tickets.html','bi-life-preserver','Tickets',active)}
+    ${_bottomLink('dashboard','admin.html','fa-grip','Dashboard',active)}
+    ${_bottomLink('partners','partners.html','fa-users','Partners',active)}
+    ${_bottomLink('onboarding','partners-onboarding.html','fa-clipboard-check','Onboarding',active)}
+    ${_bottomLink('payouts','admin-payouts.html','fa-money-bills','Payouts',active)}
+    ${_bottomLink('tickets','admin-tickets.html','fa-life-ring','Tickets',active)}
   </nav>`;
 }
 
@@ -402,28 +402,103 @@ function wireGlobalUI(){
   if(window.bootstrap){document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el=>new bootstrap.Tooltip(el))}
 }
 
-/* ═══════════════ Command search ═══════════════ */
-function setupCommandSearch(pages){
+/* ═══════════════ Command search — pages + workflows ═══════════════ */
+function _contactSupportModal(){
+  openModal({title:'Contact Support',body:`<div class="d-grid gap-2"><a href="mailto:support@zentegra.com" class="zp-card p-3 small fw-semibold"><i class="fa-solid fa-envelope me-2"></i>Email • support@zentegra.com</a><a href="tel:+18885550198" class="zp-card p-3 small fw-semibold"><i class="fa-solid fa-phone me-2"></i>Call • +1 (888) 555-0198</a><div class="zp-card p-3 small"><b>Live chat</b><div class="text-muted" style="font-size:.72rem">An agent is available now.</div></div></div>`,actions:`<button class="btn btn-light" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" onclick="closeModal();showToast('Starting live chat…','success')">Start Chat</button>`});
+}
+function setupCommandSearch(pages,opts){
   const input=document.getElementById('top-search-input');
-  if(!input)return;
-  let panel;
-  function render(q=''){
-    panel?.remove();
-    const query=q.toLowerCase().trim();
-    const hits=pages.filter(p=>!query||`${p.name} ${p.key}`.toLowerCase().includes(query)).slice(0,7);
-    panel=document.createElement('div');panel.className='command-panel';panel.id='command-panel';
-    panel.innerHTML=`<div class="px-3 py-2 text-uppercase" style="font-size:.66rem;font-weight:700;letter-spacing:.08em;color:#94a3b8">Quick navigation</div>`+
-      (hits.length?hits.map((p,i)=>`<a class="command-result ${i===0?'active':''}" href="${p.url}"><span class="zp-empty-icon" style="width:32px;height:32px;font-size:.85rem"><i class="bi bi-arrow-up-right"></i></span><div><div class="fw-semibold" style="font-size:.82rem">${p.name}</div><div class="text-muted" style="font-size:.7rem">${p.key}</div></div><span class="command-key">Enter</span></a>`).join('')
-      :`<div class="zp-empty"><div class="zp-empty-icon"><i class="bi bi-search"></i></div><div class="fw-semibold text-secondary">No matching pages</div><div class="small mt-1">Try “reports”, “referrals”, or “earnings”.</div></div>`);
-    document.body.appendChild(panel);
+  const mInput=document.querySelector('#mobile-search-bar input');
+  const sources=[input,mInput].filter(Boolean);
+  if(!sources.length)return;
+  const admin=!!(opts&&opts.variant==='admin');
+  let panel=null,activeIdx=0,lastQuery='';
+
+  const workflows=admin?[
+    {name:'Invite New Partner',key:'add partner register onboard',icon:'fa-user-plus',run:()=>{showToast('Invite flow is ready in demo mode','success')}},
+    {name:'Review Payout Requests',key:'approve reject commission money',icon:'fa-money-bills',run:()=>location.href='admin-payouts.html'},
+    {name:'Open Support Tickets',key:'ticket help desk issue',icon:'fa-life-ring',run:()=>location.href='admin-tickets.html'},
+    {name:'View Onboarding Pipeline',key:'partner steps progress kyc',icon:'fa-clipboard-check',run:()=>location.href='partners-onboarding.html'},
+    {name:'Export Report (CSV)',key:'download data export analytics',icon:'fa-download',run:()=>{downloadStaticFile('zentegra-export.csv','ZenPartner export\nGenerated,'+new Date().toISOString()+'\nStatus,Demo data','text/csv');showToast('Export downloaded successfully','success')}},
+    {name:'Contact Support',key:'help call email live chat',icon:'fa-headset',run:_contactSupportModal},
+    {name:'Open Partner Portal',key:'partner view site home',icon:'fa-house',run:()=>location.href='index.html'}
+  ]:[
+    {name:'Add Referral',key:'create new lead opportunity submit company',icon:'fa-user-plus',run:()=>location.href='referral.html'},
+    {name:'Log Activity',key:'note call meeting journal record',icon:'fa-book-open',run:()=>location.href='activities.html'},
+    {name:'Request Payout',key:'money commission withdraw balance',icon:'fa-wallet',run:()=>location.href='earnings.html'},
+    {name:'Continue Training',key:'course certification learn module',icon:'fa-graduation-cap',run:()=>location.href='training.html'},
+    {name:'Explore Resources',key:'guides templates documents downloads',icon:'fa-folder-open',run:()=>location.href='resources.html'},
+    {name:'Export Report (CSV)',key:'download data export analytics',icon:'fa-download',run:()=>{downloadStaticFile('zentegra-export.csv','ZenPartner export\nGenerated,'+new Date().toISOString()+'\nStatus,Demo data','text/csv');showToast('Export downloaded successfully','success')}},
+    {name:'Contact Support',key:'help call email live chat',icon:'fa-headset',run:_contactSupportModal},
+    {name:'Sign Out',key:'logout exit session',icon:'fa-right-from-bracket',run:()=>{openModal({title:'Sign out?',body:`<p class="small text-muted mb-0">Your local demo preferences are saved. You can return at any time.</p>`,actions:`<button class="btn btn-light" data-bs-dismiss="modal">Stay signed in</button><button class="btn btn-primary" onclick="closeModal();showToast('Signed out from demo','success')">Sign Out</button>`,size:'sm'})}}
+  ];
+
+  function matches(item,q){return !q||`${item.name} ${item.key}`.toLowerCase().includes(q)}
+  function flatResults(q){
+    const wf=workflows.filter(w=>matches(w,q)).slice(0,5);
+    const pg=pages.filter(p=>matches(p,q)).slice(0,6);
+    const rows=[];
+    if(wf.length)rows.push({group:'Workflows',items:wf.map(w=>({kind:'run',name:w.name,key:w.key,icon:w.icon,run:w.run}))});
+    if(pg.length)rows.push({group:'Pages',items:pg.map(p=>({kind:'nav',name:p.name,key:p.key,icon:'fa-arrow-up-right',href:p.url}))});
+    return rows;
   }
-  input.addEventListener('focus',()=>render(input.value));
-  input.addEventListener('input',()=>render(input.value));
-  input.addEventListener('keydown',e=>{
-    if(e.key==='Enter'){const f=panel?.querySelector('a');if(f){e.preventDefault();location.href=f.href}}
-    if(e.key==='Escape'){panel?.remove();panel=null;input.blur()}
+
+  function render(q){
+    panel?.remove();panel=null;activeIdx=0;
+    const rows=flatResults(q);
+    const body=rows.length?rows.map(r=>`
+        <div class="command-group">${r.group}</div>
+        ${r.items.map(it=>`
+          <div class="command-result" data-name="${it.name}" data-kind="${it.kind}" ${it.href?`data-href="${it.href}"`:''}>
+            <span class="chip"><i class="fa-solid ${it.icon}"></i></span>
+            <div class="min-w-0"><div class="fw-semibold" style="font-size:.82rem">${it.name}</div><div class="text-muted" style="font-size:.7rem">${it.key}</div></div>
+            <span class="command-key"><i class="fa-solid fa-arrow-right"></i></span>
+          </div>`).join('')}
+      `).join('')
+      :`<div class="command-empty"><i class="fa-solid fa-magnifying-glass" style="font-size:1.4rem;color:#c7d2fe"></i><div class="fw-semibold text-secondary mt-2">No matching pages or workflows</div><div class="small mt-1">Try “referral”, “payout”, or “support”.</div></div>`;
+    panel=document.createElement('div');panel.className='command-panel';panel.id='command-panel';
+    panel.innerHTML=`
+      <div class="command-head"><i class="fa-solid fa-magnifying-glass"></i><span class="fw-semibold" style="font-size:.86rem">${q||'Search everything'}</span><span class="command-kbd">ESC</span></div>
+      <div class="command-body">${body}</div>
+      <div class="command-foot"><span class="d-inline-flex align-items-center gap-1"><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span class="d-inline-flex align-items-center gap-1"><kbd>↵</kbd> run</span><span class="ms-auto">ZenPartner command search</span></div>`;
+    document.body.appendChild(panel);
+    panel.querySelectorAll('.command-result').forEach(el=>{
+      el.addEventListener('mouseenter',()=>{
+        panel.querySelectorAll('.command-result').forEach(x=>x.classList.remove('active'));
+        el.classList.add('active');
+      });
+      el.addEventListener('click',()=>runItem(el));
+    });
+  }
+  function runItem(el){
+    if(!el)return;
+    const name=el.dataset.name,kind=el.dataset.kind,href=el.dataset.href;
+    panel?.remove();panel=null;
+    if(kind==='nav'){location.href=href;return}
+    const wf=workflows.find(w=>w.name===name);
+    if(wf)wf.run();
+  }
+  function currentRows(q){return flatResults(q).flatMap(r=>r.items)}
+  function keyHandler(e){
+    if(e.key==='Escape'){panel?.remove();panel=null;e.target.blur();return}
+    const rows=currentRows(lastQuery);
+    if(!rows.length){if(e.key==='Enter')e.preventDefault();return}
+    if(e.key==='ArrowDown'){e.preventDefault();activeIdx=Math.min(activeIdx+1,rows.length-1)}
+    else if(e.key==='ArrowUp'){e.preventDefault();activeIdx=Math.max(activeIdx-1,0)}
+    else if(e.key==='Enter'){e.preventDefault();runItem(panel?.querySelectorAll('.command-result')[activeIdx]);return}
+    else return;
+    panel.querySelectorAll('.command-result').forEach((el,i)=>el.classList.toggle('active',i===activeIdx));
+    const act=panel.querySelector('.command-result.active');
+    act?.scrollIntoView({block:'nearest'});
+  }
+  sources.forEach(src=>{
+    src.addEventListener('focus',()=>{lastQuery=src.value.trim();render(lastQuery)});
+    src.addEventListener('input',()=>{lastQuery=src.value.trim();render(lastQuery)});
+    src.addEventListener('keydown',keyHandler);
   });
-  document.addEventListener('click',e=>{if(panel&&!panel.contains(e.target)&&e.target!==input){panel.remove();panel=null}});
+  document.addEventListener('click',e=>{
+    if(panel&&!panel.contains(e.target)&&!sources.includes(e.target)){panel.remove();panel=null}
+  });
 }
 
 /* ═══════════════ Static data ═══════════════ */
@@ -454,7 +529,7 @@ const ZP_ADMIN={
 };
 
 function wireUniversalActions(opts){
-  setupCommandSearch(opts.variant==='admin'?ZP_ADMIN.pages:ZP_DATA.pages);
+  setupCommandSearch(opts.variant==='admin'?ZP_ADMIN.pages:ZP_DATA.pages,opts);
   document.addEventListener('click',e=>{
     if(e.defaultPrevented)return;
     const control=e.target.closest('a,button');
@@ -469,7 +544,7 @@ function wireUniversalActions(opts){
     if(label.match(/View All Activities|Recent Activity/i)){showStaticList('Recent Activities',(opts.variant==='admin'?ZP_ADMIN:ZP_DATA).activity);return}
     if(label.match(/View All|View Full Timeline/i)){showStaticList(label.replace('View All','All')||'Details',(opts.variant==='admin'?ZP_ADMIN:ZP_DATA).activity);return}
     if(label.match(/Export|Download/i)){downloadStaticFile(`${opts.active}-export.csv`,`ZenPartner ${opts.title} Export\nGenerated,${new Date().toISOString()}\nStatus,Demo data`,'text/csv');showToast('Export downloaded successfully','success');return}
-    if(label.match(/Contact|Call|Email|Live Chat/i)){openModal({title:'Contact Support',body:`<div class="d-grid gap-2"><a href="mailto:support@zentegra.com" class="zp-card p-3 small fw-semibold"><i class="bi bi-envelope me-2"></i>Email • support@zentegra.com</a><a href="tel:+18885550198" class="zp-card p-3 small fw-semibold"><i class="bi bi-telephone me-2"></i>Call • +1 (888) 555-0198</a><div class="zp-card p-3 small"><b>Live chat</b><div class="text-muted" style="font-size:.72rem">An agent is available now.</div></div></div>`,actions:`<button class="btn btn-light" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" onclick="closeModal();showToast('Starting live chat…','success')">Start Chat</button>`});return}
+    if(label.match(/Contact|Call|Email|Live Chat/i)){_contactSupportModal();return}
     if(label.match(/Explore|Resources/i)){location.href='resources.html';return}
     if(label.match(/Add Referral/i)){location.href='referral.html';return}
     if(isIconOnly||label==='Actions'||label==='⋮'){openActionMenu(control);return}
@@ -529,7 +604,7 @@ function initOnboarding(){
   });
   document.querySelectorAll('[data-modal-agreement]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openModal({title:'Partner Agreement',body:`<div class="small text-muted"><p class="fw-semibold text-secondary">ZenPartner Partner Agreement — May 01, 2024</p><p>By accepting this agreement you agree to the terms of partnership, commission structure, and confidentiality obligations.</p><div class="p-3 bg-warning-subtle rounded-3 text-warning-emphasis" style="font-size:.75rem">✅ Completed on May 01, 2024 — Verified</div></div>`,actions:`<button class="btn btn-light" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" onclick="closeModal();showToast('Agreement acknowledged','success')">Acknowledge</button>`,size:'lg'})}));
   document.querySelectorAll('[data-modal-nda]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openModal({title:'Non-Disclosure Agreement',body:`<p class="small text-muted">NDA signed on May 02, 2024. Confidential information must not be disclosed for 24 months.</p>`,actions:`<button class="btn btn-primary" onclick="closeModal();showToast('NDA verified','success')">OK</button>`})}));
-  document.querySelectorAll('[data-modal-cert]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openModal({title:'Training Certificate',body:`<div class="text-center py-3"><div class="zp-empty-icon mx-auto" style="width:64px;height:64px;font-size:1.6rem"><i class="bi bi-mortarboard"></i></div><div class="fw-bold mt-3">Certificate of Completion</div><div class="small text-muted">Training & Certification — May 05, 2024</div><div class="mt-3 d-inline-flex zp-pill zp-pill--emerald">Verified ✓</div></div>`,actions:`<button class="btn btn-light" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" onclick="closeModal();window.print()">Print</button>`})}));
+  document.querySelectorAll('[data-modal-cert]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openModal({title:'Training Certificate',body:`<div class="text-center py-3"><div class="zp-empty-icon mx-auto" style="width:64px;height:64px;font-size:1.6rem"><i class="fa-solid fa-graduation-cap"></i></div><div class="fw-bold mt-3">Certificate of Completion</div><div class="small text-muted">Training & Certification — May 05, 2024</div><div class="mt-3 d-inline-flex zp-pill zp-pill--emerald">Verified ✓</div></div>`,actions:`<button class="btn btn-light" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" onclick="closeModal();window.print()">Print</button>`})}));
   document.querySelectorAll('[data-modal-review]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openModal({title:'Learn About Our Company',body:`<p class="small text-muted">Zentegra is a cloud solutions platform. This refresher helps partners understand our product suite.</p><ul class="small text-muted ps-3"><li>Cloud Infrastructure</li><li>Collaboration Suite</li><li>Partner Enablement</li></ul>`,actions:`<button class="btn btn-primary" onclick="closeModal();showToast('Marked as reviewed','success')">Mark as Reviewed</button>`})}));
 }
 
@@ -692,7 +767,7 @@ function initAdminPartners(){
     <td class="text-secondary">${p.joined}</td>
     <td class="text-center fw-semibold">${p.leads}</td><td class="text-center fw-semibold">${p.projects}</td>
     <td class="text-end fw-bold">${p.earnings}</td><td class="text-end">${p.payouts}</td>
-    <td class="text-center"><a href="partner-view.html" class="row-action" title="View"><i class="bi bi-eye"></i></a><button class="row-action row-more" title="More"><i class="bi bi-three-dots"></i></button></td>
+    <td class="text-center"><a href="partner-view.html" class="row-action" title="View"><i class="fa-solid fa-eye"></i></a><button class="row-action row-more" title="More"><i class="fa-solid fa-ellipsis"></i></button></td>
   </tr>`;
   const render=()=>{
     const q=(document.getElementById('partner-search').value||'').toLowerCase();
@@ -727,7 +802,7 @@ function initAdminOnboarding(){
     {id:'ZP-2024-0007',name:'Daniel Martinez',level:'Silver Partner',status:'In Progress',overall:33,steps:['May 03, 2024','Pending','In Progress','Pending','Pending','Pending']},
     {id:'ZP-2024-0008',name:'Sophia Johnson',level:'Bronze Partner',status:'Pending',overall:0,steps:['Pending','Pending','Pending','Pending','Pending','Pending']}
   ];
-  const stepCell=v=>v==='Pending'?`<td><span class="zp-pill zp-pill--amber">Pending</span></td>`:v==='In Progress'?`<td><span class="zp-pill zp-pill--blue">In Progress</span></td>`:`<td><span class="zp-pill zp-pill--emerald"><i class="bi bi-check2"></i>${v}</span></td>`;
+  const stepCell=v=>v==='Pending'?`<td><span class="zp-pill zp-pill--amber">Pending</span></td>`:v==='In Progress'?`<td><span class="zp-pill zp-pill--blue">In Progress</span></td>`:`<td><span class="zp-pill zp-pill--emerald"><i class="fa-solid fa-check"></i>${v}</span></td>`;
   const bar=p=>{const c=p>=100?'bg-success':p>0?'bg-primary':'bg-secondary';return`<td><div class="d-flex align-items-center gap-2"><div class="zp-progress" style="width:56px"><span class="${c}" style="width:${p}%"></span></div><span class="small fw-bold">${p}%</span></div></td>`};
   const rowHtml=p=>`<tr data-status="${p.status}" data-level="${p.level}"><td><div class="d-flex align-items-center gap-2"><img src="${USER_AVATAR}" style="width:30px;height:30px;border-radius:50%"><div><div class="fw-semibold">${p.name}</div><div class="text-muted" style="font-size:.68rem">${p.id}</div></div></div></td><td><span class="zp-pill zp-level ${levelClass[p.level]}">${p.level}</span></td><td><span class="zp-pill ${statusClass[p.status]}">${p.status}</span></td>${p.steps.map(stepCell).join('')}${bar(p.overall)}</tr>`;
   const render=()=>{
@@ -759,7 +834,7 @@ function initAdminPayouts(){
   const PAYOUTS=[
     ['PO-2024-0521','James Anderson','$2,500','Bank Transfer','Pending','May 15, 2024'],['PO-2024-0520','Sarah Mitchell','$1,800','Bank Transfer','Approved','May 14, 2024'],['PO-2024-0519','Michael Davis','$3,200','PayPal','Paid','May 12, 2024'],['PO-2024-0518','Emily Wilson','$750','Bank Transfer','Pending','May 12, 2024'],['PO-2024-0517','David Lee','$1,150','Bank Transfer','Rejected','May 10, 2024'],['PO-2024-0516','Daniel Martinez','$2,900','PayPal','Paid','May 08, 2024'],['PO-2024-0515','William Taylor','$1,600','Bank Transfer','Approved','May 06, 2024'],['PO-2024-0514','Ava Thomas','$950','Bank Transfer','Paid','May 04, 2024']
   ];
-  const rowHtml=p=>`<tr data-status="${p[4]}"><td class="text-secondary fw-semibold">${p[0]}</td><td><div class="d-flex align-items-center gap-2"><img src="${USER_AVATAR}" style="width:30px;height:30px;border-radius:50%"><span class="fw-semibold">${p[1]}</span></div></td><td class="text-end fw-bold">${p[2]}</td><td class="text-secondary">${p[3]}</td><td><span class="zp-pill ${statusClass[p[4]]}">${p[4]}</span></td><td class="text-secondary">${p[5]}</td><td class="text-center"><button class="row-action payout-approve" title="Approve"><i class="bi bi-check2"></i></button><button class="row-action payout-reject" title="Reject"><i class="bi bi-x"></i></button></td></tr>`;
+  const rowHtml=p=>`<tr data-status="${p[4]}"><td class="text-secondary fw-semibold">${p[0]}</td><td><div class="d-flex align-items-center gap-2"><img src="${USER_AVATAR}" style="width:30px;height:30px;border-radius:50%"><span class="fw-semibold">${p[1]}</span></div></td><td class="text-end fw-bold">${p[2]}</td><td class="text-secondary">${p[3]}</td><td><span class="zp-pill ${statusClass[p[4]]}">${p[4]}</span></td><td class="text-secondary">${p[5]}</td><td class="text-center"><button class="row-action payout-approve" title="Approve"><i class="fa-solid fa-check"></i></button><button class="row-action payout-reject" title="Reject"><i class="fa-solid fa-xmark"></i></button></td></tr>`;
   const render=()=>{
     const q=(document.getElementById('payout-search').value||'').toLowerCase(),st=document.getElementById('payout-status').value;
     const vis=PAYOUTS.filter(p=>((p[0]+' '+p[1]).toLowerCase()).includes(q)&&(st==='all'||p[4]===st));
@@ -789,7 +864,7 @@ function initAdminTickets(){
   const TICKETS=[
     ['T-1042','Payout not received for April cycle','James Anderson','High','In Progress','Support Team','May 15, 2024'],['T-1041','Access to partner resources revoked','Sarah Mitchell','Medium','Open','Unassigned','May 15, 2024'],['T-1040','How to update KYC documents?','Michael Davis','Low','Resolved','Support Team','May 14, 2024'],['T-1039','Commission rate discrepancy on referral','Emily Wilson','High','Open','Finance Team','May 14, 2024'],['T-1038','Training certificate not visible','David Lee','Medium','In Progress','Support Team','May 13, 2024'],['T-1037','Request for new referral template','Olivia Brown','Low','Resolved','Marketing Team','May 12, 2024'],['T-1036','Portal login issue — OTP not received','Daniel Martinez','High','Resolved','Support Team','May 11, 2024'],['T-1035','Update bank account details','Sophia Johnson','Medium','Open','Finance Team','May 10, 2024']
   ];
-  const rowHtml=t=>`<tr data-status="${t[4]}" data-priority="${t[3]}"><td class="text-secondary fw-semibold">${t[0]}</td><td><div class="fw-semibold text-truncate" style="max-width:280px">${t[1]}</div><div class="text-muted" style="font-size:.68rem">${t[2]}</div></td><td><span class="zp-pill no-dot ${priorityClass[t[3]]}">${t[3]}</span></td><td><span class="zp-pill ${statusClass[t[4]]}">${t[4]}</span></td><td class="text-secondary">${t[5]}</td><td class="text-secondary">${t[6]}</td><td class="text-secondary">${t[6]}</td><td class="text-center"><button class="row-action ticket-view" title="View"><i class="bi bi-eye"></i></button><button class="row-action ticket-status" title="Change status"><i class="bi bi-arrow-repeat"></i></button></td></tr>`;
+  const rowHtml=t=>`<tr data-status="${t[4]}" data-priority="${t[3]}"><td class="text-secondary fw-semibold">${t[0]}</td><td><div class="fw-semibold text-truncate" style="max-width:280px">${t[1]}</div><div class="text-muted" style="font-size:.68rem">${t[2]}</div></td><td><span class="zp-pill no-dot ${priorityClass[t[3]]}">${t[3]}</span></td><td><span class="zp-pill ${statusClass[t[4]]}">${t[4]}</span></td><td class="text-secondary">${t[5]}</td><td class="text-secondary">${t[6]}</td><td class="text-center"><button class="row-action ticket-view" title="View"><i class="fa-solid fa-eye"></i></button><button class="row-action ticket-status" title="Change status"><i class="fa-solid fa-arrows-rotate"></i></button></td></tr>`;
   const render=()=>{
     const q=(document.getElementById('ticket-search').value||'').toLowerCase(),st=document.getElementById('ticket-status').value,pr=document.getElementById('ticket-priority').value;
     const vis=TICKETS.filter(t=>((t[0]+' '+t[1]+' '+t[2]).toLowerCase()).includes(q)&&(st==='all'||t[4]===st)&&(pr==='all'||t[3]===pr));
@@ -808,6 +883,13 @@ function initAdminTickets(){
     if(s){const tr=s.closest('tr');const id=tr?.querySelector('td')?.textContent;openModal({title:'Change Status — '+id,body:`<label class="form-label">New Status</label><select id="ticket-new-status" class="form-select"><option>Open</option><option>In Progress</option><option>Resolved</option></select>`,actions:`<button class="btn btn-light" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary" onclick="(function(){var v=document.getElementById('ticket-new-status').value;closeModal();showToast('Ticket moved to '+v,'success')})()">Update</button>`,size:'sm'})}
   });
   document.getElementById('ticket-export')?.addEventListener('click',e=>{e.preventDefault();downloadStaticFile('tickets.csv','Ticket ID,Subject,Partner,Priority,Status\nT-1042,Payout not received,James Anderson,High,In Progress','text/csv');showToast('Tickets exported to CSV','success')});
+  document.getElementById('new-ticket-btn')?.addEventListener('click',()=>{
+    openModal({title:'Create New Ticket',body:`
+      <label class="form-label">Subject <span class="text-danger">*</span></label><input class="form-control" placeholder="Brief summary of the issue">
+      <label class="form-label mt-3">Priority</label><select class="form-select"><option>Low</option><option>Medium</option><option selected>High</option></select>
+      <label class="form-label mt-3">Description</label><textarea class="form-control" rows="4" placeholder="Describe the issue in detail..."></textarea>`,
+      actions:`<button class="btn btn-light" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary" onclick="closeModal();showToast('Ticket created — T-1043','success')">Create Ticket</button>`});
+  });
 }
 
 /* ═══════════════ Main injector ═══════════════ */

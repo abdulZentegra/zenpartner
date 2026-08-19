@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ZenPartner — Admin Dashboard</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="app.css">
 <script src="https://static.zohocdn.com/creator/widgets/version/2.0/widgetsdk-min.js"></script>
@@ -18,14 +18,62 @@
     <div class="zp-content">
       <main class="zp-page">
 
+        <!-- Hero band -->
+        <div class="zp-hero">
+          <div class="zp-hero-glow"></div>
+          <svg class="zp-hero-lines" viewBox="0 0 240 300" fill="none">
+            <path d="M10 250 C 60 180, 120 80, 230 10" stroke="#a5b4fc" stroke-width="0.7" stroke-dasharray="2 4"/>
+            <path d="M20 20 C 80 90, 100 200, 200 280" stroke="#a5b4fc" stroke-width="0.7"/>
+            <circle cx="60" cy="80" r="1.5" fill="white"/><circle cx="150" cy="120" r="1.5" fill="white"/><circle cx="180" cy="200" r="1.5" fill="white"/>
+          </svg>
+          <div class="zp-hero-body">
+            <span class="zp-hero-chip"><i class="fa-solid fa-shield-halved text-info"></i> Admin Overview · May 2024</span>
+            <h1 class="mt-3">Program health<br>at a glance.</h1>
+            <p>248 partners, $248,750 in commissions, and 96.8% SLA compliance this month.</p>
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <a href="partners.html" class="btn btn-light btn-sm fw-bold text-primary"><i class="fa-solid fa-user-plus"></i> Invite Partner</a>
+              <a href="reports.html" class="btn btn-outline-light btn-sm fw-bold">View Reports <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="zp-hero-stats">
+              <div><div class="zp-hero-stat-value">248</div><div class="zp-hero-stat-label">Total Partners</div></div>
+              <div class="vr opacity-25" style="height:2rem"></div>
+              <div><div class="zp-hero-stat-value">186</div><div class="zp-hero-stat-label">Active Partners</div></div>
+              <div class="vr opacity-25" style="height:2rem"></div>
+              <div><div class="zp-hero-stat-value">96.8%</div><div class="zp-hero-stat-label">SLA Compliance</div></div>
+            </div>
+          </div>
+          <div class="zp-hero-media">
+            <div class="zp-hero-panel">
+              <div class="d-flex align-items-center gap-3">
+                <span class="zp-stat-icon" style="width:44px;height:44px;background:#eef2ff;color:#4f46e5;font-size:1.2rem"><i class="fa-solid fa-users"></i></span>
+                <div class="min-w-0">
+                  <div class="fw-bold" style="font-size:.82rem">Partner Growth</div>
+                  <div class="text-muted" style="font-size:.68rem">+34 new partners this quarter</div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-3 mt-3 pt-3 border-top">
+                <div class="zp-ring" style="--p:75%"><span>75%</span></div>
+                <div class="min-w-0">
+                  <div class="fw-bold" style="font-size:.74rem">Q2 Target Progress</div>
+                  <div class="text-muted" style="font-size:.66rem">$248,750 of $330,000 achieved</div>
+                </div>
+              </div>
+              <div class="mt-3">
+                <div class="d-flex justify-content-between" style="font-size:.66rem"><span class="text-muted fw-semibold">Monthly Goal</span><span class="fw-bold text-success">82%</span></div>
+                <div class="zp-progress mt-1" style="background:#eef0f6"><span style="width:82%;background:linear-gradient(90deg,#34d399,#38bdf8)"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- KPI cards -->
-        <div class="row row-cols-2 row-cols-md-3 row-cols-xl-6 g-3">
-          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Total ZenPartners</div><span class="zp-stat-icon tint-indigo"><i class="bi bi-people"></i></span></div><div class="zp-stat-value">248</div><div class="zp-stat-delta"><span class="up">↑ 18%</span> <span class="muted">vs 30d</span></div></div></div>
-          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Active ZenPartners</div><span class="zp-stat-icon tint-emerald"><i class="bi bi-person-check"></i></span></div><div class="zp-stat-value">186</div><div class="zp-stat-delta"><span class="up">↑ 16%</span> <span class="muted">vs 30d</span></div></div></div>
-          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Total Leads</div><span class="zp-stat-icon tint-orange"><i class="bi bi-bullseye"></i></span></div><div class="zp-stat-value">1,248</div><div class="zp-stat-delta"><span class="up">↑ 22%</span> <span class="muted">vs 30d</span></div></div></div>
-          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Total Projects</div><span class="zp-stat-icon tint-sky"><i class="bi bi-diagram-3"></i></span></div><div class="zp-stat-value">156</div><div class="zp-stat-delta"><span class="up">↑ 14%</span> <span class="muted">vs 30d</span></div></div></div>
-          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Total Earnings</div><span class="zp-stat-icon tint-violet"><i class="bi bi-cash-stack"></i></span></div><div class="zp-stat-value">$248,750</div><div class="zp-stat-delta"><span class="up">↑ 20%</span> <span class="muted">vs 30d</span></div></div></div>
-          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Total Payouts</div><span class="zp-stat-icon tint-teal"><i class="bi bi-credit-card"></i></span></div><div class="zp-stat-value">$127,500</div><div class="zp-stat-delta"><span class="up">↑ 19%</span> <span class="muted">vs 30d</span></div></div></div>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-xxl-6 g-3">
+          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Total ZenPartners</div><span class="zp-stat-icon tint-indigo"><i class="fa-solid fa-users"></i></span></div><div class="zp-stat-value">248</div><div class="zp-stat-delta"><span class="up">↑ 18%</span> <span class="muted">vs 30d</span></div></div></div>
+          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Active ZenPartners</div><span class="zp-stat-icon tint-emerald"><i class="fa-solid fa-user-check"></i></span></div><div class="zp-stat-value">186</div><div class="zp-stat-delta"><span class="up">↑ 16%</span> <span class="muted">vs 30d</span></div></div></div>
+          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Total Leads</div><span class="zp-stat-icon tint-orange"><i class="fa-solid fa-bullseye"></i></span></div><div class="zp-stat-value">1,248</div><div class="zp-stat-delta"><span class="up">↑ 22%</span> <span class="muted">vs 30d</span></div></div></div>
+          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Total Projects</div><span class="zp-stat-icon tint-sky"><i class="fa-solid fa-sitemap"></i></span></div><div class="zp-stat-value">156</div><div class="zp-stat-delta"><span class="up">↑ 14%</span> <span class="muted">vs 30d</span></div></div></div>
+          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Total Earnings</div><span class="zp-stat-icon tint-violet"><i class="fa-solid fa-money-bills"></i></span></div><div class="zp-stat-value">$248,750</div><div class="zp-stat-delta"><span class="up">↑ 20%</span> <span class="muted">vs 30d</span></div></div></div>
+          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Total Payouts</div><span class="zp-stat-icon tint-teal"><i class="fa-solid fa-credit-card"></i></span></div><div class="zp-stat-value">$127,500</div><div class="zp-stat-delta"><span class="up">↑ 19%</span> <span class="muted">vs 30d</span></div></div></div>
         </div>
 
         <div class="row g-3">
@@ -35,7 +83,7 @@
               <div class="d-flex flex-wrap align-items-center gap-2 p-3">
                 <h3 class="zp-card-title">All ZenPartners <span class="badge bg-primary-subtle text-primary rounded-pill">248</span></h3>
                 <div class="ms-auto d-flex align-items-center gap-2 flex-wrap">
-                  <div class="zp-input-icon"><i class="bi bi-search"></i><input id="partner-search" class="form-control form-control-sm" placeholder="Search ZenPartners..." style="padding-left:2.1rem"></div>
+                  <div class="zp-input-icon"><i class="fa-solid fa-magnifying-glass"></i><input id="partner-search" class="form-control form-control-sm" placeholder="Search ZenPartners..." style="padding-left:2.1rem"></div>
                   <select id="status-filter" class="form-select form-select-sm w-auto"><option value="all">Status: All</option><option value="Active">Active</option><option value="Pending">Pending</option><option value="Inactive">Inactive</option></select>
                 </div>
               </div>
@@ -43,12 +91,12 @@
                 <table class="zp-table">
                   <thead><tr><th>Partner ID</th><th>ZenPartner</th><th>Status</th><th class="text-center">Projects</th><th class="text-center">Leads</th><th class="text-end">Earnings</th><th class="text-end">Payouts</th><th>Joined On</th><th class="text-center">Action</th></tr></thead>
                   <tbody id="partner-tbody">
-                    <tr data-status="Active" data-search="zp-2024-0001 james anderson"><td class="text-secondary fw-semibold">ZP-2024-0001</td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=60" style="width:28px;height:28px;border-radius:50%;object-fit:cover" alt=""><div><div class="fw-semibold">James Anderson</div><div class="text-muted" style="font-size:.68rem">james.anderson@example.com</div></div></div></td><td><span class="zp-pill zp-pill--emerald">Active</span></td><td class="text-center fw-semibold">12</td><td class="text-center fw-semibold">96</td><td class="text-end fw-bold">$24,750</td><td class="text-end">$12,750</td><td class="text-secondary">Jan 15, 2024</td><td class="text-center"><a href="partner-view.html" class="row-action"><i class="bi bi-eye"></i></a><button class="row-action row-more"><i class="bi bi-three-dots"></i></button></td></tr>
-                    <tr data-status="Active" data-search="zp-2024-0002 sarah mitchell"><td class="text-secondary fw-semibold">ZP-2024-0002</td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&q=60" style="width:28px;height:28px;border-radius:50%;object-fit:cover" alt=""><div><div class="fw-semibold">Sarah Mitchell</div><div class="text-muted" style="font-size:.68rem">sarah.mitchell@example.com</div></div></div></td><td><span class="zp-pill zp-pill--emerald">Active</span></td><td class="text-center fw-semibold">8</td><td class="text-center fw-semibold">64</td><td class="text-end fw-bold">$18,200</td><td class="text-end">$9,450</td><td class="text-secondary">Jan 18, 2024</td><td class="text-center"><a href="partner-view.html" class="row-action"><i class="bi bi-eye"></i></a><button class="row-action row-more"><i class="bi bi-three-dots"></i></button></td></tr>
-                    <tr data-status="Active" data-search="zp-2024-0003 michael davis"><td class="text-secondary fw-semibold">ZP-2024-0003</td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&auto=format&fit=crop&q=60" style="width:28px;height:28px;border-radius:50%;object-fit:cover" alt=""><div><div class="fw-semibold">Michael Davis</div><div class="text-muted" style="font-size:.68rem">michael.davis@example.com</div></div></div></td><td><span class="zp-pill zp-pill--emerald">Active</span></td><td class="text-center fw-semibold">10</td><td class="text-center fw-semibold">78</td><td class="text-end fw-bold">$16,500</td><td class="text-end">$8,250</td><td class="text-secondary">Jan 20, 2024</td><td class="text-center"><a href="partner-view.html" class="row-action"><i class="bi bi-eye"></i></a><button class="row-action row-more"><i class="bi bi-three-dots"></i></button></td></tr>
-                    <tr data-status="Pending" data-search="zp-2024-0004 emily wilson"><td class="text-secondary fw-semibold">ZP-2024-0004</td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&auto=format&fit=crop&q=60" style="width:28px;height:28px;border-radius:50%;object-fit:cover" alt=""><div><div class="fw-semibold">Emily Wilson</div><div class="text-muted" style="font-size:.68rem">emily.wilson@example.com</div></div></div></td><td><span class="zp-pill zp-pill--amber">Pending</span></td><td class="text-center fw-semibold">2</td><td class="text-center fw-semibold">10</td><td class="text-end fw-bold">$1,250</td><td class="text-end">$0</td><td class="text-secondary">Jan 22, 2024</td><td class="text-center"><a href="partner-view.html" class="row-action"><i class="bi bi-eye"></i></a><button class="row-action row-more"><i class="bi bi-three-dots"></i></button></td></tr>
-                    <tr data-status="Active" data-search="zp-2024-0005 david lee"><td class="text-secondary fw-semibold">ZP-2024-0005</td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&auto=format&fit=crop&q=60" style="width:28px;height:28px;border-radius:50%;object-fit:cover" alt=""><div><div class="fw-semibold">David Lee</div><div class="text-muted" style="font-size:.68rem">david.lee@example.com</div></div></div></td><td><span class="zp-pill zp-pill--emerald">Active</span></td><td class="text-center fw-semibold">6</td><td class="text-center fw-semibold">42</td><td class="text-end fw-bold">$9,800</td><td class="text-end">$4,900</td><td class="text-secondary">Jan 25, 2024</td><td class="text-center"><a href="partner-view.html" class="row-action"><i class="bi bi-eye"></i></a><button class="row-action row-more"><i class="bi bi-three-dots"></i></button></td></tr>
-                    <tr data-status="Inactive" data-search="zp-2024-0006 olivia brown"><td class="text-secondary fw-semibold">ZP-2024-0006</td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&auto=format&fit=crop&q=60" style="width:28px;height:28px;border-radius:50%;object-fit:cover" alt=""><div><div class="fw-semibold">Olivia Brown</div><div class="text-muted" style="font-size:.68rem">olivia.brown@example.com</div></div></div></td><td><span class="zp-pill zp-pill--slate">Inactive</span></td><td class="text-center fw-semibold">0</td><td class="text-center fw-semibold">0</td><td class="text-end fw-bold">$0</td><td class="text-end">$0</td><td class="text-secondary">Jan 28, 2024</td><td class="text-center"><a href="partner-view.html" class="row-action"><i class="bi bi-eye"></i></a><button class="row-action row-more"><i class="bi bi-three-dots"></i></button></td></tr>
+                    <tr data-status="Active" data-search="zp-2024-0001 james anderson"><td class="text-secondary fw-semibold">ZP-2024-0001</td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=60" style="width:28px;height:28px;border-radius:50%;object-fit:cover" alt=""><div><div class="fw-semibold">James Anderson</div><div class="text-muted" style="font-size:.68rem">james.anderson@example.com</div></div></div></td><td><span class="zp-pill zp-pill--emerald">Active</span></td><td class="text-center fw-semibold">12</td><td class="text-center fw-semibold">96</td><td class="text-end fw-bold">$24,750</td><td class="text-end">$12,750</td><td class="text-secondary">Jan 15, 2024</td><td class="text-center"><a href="partner-view.html" class="row-action"><i class="fa-solid fa-eye"></i></a><button class="row-action row-more"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+                    <tr data-status="Active" data-search="zp-2024-0002 sarah mitchell"><td class="text-secondary fw-semibold">ZP-2024-0002</td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&q=60" style="width:28px;height:28px;border-radius:50%;object-fit:cover" alt=""><div><div class="fw-semibold">Sarah Mitchell</div><div class="text-muted" style="font-size:.68rem">sarah.mitchell@example.com</div></div></div></td><td><span class="zp-pill zp-pill--emerald">Active</span></td><td class="text-center fw-semibold">8</td><td class="text-center fw-semibold">64</td><td class="text-end fw-bold">$18,200</td><td class="text-end">$9,450</td><td class="text-secondary">Jan 18, 2024</td><td class="text-center"><a href="partner-view.html" class="row-action"><i class="fa-solid fa-eye"></i></a><button class="row-action row-more"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+                    <tr data-status="Active" data-search="zp-2024-0003 michael davis"><td class="text-secondary fw-semibold">ZP-2024-0003</td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&auto=format&fit=crop&q=60" style="width:28px;height:28px;border-radius:50%;object-fit:cover" alt=""><div><div class="fw-semibold">Michael Davis</div><div class="text-muted" style="font-size:.68rem">michael.davis@example.com</div></div></div></td><td><span class="zp-pill zp-pill--emerald">Active</span></td><td class="text-center fw-semibold">10</td><td class="text-center fw-semibold">78</td><td class="text-end fw-bold">$16,500</td><td class="text-end">$8,250</td><td class="text-secondary">Jan 20, 2024</td><td class="text-center"><a href="partner-view.html" class="row-action"><i class="fa-solid fa-eye"></i></a><button class="row-action row-more"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+                    <tr data-status="Pending" data-search="zp-2024-0004 emily wilson"><td class="text-secondary fw-semibold">ZP-2024-0004</td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&auto=format&fit=crop&q=60" style="width:28px;height:28px;border-radius:50%;object-fit:cover" alt=""><div><div class="fw-semibold">Emily Wilson</div><div class="text-muted" style="font-size:.68rem">emily.wilson@example.com</div></div></div></td><td><span class="zp-pill zp-pill--amber">Pending</span></td><td class="text-center fw-semibold">2</td><td class="text-center fw-semibold">10</td><td class="text-end fw-bold">$1,250</td><td class="text-end">$0</td><td class="text-secondary">Jan 22, 2024</td><td class="text-center"><a href="partner-view.html" class="row-action"><i class="fa-solid fa-eye"></i></a><button class="row-action row-more"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+                    <tr data-status="Active" data-search="zp-2024-0005 david lee"><td class="text-secondary fw-semibold">ZP-2024-0005</td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&auto=format&fit=crop&q=60" style="width:28px;height:28px;border-radius:50%;object-fit:cover" alt=""><div><div class="fw-semibold">David Lee</div><div class="text-muted" style="font-size:.68rem">david.lee@example.com</div></div></div></td><td><span class="zp-pill zp-pill--emerald">Active</span></td><td class="text-center fw-semibold">6</td><td class="text-center fw-semibold">42</td><td class="text-end fw-bold">$9,800</td><td class="text-end">$4,900</td><td class="text-secondary">Jan 25, 2024</td><td class="text-center"><a href="partner-view.html" class="row-action"><i class="fa-solid fa-eye"></i></a><button class="row-action row-more"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+                    <tr data-status="Inactive" data-search="zp-2024-0006 olivia brown"><td class="text-secondary fw-semibold">ZP-2024-0006</td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&auto=format&fit=crop&q=60" style="width:28px;height:28px;border-radius:50%;object-fit:cover" alt=""><div><div class="fw-semibold">Olivia Brown</div><div class="text-muted" style="font-size:.68rem">olivia.brown@example.com</div></div></div></td><td><span class="zp-pill zp-pill--slate">Inactive</span></td><td class="text-center fw-semibold">0</td><td class="text-center fw-semibold">0</td><td class="text-end fw-bold">$0</td><td class="text-end">$0</td><td class="text-secondary">Jan 28, 2024</td><td class="text-center"><a href="partner-view.html" class="row-action"><i class="fa-solid fa-eye"></i></a><button class="row-action row-more"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -56,7 +104,7 @@
                 <span id="table-count" class="text-muted" style="font-size:.72rem">Showing 1 to 6 of 248 entries</span>
                 <div class="ms-auto d-flex align-items-center gap-2">
                   <select id="per-page" class="form-select form-select-sm w-auto"><option value="8">8</option><option value="25">25</option><option value="50">50</option></select>
-                  <div class="btn-group"><button id="page-prev" class="btn btn-sm btn-outline-secondary" disabled><i class="bi bi-chevron-left"></i></button><button class="btn btn-sm btn-primary">1</button><button id="page-next" class="btn btn-sm btn-outline-secondary"><i class="bi bi-chevron-right"></i></button></div>
+                  <div class="btn-group"><button id="page-prev" class="btn btn-sm btn-outline-secondary" disabled><i class="fa-solid fa-chevron-left"></i></button><button class="btn btn-sm btn-primary">1</button><button id="page-next" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-chevron-right"></i></button></div>
                 </div>
               </div>
             </div>
@@ -67,11 +115,11 @@
             <div class="zp-card p-3 mb-3">
               <div class="zp-card-head"><h3 class="zp-card-title">Pending Tasks <span class="badge bg-danger-subtle text-danger rounded-pill">3</span></h3><a href="#" class="zp-card-link">View All</a></div>
               <div class="d-flex flex-column gap-2 mt-2">
-                <div class="d-flex gap-2 p-2 border rounded-3" style="background:#f8fafc"><span class="zp-stat-icon tint-indigo flex-shrink-0" style="width:32px;height:32px;font-size:.8rem"><i class="bi bi-file-earmark-check"></i></span><div><div class="fw-semibold" style="font-size:.74rem">Review Project Proposal</div><div class="text-muted" style="font-size:.66rem">Website Redesign</div><div class="d-flex gap-2 mt-1"><span class="zp-pill no-dot zp-pill--rose">High</span><span class="text-muted" style="font-size:.62rem">Due: May 16</span></div></div></div>
-                <div class="d-flex gap-2 p-2 border rounded-3" style="background:#f8fafc"><span class="zp-stat-icon tint-emerald flex-shrink-0" style="width:32px;height:32px;font-size:.8rem"><i class="bi bi-shield-check"></i></span><div><div class="fw-semibold" style="font-size:.74rem">Verify Lead Information</div><div class="text-muted" style="font-size:.66rem">Lead ID: L-2024-0098</div><div class="d-flex gap-2 mt-1"><span class="zp-pill no-dot zp-pill--amber">Medium</span><span class="text-muted" style="font-size:.62rem">Due: May 17</span></div></div></div>
-                <div class="d-flex gap-2 p-2 border rounded-3" style="background:#f8fafc"><span class="zp-stat-icon tint-amber flex-shrink-0" style="width:32px;height:32px;font-size:.8rem"><i class="bi bi-credit-card"></i></span><div><div class="fw-semibold" style="font-size:.74rem">Payout Approval</div><div class="text-muted" style="font-size:.66rem">Amount: $2,500</div><div class="mt-1"><span class="text-muted" style="font-size:.62rem">Due: May 18</span></div></div></div>
+                <div class="d-flex gap-2 p-2 border rounded-3" style="background:#f8fafc"><span class="zp-stat-icon tint-indigo flex-shrink-0" style="width:32px;height:32px;font-size:.8rem"><i class="fa-solid fa-file-circle-check"></i></span><div><div class="fw-semibold" style="font-size:.74rem">Review Project Proposal</div><div class="text-muted" style="font-size:.66rem">Website Redesign</div><div class="d-flex gap-2 mt-1"><span class="zp-pill no-dot zp-pill--rose">High</span><span class="text-muted" style="font-size:.62rem">Due: May 16</span></div></div></div>
+                <div class="d-flex gap-2 p-2 border rounded-3" style="background:#f8fafc"><span class="zp-stat-icon tint-emerald flex-shrink-0" style="width:32px;height:32px;font-size:.8rem"><i class="fa-solid fa-shield-halved"></i></span><div><div class="fw-semibold" style="font-size:.74rem">Verify Lead Information</div><div class="text-muted" style="font-size:.66rem">Lead ID: L-2024-0098</div><div class="d-flex gap-2 mt-1"><span class="zp-pill no-dot zp-pill--amber">Medium</span><span class="text-muted" style="font-size:.62rem">Due: May 17</span></div></div></div>
+                <div class="d-flex gap-2 p-2 border rounded-3" style="background:#f8fafc"><span class="zp-stat-icon tint-amber flex-shrink-0" style="width:32px;height:32px;font-size:.8rem"><i class="fa-solid fa-credit-card"></i></span><div><div class="fw-semibold" style="font-size:.74rem">Payout Approval</div><div class="text-muted" style="font-size:.66rem">Amount: $2,500</div><div class="mt-1"><span class="text-muted" style="font-size:.62rem">Due: May 18</span></div></div></div>
               </div>
-              <button class="btn btn-primary btn-sm w-100 mt-3"><i class="bi bi-plus-lg"></i> Assign New Task</button>
+              <button class="btn btn-primary btn-sm w-100 mt-3"><i class="fa-solid fa-plus"></i> Assign New Task</button>
             </div>
             <div class="zp-card p-3">
               <div class="zp-card-head"><h3 class="zp-card-title">Recent Follow Ups</h3><a href="#" class="zp-card-link">View All</a></div>
@@ -80,7 +128,7 @@
                 <div class="d-flex gap-2"><span class="zp-stat-icon tint-sky flex-shrink-0 rounded-circle" style="width:32px;height:32px;font-size:.7rem;font-weight:700">JA</span><div><div class="fw-semibold" style="font-size:.74rem">Discuss Lead Quality</div><div class="text-muted" style="font-size:.66rem">May 14, 2024 03:15 PM</div></div></div>
                 <div class="d-flex gap-2"><span class="zp-stat-icon tint-amber flex-shrink-0 rounded-circle" style="width:32px;height:32px;font-size:.7rem;font-weight:700">JA</span><div><div class="fw-semibold" style="font-size:.74rem">Payment Status Check</div><div class="text-muted" style="font-size:.66rem">May 13, 2024 11:45 AM</div></div></div>
               </div>
-              <button class="btn btn-outline-secondary btn-sm w-100 mt-3"><i class="bi bi-plus-lg"></i> Add Follow Up</button>
+              <button class="btn btn-outline-secondary btn-sm w-100 mt-3"><i class="fa-solid fa-plus"></i> Add Follow Up</button>
             </div>
           </div>
         </div>
@@ -105,7 +153,7 @@
           <div class="col-md-6 col-xl-3">
             <div class="zp-card p-3">
               <h3 class="zp-card-title">Projects by Status</h3>
-              <div class="d-flex gap-3 mt-2 align-items-center">
+              <div class="d-flex flex-wrap gap-3 mt-2 align-items-center">
                 <div class="position-relative flex-shrink-0" style="width:110px;height:110px"><div class="zp-donut position-absolute inset-0 rounded-circle" style="background:conic-gradient(#4f46e5 0 41%,#10b981 41% 76%,#f59e0b 76% 88%,#ef4444 88% 94%,#cbd5e1 94% 100%)"></div><div class="zp-donut-hole d-grid"><div class="text-center"><div class="fw-bold">156</div><div class="text-muted" style="font-size:.62rem">Total</div></div></div></div>
                 <div class="flex-grow-1 d-flex flex-column gap-1" style="font-size:.66rem">
                   <div class="d-flex justify-content-between"><span class="d-flex align-items-center gap-1"><span style="width:7px;height:7px;border-radius:99px;background:#4f46e5"></span>In Progress</span><b>64</b></div>
@@ -133,9 +181,9 @@
             <div class="zp-card p-3">
               <div class="zp-card-head"><h3 class="zp-card-title">Recent Activity</h3><a href="#" class="zp-card-link">View All</a></div>
               <div class="d-flex flex-column gap-2 mt-2">
-                <div class="d-flex gap-2"><span class="zp-stat-icon tint-emerald flex-shrink-0" style="width:28px;height:28px;font-size:.8rem"><i class="bi bi-patch-check"></i></span><div><div class="fw-semibold" style="font-size:.72rem">James completed project</div><div class="text-muted" style="font-size:.62rem">May 15, 10:30 AM</div></div></div>
-                <div class="d-flex gap-2"><span class="zp-stat-icon tint-indigo flex-shrink-0" style="width:28px;height:28px;font-size:.8rem"><i class="bi bi-bullseye"></i></span><div><div class="fw-semibold" style="font-size:.72rem">New lead assigned</div><div class="text-muted" style="font-size:.62rem">May 15, 09:15 AM</div></div></div>
-                <div class="d-flex gap-2"><span class="zp-stat-icon tint-amber flex-shrink-0" style="width:28px;height:28px;font-size:.8rem"><i class="bi bi-credit-card"></i></span><div><div class="fw-semibold" style="font-size:.72rem">Payout of $2,500 approved</div><div class="text-muted" style="font-size:.62rem">May 14, 04:20 PM</div></div></div>
+                <div class="d-flex gap-2"><span class="zp-stat-icon tint-emerald flex-shrink-0" style="width:28px;height:28px;font-size:.8rem"><i class="fa-solid fa-circle-check"></i></span><div><div class="fw-semibold" style="font-size:.72rem">James completed project</div><div class="text-muted" style="font-size:.62rem">May 15, 10:30 AM</div></div></div>
+                <div class="d-flex gap-2"><span class="zp-stat-icon tint-indigo flex-shrink-0" style="width:28px;height:28px;font-size:.8rem"><i class="fa-solid fa-bullseye"></i></span><div><div class="fw-semibold" style="font-size:.72rem">New lead assigned</div><div class="text-muted" style="font-size:.62rem">May 15, 09:15 AM</div></div></div>
+                <div class="d-flex gap-2"><span class="zp-stat-icon tint-amber flex-shrink-0" style="width:28px;height:28px;font-size:.8rem"><i class="fa-solid fa-credit-card"></i></span><div><div class="fw-semibold" style="font-size:.72rem">Payout of $2,500 approved</div><div class="text-muted" style="font-size:.62rem">May 14, 04:20 PM</div></div></div>
               </div>
             </div>
           </div>

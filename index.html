@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ZenPartner — Partner Portal</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="app.css">
 <script src="https://static.zohocdn.com/creator/widgets/version/2.0/widgetsdk-min.js"></script>
@@ -18,10 +18,16 @@
     <div class="zp-content">
       <main class="zp-page">
 
-        <!-- toolbar -->
-        <div class="d-flex align-items-center justify-content-end gap-2">
-          <button class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-2"><i class="bi bi-calendar3"></i> May 1 – May 31, 2024 <i class="bi bi-chevron-down"></i></button>
-          <button class="btn btn-sm btn-primary"><i class="bi bi-funnel"></i> Filter</button>
+        <!-- Toolbar -->
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+          <div class="d-none d-sm-flex align-items-center gap-2 flex-wrap">
+            <button class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-2"><i class="fa-solid fa-calendar-days"></i> May 1 – May 31, 2024 <i class="fa-solid fa-chevron-down"></i></button>
+            <button class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-2"><i class="fa-solid fa-filter"></i> Filter</button>
+          </div>
+          <div class="d-flex align-items-center gap-2 flex-wrap ms-auto">
+            <a href="referral.html" class="btn btn-sm btn-primary d-inline-flex align-items-center gap-2"><i class="fa-solid fa-user-plus"></i> Add Referral</a>
+            <a href="activities.html" class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-2"><i class="fa-solid fa-book-open"></i> Log Activity</a>
+          </div>
         </div>
 
         <!-- Hero -->
@@ -34,25 +40,40 @@
             <circle cx="60" cy="80" r="1.5" fill="white"/><circle cx="130" cy="140" r="1.5" fill="white"/><circle cx="180" cy="70" r="1.5" fill="white"/>
           </svg>
           <div class="zp-hero-body">
-            <h1>Grow Together,<br>Succeed Together.</h1>
+            <span class="zp-hero-chip"><i class="fa-solid fa-circle-check text-warning"></i> Gold Partner · Member since Feb 15, 2024</span>
+            <h1 class="mt-3">Grow Together,<br>Succeed Together.</h1>
             <p>Access tools, training, resources and support to grow your business with Zentegra.</p>
-            <a href="resources.html" class="btn btn-light btn-sm mt-3 align-self-start fw-bold text-primary">Explore Resources <i class="bi bi-arrow-right"></i></a>
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <a href="resources.html" class="btn btn-light btn-sm fw-bold text-primary">Explore Resources <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="referral.html" class="btn btn-outline-light btn-sm fw-bold">Add Referral <i class="fa-solid fa-plus"></i></a>
+            </div>
+            <div class="zp-hero-stats">
+              <div><div class="zp-hero-stat-value">48</div><div class="zp-hero-stat-label">Total Referrals</div></div>
+              <div class="vr opacity-25" style="height:2rem"></div>
+              <div><div class="zp-hero-stat-value">16</div><div class="zp-hero-stat-label">Active Opportunities</div></div>
+              <div class="vr opacity-25" style="height:2rem"></div>
+              <div><div class="zp-hero-stat-value">$24,750</div><div class="zp-hero-stat-label">Earnings (YTD)</div></div>
+            </div>
           </div>
           <div class="zp-hero-media">
-            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop" alt="">
-            <div class="zp-hero-fade"></div>
-            <div class="zp-float-card">
-              <div class="d-flex align-items-center gap-2">
-                <div class="zp-stat-icon tint-amber" style="width:34px;height:34px"><i class="bi bi-shield-fill"></i></div>
-                <div>
-                  <div class="text-muted" style="font-size:.62rem;font-weight:600">Your Partner Status</div>
-                  <div class="fw-bold" style="font-size:.76rem">Gold Partner</div>
-                  <div class="text-muted" style="font-size:.62rem">Member since Feb 15, 2024</div>
+            <div class="zp-hero-panel">
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" class="rounded-circle" style="width:46px;height:46px;object-fit:cover;border:2px solid #e0e7ff" alt="James Anderson">
+                <div class="min-w-0">
+                  <div class="fw-bold" style="font-size:.82rem">James Anderson</div>
+                  <div class="text-warning" style="font-size:.68rem;font-weight:600"><i class="fa-solid fa-star"></i> Gold Partner</div>
                 </div>
               </div>
-              <div class="mt-2">
-                <div class="zp-progress"><span style="width:78%"></span></div>
-                <div class="text-success" style="font-size:.62rem;font-weight:600;margin-top:4px">78% to Platinum</div>
+              <div class="d-flex align-items-center gap-3 mt-3 pt-3 border-top">
+                <div class="zp-ring" style="--p:78%"><span>78%</span></div>
+                <div class="min-w-0">
+                  <div class="fw-bold" style="font-size:.74rem">78% to Platinum</div>
+                  <div class="text-muted" style="font-size:.66rem">$4,250 more in YTD earnings to unlock</div>
+                </div>
+              </div>
+              <div class="mt-3">
+                <div class="d-flex justify-content-between" style="font-size:.66rem"><span class="text-muted fw-semibold">Profile Strength</span><span class="fw-bold text-success">90%</span></div>
+                <div class="zp-progress mt-1" style="background:#eef0f6"><span style="width:90%;background:linear-gradient(90deg,#34d399,#38bdf8)"></span></div>
               </div>
             </div>
           </div>
@@ -60,11 +81,36 @@
 
         <!-- KPI summary -->
         <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 g-3">
-          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Total Referrals</div><span class="zp-stat-icon tint-indigo"><i class="bi bi-people"></i></span></div><div class="zp-stat-value">48</div><div class="zp-stat-delta"><span class="up">↑ 12%</span> <span class="muted">vs last 30 days</span></div></div></div>
-          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Active Opportunities</div><span class="zp-stat-icon tint-sky"><i class="bi bi-bullseye"></i></span></div><div class="zp-stat-value">16</div><div class="zp-stat-delta"><span class="up">↑ 8%</span> <span class="muted">vs last 30 days</span></div></div></div>
-          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Earnings (YTD)</div><span class="zp-stat-icon tint-emerald"><i class="bi bi-cash-coin"></i></span></div><div class="zp-stat-value">$24,750</div><div class="zp-stat-delta"><span class="up">↑ 15%</span> <span class="muted">vs last year</span></div></div></div>
-          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Pending Payouts</div><span class="zp-stat-icon tint-orange"><i class="bi bi-hourglass-split"></i></span></div><div class="zp-stat-value">$7,250</div><div class="zp-stat-delta"><span class="muted">In Progress</span></div></div></div>
-          <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Conversion Rate</div><span class="zp-stat-icon tint-teal"><i class="bi bi-graph-up-arrow"></i></span></div><div class="zp-stat-value">33%</div><div class="zp-stat-delta"><span class="up">↑ 5%</span> <span class="muted">vs last 30 days</span></div></div></div>
+          <div class="col"><div class="zp-card zp-card--hover zp-stat">
+            <div class="zp-stat-top"><div class="zp-stat-label">Total Referrals</div><span class="zp-stat-icon tint-indigo"><i class="fa-solid fa-users"></i></span></div>
+            <div class="d-flex align-items-end justify-content-between gap-2"><div class="zp-stat-value">48</div><span class="zp-delta-pill up"><i class="fa-solid fa-arrow-up"></i>12%</span></div>
+            <svg class="zp-spark" viewBox="0 0 120 32" preserveAspectRatio="none"><polyline points="0,24 15,20 30,22 45,14 60,16 75,8 90,10 105,4 120,5" fill="none" stroke="#4f46e5" stroke-width="1.6" stroke-linecap="round"/><polygon points="0,24 15,20 30,22 45,14 60,16 75,8 90,10 105,4 120,5 120,32 0,32" fill="#4f46e5" opacity=".06"/></svg>
+            <div class="zp-stat-delta"><span class="muted">vs last 30 days</span></div>
+          </div></div>
+          <div class="col"><div class="zp-card zp-card--hover zp-stat">
+            <div class="zp-stat-top"><div class="zp-stat-label">Active Opportunities</div><span class="zp-stat-icon tint-sky"><i class="fa-solid fa-bullseye"></i></span></div>
+            <div class="d-flex align-items-end justify-content-between gap-2"><div class="zp-stat-value">16</div><span class="zp-delta-pill up"><i class="fa-solid fa-arrow-up"></i>8%</span></div>
+            <svg class="zp-spark" viewBox="0 0 120 32" preserveAspectRatio="none"><polyline points="0,26 15,24 30,25 45,18 60,20 75,14 90,16 105,10 120,8" fill="none" stroke="#0ea5e9" stroke-width="1.6" stroke-linecap="round"/><polygon points="0,26 15,24 30,25 45,18 60,20 75,14 90,16 105,10 120,8 120,32 0,32" fill="#0ea5e9" opacity=".06"/></svg>
+            <div class="zp-stat-delta"><span class="muted">vs last 30 days</span></div>
+          </div></div>
+          <div class="col"><div class="zp-card zp-card--hover zp-stat">
+            <div class="zp-stat-top"><div class="zp-stat-label">Earnings (YTD)</div><span class="zp-stat-icon tint-emerald"><i class="fa-solid fa-coins"></i></span></div>
+            <div class="d-flex align-items-end justify-content-between gap-2"><div class="zp-stat-value">$24,750</div><span class="zp-delta-pill up"><i class="fa-solid fa-arrow-up"></i>15%</span></div>
+            <svg class="zp-spark" viewBox="0 0 120 32" preserveAspectRatio="none"><polyline points="0,28 15,22 30,24 45,18 60,12 75,16 90,8 105,10 120,4" fill="none" stroke="#10b981" stroke-width="1.6" stroke-linecap="round"/><polygon points="0,28 15,22 30,24 45,18 60,12 75,16 90,8 105,10 120,4 120,32 0,32" fill="#10b981" opacity=".06"/></svg>
+            <div class="zp-stat-delta"><span class="muted">vs last year</span></div>
+          </div></div>
+          <div class="col"><div class="zp-card zp-card--hover zp-stat">
+            <div class="zp-stat-top"><div class="zp-stat-label">Pending Payouts</div><span class="zp-stat-icon tint-orange"><i class="fa-solid fa-hourglass-half"></i></span></div>
+            <div class="d-flex align-items-end justify-content-between gap-2"><div class="zp-stat-value">$7,250</div><span class="zp-delta-pill" style="background:#fff7ed;color:#c2410c">In Progress</span></div>
+            <svg class="zp-spark" viewBox="0 0 120 32" preserveAspectRatio="none"><polyline points="0,10 15,12 30,10 45,14 60,16 75,20 90,18 105,22 120,24" fill="none" stroke="#f59e0b" stroke-width="1.6" stroke-linecap="round"/><polygon points="0,10 15,12 30,10 45,14 60,16 75,20 90,18 105,22 120,24 120,32 0,32" fill="#f59e0b" opacity=".06"/></svg>
+            <div class="zp-stat-delta"><span class="muted">Next cycle May 31</span></div>
+          </div></div>
+          <div class="col"><div class="zp-card zp-card--hover zp-stat">
+            <div class="zp-stat-top"><div class="zp-stat-label">Conversion Rate</div><span class="zp-stat-icon tint-teal"><i class="fa-solid fa-arrow-trend-up"></i></span></div>
+            <div class="d-flex align-items-end justify-content-between gap-2"><div class="zp-stat-value">33%</div><span class="zp-delta-pill up"><i class="fa-solid fa-arrow-up"></i>5%</span></div>
+            <svg class="zp-spark" viewBox="0 0 120 32" preserveAspectRatio="none"><polyline points="0,24 15,18 30,20 45,12 60,14 75,6 90,8 105,4 120,2" fill="none" stroke="#0d9488" stroke-width="1.6" stroke-linecap="round"/><polygon points="0,24 15,18 30,20 45,12 60,14 75,6 90,8 105,4 120,2 120,32 0,32" fill="#0d9488" opacity=".06"/></svg>
+            <div class="zp-stat-delta"><span class="muted">vs last 30 days</span></div>
+          </div></div>
         </div>
 
         <!-- Onboarding + pipeline -->
@@ -75,30 +121,36 @@
               <div class="d-flex justify-content-between mt-3" style="font-size:.7rem;color:#64748b"><span>4 of 5 Completed</span><span class="fw-semibold">80%</span></div>
               <div class="zp-progress mt-1"><span style="width:80%"></span></div>
               <div class="mt-3 d-flex flex-column gap-2">
-                <div class="d-flex align-items-center gap-2"><span class="zp-stat-icon tint-emerald" style="width:26px;height:26px;font-size:.8rem"><i class="bi bi-check2"></i></span><div class="flex-grow-1"><div class="fw-semibold" style="font-size:.72rem">Agreement</div><div class="text-muted" style="font-size:.66rem">View &amp; Accept</div></div><i class="bi bi-check-circle-fill text-success"></i></div>
-                <div class="d-flex align-items-center gap-2"><span class="zp-stat-icon tint-emerald" style="width:26px;height:26px;font-size:.8rem"><i class="bi bi-file-earmark"></i></span><div class="flex-grow-1"><div class="fw-semibold" style="font-size:.72rem">NDA Sign</div><div class="text-muted" style="font-size:.66rem">Signed on May 10, 2024</div></div><i class="bi bi-check-circle-fill text-success"></i></div>
-                <div class="d-flex align-items-center gap-2"><span class="zp-stat-icon tint-emerald" style="width:26px;height:26px;font-size:.8rem"><i class="bi bi-mortarboard"></i></span><div class="flex-grow-1"><div class="fw-semibold" style="font-size:.72rem">Training &amp; Certification</div><div class="text-muted" style="font-size:.66rem">Completed</div></div><i class="bi bi-check-circle-fill text-success"></i></div>
-                <div class="d-flex align-items-center gap-2"><span class="zp-stat-icon tint-emerald" style="width:26px;height:26px;font-size:.8rem"><i class="bi bi-eye"></i></span><div class="flex-grow-1"><div class="fw-semibold" style="font-size:.72rem">Learn About Our Company</div><div class="text-muted" style="font-size:.66rem">Completed</div></div><i class="bi bi-check-circle-fill text-success"></i></div>
-                <div class="d-flex align-items-center gap-2 p-1 rounded-3 bg-light"><span class="zp-stat-icon tint-indigo" style="width:26px;height:26px;font-size:.8rem"><i class="bi bi-folder2-open"></i></span><div class="flex-grow-1"><div class="fw-semibold" style="font-size:.72rem">Resources Access</div><div class="text-muted" style="font-size:.66rem">Unlocked</div></div><i class="bi bi-lock-fill text-primary"></i></div>
+                <div class="d-flex align-items-center gap-2"><span class="zp-stat-icon tint-emerald" style="width:26px;height:26px;font-size:.8rem"><i class="fa-solid fa-check"></i></span><div class="flex-grow-1 min-w-0"><div class="fw-semibold" style="font-size:.72rem">Agreement</div><div class="text-muted" style="font-size:.66rem">View &amp; Accept</div></div><i class="fa-solid fa-circle-check text-success flex-shrink-0"></i></div>
+                <div class="d-flex align-items-center gap-2"><span class="zp-stat-icon tint-emerald" style="width:26px;height:26px;font-size:.8rem"><i class="fa-solid fa-file"></i></span><div class="flex-grow-1 min-w-0"><div class="fw-semibold" style="font-size:.72rem">NDA Sign</div><div class="text-muted" style="font-size:.66rem">Signed on May 10, 2024</div></div><i class="fa-solid fa-circle-check text-success flex-shrink-0"></i></div>
+                <div class="d-flex align-items-center gap-2"><span class="zp-stat-icon tint-emerald" style="width:26px;height:26px;font-size:.8rem"><i class="fa-solid fa-graduation-cap"></i></span><div class="flex-grow-1 min-w-0"><div class="fw-semibold" style="font-size:.72rem">Training &amp; Certification</div><div class="text-muted" style="font-size:.66rem">Completed</div></div><i class="fa-solid fa-circle-check text-success flex-shrink-0"></i></div>
+                <div class="d-flex align-items-center gap-2"><span class="zp-stat-icon tint-emerald" style="width:26px;height:26px;font-size:.8rem"><i class="fa-solid fa-eye"></i></span><div class="flex-grow-1 min-w-0"><div class="fw-semibold" style="font-size:.72rem">Learn About Our Company</div><div class="text-muted" style="font-size:.66rem">Completed</div></div><i class="fa-solid fa-circle-check text-success flex-shrink-0"></i></div>
+                <div class="d-flex align-items-center gap-2 p-1 rounded-3 bg-light"><span class="zp-stat-icon tint-indigo" style="width:26px;height:26px;font-size:.8rem"><i class="fa-solid fa-folder-open"></i></span><div class="flex-grow-1 min-w-0"><div class="fw-semibold" style="font-size:.72rem">Resources Access</div><div class="text-muted" style="font-size:.66rem">Unlocked</div></div><i class="fa-solid fa-lock text-primary flex-shrink-0"></i></div>
               </div>
             </div>
           </div>
           <div class="col-xl-9">
             <div class="zp-card p-3 mb-3">
-              <div class="zp-card-head"><h3 class="zp-card-title">Referral Pipeline</h3><a href="#" class="zp-card-link">View All</a></div>
-              <div class="row row-cols-3 row-cols-md-6 g-2 mt-2">
-                <div class="col"><div class="text-center rounded-3 py-3 border" style="background:#eef2ff"><div class="text-muted" style="font-size:.62rem;font-weight:600">New</div><div class="fw-bold mt-1">8</div></div></div>
-                <div class="col"><div class="text-center rounded-3 py-3 border" style="background:#ecfdf5"><div class="text-success" style="font-size:.62rem;font-weight:600">Qualified</div><div class="fw-bold mt-1">6</div></div></div>
-                <div class="col"><div class="text-center rounded-3 py-3 border" style="background:#f5f3ff"><div class="text-muted" style="font-size:.62rem;font-weight:600">Proposal</div><div class="fw-bold mt-1">5</div></div></div>
-                <div class="col"><div class="text-center rounded-3 py-3 border" style="background:#f8fafc"><div class="text-muted" style="font-size:.62rem;font-weight:600">Negotiation</div><div class="fw-bold mt-1">3</div></div></div>
-                <div class="col"><div class="text-center rounded-3 py-3 border" style="background:#f0fdf4"><div class="text-success" style="font-size:.62rem;font-weight:600">Closed Won</div><div class="fw-bold mt-1">3</div></div></div>
-                <div class="col"><div class="text-center rounded-3 py-3 border" style="background:#fff1f2"><div class="text-danger" style="font-size:.62rem;font-weight:600">Closed Lost</div><div class="fw-bold mt-1">2</div></div></div>
+              <div class="zp-card-head">
+                <h3 class="zp-card-title">Referral Pipeline</h3>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="zp-pill no-dot zp-pill--indigo d-none d-sm-inline-flex">27 Open</span>
+                  <a href="referral.html" class="zp-card-link">View All</a>
+                </div>
+              </div>
+              <div class="d-flex flex-column gap-2 mt-3">
+                <div class="d-flex align-items-center gap-2" style="font-size:.76rem"><span class="fw-semibold flex-shrink-0 text-secondary" style="width:86px">New</span><div class="zp-progress flex-grow-1" style="background:#eef2ff"><span style="width:30%;background:#4f46e5"></span></div><b class="flex-shrink-0 text-center" style="width:30px">8</b></div>
+                <div class="d-flex align-items-center gap-2" style="font-size:.76rem"><span class="fw-semibold flex-shrink-0 text-secondary" style="width:86px">Qualified</span><div class="zp-progress flex-grow-1" style="background:#e0f2fe"><span style="width:22%;background:#0ea5e9"></span></div><b class="flex-shrink-0 text-center" style="width:30px">6</b></div>
+                <div class="d-flex align-items-center gap-2" style="font-size:.76rem"><span class="fw-semibold flex-shrink-0 text-secondary" style="width:86px">Proposal</span><div class="zp-progress flex-grow-1" style="background:#f5f3ff"><span style="width:19%;background:#7c3aed"></span></div><b class="flex-shrink-0 text-center" style="width:30px">5</b></div>
+                <div class="d-flex align-items-center gap-2" style="font-size:.76rem"><span class="fw-semibold flex-shrink-0 text-secondary" style="width:86px">Negotiation</span><div class="zp-progress flex-grow-1" style="background:#fffbeb"><span style="width:11%;background:#f59e0b"></span></div><b class="flex-shrink-0 text-center" style="width:30px">3</b></div>
+                <div class="d-flex align-items-center gap-2" style="font-size:.76rem"><span class="fw-semibold flex-shrink-0 text-secondary" style="width:86px">Closed Won</span><div class="zp-progress flex-grow-1" style="background:#ecfdf5"><span style="width:11%;background:#10b981"></span></div><b class="flex-shrink-0 text-center" style="width:30px">3</b></div>
+                <div class="d-flex align-items-center gap-2" style="font-size:.76rem"><span class="fw-semibold flex-shrink-0 text-secondary" style="width:86px">Closed Lost</span><div class="zp-progress flex-grow-1" style="background:#fff1f2"><span style="width:7%;background:#f43f5e"></span></div><b class="flex-shrink-0 text-center" style="width:30px">2</b></div>
               </div>
             </div>
             <div class="row g-3">
               <div class="col-lg-6">
                 <div class="zp-card p-3 h-100">
-                  <div class="zp-card-head"><h3 class="zp-card-title">Earnings Overview <span class="fw-normal text-muted" style="font-size:.66rem">(This Year)</span></h3><a href="#" class="zp-card-link">View Report</a></div>
+                  <div class="zp-card-head"><h3 class="zp-card-title">Earnings Overview <span class="fw-normal text-muted" style="font-size:.66rem">(This Year)</span></h3><a href="earnings.html" class="zp-card-link">View Report</a></div>
                   <div class="mt-2"><div class="text-muted" style="font-size:.66rem">Total Earnings</div><div class="fs-4 fw-bold">$24,750</div><div class="text-success" style="font-size:.66rem;font-weight:600">↑ 15% <span class="text-muted fw-normal">vs last year</span></div></div>
                   <div class="zp-chart mt-3" style="height:110px"><svg viewBox="0 0 300 100" preserveAspectRatio="none" style="height:100%"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4f46e5" stop-opacity="0.2"/><stop offset="100%" stop-color="#4f46e5" stop-opacity="0"/></linearGradient></defs><path d="M0,80 L25,70 L50,60 L75,58 L100,50 L125,52 L150,30 L175,35 L200,20 L225,30 L250,22 L275,10 L300,5" fill="none" stroke="#4f46e5" stroke-width="1.5"/><path d="M0,80 L25,70 L50,60 L75,58 L100,50 L125,52 L150,30 L175,35 L200,20 L225,30 L250,22 L275,10 L300,5 L300,100 L0,100 Z" fill="url(#g1)"/></svg></div>
                   <div class="d-flex justify-content-between text-muted" style="font-size:.6rem"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span></div>
@@ -107,12 +159,12 @@
               <div class="col-lg-6">
                 <div class="zp-card p-3 h-100">
                   <h3 class="zp-card-title">Top Performing Categories</h3>
-                  <div class="d-flex align-items-center gap-4 mt-3">
+                  <div class="d-flex align-items-center gap-4 mt-3 flex-wrap">
                     <div class="position-relative flex-shrink-0" style="width:120px;height:120px"><div class="zp-donut position-absolute inset-0 rounded-circle"></div><div class="zp-donut-hole"></div></div>
-                    <div class="flex-grow-1 d-flex flex-column gap-2" style="font-size:.72rem">
-                      <div class="d-flex gap-2"><span class="rounded-circle align-self-center" style="width:8px;height:8px;background:#4f46e5"></span><div><div class="fw-semibold">Referral Commission</div><div class="text-muted" style="font-size:.66rem">$16,800 (68%)</div></div></div>
-                      <div class="d-flex gap-2"><span class="rounded-circle align-self-center" style="width:8px;height:8px;background:#0ea5e9"></span><div><div class="fw-semibold">Bonus &amp; Incentives</div><div class="text-muted" style="font-size:.66rem">$5,250 (21%)</div></div></div>
-                      <div class="d-flex gap-2"><span class="rounded-circle align-self-center" style="width:8px;height:8px;background:#10b981"></span><div><div class="fw-semibold">Performance Bonus</div><div class="text-muted" style="font-size:.66rem">$2,700 (11%)</div></div></div>
+                    <div class="flex-grow-1 d-flex flex-column gap-2 min-w-0" style="font-size:.72rem">
+                      <div class="d-flex gap-2"><span class="rounded-circle align-self-center flex-shrink-0" style="width:8px;height:8px;background:#4f46e5"></span><div class="min-w-0"><div class="fw-semibold">Referral Commission</div><div class="text-muted" style="font-size:.66rem">$16,800 (68%)</div></div></div>
+                      <div class="d-flex gap-2"><span class="rounded-circle align-self-center flex-shrink-0" style="width:8px;height:8px;background:#0ea5e9"></span><div class="min-w-0"><div class="fw-semibold">Bonus &amp; Incentives</div><div class="text-muted" style="font-size:.66rem">$5,250 (21%)</div></div></div>
+                      <div class="d-flex gap-2"><span class="rounded-circle align-self-center flex-shrink-0" style="width:8px;height:8px;background:#10b981"></span><div class="min-w-0"><div class="fw-semibold">Performance Bonus</div><div class="text-muted" style="font-size:.66rem">$2,700 (11%)</div></div></div>
                     </div>
                   </div>
                 </div>
@@ -125,9 +177,9 @@
         <div class="zp-card p-3">
           <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
             <h3 class="zp-card-title">Performance Timeline</h3>
-            <div class="d-flex align-items-center gap-2">
-              <button class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-1">This Month <i class="bi bi-chevron-down"></i></button>
-              <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-funnel"></i> Filter</button>
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+              <button class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-1">This Month <i class="fa-solid fa-chevron-down"></i></button>
+              <button class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-filter"></i> Filter</button>
             </div>
           </div>
           <div class="zp-segmented mt-3">
@@ -142,18 +194,18 @@
             </svg>
           </div>
           <div class="d-flex justify-content-between text-muted mt-1" style="font-size:.62rem"><span>May 1</span><span>May 5</span><span>May 10</span><span>May 15</span><span>May 20</span><span>May 25</span><span>May 31</span></div>
-          <div class="d-flex gap-3 mt-2" style="font-size:.62rem;color:#64748b"><span class="d-flex align-items-center gap-1"><span style="width:12px;height:3px;background:#4f46e5"></span>This Year</span><span class="d-flex align-items-center gap-1"><span style="width:12px;height:3px;background:#0ea5e9"></span>This Month</span><span class="d-flex align-items-center gap-1"><span style="width:12px;height:3px;background:#10b981"></span>Last Month</span></div>
+          <div class="d-flex flex-wrap gap-3 mt-2" style="font-size:.62rem;color:#64748b"><span class="d-flex align-items-center gap-1"><span style="width:12px;height:3px;background:#4f46e5"></span>This Year</span><span class="d-flex align-items-center gap-1"><span style="width:12px;height:3px;background:#0ea5e9"></span>This Month</span><span class="d-flex align-items-center gap-1"><span style="width:12px;height:3px;background:#10b981"></span>Last Month</span></div>
         </div>
 
         <!-- Quick actions -->
         <div class="zp-card p-3">
           <h3 class="zp-card-title mb-3">Quick Actions</h3>
           <div class="row row-cols-2 row-cols-md-5 g-2">
-            <div class="col"><a href="referral.html" class="d-flex flex-column align-items-center gap-1 py-2 text-decoration-none text-secondary rounded-3 hover-lift"><span class="zp-stat-icon tint-indigo" style="width:42px;height:42px"><i class="bi bi-person-plus"></i></span><span style="font-size:.68rem">Add Referral</span></a></div>
-            <div class="col"><a href="activities.html" class="d-flex flex-column align-items-center gap-1 py-2 text-decoration-none text-secondary rounded-3 hover-lift"><span class="zp-stat-icon tint-sky" style="width:42px;height:42px"><i class="bi bi-journal-text"></i></span><span style="font-size:.68rem">Log Activity</span></a></div>
-            <div class="col"><a href="leads.html" class="d-flex flex-column align-items-center gap-1 py-2 text-decoration-none text-secondary rounded-3 hover-lift"><span class="zp-stat-icon tint-teal" style="width:42px;height:42px"><i class="bi bi-bullseye"></i></span><span style="font-size:.68rem">View Leads</span></a></div>
-            <div class="col"><a href="resources.html" class="d-flex flex-column align-items-center gap-1 py-2 text-decoration-none text-secondary rounded-3 hover-lift"><span class="zp-stat-icon tint-violet" style="width:42px;height:42px"><i class="bi bi-folder2-open"></i></span><span style="font-size:.68rem">Resources</span></a></div>
-            <div class="col"><a href="#" class="d-flex flex-column align-items-center gap-1 py-2 text-decoration-none text-secondary rounded-3 hover-lift"><span class="zp-stat-icon tint-amber" style="width:42px;height:42px"><i class="bi bi-headset"></i></span><span style="font-size:.68rem">Contact Support</span></a></div>
+            <div class="col"><a href="referral.html" class="d-flex flex-column align-items-center gap-1 py-2 text-decoration-none text-secondary rounded-3 hover-lift"><span class="zp-stat-icon tint-indigo" style="width:42px;height:42px"><i class="fa-solid fa-user-plus"></i></span><span style="font-size:.68rem">Add Referral</span></a></div>
+            <div class="col"><a href="activities.html" class="d-flex flex-column align-items-center gap-1 py-2 text-decoration-none text-secondary rounded-3 hover-lift"><span class="zp-stat-icon tint-sky" style="width:42px;height:42px"><i class="fa-solid fa-book-open"></i></span><span style="font-size:.68rem">Log Activity</span></a></div>
+            <div class="col"><a href="leads.html" class="d-flex flex-column align-items-center gap-1 py-2 text-decoration-none text-secondary rounded-3 hover-lift"><span class="zp-stat-icon tint-teal" style="width:42px;height:42px"><i class="fa-solid fa-bullseye"></i></span><span style="font-size:.68rem">View Leads</span></a></div>
+            <div class="col"><a href="resources.html" class="d-flex flex-column align-items-center gap-1 py-2 text-decoration-none text-secondary rounded-3 hover-lift"><span class="zp-stat-icon tint-violet" style="width:42px;height:42px"><i class="fa-solid fa-folder-open"></i></span><span style="font-size:.68rem">Resources</span></a></div>
+            <div class="col"><a href="#" class="d-flex flex-column align-items-center gap-1 py-2 text-decoration-none text-secondary rounded-3 hover-lift"><span class="zp-stat-icon tint-amber" style="width:42px;height:42px"><i class="fa-solid fa-headset"></i></span><span style="font-size:.68rem">Contact Support</span></a></div>
           </div>
         </div>
 
