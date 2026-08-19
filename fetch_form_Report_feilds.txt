@@ -1,0 +1,138 @@
+(async()=>{
+    const p = await ZOHO.CREATOR.UTIL.getInitParams();
+    const app = p.appLinkName;
+    console.log("📦 App:", app);
+
+    // Fetch forms & reports
+    const [formsRes, reportsRes] = await Promise.all([
+        ZOHO.CREATOR.META.getForms({app_name: app}),
+        ZOHO.CREATOR.META.getReports({app_name: app})
+    ]);
+    const forms = formsRes.forms;
+    const reports = reportsRes.reports;
+    console.log("✅ Forms:", forms.length, "| Reports:", reports.length);
+
+    // Fetch fields for every form
+    const formsWithFields = [];
+    for (const f of forms) {
+        try {
+            const r = await ZOHO.CREATOR.META.getFields({app_name: app, form_name: f.link_name});
+            formsWithFields.push({...f, fields: r.fields});
+            console.log("  ✅", f.link_name, "→", r.fields.length, "fields");
+        } catch(e) {
+            formsWithFields.push({...f, fields: [], error: true});
+            console.warn("  ❌", f.link_name);
+        }
+    }
+
+    // Type map
+    const T = {1:"Single Line",2:"Multi Line",3:"Email",5:"Number",6:"Decimal",7:"Percentage",8:"Currency",10:"Date",11:"DateTime",12:"Dropdown",13:"Radio",14:"Multi Select",15:"Checkbox",17:"URL",18:"Image",24:"Notes",27:"Phone",34:"Time",46:"File Upload"};
+    const typeName = f => f.is_lookup_field ? "Lookup" : (T[f.type] || "Unknown("+f.type+")");
+
+    // Build TXT
+    let txt = "";
+    txt += "════════════════════════════════════════════════════════════════\n";
+    txt += "  ZOHO CREATOR APP SCHEMA — " + app + "\n";
+    txt += "  Exported: " + new Date().toLocaleString() + "\n";
+    txt += "  Forms: " + forms.length + " | Reports: " + reports.length + "\n";
+    txt += "════════════════════════════════════════════════════════════════\n\n";
+
+    txt += "════════════════════════════════════════════════════════════════\n";
+    txt += "  REPORTS (" + reports.length + ")\n";
+    txt += "════════════════════════════════════════════════════════════════\n";
+    reports.forEach((r,i) => {
+        txt += (i+1).toString().padStart(3," ") + ". " + r.display_name + "  →  " + r.link_name + "\n";
+    });
+    txt += "\n";
+
+    txt += "════════════════════════════════════════════════════════════════\n";
+    txt += "  FORMS & FIELDS (" + forms.length + ")\n";
+    txt += "════════════════════════════════════════════════════════════════\n\n";
+
+    formsWithFields.forEach((f, i) => {
+        txt += "────────────────────────────────────────────────────────────────\n";
+        txt += "FORM " + (i+1) + ": " + f.display_name + "  (" + f.link_name + ")\n";
+        txt += "Fields: " + f.fields.length + "\n";
+        txt += "────────────────────────────────────────────────────────────────\n";
+        if (f.fields.length === 0) {
+            txt += "  (no fields)\n\n";
+            return;
+        }
+        f.fields.forEach((fld, j) => {
+            const mandatory = fld.mandatory ? " [REQUIRED]" : "";
+            const unique = fld.unique ? " [UNIQUE]" : "";
+            txt += "  " + (j+1).toString().padStart(3," ") + ". " + fld.display_name.padEnd(30," ") + " | " + fld.link_name.padEnd(30," ") + " | " + typeName(fld) + mandatory + unique + "\n";
+            if (fld.choices && fld.choices.length) {
+                txt += "        └─ Choices: " + fld.choices.map(c=>c.value).join(", ") + "\n";
+            }
+        });
+        txt += "\n";
+    });
+
+    // Build JSON
+    const json = JSON.stringify({app_name: app, exported_at: new Date().toISOString(), reports, forms: formsWithFields.map(f => ({display_name: f.display_name, link_name: f.link_name, fields: f.fields.map(x => ({display_name: x.display_name, link_name: x.link_name, type: typeName(x), mandatory: x.mandatory || false, unique: x.unique || false, ...(x.is_lookup_field && {is_lookup: true}), ...(x.choices && {choices: x.choices.map(c=>c.value)})}))}))}, null, 2);
+
+    // Store globally
+    window._schema = {txt, json, forms: formsWithFields, reports};
+
+    // Remove old UI
+    const old = document.getElementById("_schema_ui");
+    if (old) old.remove();
+
+    // Create floating UI
+    const box = document.createElement("div");
+    box.id = "_schema_ui";
+    box.style.cssText = "position:fixed;top:20px;right:20px;z-index:2147483647;background:#1a1a2e;color:#fff;padding:16px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);font-family:-apple-system,sans-serif;min-width:260px;";
+    box.innerHTML = `
+        <div style="font-size:14px;font-weight:700;margin-bottom:4px;">📦 Schema Ready</div>
+        <div style="font-size:11px;opacity:0.7;margin-bottom:12px;">${forms.length} forms · ${reports.length} reports</div>
+        <button id="_dl_txt" style="width:100%;padding:10px;background:#5051F9;color:#fff;border:none;border-radius:6px;font-weight:600;cursor:pointer;margin-bottom:6px;">📥 Download .txt</button>
+        <button id="_dl_json" style="width:100%;padding:10px;background:#00695c;color:#fff;border:none;border-radius:6px;font-weight:600;cursor:pointer;margin-bottom:6px;">📥 Download .json</button>
+        <button id="_cp_txt" style="width:100%;padding:10px;background:#444;color:#fff;border:none;border-radius:6px;font-weight:600;cursor:pointer;margin-bottom:6px;">📋 Copy as Text</button>
+        <button id="_cp_json" style="width:100%;padding:10px;background:#444;color:#fff;border:none;border-radius:6px;font-weight:600;cursor:pointer;margin-bottom:6px;">📋 Copy as JSON</button>
+        <button id="_close" style="width:100%;padding:6px;background:transparent;color:#888;border:1px solid #444;border-radius:6px;font-size:11px;cursor:pointer;">✕ Close</button>
+    `;
+    document.body.appendChild(box);
+
+    const dl = (name, content, type) => {
+        const b = new Blob([content], {type: type + ";charset=utf-8"});
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(b);
+        a.download = name;
+        a.click();
+        URL.revokeObjectURL(a.href);
+    };
+
+    const copy = async (text, btn) => {
+        try {
+            await navigator.clipboard.writeText(text);
+            const old = btn.innerHTML;
+            btn.innerHTML = "✅ Copied!";
+            btn.style.background = "#2e7d32";
+            setTimeout(() => { btn.innerHTML = old; btn.style.background = "#444"; }, 1500);
+        } catch(e) {
+            // Fallback for clipboard
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand("copy");
+            ta.remove();
+            const old = btn.innerHTML;
+            btn.innerHTML = "✅ Copied!";
+            setTimeout(() => btn.innerHTML = old, 1500);
+        }
+    };
+
+    document.getElementById("_dl_txt").onclick = () => dl(app + "_schema.txt", txt, "text/plain");
+    document.getElementById("_dl_json").onclick = () => dl(app + "_schema.json", json, "application/json");
+    document.getElementById("_cp_txt").onclick = (e) => copy(txt, e.target);
+    document.getElementById("_cp_json").onclick = (e) => copy(json, e.target);
+    document.getElementById("_close").onclick = () => box.remove();
+
+    console.log("");
+    console.log("✅ ═══════════════════════════════════════");
+    console.log("✅  DONE! Use the buttons on top-right");
+    console.log("✅  Data also at: window._schema");
+    console.log("✅ ═══════════════════════════════════════");
+})();
