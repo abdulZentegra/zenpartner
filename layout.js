@@ -135,8 +135,8 @@ function buildSidebar(active){
         <div class="text-warning" style="font-size:.66rem"><i class="bi bi-star-fill"></i> Gold Partner</div>
       </div>
     </div>
-    <div class="px-3 mb-2" style="font-size:.66rem;color:rgba(255,255,255,.5)">Partner ID: ZP-2024-0015</div>
-    <div class="px-3 mb-2">
+    <div class="px-3 mb-2 zp-side-extra" style="font-size:.66rem;color:rgba(255,255,255,.5)">Partner ID: ZP-2024-0015</div>
+    <div class="px-3 mb-2 zp-side-extra">
       <div class="d-flex justify-content-between" style="font-size:.68rem"><span style="color:rgba(255,255,255,.7)">Profile Strength</span><span class="text-success">90%</span></div>
       <div class="zp-progress mt-1"><span style="width:90%"></span></div>
     </div>
@@ -206,14 +206,14 @@ function buildAdminSidebar(active){
         <div style="font-size:.66rem;color:#a5b4fc"><i class="bi bi-shield-fill"></i> Super Administrator</div>
       </div>
     </div>
-    <div class="px-3 mb-2" style="font-size:.66rem;color:rgba(255,255,255,.5)">admin@zentegra.com</div>
-    <div class="px-3 mb-2">
+    <div class="px-3 mb-2 zp-side-extra" style="font-size:.66rem;color:rgba(255,255,255,.5)">admin@zentegra.com</div>
+    <div class="px-3 mb-2 zp-side-extra">
       <div class="d-flex justify-content-between" style="font-size:.68rem"><span style="color:rgba(255,255,255,.7)">Panel Coverage</span><span style="color:#a5b4fc">100%</span></div>
       <div class="zp-progress mt-1"><span style="width:100%;background:linear-gradient(90deg,#6366f1,#38bdf8)"></span></div>
     </div>
     <nav class="zp-nav flex-grow-1" style="overflow-y:auto">${nav}</nav>
     <div class="zp-sidebar-foot">
-      <div class="zp-user-card mb-1">
+      <div class="zp-user-card mb-1 zp-side-extra">
         <div class="fw-semibold" style="font-size:.72rem">Need Help?</div>
         <div style="font-size:.64rem;color:rgba(255,255,255,.5)">Our support team is here for you.</div>
         <a href="mailto:admin@zentegra.com" class="d-block small text-white-50 text-truncate mt-1">admin@zentegra.com</a>
@@ -789,7 +789,7 @@ function initAdminTickets(){
   const TICKETS=[
     ['T-1042','Payout not received for April cycle','James Anderson','High','In Progress','Support Team','May 15, 2024'],['T-1041','Access to partner resources revoked','Sarah Mitchell','Medium','Open','Unassigned','May 15, 2024'],['T-1040','How to update KYC documents?','Michael Davis','Low','Resolved','Support Team','May 14, 2024'],['T-1039','Commission rate discrepancy on referral','Emily Wilson','High','Open','Finance Team','May 14, 2024'],['T-1038','Training certificate not visible','David Lee','Medium','In Progress','Support Team','May 13, 2024'],['T-1037','Request for new referral template','Olivia Brown','Low','Resolved','Marketing Team','May 12, 2024'],['T-1036','Portal login issue — OTP not received','Daniel Martinez','High','Resolved','Support Team','May 11, 2024'],['T-1035','Update bank account details','Sophia Johnson','Medium','Open','Finance Team','May 10, 2024']
   ];
-  const rowHtml=t=>`<tr data-status="${t[4]}" data-priority="${t[3]}"><td class="text-secondary fw-semibold">${t[0]}</td><td><div class="fw-semibold text-truncate" style="max-width:280px">${t[1]}</div><div class="text-muted" style="font-size:.68rem">${t[2]}</div></td><td><span class="zp-pill no-dot ${priorityClass[t[3]]}">${t[3]}</span></td><td><span class="zp-pill ${statusClass[t[4]]}">${t[4]}</span></td><td class="text-secondary">${t[5]}</td><td class="text-secondary">${t[6]}</td><td class="text-secondary">${t[6]}</td><td class="text-center"><button class="row-action ticket-view" title="View"><i class="bi bi-eye"></i></button><button class="row-action ticket-status" title="Change status"><i class="bi bi-arrow-repeat"></i></button></td></tr>`;
+  const rowHtml=t=>`<tr data-status="${t[4]}" data-priority="${t[3]}"><td class="text-secondary fw-semibold">${t[0]}</td><td><div class="fw-semibold text-truncate" style="max-width:280px">${t[1]}</div><div class="text-muted" style="font-size:.68rem">${t[2]}</div></td><td><span class="zp-pill no-dot ${priorityClass[t[3]]}">${t[3]}</span></td><td><span class="zp-pill ${statusClass[t[4]]}">${t[4]}</span></td><td class="text-secondary">${t[5]}</td><td class="text-secondary">${t[6]}</td><td class="text-center"><button class="row-action ticket-view" title="View"><i class="bi bi-eye"></i></button><button class="row-action ticket-status" title="Change status"><i class="bi bi-arrow-repeat"></i></button></td></tr>`;
   const render=()=>{
     const q=(document.getElementById('ticket-search').value||'').toLowerCase(),st=document.getElementById('ticket-status').value,pr=document.getElementById('ticket-priority').value;
     const vis=TICKETS.filter(t=>((t[0]+' '+t[1]+' '+t[2]).toLowerCase()).includes(q)&&(st==='all'||t[4]===st)&&(pr==='all'||t[3]===pr));
@@ -808,6 +808,13 @@ function initAdminTickets(){
     if(s){const tr=s.closest('tr');const id=tr?.querySelector('td')?.textContent;openModal({title:'Change Status — '+id,body:`<label class="form-label">New Status</label><select id="ticket-new-status" class="form-select"><option>Open</option><option>In Progress</option><option>Resolved</option></select>`,actions:`<button class="btn btn-light" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary" onclick="(function(){var v=document.getElementById('ticket-new-status').value;closeModal();showToast('Ticket moved to '+v,'success')})()">Update</button>`,size:'sm'})}
   });
   document.getElementById('ticket-export')?.addEventListener('click',e=>{e.preventDefault();downloadStaticFile('tickets.csv','Ticket ID,Subject,Partner,Priority,Status\nT-1042,Payout not received,James Anderson,High,In Progress','text/csv');showToast('Tickets exported to CSV','success')});
+  document.getElementById('new-ticket-btn')?.addEventListener('click',()=>{
+    openModal({title:'Create New Ticket',body:`
+      <label class="form-label">Subject <span class="text-danger">*</span></label><input class="form-control" placeholder="Brief summary of the issue">
+      <label class="form-label mt-3">Priority</label><select class="form-select"><option>Low</option><option>Medium</option><option selected>High</option></select>
+      <label class="form-label mt-3">Description</label><textarea class="form-control" rows="4" placeholder="Describe the issue in detail..."></textarea>`,
+      actions:`<button class="btn btn-light" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary" onclick="closeModal();showToast('Ticket created — T-1043','success')">Create Ticket</button>`});
+  });
 }
 
 /* ═══════════════ Main injector ═══════════════ */

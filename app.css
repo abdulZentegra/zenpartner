@@ -121,6 +121,9 @@ body.zp-collapsed .zp-brand-text,body.zp-collapsed .zp-user-card,body.zp-collaps
 body.zp-collapsed .zp-nav-link span,body.zp-collapsed .zp-sidebar-foot .zp-foot-text{display:none}
 body.zp-collapsed .zp-nav-link{justify-content:center;padding:.62rem}
 body.zp-collapsed .zp-nav-link .zp-nav-badge{position:absolute;transform:translate(10px,-10px)}
+/* collapsed sidebar: hide the active-link chevron so it never overlaps the icon */
+body.zp-collapsed .zp-nav-link i.bi-chevron-right{display:none}
+body.zp-collapsed .zp-side-extra{display:none}
 body.zp-collapsed .zp-sidebar-foot{display:flex;flex-direction:column;align-items:center}
 @media(max-width:991.98px){
   .zp-sidebar{display:none}
@@ -178,6 +181,12 @@ body.zp-collapsed .zp-sidebar-foot{display:flex;flex-direction:column;align-item
 .zp-stat-delta .up{color:#059669;font-weight:600}
 .zp-stat-delta .muted{color:#94a3b8}
 
+/* KPI trend pill + mini sparkline */
+.zp-delta-pill{display:inline-flex;align-items:center;gap:2px;font-size:.62rem;font-weight:700;padding:.18rem .5rem;border-radius:99px;white-space:nowrap;margin-top:.45rem}
+.zp-delta-pill.up{background:#ecfdf5;color:#059669}
+.zp-delta-pill.down{background:#fff1f2;color:#e11d48}
+.zp-spark{display:block;width:100%;height:30px;margin-top:.55rem}
+
 /* tinted icon chips */
 .tint-indigo{background:#eef2ff;color:#4f46e5}.tint-sky{background:#e0f2fe;color:#0284c7}
 .tint-emerald{background:#ecfdf5;color:#059669}.tint-amber{background:#fffbeb;color:#d97706}
@@ -232,20 +241,27 @@ body.zp-collapsed .zp-sidebar-foot{display:flex;flex-direction:column;align-item
 .zp-table .row-action:hover{background:#eef2ff;color:#4f46e5}
 
 /* ── 10. Hero banner ── */
-.zp-hero{position:relative;overflow:hidden;border-radius:var(--zp-radius-xl);background:var(--zp-gradient-hero);color:#fff;min-height:230px}
+.zp-hero{position:relative;overflow:hidden;border-radius:var(--zp-radius-xl);background:var(--zp-gradient-hero);color:#fff;min-height:250px;display:flex;align-items:stretch}
 .zp-hero-glow{position:absolute;inset:0;opacity:.5;
-  background:radial-gradient(600px 300px at 30% 40%,#4f46e5 0%,transparent 62%),
-             radial-gradient(420px 220px at 62% 18%,#7c3aed 0%,transparent 60%)}
-.zp-hero-lines{position:absolute;left:30%;top:0;height:100%;width:260px;opacity:.3;pointer-events:none}
-.zp-hero-body{position:relative;z-index:2;padding:1.8rem;width:52%;display:flex;flex-direction:column;justify-content:center}
-.zp-hero h1{font-size:1.5rem;font-weight:800;line-height:1.15;color:#fff}
-.zp-hero p{color:rgba(255,255,255,.72);font-size:.78rem;margin:.55rem 0 0;max-width:320px}
-.zp-hero-media{position:relative;width:48%;min-height:230px}
-.zp-hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
-.zp-hero-fade{position:absolute;inset:0;background:linear-gradient(90deg,var(--zp-navy),transparent 60%)}
-@media(max-width:767.98px){.zp-hero-body{width:100%;padding:1.4rem}.zp-hero-media{display:none}}
+  background:radial-gradient(640px 320px at 26% 42%,#4f46e5 0%,transparent 62%),
+             radial-gradient(460px 240px at 70% 10%,#7c3aed 0%,transparent 60%)}
+.zp-hero-lines{position:absolute;left:44%;top:0;height:100%;width:280px;opacity:.28;pointer-events:none}
+.zp-hero-body{position:relative;z-index:2;padding:2rem 1.6rem;flex:1 1 56%;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.zp-hero h1{font-size:clamp(1.35rem,2.6vw,1.9rem);font-weight:800;line-height:1.15;color:#fff;letter-spacing:-.02em}
+.zp-hero p{color:rgba(255,255,255,.72);font-size:.8rem;margin:.6rem 0 0;max-width:460px}
+.zp-hero-chip{display:inline-flex;align-items:center;gap:.45rem;align-self:flex-start;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);color:#e0e7ff;font-size:.68rem;font-weight:600;padding:.32rem .72rem;border-radius:99px;backdrop-filter:blur(6px)}
+.zp-hero-stats{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.4rem;margin-top:1.35rem}
+.zp-hero-stat-value{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.05rem;line-height:1}
+.zp-hero-stat-label{font-size:.62rem;color:rgba(255,255,255,.55);font-weight:600;margin-top:3px}
+.zp-hero-media{position:relative;flex:1 1 44%;min-width:0;display:flex;align-items:center;justify-content:center;padding:1.6rem}
+.zp-hero-panel{position:relative;width:100%;max-width:300px;background:#fff;border-radius:20px;padding:1.25rem;color:var(--zp-ink);box-shadow:0 24px 60px rgba(2,6,23,.35);border:1px solid rgba(255,255,255,.55)}
+.zp-ring{width:74px;height:74px;flex:none;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#818cf8 var(--p,0%),#eef2ff 0);position:relative}
+.zp-ring::before{content:"";position:absolute;inset:7px;border-radius:50%;background:#f8faff}
+.zp-ring span{position:relative;z-index:1;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:.8rem;color:#4338ca}
+@media(max-width:991.98px){.zp-hero-media{display:none}.zp-hero-body{flex:1 1 100%;padding:1.6rem}}
+@media(max-width:575.98px){.zp-hero{min-height:0}.zp-hero-body{padding:1.25rem}.zp-hero h1{font-size:1.3rem}}
 
-/* floating badge card */
+/* floating badge card (legacy) */
 .zp-float-card{position:absolute;right:1rem;bottom:1rem;background:#fff;border-radius:14px;padding:.85rem;width:220px;box-shadow:0 20px 40px rgba(2,6,23,.25);border:1px solid #f1f5f9}
 
 /* ── 11. Charts (SVG + conic donuts) ── */
@@ -286,7 +302,7 @@ body.zp-collapsed .zp-sidebar-foot{display:flex;flex-direction:column;align-item
 .zp-tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2.5px;background:#4f46e5;border-radius:99px}
 
 /* segmented control */
-.zp-segmented{display:inline-flex;background:#fff;border:1px solid var(--zp-border);border-radius:12px;padding:3px;gap:2px}
+.zp-segmented{display:inline-flex;flex-wrap:wrap;max-width:100%;background:#fff;border:1px solid var(--zp-border);border-radius:12px;padding:3px;gap:2px}
 .zp-segmented button{border:0;background:transparent;font-size:.74rem;font-weight:600;color:#64748b;padding:.4rem .8rem;border-radius:9px;transition:all var(--zp-trans)}
 .zp-segmented button:hover{color:var(--zp-ink)}
 .zp-segmented button.active{background:var(--zp-gradient-primary);color:#fff;box-shadow:0 3px 10px rgba(79,70,229,.3)}
@@ -397,6 +413,20 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2px solid var(--
 .command-result{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:11px;color:#334155}
 .command-result:hover,.command-result.active{background:#f0f0ff;color:#4338ca}
 .command-key{margin-left:auto;font-size:.66rem;color:#94a3b8;border:1px solid #e2e8f0;border-radius:6px;padding:2px 6px;background:#fff}
+
+/* ── 22c. Small-screen compaction (phones) ── */
+@media(max-width:575.98px){
+  .zp-content{padding:.5rem}
+  .zp-page{gap:.8rem}
+  .p-4{padding:1rem!important}
+  .zp-stat{padding:.8rem .9rem;min-height:96px}
+  .zp-stat-value{font-size:1.2rem}
+  .zp-card-head{flex-wrap:wrap}
+  .zp-segmented{width:100%}
+  .zp-segmented button{flex:1 1 auto;text-align:center}
+  .zp-page-title{font-size:.9rem}
+  .zp-topbar .navbar{padding:.5rem .65rem}
+}
 
 /* ── 23. Print ── */
 @media print{

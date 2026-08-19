@@ -18,8 +18,56 @@
     <div class="zp-content">
       <main class="zp-page">
 
+        <!-- Hero band -->
+        <div class="zp-hero">
+          <div class="zp-hero-glow"></div>
+          <svg class="zp-hero-lines" viewBox="0 0 240 300" fill="none">
+            <path d="M10 250 C 60 180, 120 80, 230 10" stroke="#a5b4fc" stroke-width="0.7" stroke-dasharray="2 4"/>
+            <path d="M20 20 C 80 90, 100 200, 200 280" stroke="#a5b4fc" stroke-width="0.7"/>
+            <circle cx="60" cy="80" r="1.5" fill="white"/><circle cx="150" cy="120" r="1.5" fill="white"/><circle cx="180" cy="200" r="1.5" fill="white"/>
+          </svg>
+          <div class="zp-hero-body">
+            <span class="zp-hero-chip"><i class="bi bi-shield-fill-check text-info"></i> Admin Overview · May 2024</span>
+            <h1 class="mt-3">Program health<br>at a glance.</h1>
+            <p>248 partners, $248,750 in commissions, and 96.8% SLA compliance this month.</p>
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <a href="partners.html" class="btn btn-light btn-sm fw-bold text-primary"><i class="bi bi-person-plus"></i> Invite Partner</a>
+              <a href="reports.html" class="btn btn-outline-light btn-sm fw-bold">View Reports <i class="bi bi-arrow-right"></i></a>
+            </div>
+            <div class="zp-hero-stats">
+              <div><div class="zp-hero-stat-value">248</div><div class="zp-hero-stat-label">Total Partners</div></div>
+              <div class="vr opacity-25" style="height:2rem"></div>
+              <div><div class="zp-hero-stat-value">186</div><div class="zp-hero-stat-label">Active Partners</div></div>
+              <div class="vr opacity-25" style="height:2rem"></div>
+              <div><div class="zp-hero-stat-value">96.8%</div><div class="zp-hero-stat-label">SLA Compliance</div></div>
+            </div>
+          </div>
+          <div class="zp-hero-media">
+            <div class="zp-hero-panel">
+              <div class="d-flex align-items-center gap-3">
+                <span class="zp-stat-icon" style="width:44px;height:44px;background:#eef2ff;color:#4f46e5;font-size:1.2rem"><i class="bi bi-people"></i></span>
+                <div class="min-w-0">
+                  <div class="fw-bold" style="font-size:.82rem">Partner Growth</div>
+                  <div class="text-muted" style="font-size:.68rem">+34 new partners this quarter</div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-3 mt-3 pt-3 border-top">
+                <div class="zp-ring" style="--p:75%"><span>75%</span></div>
+                <div class="min-w-0">
+                  <div class="fw-bold" style="font-size:.74rem">Q2 Target Progress</div>
+                  <div class="text-muted" style="font-size:.66rem">$248,750 of $330,000 achieved</div>
+                </div>
+              </div>
+              <div class="mt-3">
+                <div class="d-flex justify-content-between" style="font-size:.66rem"><span class="text-muted fw-semibold">Monthly Goal</span><span class="fw-bold text-success">82%</span></div>
+                <div class="zp-progress mt-1" style="background:#eef0f6"><span style="width:82%;background:linear-gradient(90deg,#34d399,#38bdf8)"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- KPI cards -->
-        <div class="row row-cols-2 row-cols-md-3 row-cols-xl-6 g-3">
+        <div class="row row-cols-2 row-cols-md-3 row-cols-xxl-6 g-3">
           <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Total ZenPartners</div><span class="zp-stat-icon tint-indigo"><i class="bi bi-people"></i></span></div><div class="zp-stat-value">248</div><div class="zp-stat-delta"><span class="up">↑ 18%</span> <span class="muted">vs 30d</span></div></div></div>
           <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Active ZenPartners</div><span class="zp-stat-icon tint-emerald"><i class="bi bi-person-check"></i></span></div><div class="zp-stat-value">186</div><div class="zp-stat-delta"><span class="up">↑ 16%</span> <span class="muted">vs 30d</span></div></div></div>
           <div class="col"><div class="zp-card zp-card--hover zp-stat"><div class="zp-stat-top"><div class="zp-stat-label">Total Leads</div><span class="zp-stat-icon tint-orange"><i class="bi bi-bullseye"></i></span></div><div class="zp-stat-value">1,248</div><div class="zp-stat-delta"><span class="up">↑ 22%</span> <span class="muted">vs 30d</span></div></div></div>
@@ -105,7 +153,7 @@
           <div class="col-md-6 col-xl-3">
             <div class="zp-card p-3">
               <h3 class="zp-card-title">Projects by Status</h3>
-              <div class="d-flex gap-3 mt-2 align-items-center">
+              <div class="d-flex flex-wrap gap-3 mt-2 align-items-center">
                 <div class="position-relative flex-shrink-0" style="width:110px;height:110px"><div class="zp-donut position-absolute inset-0 rounded-circle" style="background:conic-gradient(#4f46e5 0 41%,#10b981 41% 76%,#f59e0b 76% 88%,#ef4444 88% 94%,#cbd5e1 94% 100%)"></div><div class="zp-donut-hole d-grid"><div class="text-center"><div class="fw-bold">156</div><div class="text-muted" style="font-size:.62rem">Total</div></div></div></div>
                 <div class="flex-grow-1 d-flex flex-column gap-1" style="font-size:.66rem">
                   <div class="d-flex justify-content-between"><span class="d-flex align-items-center gap-1"><span style="width:7px;height:7px;border-radius:99px;background:#4f46e5"></span>In Progress</span><b>64</b></div>
