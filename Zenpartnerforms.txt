@@ -1,0 +1,91 @@
+════════════════════════════════════════════════════════════════
+  ZOHO CREATOR APP SCHEMA — zenpartner
+  Exported: 19/08/2026, 15:08:06
+  Forms: 6 | Reports: 6
+════════════════════════════════════════════════════════════════
+
+════════════════════════════════════════════════════════════════
+  REPORTS (6)
+════════════════════════════════════════════════════════════════
+  1. Partner Details Report  →  Partner_Details_Report
+  2. All Referrals  →  All_Referrals
+  3. All Tasks  →  All_Tasks
+  4. All Partner Courses  →  All_Partner_Courses
+  5. Partner Course Taken Report  →  Partner_Course_Taken_Report
+  6. All Partner Documents  →  All_Partner_Documents
+
+════════════════════════════════════════════════════════════════
+  FORMS & FIELDS (6)
+════════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────────
+FORM 1: Add Partners  (Partner_Details)
+Fields: 11
+────────────────────────────────────────────────────────────────
+    1. Organization Name              | Organization_Name              | Single Line
+    2. Partner Name                   | partner_name                   | Unknown(29)
+    3. Partner Type                   | partner_type                   | Dropdown
+        └─ Choices: Consultant, Freelancer, Agency, Zoho Partner, Business Professional, Other
+    4. Primary Email                  | primary_email                  | Email
+    5. Phone with Country Code        | phone_number                   | Phone
+    6. Country / State / City         | address                        | Unknown(30)
+    7. Website / LinkedIn URL         | website_url                    | URL
+    8. Industry / Network Focus       | industry_focus                 | Multi Select
+        └─ Choices: Technology, Finance, Healthcare, Retail, Education, Manufacturing, Logistics, Other
+    9. Services of Interest           | services_of_interest           | Multi Select
+        └─ Choices: Lead Generation, Implementation, Support, Training, Consulting, Development, Other
+   10. Partner Status                 | partner_status                 | Dropdown
+        └─ Choices: Prospective, Documentation Pending, Training, Active, On Hold, Suspended, Terminated, Expired
+   11. Profile Image                  | Profile_Image                  | Image
+
+────────────────────────────────────────────────────────────────
+FORM 2: Add Referrals  (Add_Referrals)
+Fields: 7
+────────────────────────────────────────────────────────────────
+    1. Partner Name                   | partner_id                     | Lookup
+    2. Company Name                   | Company_Name                   | Single Line
+    3. Contact Person                 | Contact_Person                 | Single Line
+    4. Email                          | Email                          | Email
+    5. Project / Service Interest     | Project_Service_Interest       | Dropdown
+        └─ Choices: Choice 1, Choice 2, Choice 3
+    6. How did you hear about us?     | How_did_you_hear_about_us      | Dropdown
+        └─ Choices: Choice 1, Choice 2, Choice 3
+    7. Project Description            | Project_Description            | Multi Line
+
+────────────────────────────────────────────────────────────────
+FORM 3: Task  (Task)
+Fields: 6
+────────────────────────────────────────────────────────────────
+    1. Partner Name                   | Partner_Name                   | Lookup
+    2. Task Name                      | Task_Name                      | Single Line
+    3. Task Description               | Task_Description               | Multi Line
+    4. Task Date                      | Task_Date                      | Date
+    5. Priority                       | priority                       | Dropdown
+        └─ Choices: Low, Medium, High, Critical
+    6. Status                         | status                         | Dropdown
+        └─ Choices: Pending, In Progress, Completed, Cancelled, Hold
+
+────────────────────────────────────────────────────────────────
+FORM 4: Partner Courses  (Partner_Courses)
+Fields: 3
+────────────────────────────────────────────────────────────────
+    1. Course Name                    | Course_Name                    | Single Line
+    2. Description                    | Description                    | Multi Line
+    3. Url                            | Url                            | Multi Line
+
+────────────────────────────────────────────────────────────────
+FORM 5: Partner Course Taken  (Partner_Course_Taken)
+Fields: 3
+────────────────────────────────────────────────────────────────
+    1. Partner Name                   | Partner_Name                   | Lookup
+    2. Course Name                    | Course_Name                    | Lookup
+    3. Status                         | status                         | Dropdown
+        └─ Choices: Enrolled, In Progress, Completed, Dropped, Failed
+
+────────────────────────────────────────────────────────────────
+FORM 6: Partner Documents  (Partner_Documents)
+Fields: 2
+────────────────────────────────────────────────────────────────
+    1. Document Name                  | Document_Name                  | Single Line
+    2. File upload                    | File_upload                    | Unknown(19)
+
