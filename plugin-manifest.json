@@ -1,0 +1,14 @@
+{
+  "locale": ["en"],
+  "service": "CREATOR",
+  "modules": {
+    "widgets": [
+      {
+        "location": "appPage.fullPage",
+        "name": "ZenPartner Portal",
+        "url": "/app/index.html"
+      }
+    ]
+  },
+  "config": []
+}
